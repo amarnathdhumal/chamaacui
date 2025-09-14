@@ -86,7 +86,7 @@ const Header = () => {
                   <Link
                     href={item.url}
                     className={cn(
-                      "text-white text-[16px] tracking-[0] cursor-pointer"
+                      "text-[#ADD030] text-[16px] tracking-[0] cursor-pointer"
                     )}
                   >
                     {item.name}
