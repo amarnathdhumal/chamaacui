@@ -39,7 +39,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
-          transition={{ duration: 0.4, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           className="absolute top-1/4 left-[420px]"
         >
           <IconBox img="/images/icon1.svg" rotate="-42deg" />
@@ -49,7 +49,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
-          transition={{ duration: 0.4, delay: 0.9 }}
+          transition={{ duration: 0.5, delay: 1  }}
           className="absolute top-1/4 right-[420px]"
         >
           <IconBox img="/images/icon2.svg" rotate="42deg" />
@@ -59,7 +59,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
-          transition={{ duration: 0.4, delay: 1.3 }}
+          transition={{ duration: 0.5, delay: 1.5 }}
           className="absolute top-5/9  left-[320px]"
         >
           <IconBox img="/images/icon3.svg" rotate="-60deg" />
@@ -69,7 +69,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
-          transition={{ duration: 0.4, delay: 1.7 }}
+          transition={{ duration: 0.5, delay: 2 }}
           className="absolute top-5/9  right-[320px]"
         >
           <IconBox img="/images/icon4.svg" rotate="60deg" />
@@ -79,7 +79,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 2.1 }}
+          transition={{ duration: 0.5, delay: 2.5 }}
           className="flex items-end justify-between w-full"
         >
           <div className="text-[#ADD030] text-left">
