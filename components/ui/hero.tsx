@@ -82,11 +82,11 @@ const Hero = () => {
           transition={{ duration: 0.4, delay: 2.1 }}
           className="flex items-end justify-between w-full"
         >
-          <div className="text-white text-left">
-            <h1 className="text-[48px] font-semibold leading-[1] tracking-tighter uppercase">
+          <div className="text-[#ADD030] text-left">
+            <h1 className="text-[48px] font-semibold leading-[1] tracking-tighter ">
               Build Strength.
               <br />
-              Change Your Life.
+              Unlock Your Potential.
             </h1>
           </div>
 

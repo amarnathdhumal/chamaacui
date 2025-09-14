@@ -2,10 +2,11 @@
 
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import GreenButton from "./green-button";
+import Image from "next/image";
 
 const navItems = [
   { name: "Home", url: "/#" }, 
@@ -16,7 +17,7 @@ const navItems = [
 
 const Header = () => {
   const router = useRouter();
-  const pathname = usePathname();
+  
   const [isOpen, setIsOpen] = useState(false);
 
   // Prevent body scroll when mobile menu is open
@@ -47,9 +48,11 @@ const Header = () => {
               onClick={() => console.log("Logo")}
               className="flex gap-[6px] sm:gap-2 items-center"
             >
-              <img
+              <Image
                 src="/images/logo.svg"
                 alt="logo"
+                width={100}
+                height={30}
                 className=" h-[30px] text-white cursor-pointer "
               />
             </div>
@@ -68,10 +71,12 @@ const Header = () => {
               onClick={() => console.log("Logo")}
               className="flex gap-[6px] sm:gap-2 items-center"
             >
-              <img
+              <Image
                 src="/images/logo.svg"
                 alt="logo"
-                className="h-[30px] text-white cursor-pointer"
+                width={100}
+                height={30}
+                className="h-[30px] cursor-pointer"
               />
             </div>
             {/* NavItems - center */}
@@ -116,10 +121,12 @@ const Header = () => {
           <div className="w-full bg-black min-h-screen flex flex-col py-4 pt-4 px-4 overflow-y-auto">
             {/* Header */}
             <div className="flex items-center justify-between w-full">
-              <img
+              <Image
                 onClick={() => router.push("/")}
                 src="/images/logo.svg"
                 alt="logo"
+                width={100}
+                height={30}
                 className="  h-[30px] text-white cursor-pointer"
               />
               <button
@@ -153,7 +160,7 @@ const Header = () => {
               <div className="pt-[25px] space-y-[10px] ">
                 <div className="rounded-[10px]">
                   <p className="text-[#C2C2C2] text-[12px] mb-1 font-instrument-italic flex items-center  leading-none tracking-0">
-                    <img src="/dot1.svg" className="w-[6px] h-[6px] mr-1" />
+                   
                     Address
                   </p>
                   <p className="text-white text-[14px]  leading-none tracking-0 pt-[10px]">
@@ -163,7 +170,7 @@ const Header = () => {
 
                 <div className="rounded-[10px]">
                   <p className="text-[#C2C2C2] text-[12px] mb-1 font-instrument-italic flex items-center  leading-none tracking-0">
-                    <img src="/dot2.svg" className="w-[6px] h-[6px] mr-1" />
+                    
                     Contact
                   </p>
                   <a
@@ -176,7 +183,7 @@ const Header = () => {
 
                 <div className="rounded-[10px]">
                   <p className="text-[#C2C2C2] text-[12px] mb-1 font-instrument-italic flex items-center  leading-none tracking-0">
-                    <img src="/dot3.svg" className="w-[6px] h-[6px] mr-1" />
+                    {/* <img src="/dot3.svg" className="w-[6px] h-[6px] mr-1" /> */}
                     Email
                   </p>
                   <a
