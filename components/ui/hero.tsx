@@ -40,7 +40,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="absolute top-1/4 left-[420px]"
+          className="absolute top-1/4 left-[300px]"
         >
           <IconBox img="/images/icon1.svg" rotate="-42deg" />
         </motion.div>
@@ -50,7 +50,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
           transition={{ duration: 0.5, delay: 1  }}
-          className="absolute top-1/4 right-[420px]"
+          className="absolute top-1/4 right-[300px]"
         >
           <IconBox img="/images/icon2.svg" rotate="42deg" />
         </motion.div>
@@ -60,7 +60,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
           transition={{ duration: 0.5, delay: 1.5 }}
-          className="absolute top-5/9  left-[320px]"
+          className="absolute top-5/9  left-[300px]"
         >
           <IconBox img="/images/icon3.svg" rotate="-60deg" />
         </motion.div>
@@ -70,7 +70,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
           transition={{ duration: 0.5, delay: 2 }}
-          className="absolute top-5/9  right-[320px]"
+          className="absolute top-5/9  right-[300px]"
         >
           <IconBox img="/images/icon4.svg" rotate="60deg" />
         </motion.div>
