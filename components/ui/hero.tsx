@@ -5,6 +5,7 @@ import Header from "./header";
 import Image from "next/image";
 import IconBox from "./icon-box";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 const Hero = () => {
   return (
@@ -22,7 +23,7 @@ const Hero = () => {
 
       {/* Black Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black z-0" />
-      
+
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -100 }}
@@ -34,13 +35,18 @@ const Hero = () => {
       </motion.div>
 
       {/* Hero Content */}
-      <div className="h-full flex justify-between items-end w-[1440px] mx-auto pb-[40px] relative z-10 px-[25px]">
+      <div className="h-full flex justify-between items-end max-w-[1440px] mx-auto pb-[40px] relative z-10 px-[25px]">
         {/* Top left icon */}
+
         <motion.div
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="absolute top-1/4 left-[300px]"
+          className={cn(
+            "absolute ",
+            "lg:left-[300px] sm:left-[100px] left-6",
+            "md:top-1/4 top-[25%]"
+          )}
         >
           <IconBox img="/images/icon1.svg" rotate="-42deg" />
         </motion.div>
@@ -49,8 +55,12 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
-          transition={{ duration: 0.5, delay: 1  }}
-          className="absolute top-1/4 right-[300px]"
+          transition={{ duration: 0.5, delay: 1 }}
+          className={cn(
+            "absolute ",
+            "lg:right-[300px] sm:right-[100px] right-6",
+            "md:top-1/4 top-[25%]"
+          )}
         >
           <IconBox img="/images/icon2.svg" rotate="42deg" />
         </motion.div>
@@ -59,8 +69,12 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
-          transition={{ duration: 0.5, delay: 1.5 }}
-          className="absolute top-5/9  left-[300px]"
+          transition={{ duration: 0.4, delay: 1.5 }}
+          className={cn(
+            "absolute ",
+            "lg:left-[300px] sm:left-[100px] left-6",
+            "md:top-[60%] top-[60%]"
+          )}
         >
           <IconBox img="/images/icon3.svg" rotate="-60deg" />
         </motion.div>
@@ -69,8 +83,12 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
-          transition={{ duration: 0.5, delay: 2 }}
-          className="absolute top-5/9  right-[300px]"
+          transition={{ duration: 0.4, delay: 1.9 }}
+          className={cn(
+            "absolute ",
+            "lg:right-[300px] sm:right-[100px] right-6",
+            "md:top-[60%] top-[60%]"
+          )}
         >
           <IconBox img="/images/icon4.svg" rotate="60deg" />
         </motion.div>
@@ -79,11 +97,16 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 2.5 }}
-          className="flex items-end justify-between w-full"
+          transition={{ duration: 0.5, delay: 2.3 }}
+          className={cn(
+            "w-full h-full",
+            "md:flex-row flex flex-col  ",
+            " md:items-end md:justify-between items-center justify-center ",
+            "gap-6 md:gap-4"
+          )}
         >
-          <div className="text-[#ADD030] text-left">
-            <h1 className="text-[48px] font-semibold leading-[1] tracking-tighter ">
+          <div className="md:text-[#ADD030] text-white md:text-left text-center">
+            <h1 className="md:text-[48px] text-[32px] font-medium md:font-semibold leading-[1] tracking-tighter ">
               Build Strength.
               <br />
               Unlock Your Potential.
