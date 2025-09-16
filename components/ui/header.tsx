@@ -127,7 +127,7 @@ const Header = () => {
               ))}
             </ul>
             {/* GreenButton - right */}
-            <div className="ml-[32px]">
+            <div >
               <GreenButton
                 name="Get Started"
                 onClick={() => console.log("Get Started")}
