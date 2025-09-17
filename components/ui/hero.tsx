@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 const Hero = () => {
   return (
-    <main className="relative h-screen w-full bg-black">
+    <main className="relative h-screen w-full bg-black overflow-hidden">
       {/* Background Image */}
       
       <div className="absolute inset-0 ">
@@ -36,7 +36,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Hero Content */}
-      <div className="h-full flex justify-between items-end max-w-[1440px] mx-auto w-full px-[25px]">
+      <div className="h-full flex justify-between items-end max-w-[1440px] mx-auto w-full px-[25px] overflow-hidden">
         {/* Top left icon */}
 
         <motion.div

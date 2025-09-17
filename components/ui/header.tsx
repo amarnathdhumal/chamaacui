@@ -157,7 +157,7 @@ const Header = () => {
                 exit={"closed"}
                 animate={isOpen ? "open" : "closed"}
                 variants={parentVariants}
-                className="w-full bg-black min-h-screen flex flex-col py-4 pt-4 px-4 overflow-y-auto"
+                className="w-full max-w-full bg-black min-h-screen flex flex-col py-4 pt-4 px-4 overflow-y-auto overflow-x-hidden"
               >
                 {/* Header */}
                 <div className="flex items-center justify-between w-full">
