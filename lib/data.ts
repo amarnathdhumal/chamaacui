@@ -1,0 +1,12 @@
+import { SidebarDataTypes } from "./types"
+
+export const sidebarData: SidebarDataTypes[] = [
+    {
+        componentName: "Reveal Emoji",
+        link: "/reveal-emoji"
+    },
+    {
+        componentName: "Hover Card",
+        link: "/hover-card"
+    }
+]

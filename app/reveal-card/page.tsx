@@ -15,7 +15,7 @@ const RevealCard = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-neutral-900">
+    <div className="flex  ">
       <motion.div
         onHoverStart={() => {
           setIsHovered(true);
