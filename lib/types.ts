@@ -6,9 +6,11 @@ export interface SidebarDataTypes {
 }
 
 export interface ViewAreaTypes {
-    children: React.ReactNode;
+
     title: string;
     description: string
+    preview: React.ReactNode;
+    code: React.ReactNode
 }
 
 export interface TabButtonTypes {
@@ -16,4 +18,9 @@ export interface TabButtonTypes {
     onClick: () => void;
     isActive: boolean
     icon: React.ReactNode
+
+}
+
+export interface CopyProps {
+    text: string;
 }

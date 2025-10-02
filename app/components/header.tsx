@@ -11,7 +11,7 @@ export const Header = () => {
     }
 
     return (
-        <div className="fixed w-full flex justify-between items-center px-12 py-6  shadow-md dark:shadow-[0_4px_10px_rgba(255,255,255,0.1)]">
+        <div className="fixed w-full flex justify-between items-center px-12 py-6  shadow-md dark:shadow-[0_4px_10px_rgba(255,255,255,0.1)] backdrop-blur-sm">
             <div>
                 <h1 className="">
                     Logo

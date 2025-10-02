@@ -8,10 +8,8 @@ import { cn } from "@/lib/utils"
 const Sidebar = () => {
     const pathname = usePathname()
 
-
-
     return (
-        <div className="w-40 h-full flex flex-col ">
+        <div className="min-w-40 h-full flex flex-col sticky top-28">
             <ul className="flex flex-col gap-2">
                 {sidebarData.map((item) => {
                     const isActive = `/components${item.link}` === pathname
