@@ -8,5 +8,9 @@ export const sidebarData: SidebarDataTypes[] = [
     {
         componentName: "Hover Card",
         link: "/hover-card"
+    },
+    {
+        componentName: "Stack Scroll",
+        link: "/stack-scroll"
     }
 ]

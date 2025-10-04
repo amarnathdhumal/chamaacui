@@ -56,26 +56,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Hero Animations",
-    description: "Hero Animations",
-    url: "www.goggle.com",
-    logo: "/images/og-image.png",
-  };
+  // const schema = {
+  //   "@context": "https://schema.org",
+  //   "@type": "Organization",
+  //   name: "Hero Animations",
+  //   description: "Hero Animations",
+  //   url: "www.goggle.com",
+  //   logo: "/images/og-image.png",
+  // };
   return (
     <html lang="en">
       {/* <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
       </head> */}
-      {/* ✅ Google Analytics Scripts */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
-        }}
-      />
+    
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased bg-white dark:bg-black  max-w-[1440px]`}
