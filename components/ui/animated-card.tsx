@@ -3,7 +3,7 @@
 import { motion } from "motion/react"
 import { cn } from "@/lib/utils"
 
-const Button = ({ text }: { text: string;  }) => {
+const Button = ({ text }: { text: string }) => {
   return (
     <div
       className={cn(
@@ -41,7 +41,7 @@ shadow-[inset_0px_0px_100px_0px_#353934]
           className="absolute left-5 top-5"
         >
           <Button
-            gradient="#0F0F10"
+           
             text="Generate Ideas" />
         </motion.div>
 
@@ -53,7 +53,7 @@ shadow-[inset_0px_0px_100px_0px_#353934]
           className="absolute top-20 right-5"
         >
           <Button
-            gradient="#581C87"
+          
             text="Upload Dataset" />
         </motion.div>
 
@@ -65,7 +65,7 @@ shadow-[inset_0px_0px_100px_0px_#353934]
           className="absolute top-40 left-1/2 transform -translate-x-1/2"
         >
           <Button
-            gradient="#581C87"
+           
             text="Start Chat" />
         </motion.div>
 
@@ -77,7 +77,7 @@ shadow-[inset_0px_0px_100px_0px_#353934]
           className="absolute left-5 bottom-20"
         >
           <Button
-            gradient="#581C87"
+           
             text="View Analytics" />
         </motion.div>
 
@@ -89,7 +89,7 @@ shadow-[inset_0px_0px_100px_0px_#353934]
           className="absolute right-5 bottom-5"
         >
           <Button
-            gradient="#581C87"
+            
             text="Export Results" />
         </motion.div>
 
