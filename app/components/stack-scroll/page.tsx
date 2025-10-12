@@ -1,10 +1,11 @@
-import StackScroll from "./stack-scroll";
+
 import ViewArea from "@/components/ui/view-area";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import CopyButton from "@/components/ui/copy-button"
 import fs from "fs"
 import path from "path"
+import StackScrollDemo from "./stack-scroll-demo";
 
 const filePath = path.join(process.cwd(), "app/components/stack-scroll/stack-scroll.tsx")
 const StackScrollSource = fs.readFileSync(filePath, "utf-8")
@@ -14,7 +15,7 @@ const StackScrollPage = () => {
         <ViewArea
             title="Stack Scroll"
             description="Interactive stacked card layout with smooth scroll animations. Cards scale and stack on top of each other, creating an engaging visual effect as users scroll through content."
-            preview={<StackScroll />}
+            preview={<StackScrollDemo />}
             code={
                 <div className="relative">
                     <div className="absolute top-4 right-4">

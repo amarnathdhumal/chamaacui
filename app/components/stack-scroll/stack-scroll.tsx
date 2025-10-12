@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useScroll, motion, useTransform } from "motion/react"
 import { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 
 interface StackScrollTypes {
@@ -13,7 +14,7 @@ interface StackScrollTypes {
 
 interface StackScrollCardProps {
     image: string;
-    text: string;
+   
     title: string;
    
     index: number;
@@ -21,7 +22,7 @@ interface StackScrollCardProps {
 
 const data: StackScrollTypes[] = [
     {
-      image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470", // mountains
+      image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470", 
       title: "The Call of the Mountains",
       text: `<p>
         Towering peaks and winding trails remind us of the grandeur of our planet. 
@@ -54,8 +55,8 @@ const data: StackScrollTypes[] = [
 const StackScroll = () => {
     return (
       <div className="bg-white dark:bg-black ">
-        <div className="relative w-full flex justify-center">
-          <div className="relative w-full max-w-[768px]" >
+        <div className="relative w-full  flex justify-center">
+          <div className="relative w-full max-w-[500px] " >
             {data.map((item, i) => (
               <StackScrollCard
                 key={i}
@@ -70,8 +71,9 @@ const StackScroll = () => {
     );
   };
   
-  const StackScrollCard = ({ image, text, title, index }: StackScrollCardProps) => {
+  const StackScrollCard = ({ image,  title, index }: StackScrollCardProps) => {
     const ref = useRef(null);
+    const isMdUp = useMediaQuery({ query: "(min-width: 768px)" });
     const { scrollYProgress } = useScroll({
       target: ref,
       offset: ["start end", "start start"]
@@ -89,7 +91,7 @@ const StackScroll = () => {
     const y = useTransform(
       scrollYProgress,
       [0, 1],
-      [0, index * 30]
+      [0, index * (isMdUp ? 20 : 10)]
     );
   
     return (
@@ -104,7 +106,7 @@ const StackScroll = () => {
         className="sticky h-screen flex items-center justify-center"
       >
         <div style={{ width: `${widthPercent}%` }}>
-          <div className="flex justify-center items-center gap-4 rounded-[20px] relative h-[350px]  overflow-hidden ">
+          <div className="flex justify-center items-center gap-4 rounded-[10px] md:rounded-[20px] relative h-[180px] md:h-[250px]  overflow-hidden ">
             <Image
               alt={title}
               src={image}
@@ -113,16 +115,16 @@ const StackScroll = () => {
               className="w-full h-full  object-cover"
             />
   
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 rounded-[8px]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 rounded-[8px]" />
   
-            <div className="flex flex-col gap-3 absolute bottom-8 left-8 right-8">
-              <h1 className="text-4xl font-semibold text-white drop-shadow-lg">
+            <div className="flex flex-col gap-3 absolute bottom-8  left-4  right-4 ">
+              <h1 className="text-xl md:text-2xl font-bold text-white drop-shadow-lg leading-[60%]">
                 {title}
               </h1>
-              <div
+              {/* <div
                 className="text-[14px] leading-[1.1] tracking-tight text-white/80 drop-shadow-md w-[90%]"
                 dangerouslySetInnerHTML={{ __html: text }}
-              />
+              /> */}
             </div>
           </div>
         </div>
