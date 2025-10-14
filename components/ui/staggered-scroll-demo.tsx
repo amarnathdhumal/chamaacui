@@ -1,18 +1,18 @@
 "use client"
 
-import StaggeredScroll from "@/components/ui/staggered-scroll";
+import StaggeredScroll from "./staggered-scroll"
+import { useRef } from "react"
 
-import { useRef } from "react";
-
-
-const images = [
+const StaggeredScrollDemo = () => {
+   const containerRef = useRef<HTMLDivElement>(null)
+  const images = [
     "/images/1.jpg",
-    "/images/2.jpg",
+    "/images/2.jpg", 
     "/images/3.jpg",
     "/images/4.jpg",
     "/images/1.jpg",
     "/images/2.jpg",
-    "/images/3.jpg",
+    "/images/3.jpg", 
     "/images/4.jpg",
     "/images/1.jpg",
     "/images/2.jpg",
@@ -36,17 +36,14 @@ const images = [
     "/images/4.jpg",
     "/images/1.jpg",
     "/images/2.jpg"
-]
+  ]
 
-const Test = () => {
-    const containerRef = useRef<HTMLDivElement>(null)
-    return (
-        <div ref={containerRef} className="h-[900px] overflow-auto">
-            <StaggeredScroll container={containerRef} images={images} />
-        </div>
-
-
-    )
+  return  (
+    <div ref={containerRef} className="h-[900px] overflow-auto">
+      <StaggeredScroll images={images} container={containerRef} />
+    </div>
+  )
 }
 
-export default Test;
+export default StaggeredScrollDemo
+

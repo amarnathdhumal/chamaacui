@@ -15,7 +15,7 @@ const RevealEmojiCard = () => {
   };
 
   return (
-    <div className="flex  min-h-[500px] dark:bg-neutral-900 bg-neutral-800 justify-center items-center ">
+    <div className="flex  min-h-[500px] dark:bg-neutral-900 bg-neutral-800 justify-center items-center">
       <motion.div
         onHoverStart={() => {
           setIsHovered(true);

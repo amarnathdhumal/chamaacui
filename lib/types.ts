@@ -11,6 +11,8 @@ export interface ViewAreaTypes {
     description: string
     preview: React.ReactNode;
     code: React.ReactNode
+    scrollContainerRef?: React.RefObject<HTMLDivElement | null>
+    className?: string
 }
 
 export interface TabButtonTypes {

@@ -14,9 +14,7 @@ interface StackScrollTypes {
 
 interface StackScrollCardProps {
     image: string;
-    
     title: string;
-
     index: number;
 }
 
@@ -70,7 +68,7 @@ const StackScrollDemo = () => {
     );
 };
 
-const StackScrollCard = ({ image,title, index }: StackScrollCardProps) => {
+const StackScrollCard = ({ image, title, index }: StackScrollCardProps) => {
     const ref = useRef(null);
     const isMdUp = useMediaQuery({ query: "(min-width: 768px)" });
     const { scrollYProgress } = useScroll({

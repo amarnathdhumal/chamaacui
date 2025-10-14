@@ -4,8 +4,9 @@ import { ViewAreaTypes } from "@/lib/types"
 import { useState } from "react"
 import TabButton from "./tab-button"
 import { IconEye, IconCode } from "@tabler/icons-react"
+import { cn } from "@/lib/utils"
 
-const ViewArea = ({ title, description, preview, code }: ViewAreaTypes) => {
+const ViewArea = ({ title, description, preview, code, scrollContainerRef, className }: ViewAreaTypes) => {
     const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
 
     return (
@@ -14,7 +15,7 @@ const ViewArea = ({ title, description, preview, code }: ViewAreaTypes) => {
                 {title}
             </h1>
             <p className="text-base text-neutral-800 dark:text-gray-400 my-4">
-                {description}
+                {description}x
             </p>
             <div className="flex flex-row gap-4 mb-6">
                 <TabButton
@@ -32,7 +33,12 @@ const ViewArea = ({ title, description, preview, code }: ViewAreaTypes) => {
             </div>
             <div className="border border-gray-200 dark:border-neutral-700 rounded-[16px] overflow-hidden w-full">
                 {activeTab === "preview" ? (
-                    <div className="h-[500px] overflow-y-auto hide-scrollbar">
+                    <div
+                        ref={scrollContainerRef}
+                        className={cn(
+                            "overflow-y-auto hide-scrollbar",
+                            className
+                        )}>
                         {preview}
                     </div>
                 ) : (

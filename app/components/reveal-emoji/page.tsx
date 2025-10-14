@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import CopyButton from "@/components/ui/copy-button"
 
-// Read file at build/runtime (server only)
+// file path
 const filePath = path.join(process.cwd(), "app/components/reveal-emoji/reveal-card.tsx")
 const RevealCardSource = fs.readFileSync(filePath, "utf-8")
 
@@ -41,8 +41,6 @@ export default function RevealEmoji() {
           {RevealCardSource}
         </SyntaxHighlighter>
         </div>
-
-
 
       }
     />
