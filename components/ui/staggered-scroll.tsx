@@ -28,7 +28,6 @@ const GridItem = ({ src, isLeftSide, container }: GridItemProps) => {
     offset: ["start end", "end start"],
   })
 
-
   // Wrapper animations (entering from bottom)
   const zEnter = useTransform(scrollYProgress, [0, 0.5], [300, 0])
   const rotateXEnter = useTransform(scrollYProgress, [0, 0.5], [70, 0])
@@ -106,17 +105,16 @@ const GridItem = ({ src, isLeftSide, container }: GridItemProps) => {
 }
 
 const StaggeredScroll = ({ container, images }: StaggeredScrollProps) => {
-  const gridRef = useRef<HTMLDivElement>(null)
+
 
 
   return (
     <main
-      ref={gridRef}
+
       className="relative overflow-hidden w-full bg-black text-white min-h-[1200px]">
-      {/* Main Grid Section */}
+     
       <section className="grid place-items-center w-full relative">
         <div
-          ref={gridRef}
           className="w-full max-w-[300px] grid grid-cols-2 relative gap-x-8"
         >
           {images.map((src, index) => (

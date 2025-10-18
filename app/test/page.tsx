@@ -1,52 +1,5 @@
-"use client"
+import RotatingImageGallery from "@/components/ui/rotating"
 
-import StaggeredScroll from "@/components/ui/staggered-scroll";
-
-import { useRef } from "react";
-
-
-const images = [
-    "/images/1.jpg",
-    "/images/2.jpg",
-    "/images/3.jpg",
-    "/images/4.jpg",
-    "/images/1.jpg",
-    "/images/2.jpg",
-    "/images/3.jpg",
-    "/images/4.jpg",
-    "/images/1.jpg",
-    "/images/2.jpg",
-    "/images/3.jpg",
-    "/images/4.jpg",
-    "/images/1.jpg",
-    "/images/2.jpg",
-    "/images/3.jpg",
-    "/images/4.jpg",
-    "/images/1.jpg",
-    "/images/2.jpg",
-    "/images/3.jpg",
-    "/images/4.jpg",
-    "/images/1.jpg",
-    "/images/2.jpg",
-    "/images/3.jpg",
-    "/images/4.jpg",
-    "/images/1.jpg",
-    "/images/2.jpg",
-    "/images/3.jpg",
-    "/images/4.jpg",
-    "/images/1.jpg",
-    "/images/2.jpg"
-]
-
-const Test = () => {
-    const containerRef = useRef<HTMLDivElement>(null)
-    return (
-        <div ref={containerRef} className="h-[900px] overflow-auto">
-            <StaggeredScroll container={containerRef} images={images} />
-        </div>
-
-
-    )
+export default function Page() {
+  return <RotatingImageGallery />
 }
-
-export default Test;
