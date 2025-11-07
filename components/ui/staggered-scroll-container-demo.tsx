@@ -130,7 +130,7 @@
 
 // /**
 //  * Staggered Scroll Demo Component for ViewArea
-//  * 
+//  *
 //  * This component creates its own scroll container internally,
 //  * avoiding hydration issues when used in fixed-height preview containers.
 //  */
@@ -179,4 +179,3 @@
 // }
 
 // export default StaggeredScrollContainerDemo
-

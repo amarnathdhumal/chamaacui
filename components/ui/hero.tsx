@@ -11,7 +11,7 @@ const Hero = () => {
   return (
     <main className="relative h-screen w-full bg-black overflow-hidden">
       {/* Background Image */}
-      
+
       <div className="absolute inset-0 ">
         <Image
           src="/images/hero.svg"

@@ -54,7 +54,6 @@
 //   )
 // }
 
-
 // // Text element character component
 // const TextChar = ({ char, index, scrollYProgress, totalChars }: { char: string; index: number; scrollYProgress: any; totalChars: number }) => {
 //   const centerIndex = Math.floor(totalChars / 2)
@@ -83,7 +82,6 @@
 //   )
 // }
 
-
 // // Text element with character stagger
 // const TextElement = () => {
 //   const ref = useRef<HTMLDivElement>(null)
@@ -102,7 +100,6 @@
 //     </div>
 //   )
 // }
-
 
 // // Credits character component
 // const CreditsChar = ({ char, index, scrollYProgress, totalChars }: { char: string; index: number; scrollYProgress: any; totalChars: number }) => {
@@ -143,9 +140,9 @@
 //       target: gridRef,
 //       offset: ["start end", "end start"]
 //     })
-  
+
 //     const x = useTransform(scrollYProgress, [0, 1], ["100vw", "-100%"])
-  
+
 //     return (
 //       <div className="fixed w-screen top-1/2 -translate-y-1/2 left-0 z-[50] overflow-hidden pointer-events-none">
 //         <motion.div
@@ -181,7 +178,6 @@
 //         </span>
 //       </div> */}
 
-
 //             {/* Text Section */}
 //       {/* <section className="grid place-items-center w-full relative">
 //         <TextElement />
@@ -209,4 +205,4 @@
 //       {/* Side Shadows */}
 //       {/* <div className="absolute top-0 left-0 w-full h-full z-[5000] pointer-events-none bg-gradient-to-r from-black via-transparent to-black" /> */}
 
- // const fullGridRef = useRef<HTMLDivElement>(null)
+// const fullGridRef = useRef<HTMLDivElement>(null)

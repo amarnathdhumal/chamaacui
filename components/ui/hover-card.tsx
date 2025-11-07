@@ -93,8 +93,8 @@ const GiftCard = () => {
                 initial={{
                   opacity: 1,
                   scale: 1,
-                  x: 0, 
-                  y: 0, 
+                  x: 0,
+                  y: 0,
                 }}
                 animate={{
                   opacity: 0,
@@ -117,7 +117,9 @@ const GiftCard = () => {
           <p className="text-[18px] font-medium text-center text-neutral-800">
             🎉 Your Coupon Code:
             <br />
-            <span className="text-[32px] font-semibold text-green-600">SAVE20</span>
+            <span className="text-[32px] font-semibold text-green-600">
+              SAVE20
+            </span>
           </p>
         </div>
       </motion.div>

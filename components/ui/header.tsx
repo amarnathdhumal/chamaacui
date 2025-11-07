@@ -1,7 +1,15 @@
-import { motion, useMotionTemplate, useScroll, useTransform } from "motion/react";
+import {
+  motion,
+  useMotionTemplate,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { useRef } from "react";
 
-const data: string[] = Array.from({ length: 20 }, (_, i) => `${(i % 2) + 1}.jpg`);
+const data: string[] = Array.from(
+  { length: 20 },
+  (_, i) => `${(i % 2) + 1}.jpg`
+);
 
 const Test = () => {
   return (
@@ -14,7 +22,6 @@ const Test = () => {
     </div>
   );
 };
-
 
 const ImageWithScrollBlur = ({ src }: { src: string }) => {
   const ref = useRef(null);

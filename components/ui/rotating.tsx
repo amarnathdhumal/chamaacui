@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useRef, useEffect, useState, useMemo } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import * as THREE from 'three';
-import dynamic from 'next/dynamic';
+import { useRef, useEffect, useState, useMemo } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
+import dynamic from "next/dynamic";
 
 // Vertex Shader - removed duplicate attribute declarations
 const vertexShader = `
@@ -90,7 +90,7 @@ interface ScrollState {
   current: number;
   target: number;
   last: number;
-  direction: 'up' | 'down';
+  direction: "up" | "down";
 }
 
 interface ImagePlaneProps {
@@ -107,7 +107,7 @@ interface SceneProps {
 }
 
 // Utility functions
-const lerp = (start: number, end: number, factor: number): number => 
+const lerp = (start: number, end: number, factor: number): number =>
   start + (end - start) * factor;
 
 const map = (
@@ -121,7 +121,14 @@ const map = (
 };
 
 // Image Component
-function ImagePlane({ image, index, length, scroll, viewport, screen }: ImagePlaneProps) {
+function ImagePlane({
+  image,
+  index,
+  length,
+  scroll,
+  viewport,
+  screen,
+}: ImagePlaneProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   const [texture, setTexture] = useState<THREE.Texture | null>(null);
@@ -151,11 +158,11 @@ function ImagePlane({ image, index, length, scroll, viewport, screen }: ImagePla
         rotationAxis: { value: [0, 1, 0] },
         distortionAxis: { value: [1, 1, 0] },
         uDistortion: { value: 3 },
-        uTime: { value: 0 }
+        uTime: { value: 0 },
       },
       side: THREE.DoubleSide,
       depthTest: false,
-      depthWrite: false
+      depthWrite: false,
     });
   }, [texture, imageSize]);
 
@@ -186,10 +193,10 @@ function ImagePlane({ image, index, length, scroll, viewport, screen }: ImagePla
     const isBefore = posY + planeOffset < -viewportOffset;
     const isAfter = posY - planeOffset > viewportOffset;
 
-    if (scroll.direction === 'up' && isBefore) {
+    if (scroll.direction === "up" && isBefore) {
       extraRef.current -= heightTotal;
     }
-    if (scroll.direction === 'down' && isAfter) {
+    if (scroll.direction === "down" && isAfter) {
       extraRef.current += heightTotal;
     }
   });
@@ -210,7 +217,7 @@ function Scene({ images }: SceneProps) {
     current: 0,
     target: 0,
     last: 0,
-    direction: 'down'
+    direction: "down",
   });
   const [scroll, setScroll] = useState<ScrollState>(scrollRef.current);
 
@@ -222,8 +229,8 @@ function Scene({ images }: SceneProps) {
       scrollRef.current.target += speed * 0.005;
     };
 
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
   }, []);
 
   // Handle touch/mouse drag
@@ -235,12 +242,12 @@ function Scene({ images }: SceneProps) {
     const handleDown = (e: MouseEvent | TouchEvent) => {
       isDown = true;
       position = scrollRef.current.current;
-      start = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      start = "touches" in e ? e.touches[0].clientY : e.clientY;
     };
 
     const handleMove = (e: MouseEvent | TouchEvent) => {
       if (!isDown) return;
-      const y = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      const y = "touches" in e ? e.touches[0].clientY : e.clientY;
       const distance = (start - y) * 0.1;
       scrollRef.current.target = position + distance;
     };
@@ -249,20 +256,20 @@ function Scene({ images }: SceneProps) {
       isDown = false;
     };
 
-    window.addEventListener('mousedown', handleDown as EventListener);
-    window.addEventListener('mousemove', handleMove as EventListener);
-    window.addEventListener('mouseup', handleUp);
-    window.addEventListener('touchstart', handleDown as EventListener);
-    window.addEventListener('touchmove', handleMove as EventListener);
-    window.addEventListener('touchend', handleUp);
+    window.addEventListener("mousedown", handleDown as EventListener);
+    window.addEventListener("mousemove", handleMove as EventListener);
+    window.addEventListener("mouseup", handleUp);
+    window.addEventListener("touchstart", handleDown as EventListener);
+    window.addEventListener("touchmove", handleMove as EventListener);
+    window.addEventListener("touchend", handleUp);
 
     return () => {
-      window.removeEventListener('mousedown', handleDown as EventListener);
-      window.removeEventListener('mousemove', handleMove as EventListener);
-      window.removeEventListener('mouseup', handleUp);
-      window.removeEventListener('touchstart', handleDown as EventListener);
-      window.removeEventListener('touchmove', handleMove as EventListener);
-      window.removeEventListener('touchend', handleUp);
+      window.removeEventListener("mousedown", handleDown as EventListener);
+      window.removeEventListener("mousemove", handleMove as EventListener);
+      window.removeEventListener("mouseup", handleUp);
+      window.removeEventListener("touchstart", handleDown as EventListener);
+      window.removeEventListener("touchmove", handleMove as EventListener);
+      window.removeEventListener("touchend", handleUp);
     };
   }, []);
 
@@ -275,9 +282,9 @@ function Scene({ images }: SceneProps) {
     );
 
     if (scrollRef.current.current > scrollRef.current.last) {
-      scrollRef.current.direction = 'up';
+      scrollRef.current.direction = "up";
     } else {
-      scrollRef.current.direction = 'down';
+      scrollRef.current.direction = "down";
     }
 
     scrollRef.current.last = scrollRef.current.current;
@@ -304,16 +311,16 @@ function Scene({ images }: SceneProps) {
 // Main Component
 function RotatingImageGallery() {
   const images = [
-    'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=800&q=80',
-    'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=800&q=80',
-    'https://images.unsplash.com/photo-1635805737707-575885ab0820?w=800&q=80',
-    'https://images.unsplash.com/photo-1618556450991-2f1af64e8191?w=800&q=80',
-    'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80',
-    'https://images.unsplash.com/photo-1634193295627-1cdddf751ebf?w=800&q=80',
-    'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80',
-    'https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=800&q=80',
-    'https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=800&q=80',
-    'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&q=80'
+    "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=800&q=80",
+    "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=800&q=80",
+    "https://images.unsplash.com/photo-1635805737707-575885ab0820?w=800&q=80",
+    "https://images.unsplash.com/photo-1618556450991-2f1af64e8191?w=800&q=80",
+    "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80",
+    "https://images.unsplash.com/photo-1634193295627-1cdddf751ebf?w=800&q=80",
+    "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80",
+    "https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=800&q=80",
+    "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=800&q=80",
+    "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&q=80",
   ];
 
   const [isMounted, setIsMounted] = useState(false);
@@ -330,16 +337,20 @@ function RotatingImageGallery() {
     <div className="fixed inset-0 w-full h-full bg-black overflow-hidden">
       <Canvas
         camera={{ position: [0, 0, 20], fov: 45 }}
-        gl={{ 
-          alpha: true, 
+        gl={{
+          alpha: true,
           antialias: true,
-          powerPreference: 'high-performance'
+          powerPreference: "high-performance",
         }}
-        dpr={typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1}
+        dpr={
+          typeof window !== "undefined"
+            ? Math.min(window.devicePixelRatio, 2)
+            : 1
+        }
       >
         <Scene images={images} />
       </Canvas>
-      
+
       {/* Instructions */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 text-sm text-center pointer-events-none">
         <p>Scroll or drag to navigate</p>

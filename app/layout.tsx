@@ -4,7 +4,6 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -69,7 +68,6 @@ export default function RootLayout({
       {/* <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
       </head> */}
-    
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased bg-white dark:bg-black  max-w-[1440px]`}
