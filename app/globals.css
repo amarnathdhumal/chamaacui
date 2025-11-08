@@ -133,3 +133,7 @@
   width: 0;
   height: 0;
 }
+
+nextjs-portal {
+  display: none;
+}

@@ -17,4 +17,8 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Tilt Card",
     link: "/tilt-card",
   },
+  {
+    componentName: "Border Beam",
+    link: "/border-animation",
+  },
 ];
