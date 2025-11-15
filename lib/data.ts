@@ -21,4 +21,16 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Border Beam",
     link: "/border-animation",
   },
+  {
+    componentName: "Invoice Card",
+    link: "/invoice-card",
+  },
+  {
+    componentName: "Svg Animaiton",
+    link: "/svg-animation"
+  },
+  {
+    componentName: "Slide Up Button",
+    link: "/slide-up-button",
+  }
 ];
