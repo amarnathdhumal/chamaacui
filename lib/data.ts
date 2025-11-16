@@ -3,7 +3,7 @@ import { SidebarDataTypes } from "./types";
 export const sidebarData: SidebarDataTypes[] = [
   {
     componentName: "Random Image Reveal",
-    link: "/reveal-emoji",
+    link: "/random-image-reveal",
   },
 
   {

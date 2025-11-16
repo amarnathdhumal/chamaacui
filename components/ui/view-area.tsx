@@ -17,7 +17,7 @@ const ViewArea = ({
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
 
   return (
-    <div className="flex flex-col w-full h-full mb-12 min-w-0 hide-scrollbar">
+    <div className="flex flex-col w-full h-full mb-12 min-w-0 hide-scrollbar ">
       <h1 className="text-4xl font-bold text-black dark:text-white">{title}</h1>
       <p className="text-base text-neutral-800 dark:text-gray-400 my-4">
         {description}
@@ -36,11 +36,11 @@ const ViewArea = ({
           icon={<IconCode className="size-5" />}
         />
       </div>
-      <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden w-full">
+      <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden w-full ">
         {activeTab === "preview" ? (
           <div
             ref={scrollContainerRef}
-            className={cn("overflow-y-auto hide-scrollbar", className)}
+            className={cn("overflow-y-auto hide-scrollbar px-4", className)}
           >
             {preview}
           </div>

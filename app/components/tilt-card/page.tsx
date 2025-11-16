@@ -1,78 +1,111 @@
-"use client";
+import TiltCardDemo from "./tilt-card-demo";
+import fs from "fs";
+import path from "path";
+import ViewArea from "@/components/ui/view-area";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CopyButton from "@/components/ui/copy-button";
+import InstallationSection from "@/components/ui/installation-section";
+import PropsTable from "@/components/ui/props-table";
 
-import {
-  IconTrendingUp,
-  IconCpu,
-  IconUsers,
-  IconSparkles,
-} from "@tabler/icons-react";
-import { type Icon } from "@tabler/icons-react";
+// file paths
+const filePath = path.join(
+  process.cwd(),
+  "app/components/tilt-card/tilt-card.tsx"
+);
+const demoFilePath = path.join(
+  process.cwd(),
+  "app/components/tilt-card/tilt-card-demo.tsx"
+);
+const TiltCardSource = fs.readFileSync(filePath, "utf-8");
+const TiltCardDemoSource = fs.readFileSync(demoFilePath, "utf-8");
 
-import { motion } from "motion/react";
+export default function TiltCardPage() {
+  return (
+    <div className="flex flex-col w-full">
+      <ViewArea
+        title="Tilt Card"
+        description="A card component with a smooth tilt animation on hover that rotates from an initial angle to straight, creating an engaging interactive effect."
+        preview={<TiltCardDemo />}
+        code={
+          <div className="relative">
+            <div className="absolute top-4 right-4">
+              <CopyButton text={TiltCardDemoSource} />
+            </div>
+            <SyntaxHighlighter
+              language="tsx"
+              style={oneDark}
+              wrapLongLines={true}
+              customStyle={{
+                margin: 0,
+                padding: "1rem",
+                fontSize: "14px",
+                lineHeight: "1.5",
+                width: "100%",
+                maxWidth: "100%",
+                boxSizing: "border-box",
+                overflow: "auto",
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+              }}
+            >
+              {TiltCardDemoSource}
+            </SyntaxHighlighter>
+          </div>
+        }
+      />
 
-interface AiFeature {
-  icon: Icon;
-  title: string;
-  description: string;
+      {/* Installation Section */}
+      <InstallationSection componentSource={TiltCardSource} />
+
+      {/* Props Section */}
+      <PropsTable
+        props={[
+          {
+            name: "features",
+            type: "Feature[]",
+            default: "-",
+            description: "Array of feature objects with icon, title, and description. Each feature should have an icon (Icon component), title (string), and description (string)",
+            required: true,
+          },
+          {
+            name: "initialRotate",
+            type: "number",
+            default: "7.1",
+            description: "Initial rotation angle in degrees. The card starts at this angle and rotates to hoverRotate on hover",
+            required: false,
+          },
+          {
+            name: "hoverRotate",
+            type: "number",
+            default: "0",
+            description: "Rotation angle in degrees when hovering over the card",
+            required: false,
+          },
+          {
+            name: "duration",
+            type: "number",
+            default: "0.3",
+            description: "Duration of the animation transition in seconds",
+            required: false,
+          },
+          {
+            name: "stiffness",
+            type: "number",
+            default: "100",
+            description: "Spring stiffness value. Higher values create a stiffer spring",
+            required: false,
+          },
+          {
+            name: "damping",
+            type: "number",
+            default: "5",
+            description: "Spring damping value. Higher values reduce oscillation",
+            required: false,
+          },
+        ]}
+      />
+    </div>
+  );
 }
 
-export const aiFeatures: AiFeature[] = [
-  {
-    icon: IconSparkles,
-    title: "Automate Intelligence",
-    description: "AI-driven workflow automation.",
-  },
-  {
-    icon: IconTrendingUp,
-    title: "Adaptive Learning",
-    description: "Improves with every interaction.",
-  },
-  {
-    icon: IconCpu,
-    title: "Context-Aware Decisions",
-    description: "Understands context before acting.",
-  },
-  {
-    icon: IconUsers,
-    title: "Collaborative Agents",
-    description: "Coordinates multiple AI agents.",
-  },
-];
-
-const TiltCard = () => {
-  return (
-
-    <div className="w-[350px] h-[350px] border border-[#E8E8E8] relative rounded-[20px] p-5 bg-white">
-      <motion.div
-        initial={{ rotate: 7.1 }}
-        whileHover={{ rotate: 0 }}
-        transition={{
-          duration: 0.3,
-          type: "spring",
-          stiffness: 100,
-          damping: 5,
-        }}
-        className="absolute inset-0 flex flex-col items- justify-center rounded-[20px] p-8 border border-[#E8E8E8] bg-white gap-8"
-      >
-        {aiFeatures.map((feature, index) => (
-          <div key={index} className="flex flex-row items-start gap-3">
-            <div>
-              <feature.icon className=" size-[24px] text-[#DBB25A]" />
-            </div>
-            <div>
-              <h2 className="text-[18px] leading-[15px] tracking-[0em] text-black mb-2 font-medium">
-                {feature.title}
-              </h2>
-              <p className="text-[14px] leading-[16px] tracking-[0em] text-[#9E9E9E]">
-                {feature.description}
-              </p>
-            </div>
-          </div>
-        ))}
-      </motion.div>
-    </div>
-
-  );
-};
-
-export default TiltCard;

@@ -22,8 +22,8 @@ const packageManagers: { name: PackageManager; command: string }[] = [
 export default function InstallationSection({
     componentSource,
 }: InstallationSectionProps) {
-    const [activePm, setActivePm] = useState<PackageManager>("bun");
-    const activeCommand = packageManagers.find((pm) => pm.name === activePm)?.command || "bun add motion";
+    const [activePm, setActivePm] = useState<PackageManager>("npm");
+    const activeCommand = packageManagers.find((pm) => pm.name === activePm)?.command || "npm install motion";
 
     return (
         <div className="mb-8">

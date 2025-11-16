@@ -5,17 +5,17 @@ import ViewArea from "@/components/ui/view-area";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
-import InstallationSection from "./installation-section";
-import PropsTable from "./props-table";
+import InstallationSection from "../../../components/ui/installation-section";
+import PropsTable from "../../../components/ui/props-table";
 
 // file paths
 const filePath = path.join(
   process.cwd(),
-  "app/components/reveal-emoji/reveal-card.tsx"
+  "app/components/random-image-reveal/reveal-card.tsx"
 );
 const demoFilePath = path.join(
   process.cwd(),
-  "app/components/reveal-emoji/reveal-card-demo.tsx"
+  "app/components/random-image-reveal/reveal-card-demo.tsx"
 );
 const RevealCardSource = fs.readFileSync(filePath, "utf-8");
 const RevealCardDemoSource = fs.readFileSync(demoFilePath, "utf-8");
