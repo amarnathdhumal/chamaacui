@@ -22,20 +22,7 @@ export default function DockPage() {
         <div className="flex flex-col w-full">
             <DockPreviewWrapper
                 title="Dock"
-                description={
-                    <>
-                        A dock navigation component with animated dropdown menus, hover effects, and image previews. Features smooth transitions and interactive menu items. Inspired by{" "}
-                        <a
-                            href="https://jeton.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                        >
-                            jeton.com
-                        </a>
-                        .
-                    </>
-                }
+                description="A macOS-style dock navigation component with animated dropdown menus, hover effects, and image previews. Features smooth transitions and interactive menu items."
                 code={
                     <div className="relative">
                         <div className="absolute top-4 right-4">
@@ -65,11 +52,39 @@ export default function DockPage() {
                 installationSource={DockSource}
                 props={[
                     {
-                        name: "items",
-                        type: "DockItem[]",
+                        name: "homeHref",
+                        type: "string",
+                        default: '"/"',
+                        description: "URL path for the home button",
+                        required: false,
+                    },
+                    {
+                        name: "personalMenu",
+                        type: "MenuGroup",
                         default: "-",
-                        description: "Array of dock items. Each item can be: 'dropdown' (has label and items array), 'icon' (has icon and optional onClick/href), or 'link' (has label, href, and optional icon). Items are rendered in the order provided. For dropdown items, each menu item can have an optional 'image' property to display preview images when hovering or when the item is active.",
-                        required: true,
+                        description: "Menu group configuration for personal menu items. Each MenuGroup has a label and items array. Each MenuItem has label, href, and optional image.",
+                        required: false,
+                    },
+                    {
+                        name: "companyMenu",
+                        type: "MenuGroup",
+                        default: "-",
+                        description: "Menu group configuration for company menu items. Each MenuGroup has a label and items array. Each MenuItem has label, href, and optional image.",
+                        required: false,
+                    },
+                    {
+                        name: "businessHref",
+                        type: "string",
+                        default: '"/company"',
+                        description: "URL path for the business link",
+                        required: false,
+                    },
+                    {
+                        name: "linkImages",
+                        type: "Record<string, string>",
+                        default: "{}",
+                        description: "Object mapping menu item hrefs to image paths. Used to display preview images when hovering over menu items.",
+                        required: false,
                     },
                     {
                         name: "closeDelay",
@@ -83,13 +98,6 @@ export default function DockPage() {
                         type: "string",
                         default: '"60px"',
                         description: "CSS value for the bottom offset of the dock navigation",
-                        required: false,
-                    },
-                    {
-                        name: "activePage",
-                        type: "string",
-                        default: "-",
-                        description: "Optional path to determine which menu items should be marked as active. If not provided, uses the current pathname from Next.js router.",
                         required: false,
                     },
                 ]}

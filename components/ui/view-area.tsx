@@ -5,6 +5,7 @@ import { useState } from "react";
 import TabButton from "./tab-button";
 import { IconEye, IconCode } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
+import RefreshButton from "./refresh-button";
 
 const ViewArea = ({
   title,
@@ -13,6 +14,7 @@ const ViewArea = ({
   code,
   scrollContainerRef,
   className,
+  onRefresh,
 }: ViewAreaTypes) => {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
 
@@ -40,8 +42,13 @@ const ViewArea = ({
         {activeTab === "preview" ? (
           <div
             ref={scrollContainerRef}
-            className={cn("overflow-y-auto hide-scrollbar px-4", className)}
+            className={cn("overflow-y-auto hide-scrollbar px-4 relative", className)}
           >
+            {onRefresh && (
+              <div className="absolute top-4 right-4 z-10">
+                <RefreshButton onRefresh={onRefresh} />
+              </div>
+            )}
             {preview}
           </div>
         ) : (

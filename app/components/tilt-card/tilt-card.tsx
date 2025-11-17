@@ -29,7 +29,7 @@ const TiltCard = ({
 }: TiltCardProps) => {
     return (
         <div className="flex md:h-[500px] justify-center items-center">
-            <div className="max-w-[280px] md:max-w-[330px] w-full  h-full max-h-[285px]  md:max-h-[330px]  border border-[#E8E8E8] dark:border-white/10 relative rounded-[20px] p-5 bg-white dark:bg-neutral-800">
+            <div className="max-w-[280px] md:max-w-[325px] w-full  h-full max-h-[285px]  md:max-h-[325px]  border border-[#E8E8E8] dark:border-white/10 relative rounded-[20px] p-5 bg-white dark:bg-neutral-800">
                 <motion.div
                     initial={{ rotate: initialRotate }}
                     whileHover={{ rotate: hoverRotate }}

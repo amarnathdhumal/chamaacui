@@ -1,153 +1,107 @@
-"use client"
+import InvoiceCardPreviewWrapper from "./invoice-card-preview-wrapper";
+import fs from "fs";
+import path from "path";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CopyButton from "@/components/ui/copy-button";
 
-import { motion } from "motion/react";
-import DottedBackground from "@/components/ui/dotted-bg";
+// file paths
+const filePath = path.join(
+    process.cwd(),
+    "app/components/invoice-card/invoice-card.tsx"
+);
+const demoFilePath = path.join(
+    process.cwd(),
+    "app/components/invoice-card/invoice-card-demo.tsx"
+);
+const InvoiceCardSource = fs.readFileSync(filePath, "utf-8");
+const InvoiceCardDemoSource = fs.readFileSync(demoFilePath, "utf-8");
 
-const InvoiceCard = () => {
+export default function InvoiceCardPage() {
     return (
-        <div className="bg-white h-screen flex justify-center items-center w-full">
-            <DottedBackground className="w-[350px] h-auto border border-[#E8E8E8] p-[5px] rounded-[25px] ">
-                <motion.div
-                    initial={{ y: 400 }}
-                    animate={{ y: 0 }}
-                    transition={{
-                        duration: 0.6,
-                        ease: "easeIn",
-                    }}
-                    className="border border-[#E8E8E8] px-5 py-6 rounded-[20px] bg-[#fafafa] h-auto flex flex-col ">
-
-                    <p className="font-medium text-[16px] leading-[15px] text-neutral-600 font-mono tracking-tight">
-                        Invoice
-                    </p>
-                    <div className="flex flex-row items-center gap-2 pt-8 font-mono tracking-tighter">
-                        <h1 className="font-medium text-[32px] leading-[15px] tracking-[0em] text-black ">
-                            $1000
-                        </h1>
-                        <p className="text-[20px] leading-[15px]  text-neutral-600 line-through">$5000</p>
-                    </div>
-
-                    {/* Invoice Details */}
-                    <div className="mt-8 space-y-4 overflow-hidden">
-                        {/* Line Items */}
-                        <div className="space-y-3">
-                            <motion.div className="flex justify-between items-center">
-                                <motion.div className="flex-1">
-                                    <motion.div
-                                        initial={{ x: -150, opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        transition={{
-                                            delay: 0.6,
-                                            duration: 0.3
-                                        }}
-                                        className="h-3 bg-neutral-300 rounded-full w-3/4 mb-1"></motion.div>
-                                    <motion.div
-                                        initial={{ x: -150, opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        transition={{
-                                            delay: 0.6,
-                                            duration: 0.3
-                                        }}
-                                        className="h-2 bg-neutral-200 rounded-full w-1/2"></motion.div>
-                                </motion.div>
-                                <motion.div
-
-                                    className="h-3 bg-neutral-300 rounded-full w-12"></motion.div>
-                            </motion.div>
-                            <motion.div className="flex justify-between items-center">
-                                <motion.div className="flex-1">
-                                    <motion.div
-                                        initial={{ x: -150, opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        transition={{
-                                            delay: 0.7,
-                                            duration: 0.3
-                                        }}
-                                        className="h-3 bg-neutral-300 rounded-full w-4/5 mb-1"></motion.div>
-                                    <motion.div
-                                        initial={{ x: -150, opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        transition={{
-                                            delay: 0.7,
-                                            duration: 0.3
-                                        }}
-                                        className="h-2 bg-neutral-200 rounded-full w-2/3"></motion.div>
-                                </motion.div>
-                                <motion.div className="h-3 bg-neutral-300 rounded-full w-12"></motion.div>
-                            </motion.div>
-                            <motion.div className="flex justify-between items-center">
-                                <motion.div className="flex-1">
-                                    <motion.div
-                                        initial={{ x: -150, opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        transition={{
-                                            delay: 0.8,
-                                            duration: 0.3
-                                        }}
-                                        className="h-3 bg-neutral-300 rounded-full w-2/3 mb-1"></motion.div>
-                                    <motion.div
-                                        initial={{ x: -150, opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        transition={{
-                                            delay: 0.8,
-                                            duration: 0.3
-                                        }}
-                                        className="h-2 bg-neutral-200 rounded-full w-1/2"></motion.div>
-                                </motion.div>
-                                <motion.div className="h-3 bg-neutral-300 rounded-full w-12"></motion.div>
-                            </motion.div>
-
-
-
+        <div className="flex flex-col w-full">
+            <InvoiceCardPreviewWrapper
+                title="Invoice Card"
+                description="An animated invoice card component with a slide-up animation and staggered content reveal, featuring a dotted border background and skeleton loading placeholders."
+                code={
+                    <div className="relative">
+                        <div className="absolute top-4 right-4">
+                            <CopyButton text={InvoiceCardDemoSource} />
                         </div>
-
-                        {/* Divider */}
-                        <div className="border-t border-neutral-200 my-4"></div>
-
-                        {/* Summary */}
-                        <div className="space-y-2">
-                            <motion.div className="flex justify-between items-center">
-                                <motion.div
-                                    initial={{ x: -150, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{
-                                        delay: 0.9,
-                                        duration: 0.3
-                                    }}
-                                    className="h-2 bg-neutral-200 rounded-full w-16"></motion.div>
-                                <div className="h-2 bg-neutral-300 rounded-full w-12"></div>
-                            </motion.div>
-                            <motion.div className="flex justify-between items-center">
-                                <motion.div
-                                    initial={{ x: -150, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{
-                                        delay: 1.0,
-                                        duration: 0.3
-                                    }}
-                                    className="h-2 bg-neutral-200 rounded-full w-12"></motion.div>
-                                <div className="h-2 bg-neutral-300 rounded-full w-10"></div>
-                            </motion.div>
-                            <motion.div className="flex justify-between items-center pt-2">
-                                <motion.div
-                                    initial={{ x: -150, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{
-                                        delay: 1.1,
-                                        duration: 0.3
-                                    }}
-                                    className="h-3 bg-neutral-400 rounded-full w-20"></motion.div>
-                                <div className="h-3 bg-neutral-500 rounded-full w-16"></div>
-                            </motion.div>
-                        </div>
+                        <SyntaxHighlighter
+                            language="tsx"
+                            style={oneDark}
+                            wrapLongLines={true}
+                            customStyle={{
+                                margin: 0,
+                                padding: "1rem",
+                                fontSize: "14px",
+                                lineHeight: "1.5",
+                                width: "100%",
+                                maxWidth: "100%",
+                                boxSizing: "border-box",
+                                overflow: "auto",
+                                scrollbarWidth: "none",
+                                msOverflowStyle: "none",
+                            }}
+                        >
+                            {InvoiceCardDemoSource}
+                        </SyntaxHighlighter>
                     </div>
-                </motion.div>
-                {/* <p className="text-black">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-                </p> */}
-            </DottedBackground>
-
-        </div >
-    )
+                }
+                installationSource={InvoiceCardSource}
+                props={[
+                    {
+                        name: "title",
+                        type: "string",
+                        default: '"Invoice"',
+                        description: "The title displayed at the top of the invoice card",
+                        required: false,
+                    },
+                    {
+                        name: "total",
+                        type: "number",
+                        default: "-",
+                        description: "The total amount to be displayed prominently at the top of the invoice",
+                        required: true,
+                    },
+                    {
+                        name: "originalAmount",
+                        type: "number",
+                        default: "-",
+                        description: "Optional original amount to show a crossed-out price (for discounts)",
+                        required: false,
+                    },
+                    {
+                        name: "items",
+                        type: "Item[]",
+                        default: "-",
+                        description: "Array of invoice items. Each item should have name (string), description (string), and price (number)",
+                        required: true,
+                    },
+                    {
+                        name: "taxRate",
+                        type: "number",
+                        default: "0",
+                        description: "Tax rate as a percentage (e.g., 10 for 10%). If 0, tax line will not be displayed",
+                        required: false,
+                    },
+                    {
+                        name: "taxLabel",
+                        type: "string",
+                        default: '"Tax"',
+                        description: "Label for the tax line item",
+                        required: false,
+                    },
+                    {
+                        name: "delay",
+                        type: "number",
+                        default: "0.1",
+                        description: "Delay in seconds between each animation. Line items animate with staggered delays (index * delay), summary items appear after all line items",
+                        required: false,
+                    },
+                ]}
+            />
+        </div>
+    );
 }
-
-export default InvoiceCard;

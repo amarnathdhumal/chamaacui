@@ -3,15 +3,17 @@ import React from "react";
 export interface SidebarDataTypes {
   componentName: string;
   link: string;
+  category?: string;
 }
 
 export interface ViewAreaTypes {
   title: string;
-  description: string;
+  description: string | React.ReactNode;
   preview: React.ReactNode;
   code: React.ReactNode;
   scrollContainerRef?: React.RefObject<HTMLDivElement | null>;
   className?: string;
+  onRefresh?: () => void;
 }
 
 export interface TabButtonTypes {

@@ -1,0 +1,47 @@
+"use client";
+
+import React from "react";
+import SlideUpButtonDemo from "./slide-up-button-demo";
+import ViewArea from "@/components/ui/view-area";
+import InstallationSection from "@/components/ui/installation-section";
+import PropsTable from "@/components/ui/props-table";
+
+interface SlideUpButtonPreviewWrapperProps {
+    title: string;
+    description: string | React.ReactNode;
+    code: React.ReactNode;
+    installationSource: string;
+    props: Array<{
+        name: string;
+        type: string;
+        default: string;
+        description: string;
+        required: boolean;
+    }>;
+}
+
+export default function SlideUpButtonPreviewWrapper({
+    title,
+    description,
+    code,
+    installationSource,
+    props,
+}: SlideUpButtonPreviewWrapperProps) {
+    return (
+        <>
+            <ViewArea
+                title={title}
+                description={description}
+                preview={<SlideUpButtonDemo />}
+                code={code}
+            />
+
+            {/* Installation Section */}
+            <InstallationSection componentSource={installationSource} />
+
+            {/* Props Section */}
+            <PropsTable props={props} />
+        </>
+    );
+}
+
