@@ -21,7 +21,7 @@ const ViewArea = ({
   return (
     <div className="flex flex-col w-full h-full mb-12 min-w-0 hide-scrollbar ">
       <h1 className="text-4xl font-bold text-black dark:text-white">{title}</h1>
-      <p className="text-base text-neutral-800 dark:text-gray-400 my-4">
+      <p className="text-base text-neutral-800 dark:text-gray-400 my-4 leading-tight">
         {description}
       </p>
       <div className="flex flex-row gap-4 mb-6">

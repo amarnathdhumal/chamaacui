@@ -1,5 +1,5 @@
 import TiltCard from "../components/tilt-card/page";
-import MarqueeCard from "../components/marquee-card/page";
+import MarqueeCard from "../in-progress/marquee-card/page";
 
 const Bento = () => {
     return (

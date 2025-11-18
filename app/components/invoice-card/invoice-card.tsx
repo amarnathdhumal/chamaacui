@@ -43,10 +43,10 @@ const InvoiceCard = ({
                         delay: 0,
                         duration: 0.3
                     }}
-                    className="font-medium text-[16px] leading-[15px] text-neutral-600 dark:text-neutral-400 font-mono tracking-tight">
+                    className="font-medium text-[16px] leading-[15px] text-neutral-600 dark:text-neutral-400 tracking-tight">
                     {title}
                 </motion.p>
-                <div className="flex flex-row items-center gap-2 pt-8 font-mono tracking-tighter">
+                <div className="flex flex-row items-center gap-2 pt-8 tracking-tighter">
                     <motion.h1
                         initial={{ x: -150, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
@@ -54,7 +54,7 @@ const InvoiceCard = ({
                             delay: 0,
                             duration: 0.3
                         }}
-                        className="font-medium text-[32px] leading-[15px] tracking-[0em] text-black dark:text-white ">
+                        className="font-medium text-[28px] leading-[15px] tracking-[0em] text-black dark:text-white ">
                         ${total.toLocaleString()}
                     </motion.h1>
                     {originalAmount && (
@@ -65,7 +65,7 @@ const InvoiceCard = ({
                                 delay: delay,
                                 duration: 0.3
                             }}
-                            className="text-[20px] leading-[15px]  text-neutral-600 dark:text-neutral-400 line-through">
+                            className="text-[18px] leading-[15px]  text-neutral-600 dark:text-neutral-400 line-through">
                             ${originalAmount.toLocaleString()}
                         </motion.p>
                     )}
