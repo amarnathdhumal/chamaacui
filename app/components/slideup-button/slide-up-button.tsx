@@ -4,7 +4,9 @@ import { motion } from "motion/react";
 
 interface SlideUpButtonProps {
     text?: string;
-    backgroundColor?: string;
+
+    darkBackgroundColor?: string;
+    lightBackgroundColor?: string;
     textColor?: string;
     paddingX?: string;
     paddingY?: string;
@@ -20,7 +22,8 @@ interface SlideUpButtonProps {
 
 const SlideUpButton = ({
     text = "Learn More",
-    backgroundColor = "bg-[#f73b20]",
+    darkBackgroundColor = "bg-[#f73b20]",
+    lightBackgroundColor = "bg-[#f73b20]",
     textColor = "text-white",
     paddingX = "px-6",
     paddingY = "py-3",
@@ -40,11 +43,11 @@ const SlideUpButton = ({
 
     const textVariants = {
         initial: { y: 0 },
-        hover: { y: "-130%" },
+        hover: { y: "-180%" },
     };
 
     const cloneVariants = {
-        initial: { y: "130%", rotate: 20 },
+        initial: { y: "180%", rotate: 20 },
         hover: { y: 0, rotate: 0 },
     };
 
@@ -54,7 +57,7 @@ const SlideUpButton = ({
             initial="initial"
             whileHover="hover"
             onClick={onClick}
-            className={`relative overflow-hidden ${backgroundColor} ${textColor} ${paddingX} ${paddingY} ${borderRadius} ${fontSize} leading-[1.5] cursor-pointer`}
+            className={`relative overflow-hidden dark:${darkBackgroundColor} ${lightBackgroundColor} ${textColor} ${paddingX} ${paddingY} ${borderRadius} ${fontSize} leading-[1.5] cursor-pointer`}
         >
             {/* container for stacked text */}
             <motion.div className="relative overflow-hidden">
