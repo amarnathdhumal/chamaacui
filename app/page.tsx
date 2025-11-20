@@ -3,7 +3,7 @@
 import { Header } from "./components/header";
 import SlideUpButton from "./components/slideup-button/slide-up-button";
 import { useRouter } from "next/navigation";
-import { IconRocket, IconCode, IconSparkles } from "@tabler/icons-react";
+import HeroGrid from "@/components/ui/hero-grid";
 
 export default function Home() {
   const router = useRouter();
@@ -75,46 +75,7 @@ export default function Home() {
 
       {/* Features Section */}
       <div className="relative z-10 w-full px-12 pb-12">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Feature 1 */}
-          <div className="flex flex-col items-center text-center p-6 rounded-2xl border border-gray-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm">
-            <div className="mb-3 p-3 rounded-full bg-black dark:bg-white">
-              <IconRocket className="size-6 text-white dark:text-black" />
-            </div>
-            <h3 className="text-xl font-semibold text-black dark:text-white mb-2">
-              Production Ready
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Battle-tested components ready to use in your projects. No configuration needed.
-            </p>
-          </div>
-
-          {/* Feature 2 */}
-          <div className="flex flex-col items-center text-center p-6 rounded-2xl border border-gray-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm">
-            <div className="mb-3 p-3 rounded-full bg-black dark:bg-white">
-              <IconCode className="size-6 text-white dark:text-black" />
-            </div>
-            <h3 className="text-xl font-semibold text-black dark:text-white mb-2">
-              Free & Open Source
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Completely free to use. Open source and available for everyone to contribute.
-            </p>
-          </div>
-
-          {/* Feature 3 */}
-          <div className="flex flex-col items-center text-center p-6 rounded-2xl border border-gray-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm">
-            <div className="mb-3 p-3 rounded-full bg-black dark:bg-white">
-              <IconSparkles className="size-6 text-white dark:text-black" />
-            </div>
-            <h3 className="text-xl font-semibold text-black dark:text-white mb-2">
-              Modern Animations
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              Beautiful, smooth animations that enhance user experience and engagement.
-            </p>
-          </div>
-        </div>
+        <HeroGrid />
       </div>
     </div>
   );
