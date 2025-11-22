@@ -2,53 +2,55 @@ import { motion, SVGMotionProps } from "motion/react";
 
 const HeroGrid = () => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 w-full max-w-[1100px] mx-auto">
-            <MotionContainer>
-                <CopyIcon className="size-10 text-black dark:text-white" />
+        <div className="grid grid-cols-1  gap-2 w-full max-w-[1100px] mx-auto border border border-gray-200 dark:border-neutral-800 rounded-[16px] p-2">
+            <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
+                <CopyIcon className=" text-black dark:text-white" />
                 <h3 className="text-xl font-semibold text-black dark:text-white mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                     Copy components
                 </h3>
                 <p className="text-base text-neutral-800 dark:text-gray-400  leading-tight">
                     Copy components with a single click, no more manual copying and pasting.
                 </p>
-            </MotionContainer>
-            <MotionContainer>
-                <SparklesIcon className="size-10 text-black dark:text-white" />
+            </div>
+
+            <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
+                <WavyIcon className=" text-black dark:text-white" />
                 <h3 className="text-xl font-semibold text-black dark:text-white mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                     Smooth animations
                 </h3>
                 <p className="text-base text-neutral-800 dark:text-gray-400  leading-tight">
                     Beautiful, smooth animations that enhance user experience and engagement.
                 </p>
-            </MotionContainer>
-            <MotionContainer>
-                <RocketIcon className="size-10 text-black dark:text-white" />
+            </div>
+
+            <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
+                <AdjustmentsHorizontalIcon className="" />
                 <h3 className="text-xl font-semibold text-black dark:text-white mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                     Fully customizable
                 </h3>
                 <p className="text-base text-neutral-800 dark:text-gray-400  leading-tight">
                     Battle-tested components ready to use in your projects. No configuration needed.
                 </p>
-            </MotionContainer>
-        </div>
+            </div>
+        </div >
     );
 };
 
-const MotionContainer = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <motion.div
-            className="p-2 rounded-[16px] backdrop-blur-sm border border-gray-200 dark:border-neutral-800 relative"
+// const MotionContainer = ({ children }: { children: React.ReactNode }) => {
+//     return (
+//         <motion.div
+//             className="p-2 rounded-[16px] backdrop-blur-sm border border-gray-200 dark:border-neutral-800 relative"
 
-        >
+//         >
 
-            <div className="bg-gray-100 dark:bg-[#111111] p-4 rounded-[12px] relative h-full"
-            >
+//             <div className="bg-gray-100 dark:bg-[#111111] p-4 rounded-[12px] relative h-full"
+//             >
 
-                {children}
-            </div>
-        </motion.div>
-    )
-}
+//                 {children}
+//             </div>
+//         </motion.div>
+//     )
+// }
 
 // const Dots = () => {
 //     return (
@@ -66,104 +68,170 @@ const CopyIcon = (
     return (
         <motion.svg
             {...props}
-            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-copy">
+            xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-copy">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <motion.path
+
+            <motion.rect
+                width="12" height="12" rx="2"
                 animate={{
-                    pathLength: [1, 0, 1],
+                    x: [8, 4, 8],
+                    y: [8, 4, 8],
                 }}
                 transition={{
                     duration: 1.5,
                     ease: "easeInOut",
                     repeat: Infinity,
-                    repeatType: "loop",
                 }}
-                d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
-            <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+                stroke="currentColor"
+                fill="none"
+            />
+
+            <rect
+                x="8" y="8" width="12" height="12" rx="2"
+                className="fill-gray-100 dark:fill-[#111111]"
+                stroke="currentColor"
+            />
         </motion.svg>
     )
 }
 
-const SparklesIcon = (
+const WavyIcon = (
     props: React.SVGProps<SVGSVGElement> & SVGMotionProps<SVGSVGElement>
 ) => {
     return (
         <motion.svg
             {...props}
-            animate={{
-                rotate: [0, 360],
-            }}
-            transition={{
-                duration: 0.5,
-                ease: "linear",
-                repeat: Infinity,
-                repeatType: "loop",
-            }}
-            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-currency-ripple">
-            <motion.path
-                stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <motion.path
-
-                d="M7 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><motion.path
-
-                d="M17 7m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><motion.path
-
-                d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-            <motion.path
-
-                d="M10 12h3l2 -2.5" />
-            <motion.path
-
-                d="M15 14.5l-2 -2.5" />
-        </motion.svg>
-    )
-}
-
-const RocketIcon = (
-    props: React.SVGProps<SVGSVGElement> & SVGMotionProps<SVGSVGElement>
-) => {
-    return (
-        <motion.svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-rocket">
+            xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-ripple">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path
+                d="M3 7c3 -2 6 -2 9 0s6 2 9 0"
+                stroke="currentColor"
+                fill="none"
                 animate={{
-                    pathLength: [1, 0, 1],
+                    d: [
+                        "M3 7c3 -3 6 -3 9 0s6 3 9 0",
+                        "M3 9c3 0 6 -4 9 -4s6 4 9 4",
+                        "M3 7c3 3 6 3 9 0s6 -3 9 0",
+                        "M3 5c3 0 6 4 9 4s6 -4 9 -4",
+                        "M3 7c3 -3 6 -3 9 0s6 3 9 0",
+                    ],
                 }}
                 transition={{
-                    duration: 1.2,
-                    ease: "easeInOut",
+                    duration: 0.8,
+                    ease: "linear",
                     repeat: Infinity,
-                    repeatType: "loop",
                 }}
-                d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" />
+            />
+
             <motion.path
+                d="M3 12c3 -2 6 -2 9 0s6 2 9 0"
+                stroke="currentColor"
+                fill="none"
                 animate={{
-                    pathLength: [1, 0, 1],
+                    d: [
+                        "M3 12c3 -3 6 -3 9 0s6 3 9 0",
+                        "M3 14c3 0 6 -4 9 -4s6 4 9 4",
+                        "M3 12c3 3 6 3 9 0s6 -3 9 0",
+                        "M3 10c3 0 6 4 9 4s6 -4 9 -4",
+                        "M3 12c3 -3 6 -3 9 0s6 3 9 0",
+                    ],
                 }}
                 transition={{
-                    duration: 1.2,
-                    ease: "easeInOut",
+                    duration: 0.8,
+                    ease: "linear",
                     repeat: Infinity,
-                    repeatType: "loop",
-                    delay: 0.2,
                 }}
-                d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" />
+            />
             <motion.path
+                d="M3 17c3 -2 6 -2 9 0s6 2 9 0"
+                stroke="currentColor"
+                fill="none"
                 animate={{
-                    pathLength: [1, 0, 1],
+                    d: [
+                        "M3 17c3 -3 6 -3 9 0s6 3 9 0",
+                        "M3 19c3 0 6 -4 9 -4s6 4 9 4",
+                        "M3 17c3 3 6 3 9 0s6 -3 9 0",
+                        "M3 15c3 0 6 4 9 4s6 -4 9 -4",
+                        "M3 17c3 -3 6 -3 9 0s6 3 9 0",
+                    ],
                 }}
                 transition={{
-                    duration: 1.2,
-                    ease: "easeInOut",
+                    duration: 0.8,
+                    ease: "linear",
                     repeat: Infinity,
-                    repeatType: "loop",
-                    delay: 0.4,
                 }}
-                d="M14 21a6 6 0 0 0 6 -6a6 6 0 0 0 -6 6" />
+            />
         </motion.svg>
     )
 }
+
+const AdjustmentsHorizontalIcon = (
+    props: React.SVGProps<SVGSVGElement> & SVGMotionProps<SVGSVGElement>
+) => {
+    return (
+        <motion.svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="icon icon-tabler icons-tabler-outline icon-tabler-adjustments-horizontal relative"
+        >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 6l15 0" />
+            <motion.path
+                animate={{ x: [0, -10, 0] }}
+                transition={{
+                    duration: 1.2,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "loop",
+                }}
+                className="fill-white dark:fill-black"
+                stroke="currentColor"
+                strokeWidth={2}
+                d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
+            />
+
+            <path d="M4 12l15 0" />
+
+            <motion.path
+                animate={{ x: [0, 10, 0] }}
+                transition={{
+                    duration: 1.2,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "loop",
+                }}
+                className="fill-white dark:fill-black"
+                stroke="currentColor"
+                strokeWidth={2}
+                d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
+            />
+
+
+            <path d="M4 18l15 0" />
+            <motion.path
+                animate={{ x: [0, -10, 0] }}
+                transition={{
+                    duration: 1.2,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatType: "loop",
+                }}
+                className="fill-white dark:fill-black"
+                stroke="currentColor"
+                strokeWidth={2}
+                d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
+            />
+
+
+        </motion.svg>
+    );
+};
 
 export default HeroGrid;

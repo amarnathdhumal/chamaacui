@@ -12,11 +12,7 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Buttons",
   },
 
-  {
-    componentName: "Tilt Card",
-    link: "/tilt-card",
-    category: "Cards",
-  },
+
   {
     componentName: "Invoice Card",
     link: "/invoice-card",
@@ -43,14 +39,7 @@ export interface ComponentCardType {
 }
 
 export const componentCards: ComponentCardType[] = [
-  {
-    title: "Tilt Card",
-    description: "A card component with a smooth tilt animation on hover that creates an engaging interactive effect.",
-    imagePath: "/components/tilt-card.svg",
-    link: "/components/tilt-card",
-    category: "Cards",
-  },
-
+  
   {
     title: "Invoice Card",
     description: "A beautifully designed invoice card component with modern styling and animations.",

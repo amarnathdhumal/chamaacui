@@ -26,7 +26,11 @@ export default function RandomImageRevealPage() {
       <ViewArea
         title="Random Image Reveal"
         description="A card component that reveals a random image on hover with smooth animations, as the image card rotates and moves upward."
-        preview={<RandomImageReveal images={["/images/1.jpg", "/images/2.jpg", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg"]} />}
+        preview={
+          <div className="w-full h-[800px] flex justify-center items-center">
+            <RandomImageReveal images={["/images/1.jpg", "/images/2.jpg", "/images/3.jpg", "/images/5.jpg"]} />
+          </div>
+        }
         code={
           <div className="relative">
             <div className="absolute top-4 right-4">

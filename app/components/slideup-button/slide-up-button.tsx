@@ -1,13 +1,11 @@
 "use client";
 
+import React from "react";
 import { motion } from "motion/react";
 
 interface SlideUpButtonProps {
-    text?: string;
-
-    darkBackgroundColor?: string;
-    lightBackgroundColor?: string;
-    textColor?: string;
+    children: React.ReactNode;
+    className?: string;
     paddingX?: string;
     paddingY?: string;
     borderRadius?: string;
@@ -17,14 +15,11 @@ interface SlideUpButtonProps {
     cloneDelay?: number;
     buttonScale?: number;
     buttonOpacity?: number;
-    onClick?: () => void;
 }
 
 const SlideUpButton = ({
-    text = "Learn More",
-    darkBackgroundColor = "bg-[#f73b20]",
-    lightBackgroundColor = "bg-[#f73b20]",
-    textColor = "text-white",
+    children,
+    className = "",
     paddingX = "px-6",
     paddingY = "py-3",
     borderRadius = "rounded-[12px]",
@@ -34,7 +29,6 @@ const SlideUpButton = ({
     cloneDelay = 0.12,
     buttonScale = 0.98,
     buttonOpacity = 0.8,
-    onClick,
 }: SlideUpButtonProps) => {
     const buttonVariants = {
         initial: { scale: 1 },
@@ -56,8 +50,7 @@ const SlideUpButton = ({
             variants={buttonVariants}
             initial="initial"
             whileHover="hover"
-            onClick={onClick}
-            className={`relative overflow-hidden dark:${darkBackgroundColor} ${lightBackgroundColor} ${textColor} ${paddingX} ${paddingY} ${borderRadius} ${fontSize} leading-[1.5] cursor-pointer`}
+            className={`relative overflow-hidden ${paddingX} ${paddingY} ${borderRadius} ${fontSize} leading-[1.5] cursor-pointer ${className}`}
         >
             {/* container for stacked text */}
             <motion.div className="relative overflow-hidden">
@@ -70,7 +63,7 @@ const SlideUpButton = ({
                     }}
                     className="block"
                 >
-                    {text}
+                    {children}
                 </motion.span>
 
                 {/* CLONE TEXT */}
@@ -83,7 +76,7 @@ const SlideUpButton = ({
                     }}
                     className="block absolute top-0 left-0"
                 >
-                    {text}
+                    {children}
                 </motion.span>
             </motion.div>
         </motion.button>

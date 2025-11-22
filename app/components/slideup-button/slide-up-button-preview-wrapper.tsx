@@ -32,7 +32,11 @@ export default function SlideUpButtonPreviewWrapper({
             <ViewArea
                 title={title}
                 description={description}
-                preview={<SlideUpButtonDemo />}
+                preview={
+                    <div className="w-full h-[300px] flex justify-center items-center">
+                        <SlideUpButtonDemo />
+                    </div>
+                }
                 code={code}
             />
 

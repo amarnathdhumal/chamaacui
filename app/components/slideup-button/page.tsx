@@ -65,24 +65,17 @@ export default function SlideUpButtonPage() {
                 installationSource={SlideUpButtonSource}
                 props={[
                     {
-                        name: "text",
-                        type: "string",
-                        default: '"Learn More"',
-                        description: "The text displayed on the button",
-                        required: false,
+                        name: "children",
+                        type: "React.ReactNode",
+                        default: "-",
+                        description: "The content to be displayed inside the button",
+                        required: true,
                     },
                     {
-                        name: "backgroundColor",
+                        name: "className",
                         type: "string",
-                        default: '"bg-[#f73b20]"',
-                        description: "Background color class for the button",
-                        required: false,
-                    },
-                    {
-                        name: "textColor",
-                        type: "string",
-                        default: '"text-white"',
-                        description: "Text color class for the button",
+                        default: '""',
+                        description: "Custom class names for styling",
                         required: false,
                     },
                     {
@@ -146,13 +139,6 @@ export default function SlideUpButtonPage() {
                         type: "number",
                         default: "0.8",
                         description: "Opacity value for the button on hover (0-1)",
-                        required: false,
-                    },
-                    {
-                        name: "onClick",
-                        type: "() => void",
-                        default: "-",
-                        description: "Callback function called when the button is clicked",
                         required: false,
                     },
                 ]}

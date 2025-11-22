@@ -4,9 +4,6 @@ import SlideUpButton from "./slide-up-button";
 
 export default function SlideUpButtonDemo() {
     return (
-        <div className="w-full h-[300px] flex justify-center items-center">
-            <SlideUpButton />
-        </div>
+        <SlideUpButton className="bg-[#f73b20] text-white">Learn More</SlideUpButton>
     );
 }
-

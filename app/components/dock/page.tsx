@@ -65,10 +65,10 @@ export default function DockPage() {
                 installationSource={DockSource}
                 props={[
                     {
-                        name: "items",
-                        type: "DockItem[]",
+                        name: "children",
+                        type: "React.ReactNode",
                         default: "-",
-                        description: "Array of dock items. Each item can be: 'dropdown' (has label and items array), 'icon' (has icon and optional onClick/href), or 'link' (has label, href, and optional icon). Items are rendered in the order provided. For dropdown items, each menu item can have an optional 'image' property to display preview images when hovering or when the item is active.",
+                        description: "Dock items as children. Use DockIcon, DockItem (for dropdowns), and DockLink components to compose the dock navigation.",
                         required: true,
                     },
                     {
@@ -91,6 +91,123 @@ export default function DockPage() {
                         default: "-",
                         description: "Optional path to determine which menu items should be marked as active. If not provided, uses the current pathname from Next.js router.",
                         required: false,
+                    },
+                ]}
+                subComponents={[
+                    {
+                        name: "DockIcon",
+                        description: "Icon button component for the dock",
+                        props: [
+                            {
+                                name: "icon",
+                                type: "React.ReactNode",
+                                default: "-",
+                                description: "SVG icon or React element to display",
+                                required: true,
+                            },
+                            {
+                                name: "href",
+                                type: "string",
+                                default: "-",
+                                description: "URL to navigate to when clicked",
+                                required: true,
+                            },
+                        ],
+                    },
+                    {
+                        name: "DockItem",
+                        description: "Dropdown menu component for the dock",
+                        props: [
+                            {
+                                name: "label",
+                                type: "string",
+                                default: "-",
+                                description: "Label text for the dropdown trigger",
+                                required: true,
+                            },
+                            {
+                                name: "children",
+                                type: "React.ReactNode",
+                                default: "-",
+                                description: "DockDropdownItem components to display in the dropdown menu",
+                                required: true,
+                            },
+                            {
+                                name: "id",
+                                type: "string",
+                                default: "-",
+                                description: "Optional unique identifier. If not provided, generated from label.",
+                                required: false,
+                            },
+                        ],
+                    },
+                    {
+                        name: "DockDropdownItem",
+                        description: "Individual item within a DockItem dropdown",
+                        props: [
+                            {
+                                name: "label",
+                                type: "string",
+                                default: "-",
+                                description: "Label text for the menu item",
+                                required: true,
+                            },
+                            {
+                                name: "href",
+                                type: "string",
+                                default: "-",
+                                description: "URL to navigate to when clicked",
+                                required: true,
+                            },
+                            {
+                                name: "image",
+                                type: "string",
+                                default: "-",
+                                description: "Optional image URL to display as preview when hovering or when active",
+                                required: false,
+                            },
+                        ],
+                    },
+                    {
+                        name: "DockLink",
+                        description: "Link button component for the dock",
+                        props: [
+                            {
+                                name: "label",
+                                type: "string",
+                                default: "-",
+                                description: "Label text for the link",
+                                required: true,
+                            },
+                            {
+                                name: "href",
+                                type: "string",
+                                default: "-",
+                                description: "URL to navigate to when clicked",
+                                required: true,
+                            },
+                            {
+                                name: "icon",
+                                type: "React.ReactNode",
+                                default: "-",
+                                description: "Optional icon to display next to the label",
+                                required: false,
+                            },
+                            {
+                                name: "external",
+                                type: "boolean",
+                                default: "false",
+                                description: "Whether the link opens in a new tab",
+                                required: false,
+                            },
+                            {
+                                name: "id",
+                                type: "string",
+                                default: "-",
+                                description: "Optional unique identifier. If not provided, generated from label.",
+                                required: false,
+                            },
+                        ],
                     },
                 ]}
             />

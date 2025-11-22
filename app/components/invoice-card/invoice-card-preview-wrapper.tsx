@@ -38,7 +38,11 @@ export default function InvoiceCardPreviewWrapper({
             <ViewArea
                 title={title}
                 description={description}
-                preview={<InvoiceCardDemo key={refreshKey} />}
+                preview={
+                    <div className="w-full h-[600px] flex justify-center items-center">
+                        <InvoiceCardDemo key={refreshKey} />
+                    </div>
+                }
                 onRefresh={handleRefresh}
                 code={code}
             />
