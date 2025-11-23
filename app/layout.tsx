@@ -25,19 +25,21 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Animated Hero",
-  description: "Build Strength. Unlock Your Potential.",
+  title: "Chamaac | Premium UI Components",
+  description:
+    "Explore a collection of stunning, animated hero sections and interactive UI components crafted with Next.js and Motion.",
   openGraph: {
-    title: "Animated Hero",
-    description: "Build Strength. Unlock Your Potential.",
-    url: "https://www.google.com",
-    siteName: "Hero Animations",
+    title: "Chamaac | Premium UI Components",
+    description:
+      "Explore a collection of stunning, animated hero sections and interactive UI components crafted with Next.js and Motion.",
+    url: "https://www.chamaac.com",
+    siteName: "Chamaac",
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Hero Animations",
+        alt: "Chamaac UI Components",
       },
     ],
     locale: "en_US",
@@ -45,8 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Animated Hero",
-    description: "Build Strength. Unlock Your Potential.",
+    title: "Chamaac | Premium UI Components",
+    description:
+      "Explore a collection of stunning, animated hero sections and interactive UI components crafted with Next.js and Motion.",
     images: ["/images/og-image.png"],
   },
 };
@@ -56,19 +59,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const schema = {
-  //   "@context": "https://schema.org",
-  //   "@type": "Organization",
-  //   name: "Hero Animations",
-  //   description: "Hero Animations",
-  //   url: "www.goggle.com",
-  //   logo: "/images/og-image.png",
-  // };
+
+
   return (
     <html lang="en">
-      {/* <head>
-        <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-      </head> */}
+
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased bg-white dark:bg-black  `}
