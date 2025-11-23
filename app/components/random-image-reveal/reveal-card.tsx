@@ -68,7 +68,8 @@ const RandomImageReveal = ({
           alt="Reveal card image"
           fill
           className="object-cover"
-
+          sizes="300px"
+          priority={true}
         />
       </motion.div>
     </motion.div>
