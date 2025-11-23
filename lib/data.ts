@@ -36,6 +36,7 @@ export interface ComponentCardType {
   imagePath: string;
   link: string;
   category: string;
+  bgColor?: string;
 }
 
 export const componentCards: ComponentCardType[] = [
@@ -60,6 +61,7 @@ export const componentCards: ComponentCardType[] = [
     imagePath: "/components/reveal-random-image.svg",
     link: "/components/random-image-reveal",
     category: "Cards",
+    bgColor: "bg-black dark:bg-black",
   },
   {
     title: "Slide Up Button",
@@ -67,5 +69,6 @@ export const componentCards: ComponentCardType[] = [
     imagePath: "/components/slide-up-button.png",
     link: "/components/slideup-button",
     category: "Buttons",
+    bgColor: "bg-black dark:bg-black",
   },
 ];

@@ -8,11 +8,11 @@ import CopyButton from "@/components/ui/copy-button";
 // file paths
 const filePath = path.join(
     process.cwd(),
-    "app/components/svg-animaiton/svg-animation.tsx"
+    "app/in-progress/svg-animaiton/svg-animation.tsx"
 );
 const demoFilePath = path.join(
     process.cwd(),
-    "app/components/svg-animaiton/svg-animation-demo.tsx"
+    "app/in-progress/svg-animaiton/svg-animation-demo.tsx"
 );
 const SvgAnimationSource = fs.readFileSync(filePath, "utf-8");
 const SvgAnimationDemoSource = fs.readFileSync(demoFilePath, "utf-8");

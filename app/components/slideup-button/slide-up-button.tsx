@@ -3,13 +3,11 @@
 import React from "react";
 import { motion } from "motion/react";
 
+import { cn } from "@/lib/utils";
+
 interface SlideUpButtonProps {
     children: React.ReactNode;
     className?: string;
-    paddingX?: string;
-    paddingY?: string;
-    borderRadius?: string;
-    fontSize?: string;
     textDuration?: number;
     cloneDuration?: number;
     cloneDelay?: number;
@@ -20,10 +18,6 @@ interface SlideUpButtonProps {
 const SlideUpButton = ({
     children,
     className = "",
-    paddingX = "px-6",
-    paddingY = "py-3",
-    borderRadius = "rounded-[12px]",
-    fontSize = "text-[16px]",
     textDuration = 0.25,
     cloneDuration = 0.5,
     cloneDelay = 0.12,
@@ -50,7 +44,10 @@ const SlideUpButton = ({
             variants={buttonVariants}
             initial="initial"
             whileHover="hover"
-            className={`relative overflow-hidden ${paddingX} ${paddingY} ${borderRadius} ${fontSize} leading-[1.5] cursor-pointer ${className}`}
+            className={cn(
+                "relative overflow-hidden px-6 py-3 rounded-[12px] text-[16px] leading-[1.5] cursor-pointer",
+                className
+            )}
         >
             {/* container for stacked text */}
             <motion.div className="relative overflow-hidden">

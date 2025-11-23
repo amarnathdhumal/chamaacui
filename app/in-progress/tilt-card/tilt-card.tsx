@@ -4,6 +4,8 @@ import { type Icon } from "@tabler/icons-react";
 
 import { motion } from "motion/react";
 
+import { cn } from "@/lib/utils";
+
 interface Feature {
     icon: Icon;
     title: string;
@@ -17,6 +19,7 @@ interface TiltCardProps {
     duration?: number;
     stiffness?: number;
     damping?: number;
+    className?: string;
 }
 
 const TiltCard = ({
@@ -26,9 +29,10 @@ const TiltCard = ({
     duration = 0.3,
     stiffness = 100,
     damping = 5,
+    className,
 }: TiltCardProps) => {
     return (
-        <div className="flex md:h-[500px] justify-center items-center">
+        <div className={cn("flex md:h-[500px] justify-center items-center", className)}>
             <div className="max-w-[280px] md:max-w-[325px] w-full  h-full max-h-[285px]  md:max-h-[325px]  border border-[#E8E8E8] dark:border-white/10 relative rounded-[20px] p-5 bg-white dark:bg-neutral-800">
                 <motion.div
                     initial={{ rotate: initialRotate }}

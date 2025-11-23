@@ -4,31 +4,31 @@ const HeroGrid = () => {
     return (
         <div className="grid grid-cols-1  gap-2 w-full max-w-[1100px] mx-auto border border border-gray-200 dark:border-neutral-800 rounded-[16px] p-2">
             <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
-                <CopyIcon className=" text-black dark:text-white" />
-                <h3 className="text-xl font-semibold text-black dark:text-white mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+                <CopyIcon className="text-black dark:text-white size-6 sm:size-8" />
+                <h3 className="text-lg md:text-xl font-semibold text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                     Copy components
                 </h3>
-                <p className="text-base text-neutral-800 dark:text-gray-400  leading-tight">
-                    Copy components with a single click, no more manual copying and pasting.
+                <p className="text-sm md:text-base text-neutral-800 dark:text-gray-400  leading-tight">
+                    Simply copy the source code and paste it into your project. Complete control, zero lock-in.
                 </p>
             </div>
 
             <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
-                <WavyIcon className=" text-black dark:text-white" />
-                <h3 className="text-xl font-semibold text-black dark:text-white mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+                <WavyIcon className="text-black dark:text-white size-6 sm:size-8" />
+                <h3 className="text-lg md:text-xl font-semibold text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                     Smooth animations
                 </h3>
-                <p className="text-base text-neutral-800 dark:text-gray-400  leading-tight">
+                <p className="text-sm md:text-base text-neutral-800 dark:text-gray-400  leading-tight">
                     Beautiful, smooth animations that enhance user experience and engagement.
                 </p>
             </div>
 
             <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
-                <AdjustmentsHorizontalIcon className="" />
-                <h3 className="text-xl font-semibold text-black dark:text-white mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+                <AdjustmentsHorizontalIcon className="text-black dark:text-white size-6 sm:size-8" />
+                <h3 className="text-lg md:text-xl font-semibold text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                     Fully customizable
                 </h3>
-                <p className="text-base text-neutral-800 dark:text-gray-400  leading-tight">
+                <p className="text-sm md:text-base text-neutral-800 dark:text-gray-400  leading-tight">
                     Battle-tested components ready to use in your projects. No configuration needed.
                 </p>
             </div>
@@ -65,10 +65,11 @@ const HeroGrid = () => {
 const CopyIcon = (
     props: React.SVGProps<SVGSVGElement> & SVGMotionProps<SVGSVGElement>
 ) => {
+    const { className, ...restProps } = props;
     return (
         <motion.svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-copy">
+            {...restProps}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={className}>
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
 
             <motion.rect
@@ -98,10 +99,11 @@ const CopyIcon = (
 const WavyIcon = (
     props: React.SVGProps<SVGSVGElement> & SVGMotionProps<SVGSVGElement>
 ) => {
+    const { className, ...restProps } = props;
     return (
         <motion.svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-ripple">
+            {...restProps}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={className}>
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path
                 d="M3 7c3 -2 6 -2 9 0s6 2 9 0"
@@ -168,18 +170,17 @@ const WavyIcon = (
 const AdjustmentsHorizontalIcon = (
     props: React.SVGProps<SVGSVGElement> & SVGMotionProps<SVGSVGElement>
 ) => {
+    const { className, ...restProps } = props;
     return (
         <motion.svg
-            {...props}
+            {...restProps}
             xmlns="http://www.w3.org/2000/svg"
-            width="32"
-            height="32"
             viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth={2}
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="icon icon-tabler icons-tabler-outline icon-tabler-adjustments-horizontal relative"
+            className={className}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 6l15 0" />

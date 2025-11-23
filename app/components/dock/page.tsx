@@ -92,6 +92,13 @@ export default function DockPage() {
                         description: "Optional path to determine which menu items should be marked as active. If not provided, uses the current pathname from Next.js router.",
                         required: false,
                     },
+                    {
+                        name: "className",
+                        type: "string",
+                        default: '""',
+                        description: "Custom class names for styling the dock container",
+                        required: false,
+                    },
                 ]}
                 subComponents={[
                     {
@@ -111,6 +118,13 @@ export default function DockPage() {
                                 default: "-",
                                 description: "URL to navigate to when clicked",
                                 required: true,
+                            },
+                            {
+                                name: "className",
+                                type: "string",
+                                default: '""',
+                                description: "Custom class names for styling",
+                                required: false,
                             },
                         ],
                     },
@@ -139,6 +153,13 @@ export default function DockPage() {
                                 description: "Optional unique identifier. If not provided, generated from label.",
                                 required: false,
                             },
+                            {
+                                name: "className",
+                                type: "string",
+                                default: '""',
+                                description: "Custom class names for styling",
+                                required: false,
+                            },
                         ],
                     },
                     {
@@ -164,6 +185,13 @@ export default function DockPage() {
                                 type: "string",
                                 default: "-",
                                 description: "Optional image URL to display as preview when hovering or when active",
+                                required: false,
+                            },
+                            {
+                                name: "className",
+                                type: "string",
+                                default: '""',
+                                description: "Custom class names for styling",
                                 required: false,
                             },
                         ],
@@ -201,10 +229,10 @@ export default function DockPage() {
                                 required: false,
                             },
                             {
-                                name: "id",
+                                name: "className",
                                 type: "string",
-                                default: "-",
-                                description: "Optional unique identifier. If not provided, generated from label.",
+                                default: '""',
+                                description: "Custom class names for styling",
                                 required: false,
                             },
                         ],
@@ -214,4 +242,3 @@ export default function DockPage() {
         </div>
     );
 }
-

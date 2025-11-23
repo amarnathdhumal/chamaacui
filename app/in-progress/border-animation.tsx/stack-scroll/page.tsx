@@ -8,7 +8,7 @@ import StackScrollDemo from "./stack-scroll-demo";
 
 const filePath = path.join(
   process.cwd(),
-  "app/components/stack-scroll/stack-scroll.tsx"
+  "app/in-progress/border-animation.tsx/stack-scroll/stack-scroll.tsx"
 );
 const StackScrollSource = fs.readFileSync(filePath, "utf-8");
 

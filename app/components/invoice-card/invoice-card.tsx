@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 
+import { cn } from "@/lib/utils";
+
 interface Item {
     name: string;
     description: string;
@@ -16,6 +18,7 @@ interface InvoiceCardProps {
     taxRate?: number;
     taxLabel?: string;
     delay?: number;
+    className?: string;
 }
 
 const InvoiceCard = ({
@@ -26,11 +29,12 @@ const InvoiceCard = ({
     taxRate = 0,
     taxLabel = "Tax",
     delay = 0.1,
+    className,
 }: InvoiceCardProps) => {
     const subtotal = items.reduce((sum, item) => sum + item.price, 0);
     const tax = subtotal * (taxRate / 100);
     return (
-        <div className=" h-[500px] flex justify-center items-center w-full ">
+        <div className={cn("h-[500px] flex justify-center items-center w-full", className)}>
 
             <motion.div
 

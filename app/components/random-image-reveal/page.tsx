@@ -27,8 +27,9 @@ export default function RandomImageRevealPage() {
         title="Random Image Reveal"
         description="A card component that reveals a random image on hover with smooth animations, as the image card rotates and moves upward."
         preview={
-          <div className="w-full h-[800px] flex justify-center items-center">
-            <RandomImageReveal images={["/images/1.jpg", "/images/2.jpg", "/images/3.jpg", "/images/5.jpg"]} />
+          <div className="w-full h-[600px] flex justify-center items-center">
+            <RandomImageReveal
+              images={["/images/1.jpg", "/images/2.jpg", "/images/3.jpg", "/images/5.jpg"]} />
           </div>
         }
         code={
@@ -77,6 +78,41 @@ export default function RandomImageRevealPage() {
             type: "number",
             default: "0.2",
             description: "The duration of the animation transition in seconds",
+            required: false,
+          },
+          {
+            name: "className",
+            type: "string",
+            default: '""',
+            description: "Custom class names for styling the card container",
+            required: false,
+          },
+          {
+            name: "width",
+            type: "string",
+            default: '"350px"',
+            description: "Width of the outer card container",
+            required: false,
+          },
+          {
+            name: "height",
+            type: "string",
+            default: '"270px"',
+            description: "Height of the outer card container",
+            required: false,
+          },
+          {
+            name: "innerWidth",
+            type: "string",
+            default: '"200px"',
+            description: "Width of the inner revealing image",
+            required: false,
+          },
+          {
+            name: "innerHeight",
+            type: "string",
+            default: '"135px"',
+            description: "Height of the inner revealing image",
             required: false,
           },
         ]}

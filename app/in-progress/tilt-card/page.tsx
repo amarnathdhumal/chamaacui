@@ -11,11 +11,11 @@ import PropsTable from "@/components/ui/props-table";
 // file paths
 const filePath = path.join(
   process.cwd(),
-  "app/components/tilt-card/tilt-card.tsx"
+  "app/in-progress/tilt-card/tilt-card.tsx"
 );
 const demoFilePath = path.join(
   process.cwd(),
-  "app/components/tilt-card/tilt-card-demo.tsx"
+  "app/in-progress/tilt-card/tilt-card-demo.tsx"
 );
 const TiltCardSource = fs.readFileSync(filePath, "utf-8");
 const TiltCardDemoSource = fs.readFileSync(demoFilePath, "utf-8");
@@ -101,6 +101,13 @@ export default function TiltCardPage() {
             type: "number",
             default: "5",
             description: "Spring damping value. Higher values reduce oscillation",
+            required: false,
+          },
+          {
+            name: "className",
+            type: "string",
+            default: '""',
+            description: "Custom class names for styling the card container",
             required: false,
           },
         ]}

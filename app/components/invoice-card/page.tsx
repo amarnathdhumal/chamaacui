@@ -100,6 +100,13 @@ export default function InvoiceCardPage() {
                         description: "Delay in seconds between each animation. Line items animate with staggered delays (index * delay), summary items appear after all line items",
                         required: false,
                     },
+                    {
+                        name: "className",
+                        type: "string",
+                        default: '""',
+                        description: "Custom class names for styling the card container",
+                        required: false,
+                    },
                 ]}
             />
         </div>

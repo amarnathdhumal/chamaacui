@@ -1,5 +1,7 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+
 import { easeIn, easeOut, motion } from "motion/react";
 import Link from "next/link";
 import React, { useState, useRef, createContext, useContext } from "react";
@@ -32,6 +34,7 @@ interface DockProps {
     closeDelay?: number;
     bottomOffset?: string;
     activePage?: string;
+    className?: string;
 }
 
 export const Dock = ({
@@ -39,6 +42,7 @@ export const Dock = ({
     closeDelay = 100,
     bottomOffset = "60px",
     activePage,
+    className,
 }: DockProps) => {
     const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({});
     const closeTimeoutsRef = useRef<Record<string, NodeJS.Timeout | null>>({});
@@ -80,7 +84,10 @@ export const Dock = ({
                 >
                     <div className="px-4 flex justify-center">
                         <motion.div
-                            className="relative flex flex-col items-center justify-center overflow-hidden backdrop-blur-md bg-white dark:bg-black/50 border border-[#E0E0E0] dark:border-neutral-700 p-[3px] rounded-[25px]"
+                            className={cn(
+                                "relative flex flex-col items-center justify-center overflow-hidden backdrop-blur-md bg-white dark:bg-black/50 border border-[#E0E0E0] dark:border-neutral-700 p-[3px] rounded-[25px]",
+                                className
+                            )}
 
                             transition={{ duration: 0.2 }}
                         >
@@ -114,9 +121,10 @@ interface DockItemProps {
     label: string;
     id?: string;
     renderType?: "content" | "trigger";
+    className?: string;
 }
 
-export const DockItem = ({ children, label, id, renderType }: DockItemProps) => {
+export const DockItem = ({ children, label, id, renderType, className }: DockItemProps) => {
     const { openDropdowns, handleDropdownEnter, handleDropdownLeave, isDark, activePage } = useDock();
     const pathname = usePathname();
 
@@ -159,7 +167,11 @@ export const DockItem = ({ children, label, id, renderType }: DockItemProps) => 
 
     return (
         <motion.div
-            className={`transition-colors duration-200 text-[14px] leading-[10px] flex items-center gap-1 h-[42px] rounded-full cursor-pointer px-[18px] ${isAnyChildActive ? "text-black dark:text-white font-medium" : "text-black dark:text-white"}`}
+            className={cn(
+                "transition-colors duration-200 text-[14px] leading-[10px] flex items-center gap-1 h-[42px] rounded-full cursor-pointer px-[18px]",
+                isAnyChildActive ? "text-black dark:text-white font-medium" : "text-black dark:text-white",
+                className
+            )}
             onMouseEnter={() => handleDropdownEnter(itemId)}
             onMouseLeave={() => handleDropdownLeave(itemId)}
             animate={{
@@ -233,10 +245,11 @@ interface DockDropdownItemProps {
     href: string;
     label: string;
     image?: string;
+    className?: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const DockDropdownItem = ({ href, label, image: _image }: DockDropdownItemProps) => {
+export const DockDropdownItem = ({ href, label, image: _image, className }: DockDropdownItemProps) => {
     const { hoveredLink, setHoveredLink, activePage } = useDock();
     const pathname = usePathname();
 
@@ -250,7 +263,11 @@ export const DockDropdownItem = ({ href, label, image: _image }: DockDropdownIte
             whileHover={{ x: 5 }}
             transition={{ duration: 0.1 }}
             onMouseEnter={() => setHoveredLink(href)}
-            className={`block text-[14px] leading-[10px] transition-colors ${isMenuItemActive || isHovered ? "text-black dark:text-white font-medium" : "text-neutral-500 dark:text-[#C1C1C1] hover:text-black dark:hover:text-white"}`}
+            className={cn(
+                "block text-[14px] leading-[10px] transition-colors",
+                isMenuItemActive || isHovered ? "text-black dark:text-white font-medium" : "text-neutral-500 dark:text-[#C1C1C1] hover:text-black dark:hover:text-white",
+                className
+            )}
         >
             {label}
         </motion.a>
@@ -262,9 +279,10 @@ interface DockIconProps {
     icon: React.ReactNode;
     href: string;
     renderType?: "content" | "trigger";
+    className?: string;
 }
 
-export const DockIcon = ({ icon, href, renderType }: DockIconProps) => {
+export const DockIcon = ({ icon, href, renderType, className }: DockIconProps) => {
     const { isDark, activePage } = useDock();
     const pathname = usePathname();
 
@@ -276,7 +294,10 @@ export const DockIcon = ({ icon, href, renderType }: DockIconProps) => {
     return (
         <Link href={href}>
             <motion.div
-                className="flex items-center justify-center w-[56px] h-[42px] rounded-full cursor-pointer"
+                className={cn(
+                    "flex items-center justify-center w-[56px] h-[42px] rounded-full cursor-pointer",
+                    className
+                )}
                 animate={{
                     backgroundColor: isActive ? (isDark ? "#262626" : "#F0F0F0") : "transparent"
                 }}
@@ -299,9 +320,10 @@ interface DockLinkProps {
     external?: boolean;
     renderType?: "content" | "trigger";
     id?: string;
+    className?: string;
 }
 
-export const DockLink = ({ label, href, icon, external, renderType }: DockLinkProps) => {
+export const DockLink = ({ label, href, icon, external, renderType, className }: DockLinkProps) => {
     const { isDark, activePage } = useDock();
     const pathname = usePathname();
     const [isHovered, setIsHovered] = useState(false);
@@ -329,7 +351,11 @@ export const DockLink = ({ label, href, icon, external, renderType }: DockLinkPr
         </>
     );
 
-    const className = `transition-colors duration-200 text-[14px] leading-[10px] flex items-center gap-1 h-[42px] rounded-full px-[18px] ${isActive ? "text-black dark:text-white font-medium" : "text-black dark:text-white"}`;
+    const baseClassName = cn(
+        "transition-colors duration-200 text-[14px] leading-[10px] flex items-center gap-1 h-[42px] rounded-full px-[18px]",
+        isActive ? "text-black dark:text-white font-medium" : "text-black dark:text-white",
+        className
+    );
 
     if (external) {
         return (
@@ -337,7 +363,7 @@ export const DockLink = ({ label, href, icon, external, renderType }: DockLinkPr
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={className}
+                className={baseClassName}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 whileHover={{
@@ -363,7 +389,7 @@ export const DockLink = ({ label, href, icon, external, renderType }: DockLinkPr
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <Link href={href} className={className}>
+            <Link href={href} className={baseClassName}>
                 {linkContent}
             </Link>
         </motion.div>

@@ -4,14 +4,26 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import Image from "next/image";
 
+import { cn } from "@/lib/utils";
+
 interface RandomImageRevealProps {
   images: string[];
   duration?: number;
+  className?: string;
+  width?: string;
+  height?: string;
+  innerWidth?: string;
+  innerHeight?: string;
 }
 
 const RandomImageReveal = ({
   images,
-  duration = 0.3
+  duration = 0.3,
+  className,
+  width = "350px",
+  height = "270px",
+  innerWidth = "200px",
+  innerHeight = "135px",
 }: RandomImageRevealProps) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [currentImage, setCurrentImage] = useState(images[0] || "");
@@ -30,7 +42,11 @@ const RandomImageReveal = ({
         getRandomImage();
       }}
       onHoverEnd={() => setIsHovered(false)}
-      className="relative h-[270px] w-[350px] bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-4xl  cursor-pointer "
+      style={{ width, height }}
+      className={cn(
+        "relative bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-4xl  cursor-pointer",
+        className
+      )}
     >
       <div className="absolute top-30/100 bottom-0 left-0 right-0 backdrop-blur-sm rounded-4xl z-10 border border-neutral-200 dark:border-neutral-800" />
 
@@ -44,7 +60,8 @@ const RandomImageReveal = ({
           duration: duration,
           ease: "easeIn",
         }}
-        className="h-[135px]  absolute top-40/100 w-[200px]  rounded-3xl left-1/2 -translate-x-1/2 overflow-hidden  "
+        style={{ width: innerWidth, height: innerHeight }}
+        className="absolute top-40/100 rounded-3xl left-1/2 -translate-x-1/2 overflow-hidden"
       >
         <Image
           src={currentImage}
