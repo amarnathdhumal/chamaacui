@@ -70,6 +70,11 @@ const Sidebar = () => {
                         </div>
                       )}
                       {item.componentName}
+                      {item.isNew && (
+                        <span className="ml-2 text-[10px]    text-green-500 border border-green-500 px-1.5 py-1 rounded-[16px] leading-none">
+                          New
+                        </span>
+                      )}
                     </motion.a>
                   </li>
                 );

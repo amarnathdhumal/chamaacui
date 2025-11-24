@@ -32,6 +32,7 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Carousel",
     link: "/carousel",
     category: "Gallery",
+    isNew: true,
   },
 ];
 

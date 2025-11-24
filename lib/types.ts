@@ -4,6 +4,7 @@ export interface SidebarDataTypes {
   componentName: string;
   link: string;
   category?: string;
+  isNew?: boolean;
 }
 
 export interface ViewAreaTypes {
