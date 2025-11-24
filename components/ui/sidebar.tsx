@@ -22,7 +22,7 @@ const Sidebar = () => {
 
   return (
     <div className="min-w-40 h-full flex flex-col sticky top-[114px]">
-      <ul className="flex flex-col gap-4" onMouseLeave={() => setHoveredItem(null)}>
+      <ul className="flex flex-col gap-4">
         {Object.entries(groupedData).map(([category, items]) => (
           <li key={category} className="flex flex-col gap-2">
             <h3 className="text-lg font-medium text-black dark:text-white leading-none tracking-tight">
@@ -36,8 +36,7 @@ const Sidebar = () => {
                   : `/components${item.link}` === pathname;
                 const itemId = item.link || "introduction";
                 const isHovered = hoveredItem === itemId;
-                // Show dot if this item is hovered, OR if it's active and nothing else is hovered
-                const showDot = isHovered || (isActive && hoveredItem === null);
+
 
                 return (
                   <li key={itemId}>
@@ -48,6 +47,7 @@ const Sidebar = () => {
                         `${isActive ? "text-black dark:text-white  font-medium" : "text-gray-500 dark:text-gray-400 "}`
                       )}
                       onMouseEnter={() => setHoveredItem(itemId)}
+                      onMouseLeave={() => setHoveredItem(null)}
                       animate={{
                         x: isHovered ? "5px" : "0px",
                       }}
@@ -56,17 +56,24 @@ const Sidebar = () => {
                         ease: "easeInOut",
                       }}
                     >
-                      {showDot && (
-                        <motion.div
-                          layoutId="sidebar-dot"
-                          className="w-[5px] h-[5px] rounded-full bg-black dark:bg-white"
-                          transition={{
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 30
-                          }}
-                        />
-                      )}
+                      <div className="relative w-[10px] h-[10px] flex items-center justify-center mr-1">
+                        {isActive && (
+                          <div className="absolute inset-0 m-auto w-[5px] h-[5px] rounded-full bg-black dark:bg-white" />
+                        )}
+                        {isHovered && (
+                          <motion.div
+                            layoutId="hover-dot"
+                            className="absolute inset-0 m-auto w-[5px] h-[5px] rounded-full bg-black dark:bg-white"
+                            transition={{
+                              duration: 0.1,
+                              ease: "easeInOut",
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 30
+                            }}
+                          />
+                        )}
+                      </div>
                       {item.componentName}
                     </motion.a>
                   </li>
