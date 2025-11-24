@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { CSPostHogProvider } from "./providers/posthog-provider";
+import PostHogPageView from "./providers/posthog-pageview";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,16 +69,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased bg-white dark:bg-black  `}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          {/* <Header /> */}
-          {children}
-          <Analytics />
-        </ThemeProvider>
+        <CSPostHogProvider>
+          <PostHogPageView />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+            {/* <Header /> */}
+            {children}
+            <Analytics />
+          </ThemeProvider>
+        </CSPostHogProvider>
       </body>
     </html>
   );
