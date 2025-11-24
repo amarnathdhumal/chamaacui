@@ -48,32 +48,27 @@ const Sidebar = () => {
                       )}
                       onMouseEnter={() => setHoveredItem(itemId)}
                       onMouseLeave={() => setHoveredItem(null)}
-                      animate={{
-                        x: isHovered ? "5px" : "0px",
-                      }}
-                      transition={{
-                        duration: 0.1,
-                        ease: "easeInOut",
-                      }}
                     >
-                      <div className="relative w-[10px] h-[10px] flex items-center justify-center ">
-                        {isActive && (
-                          <div className="absolute inset-0 m-auto w-[5px] h-[5px] rounded-full bg-black dark:bg-white" />
-                        )}
-                        {isHovered && (
-                          <motion.div
-                            layoutId="hover-dot"
-                            className="absolute inset-0 m-auto w-[5px] h-[5px] rounded-full bg-black dark:bg-white"
-                            transition={{
-                              duration: 0.1,
-                              ease: "easeInOut",
-                              type: "spring",
-                              stiffness: 300,
-                              damping: 30
-                            }}
-                          />
-                        )}
-                      </div>
+                      {(isActive || isHovered) && (
+                        <div className="relative w-[5px] h-[5px] flex items-center justify-center ">
+                          {isActive && (
+                            <div className="absolute inset-0 m-auto w-[5px] h-[5px] rounded-full bg-black dark:bg-white" />
+                          )}
+                          {isHovered && (
+                            <motion.div
+                              layoutId="hover-dot"
+                              className="absolute inset-0 m-auto w-[5px] h-[5px] rounded-full bg-black dark:bg-white"
+                              transition={{
+                                duration: 0.1,
+                                ease: "easeInOut",
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 30
+                              }}
+                            />
+                          )}
+                        </div>
+                      )}
                       {item.componentName}
                     </motion.a>
                   </li>

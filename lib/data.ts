@@ -28,6 +28,11 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "/random-image-reveal",
     category: "Cards",
   },
+  {
+    componentName: "Carousel",
+    link: "/carousel",
+    category: "Gallery",
+  },
 ];
 
 export interface ComponentCardType {
@@ -40,7 +45,14 @@ export interface ComponentCardType {
 }
 
 export const componentCards: ComponentCardType[] = [
-  
+  {
+    title: "Carousel",
+    description: "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
+    imagePath: "/components/carousel.png",
+    link: "/components/carousel",
+    category: "Gallery",
+    bgColor: "bg-black dark:bg-black"
+  },
   {
     title: "Invoice Card",
     description: "A beautifully designed invoice card component with modern styling and animations.",
@@ -71,4 +83,5 @@ export const componentCards: ComponentCardType[] = [
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
   },
+  
 ];

@@ -31,7 +31,7 @@ const Components = () => {
 
               >
                 {/* Image Container */}
-                <div className={cn("relative w-full h-[300px] rounded-[12px] bg-gray-100 dark:bg-[#111111]  overflow-hidden", component.bgColor)}>
+                <div className={cn("relative w-full h-[300px] rounded-[12px] bg-gray-100 dark:bg-black  overflow-hidden border-gray-200 dark:border-neutral-800", component.bgColor)}>
                   {component.imagePath ? (
                     <Image
                       src={component.imagePath}
