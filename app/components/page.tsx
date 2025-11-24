@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const Components = () => {
   return (
-    <div className="flex flex-col w-full pb-12 px-4 md:px-8 lg:px-12">
+    <div className="flex flex-col w-full pb-12 ">
       {/* Component Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
         {componentCards.map((component, index) => (

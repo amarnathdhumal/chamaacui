@@ -56,7 +56,7 @@ const Sidebar = () => {
                         ease: "easeInOut",
                       }}
                     >
-                      <div className="relative w-[10px] h-[10px] flex items-center justify-center mr-1">
+                      <div className="relative w-[10px] h-[10px] flex items-center justify-center ">
                         {isActive && (
                           <div className="absolute inset-0 m-auto w-[5px] h-[5px] rounded-full bg-black dark:bg-white" />
                         )}

@@ -6,11 +6,11 @@ const ComponentLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex h-full ">
       <Header />
-      <div className="mt-[100px] md:mt-[114px] flex w-full min-w-0 gap-6  lg:pl-12 max-w-[1440px] mx-auto">
+      <div className="mt-[100px] md:mt-[114px] flex w-full min-w-0   lg:pl-12 max-w-[1440px] mx-auto">
         <div className="hidden lg:block sticky top-28 self-start">
           <Sidebar />
         </div>
-        <div className="flex-1 min-w-0 ">{children}</div>
+        <div className="flex-1 min-w-0 px-4 md:px-8 lg:px-12">{children}</div>
       </div>
     </div>
   );
