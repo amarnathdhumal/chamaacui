@@ -4,12 +4,13 @@ import { motion, SVGMotionProps } from "motion/react";
 
 interface CopyIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
+    duration?: number;
 }
 
 const CopyIcon = (
     props: CopyIconProps
 ) => {
-    const { size = 24, className, ...restProps } = props;
+    const { size = 24, duration = 1.5, className, ...restProps } = props;
     return (
         <motion.svg
             {...restProps}
@@ -33,7 +34,7 @@ const CopyIcon = (
                     y: [8, 4, 8],
                 }}
                 transition={{
-                    duration: 1.5,
+                    duration: duration,
                     ease: "easeInOut",
                     repeat: Infinity,
                 }}

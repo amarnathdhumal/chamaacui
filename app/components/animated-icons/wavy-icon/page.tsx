@@ -65,6 +65,13 @@ export default function WavyIconPage() {
                         description: "Size of the icon in pixels",
                         required: false,
                     },
+                    {
+                        name: "duration",
+                        type: "number",
+                        default: "0.8",
+                        description: "Duration of the animation in seconds",
+                        required: false,
+                    },
                 ]}
             />
         </div>

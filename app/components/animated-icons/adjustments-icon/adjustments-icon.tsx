@@ -4,12 +4,13 @@ import { motion, SVGMotionProps } from "motion/react";
 
 interface AdjustmentsHorizontalIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
+    duration?: number;
 }
 
 const AdjustmentsHorizontalIcon = (
     props: AdjustmentsHorizontalIconProps
 ) => {
-    const { size = 24, className, ...restProps } = props;
+    const { size = 24, duration = 1.2, className, ...restProps } = props;
     return (
         <motion.svg
             {...restProps}
@@ -28,7 +29,7 @@ const AdjustmentsHorizontalIcon = (
             <motion.path
                 animate={{ x: [0, -10, 0] }}
                 transition={{
-                    duration: 1.2,
+                    duration: duration,
                     ease: "easeInOut",
                     repeat: Infinity,
                     repeatType: "loop",
@@ -44,7 +45,7 @@ const AdjustmentsHorizontalIcon = (
             <motion.path
                 animate={{ x: [0, 10, 0] }}
                 transition={{
-                    duration: 1.2,
+                    duration: duration,
                     ease: "easeInOut",
                     repeat: Infinity,
                     repeatType: "loop",
@@ -60,7 +61,7 @@ const AdjustmentsHorizontalIcon = (
             <motion.path
                 animate={{ x: [0, -10, 0] }}
                 transition={{
-                    duration: 1.2,
+                    duration: duration,
                     ease: "easeInOut",
                     repeat: Infinity,
                     repeatType: "loop",

@@ -4,12 +4,13 @@ import { motion, SVGMotionProps } from "motion/react";
 
 interface WavyIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
+    duration?: number;
 }
 
 const WavyIcon = (
     props: WavyIconProps
 ) => {
-    const { size = 24, className, ...restProps } = props;
+    const { size = 24, duration = 0.8, className, ...restProps } = props;
     return (
         <motion.svg
             {...restProps}
@@ -39,7 +40,7 @@ const WavyIcon = (
                     ],
                 }}
                 transition={{
-                    duration: 0.8,
+                    duration: duration,
                     ease: "linear",
                     repeat: Infinity,
                 }}
@@ -59,7 +60,7 @@ const WavyIcon = (
                     ],
                 }}
                 transition={{
-                    duration: 0.8,
+                    duration: duration,
                     ease: "linear",
                     repeat: Infinity,
                 }}
@@ -78,7 +79,7 @@ const WavyIcon = (
                     ],
                 }}
                 transition={{
-                    duration: 0.8,
+                    duration: duration,
                     ease: "linear",
                     repeat: Infinity,
                 }}

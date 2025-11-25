@@ -65,6 +65,13 @@ export default function AdjustmentsHorizontalIconPage() {
                         description: "Size of the icon in pixels",
                         required: false,
                     },
+                    {
+                        name: "duration",
+                        type: "number",
+                        default: "1.2",
+                        description: "Duration of the animation in seconds",
+                        required: false,
+                    },
                 ]}
             />
         </div>
