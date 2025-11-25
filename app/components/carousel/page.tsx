@@ -54,9 +54,9 @@ export default function CourselPage() {
                     {
                         name: "images",
                         type: "string[]",
-                        default: "defaultImages",
+                        default: "-",
                         description: "Array of image URLs to display in the carousel",
-                        required: false,
+                        required: true,
                     },
                     {
                         name: "className",
@@ -77,6 +77,20 @@ export default function CourselPage() {
                         type: "string | number",
                         default: '"284px"',
                         description: "Height of each carousel card",
+                        required: false,
+                    },
+                    {
+                        name: "duration",
+                        type: "number",
+                        default: "0.5",
+                        description: "Animation duration in seconds for card transitions",
+                        required: false,
+                    },
+                    {
+                        name: "rotationAngle",
+                        type: "number",
+                        default: "45",
+                        description: "3D rotation angle in degrees for side cards (rotateY)",
                         required: false,
                     },
                 ]}

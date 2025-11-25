@@ -7,19 +7,21 @@ import { cn } from "@/lib/utils";
 
 
 interface CourselProps {
-    images?: string[];
+    images: string[];
     className?: string;
     cardWidth?: string | number;
     cardHeight?: string | number;
+    duration?: number;
+    rotationAngle?: number;
 }
 
-const defaultImages = ["/images/1.jpg", "/images/2.jpg", "/images/3.jpg", "/images/4.jpg", "/images/5.jpg"];
-
 const Coursel = ({
-    images = defaultImages,
+    images,
     className,
     cardWidth = "250px",
-    cardHeight = "284px"
+    cardHeight = "284px",
+    duration = 0.5,
+    rotationAngle = 45
 }: CourselProps) => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const items = [];
@@ -69,21 +71,21 @@ const Coursel = ({
                         layout
                         initial={{
                             scale: 0.8,
-                            rotateY: item.position === 0 ? 45 : item.position === 2 ? -45 : 0
+                            rotateY: item.position === 0 ? rotationAngle : item.position === 2 ? -rotationAngle : 0
                         }}
                         animate={{
                             scale: item.isCenter ? 1 : 0.9,
                             opacity: 1,
-                            rotateY: item.position === 0 ? 45 : item.position === 2 ? -45 : 0
+                            rotateY: item.position === 0 ? rotationAngle : item.position === 2 ? -rotationAngle : 0
 
                         }}
                         exit={{
                             scale: 0.8,
                             opacity: 0,
-                            rotateY: item.position === 0 ? 45 : item.position === 2 ? -45 : 0
+                            rotateY: item.position === 0 ? rotationAngle : item.position === 2 ? -rotationAngle : 0
                         }}
                         transition={{
-                            duration: 0.5
+                            duration: duration
                         }}
                         style={{
                             width: cardWidth,

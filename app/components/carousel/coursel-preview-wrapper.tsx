@@ -33,7 +33,7 @@ export default function CourselPreviewWrapper({
                 title={title}
                 description={description}
                 preview={
-                    <div className="w-full h-[500px] flex justify-center items-center">
+                    <div className="w-full  flex h-[450px] justify-center items-center">
                         <CourselDemo />
                     </div>
                 }
