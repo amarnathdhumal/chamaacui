@@ -54,26 +54,40 @@ const Coursel = ({
 
     return (
 
-        <div className={cn("flex gap-4", className)}>
+        <div
+            className={cn("flex ", className)}
+            style={{
+                perspective: "1200px",
+                transformStyle: "preserve-3d"
+            }}
+        >
             <AnimatePresence mode="popLayout">
                 {items.map((item) => (
                     <motion.div
                         key={item.item}
                         layout
-                        initial={{ scale: 0.8, }}
+                        initial={{
+                            scale: 0.8,
+                            rotateY: item.position === 0 ? 45 : item.position === 2 ? -45 : 0
+                        }}
                         animate={{
                             scale: item.isCenter ? 1 : 0.9,
                             opacity: 1,
-                            rotate: item.position === 0 ? -30 : item.position === 2 ? 30 : 0
+                            rotateY: item.position === 0 ? 45 : item.position === 2 ? -45 : 0
 
                         }}
-                        exit={{ scale: 0.8 }}
+                        exit={{
+                            scale: 0.8,
+                            opacity: 0,
+                            rotateY: item.position === 0 ? 45 : item.position === 2 ? -45 : 0
+                        }}
                         transition={{
                             duration: 0.5
                         }}
                         style={{
                             width: cardWidth,
-                            height: cardHeight
+                            height: cardHeight,
+
                         }}
                         className={cn(
                             item.isCenter ? "z-10" : "",
