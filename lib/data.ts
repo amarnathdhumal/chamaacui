@@ -6,18 +6,43 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "",
     category: "Overview",
   },
+    {
+    componentName: "Carousel",
+    link: "/carousel",
+    category: "Gallery",
+    isNew: true,
+  },
+  {
+    componentName: "Animated Icons",
+    link: "/animated-icons",
+    category: "Animated Icons",
+    isNew: true,
+  },
+  {
+    componentName: "Copy",
+    link: "/animated-icons/copy-icon",
+    category: "Animated Icons",
+    isNew: true,
+  },
+  {
+    componentName: "Wavy",
+    link: "/animated-icons/wavy-icon",
+    category: "Animated Icons",
+    isNew: true,
+  },
+  {
+    componentName: "Adjustments",
+    link: "/animated-icons/adjustments-icon",
+    category: "Animated Icons",
+    isNew: true,
+  },
+  
   {
     componentName: "Slide Up Button",
     link: "/slideup-button",
     category: "Buttons",
   },
 
-
-  {
-    componentName: "Invoice Card",
-    link: "/invoice-card",
-    category: "Cards",
-  },
   {
     componentName: "Dock",
     link: "/dock",
@@ -28,12 +53,7 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "/random-image-reveal",
     category: "Cards",
   },
-  {
-    componentName: "Carousel",
-    link: "/carousel",
-    category: "Gallery",
-    isNew: true,
-  },
+
 ];
 
 export interface ComponentCardType {
@@ -55,12 +75,13 @@ export const componentCards: ComponentCardType[] = [
     bgColor: "bg-black dark:bg-black"
   },
   {
-    title: "Invoice Card",
-    description: "A beautifully designed invoice card component with modern styling and animations.",
-    imagePath: "/components/invoice-card.svg",
-    link: "/components/invoice-card",
-    category: "Cards",
+    title: "Animated Icons",
+    description: "A collection of smooth, micro-interaction animations for your icons.",
+    imagePath: "/components/animated-icons.png",
+    link: "/components/animated-icons",
+    category: "Animated Icons",
   },
+
   {
     title: "Dock",
     description: "A navigation dock component with smooth animations and hover effects, perfect for desktop interfaces.",

@@ -1,6 +1,7 @@
 "use client";
 
 import { sidebarData } from "@/lib/data";
+import Link from "next/link";
 
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -24,19 +25,24 @@ const Sidebar = () => {
     <div className="min-w-40 h-full flex flex-col sticky top-[114px]">
       <ul className="flex flex-col gap-4">
         {Object.entries(groupedData).map(([category, items]) => (
-          <li key={category} className="flex flex-col gap-2">
-            <h3 className="text-lg font-medium text-black dark:text-white leading-none tracking-tight">
-              {category}
-            </h3>
-            <ul className="flex flex-col gap-4">
-              {items.map((item) => {
+          <li key={category} className="flex flex-col gap-4">
+            {items.some(item => item.componentName === category) ? (
+              <Link href={`/components${items.find(item => item.componentName === category)?.link}`} className="text-lg font-medium text-black dark:text-white leading-none tracking-tight hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+                {category}
+              </Link>
+            ) : (
+              <h3 className="text-lg font-medium text-black dark:text-white leading-none tracking-tight">
+                {category}
+              </h3>
+            )}
+            <ul className="flex flex-col gap-3">
+              {items.filter(item => item.componentName !== category).map((item) => {
                 const href = item.link === "" ? "/components" : `/components${item.link}`;
                 const isActive = item.link === ""
                   ? pathname === "/components"
                   : `/components${item.link}` === pathname;
                 const itemId = item.link || "introduction";
                 const isHovered = hoveredItem === itemId;
-
 
                 return (
                   <li key={itemId}>
@@ -59,11 +65,9 @@ const Sidebar = () => {
                               layoutId="hover-dot"
                               className="absolute inset-0 m-auto w-[5px] h-[5px] rounded-full bg-black dark:bg-white"
                               transition={{
-                                duration: 0.1,
+                                duration: 0.3,
                                 ease: "easeInOut",
-                                type: "spring",
-                                stiffness: 300,
-                                damping: 30
+
                               }}
                             />
                           )}
@@ -83,7 +87,7 @@ const Sidebar = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </div >
   );
 };
 

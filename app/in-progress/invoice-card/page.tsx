@@ -8,11 +8,11 @@ import CopyButton from "@/components/ui/copy-button";
 // file paths
 const filePath = path.join(
     process.cwd(),
-    "app/components/invoice-card/invoice-card.tsx"
+    "app/in-progress/invoice-card/invoice-card.tsx"
 );
 const demoFilePath = path.join(
     process.cwd(),
-    "app/components/invoice-card/invoice-card-demo.tsx"
+    "app/in-progress/invoice-card/invoice-card-demo.tsx"
 );
 const InvoiceCardSource = fs.readFileSync(filePath, "utf-8");
 const InvoiceCardDemoSource = fs.readFileSync(demoFilePath, "utf-8");

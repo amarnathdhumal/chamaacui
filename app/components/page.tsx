@@ -11,12 +11,10 @@ const Components = () => {
     <div className="flex flex-col w-full pb-12 ">
       {/* Component Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
-        {componentCards.map((component, index) => (
+        {componentCards.map((component) => (
           <motion.div
             key={component.link}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.1 }}
+            whileHover={{ y: -4 }}
           >
             <Link href={component.link}>
               <motion.div
