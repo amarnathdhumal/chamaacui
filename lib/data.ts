@@ -80,6 +80,7 @@ export const componentCards: ComponentCardType[] = [
     imagePath: "/components/animated-icons.png",
     link: "/components/animated-icons",
     category: "Animated Icons",
+    bgColor: "bg-black dark:bg-black"
   },
 
   {
