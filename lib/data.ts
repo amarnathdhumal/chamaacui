@@ -53,6 +53,12 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "/random-image-reveal",
     category: "Cards",
   },
+  {
+    componentName: "Orbiting Icons",
+    link: "/orbiting-icons",
+    category: "Cards",
+    isNew: true,
+  },
 
 ];
 
@@ -66,6 +72,14 @@ export interface ComponentCardType {
 }
 
 export const componentCards: ComponentCardType[] = [
+    {
+    title: "Orbiting Icons",
+    description: "A dynamic, rotating card component that displays a circular array of icons with smooth animations.",
+    imagePath: "/components/orbiting-icons.svg",
+    link: "/components/orbiting-icons",
+    category: "Cards",
+    bgColor: "bg-black dark:bg-black",
+  },
   {
     title: "Carousel",
     description: "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
@@ -89,6 +103,7 @@ export const componentCards: ComponentCardType[] = [
     imagePath: "/components/dock.svg",
     link: "/components/dock",
     category: "Navigation",
+     bgColor: "bg-black dark:bg-black",
   },
   {
     title: "Random Image Reveal",
@@ -106,5 +121,6 @@ export const componentCards: ComponentCardType[] = [
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
   },
+
   
 ];
