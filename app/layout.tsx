@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { CSPostHogProvider } from "./providers/posthog-provider";
 import PostHogPageView from "./providers/posthog-pageview";
+import { Header } from "./components/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -77,7 +78,7 @@ export default function RootLayout({
             enableSystem={false}
             disableTransitionOnChange
           >
-            {/* <Header /> */}
+            <Header />
             {children}
             <Analytics />
           </ThemeProvider>
