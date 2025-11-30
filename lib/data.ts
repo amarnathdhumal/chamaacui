@@ -12,6 +12,12 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Gallery",
     isNew: true,
   },
+    {
+    componentName: "Orbiting Icons",
+    link: "/orbiting-icons",
+    category: "Cards",
+    isNew: true,
+  },
   {
     componentName: "Animated Icons",
     link: "/animated-icons",
@@ -22,19 +28,19 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Copy",
     link: "/animated-icons/copy-icon",
     category: "Animated Icons",
-    isNew: true,
+    
   },
   {
     componentName: "Wavy",
     link: "/animated-icons/wavy-icon",
     category: "Animated Icons",
-    isNew: true,
+    
   },
   {
     componentName: "Adjustments",
     link: "/animated-icons/adjustments-icon",
     category: "Animated Icons",
-    isNew: true,
+    
   },
   
   {
@@ -48,17 +54,7 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "/dock",
     category: "Navigation",
   },
-  {
-    componentName: "Random Image Reveal",
-    link: "/random-image-reveal",
-    category: "Cards",
-  },
-  {
-    componentName: "Orbiting Icons",
-    link: "/orbiting-icons",
-    category: "Cards",
-    isNew: true,
-  },
+
 
 ];
 
@@ -104,14 +100,6 @@ export const componentCards: ComponentCardType[] = [
     link: "/components/dock",
     category: "Navigation",
      bgColor: "bg-black dark:bg-black",
-  },
-  {
-    title: "Random Image Reveal",
-    description: "A card component that reveals images with smooth animations and transitions.",
-    imagePath: "/components/reveal-random-image.svg",
-    link: "/components/random-image-reveal",
-    category: "Cards",
-    bgColor: "bg-black dark:bg-black",
   },
   {
     title: "Slide Up Button",

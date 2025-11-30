@@ -11,11 +11,11 @@ import PropsTable from "../../../components/ui/props-table";
 // file paths
 const filePath = path.join(
   process.cwd(),
-  "app/components/random-image-reveal/reveal-card.tsx"
+  "app/in-progress/random-image-reveal/reveal-card.tsx"
 );
 const demoFilePath = path.join(
   process.cwd(),
-  "app/components/random-image-reveal/reveal-card-demo.tsx"
+  "app/in-progress/random-image-reveal/reveal-card-demo.tsx"
 );
 const RevealCardSource = fs.readFileSync(filePath, "utf-8");
 const RevealCardDemoSource = fs.readFileSync(demoFilePath, "utf-8");
