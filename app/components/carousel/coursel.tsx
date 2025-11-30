@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 
@@ -64,49 +64,49 @@ const Coursel = ({
                 transformStyle: "preserve-3d"
             }}
         >
-            <AnimatePresence mode="popLayout">
-                {items.map((item) => (
-                    <motion.div
-                        key={item.item}
-                        layout
-                        initial={{
-                            scale: 0.8,
-                            rotateY: item.position === 0 ? rotationAngle : item.position === 2 ? -rotationAngle : 0
-                        }}
-                        animate={{
-                            scale: item.isCenter ? 1 : 0.9,
-                            opacity: 1,
-                            rotateY: item.position === 0 ? rotationAngle : item.position === 2 ? -rotationAngle : 0
 
-                        }}
-                        exit={{
-                            scale: 0.8,
-                            opacity: 0,
-                            rotateY: item.position === 0 ? rotationAngle : item.position === 2 ? -rotationAngle : 0
-                        }}
-                        transition={{
-                            duration: duration
-                        }}
-                        style={{
-                            width: cardWidth,
-                            height: cardHeight,
+            {items.map((item) => (
+                <motion.div
+                    key={item.item}
+                    layoutId={item.item}
+                    initial={{
+                        scale: 0.8,
+                        rotateY: item.position === 0 ? rotationAngle : item.position === 2 ? -rotationAngle : 0
+                    }}
+                    animate={{
+                        scale: item.isCenter ? 1 : 0.9,
+                        opacity: 1,
+                        rotateY: item.position === 0 ? rotationAngle : item.position === 2 ? -rotationAngle : 0
 
-                        }}
-                        className={cn(
-                            item.isCenter ? "z-10" : "",
-                            "relative flex-shrink-0"
-                        )}>
-                        <Image
-                            src={item.item}
-                            alt={`image-${item.index}`}
-                            fill
-                            priority={true}
-                            className="object-cover rounded-[16px]"
-                        />
-                    </motion.div>
-                ))}
-            </AnimatePresence>
+                    }}
+                    exit={{
+                        scale: 0.8,
+                        opacity: 0,
+                        rotateY: item.position === 0 ? rotationAngle : item.position === 2 ? -rotationAngle : 0
+                    }}
+                    transition={{
+                        duration: duration
+                    }}
+                    style={{
+                        width: cardWidth,
+                        height: cardHeight,
+
+                    }}
+                    className={cn(
+                        item.isCenter ? "z-10" : "",
+                        "relative flex-shrink-0"
+                    )}>
+                    <Image
+                        src={item.item}
+                        alt={`image-${item.index}`}
+                        fill
+                        priority={true}
+                        className="object-cover rounded-[16px]"
+                    />
+                </motion.div>
+            ))}
         </div>
+
 
     );
 };
