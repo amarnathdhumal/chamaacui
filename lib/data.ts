@@ -44,9 +44,20 @@ export const sidebarData: SidebarDataTypes[] = [
   },
   
   {
+    componentName: "Buttons",
+    link: "/buttons",
+    category: "Buttons",
+  },
+  {
     componentName: "Slide Up Button",
     link: "/slideup-button",
     category: "Buttons",
+  },
+  {
+    componentName: "Focus Button",
+    link: "/focus-button",
+    category: "Buttons",
+    isNew: true,
   },
 
   {
@@ -85,6 +96,14 @@ export const componentCards: ComponentCardType[] = [
     bgColor: "bg-black dark:bg-black"
   },
   {
+    title: "Buttons",
+    description: "A collection of interactive and animated buttons for your applications.",
+    imagePath: "/components/buttons.png",
+    link: "/components/buttons",
+    category: "Buttons",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
     title: "Animated Icons",
     description: "A collection of smooth, micro-interaction animations for your icons.",
     imagePath: "/components/animated-icons.png",
@@ -101,14 +120,4 @@ export const componentCards: ComponentCardType[] = [
     category: "Navigation",
      bgColor: "bg-black dark:bg-black",
   },
-  {
-    title: "Slide Up Button",
-    description: "An animated button with a slide-up text effect on hover, creating an engaging interactive experience.",
-    imagePath: "/components/slide-up-button.png",
-    link: "/components/slideup-button",
-    category: "Buttons",
-    bgColor: "bg-black dark:bg-black",
-  },
-
-  
 ];

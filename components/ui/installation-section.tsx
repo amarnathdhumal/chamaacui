@@ -8,22 +8,28 @@ import { cn } from "@/lib/utils";
 
 interface InstallationSectionProps {
     componentSource: string;
+    dependencies?: string[];
 }
 
 type PackageManager = "bun" | "npm" | "pnpm" | "yarn";
 
-const packageManagers: { name: PackageManager; command: string }[] = [
-    { name: "npm", command: "npm install motion" },
-    { name: "yarn", command: "yarn add motion" },
-    { name: "pnpm", command: "pnpm add motion" },
-    { name: "bun", command: "bun add motion" },
-];
-
 export default function InstallationSection({
     componentSource,
+    dependencies = ["motion"],
 }: InstallationSectionProps) {
     const [activePm, setActivePm] = useState<PackageManager>("npm");
-    const activeCommand = packageManagers.find((pm) => pm.name === activePm)?.command || "npm install motion";
+
+    const getInstallCommand = (pm: PackageManager, deps: string[]) => {
+        const depString = deps.join(" ");
+        switch (pm) {
+            case "npm": return `npm install ${depString}`;
+            case "yarn": return `yarn add ${depString}`;
+            case "pnpm": return `pnpm add ${depString}`;
+            case "bun": return `bun add ${depString}`;
+        }
+    };
+
+    const activeCommand = getInstallCommand(activePm, dependencies);
 
     return (
         <div className="mb-8">
@@ -32,43 +38,45 @@ export default function InstallationSection({
             </h2>
 
             {/* Install Dependencies Section */}
-            <div className="mb-4">
-                <h3 className="text-lg font-semibold text-black dark:text-white mb-2">
-                    Install Dependencies
-                </h3>
-                <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden">
-                    <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-gray-200 dark:border-neutral-800">
-                        <div className="flex flex-wrap gap-1 ">
-                            {packageManagers.map((pm) => (
-                                <button
-                                    key={pm.name}
-                                    onClick={() => setActivePm(pm.name)}
-                                    className={cn(
-                                        "px-4 py-2 rounded-[8px] text-sm font-medium transition-colors leading-none",
-                                        activePm === pm.name
-                                            ? "bg-gray-200 dark:bg-neutral-800 text-neutral-700 dark:text-white"
-                                            : "text-neutral-500 dark:text-gray-400 hover:text-neutral-700 dark:hover:text-gray-300"
-                                    )}
-                                >
-                                    {pm.name}
-                                </button>
-                            ))}
+            {dependencies.length > 0 && (
+                <div className="mb-4">
+                    <h3 className="text-lg font-semibold text-black dark:text-white mb-2">
+                        Install Dependencies
+                    </h3>
+                    <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden">
+                        <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-gray-200 dark:border-neutral-800">
+                            <div className="flex flex-wrap gap-1 ">
+                                {(["npm", "yarn", "pnpm", "bun"] as PackageManager[]).map((pm) => (
+                                    <button
+                                        key={pm}
+                                        onClick={() => setActivePm(pm)}
+                                        className={cn(
+                                            "px-4 py-2 rounded-[8px] text-sm font-medium transition-colors leading-none",
+                                            activePm === pm
+                                                ? "bg-gray-200 dark:bg-neutral-800 text-neutral-700 dark:text-white"
+                                                : "text-neutral-500 dark:text-gray-400 hover:text-neutral-700 dark:hover:text-gray-300"
+                                        )}
+                                    >
+                                        {pm}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
-                    </div>
 
 
-                    <div className="relative bg-white dark:bg-neutral-950">
-                        <div className="absolute top-4 right-4 ">
-                            <CopyButton text={activeCommand} />
-                        </div>
-                        <div className="p-4">
-                            <code className="text-sm font-mono text-neutral-800 dark:text-neutral-200">
-                                {activeCommand}
-                            </code>
+                        <div className="relative bg-white dark:bg-neutral-950">
+                            <div className="absolute top-4 right-4 ">
+                                <CopyButton text={activeCommand} />
+                            </div>
+                            <div className="p-4">
+                                <code className="text-sm font-mono text-neutral-800 dark:text-neutral-200">
+                                    {activeCommand}
+                                </code>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
 
 
             {/* Component Code Section */}

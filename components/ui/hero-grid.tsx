@@ -2,7 +2,7 @@ import { motion, SVGMotionProps } from "motion/react";
 
 const HeroGrid = () => {
     return (
-        <div className="grid grid-cols-1  gap-2 w-full max-w-[1100px] mx-auto border border border-gray-200 dark:border-neutral-800 rounded-[16px] p-2">
+        <div className="grid grid-cols-1  gap-2 w-full max-w-[1100px] mx-auto border border-gray-200 dark:border-neutral-800 rounded-[16px] p-2">
             <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
                 <CopyIcon className="text-black dark:text-white size-6 sm:size-8" />
                 <h3 className="text-lg md:text-xl font-semibold text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
