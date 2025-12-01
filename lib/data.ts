@@ -65,8 +65,12 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "/dock",
     category: "Navigation",
   },
-
-
+  {
+    componentName: "Feature Steps",
+    link: "/feature-steps",
+    category: "Sections",
+    isNew: true,
+  },
 ];
 
 export interface ComponentCardType {
@@ -82,9 +86,17 @@ export const componentCards: ComponentCardType[] = [
     {
     title: "Orbiting Icons",
     description: "A dynamic, rotating card component that displays a circular array of icons with smooth animations.",
-    imagePath: "/components/orbiting-icons.svg",
+    imagePath: "/components/orbiting-icons.png",
     link: "/components/orbiting-icons",
     category: "Cards",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "Feature Steps",
+    description: "A dynamic feature showcase with auto-playing steps and synchronized image transitions.",
+    imagePath: "/components/features-step.png",
+    link: "/components/feature-steps",
+    category: "Sections",
     bgColor: "bg-black dark:bg-black",
   },
   {

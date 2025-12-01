@@ -6,10 +6,12 @@ import { IconBrandX } from "@tabler/icons-react";
 import Link from "next/link";
 import { useScroll, useMotionValueEvent } from "motion/react";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export const Header = () => {
   const { theme, setTheme } = useTheme();
   const [isScrolledBeyondViewport, setIsScrolledBeyondViewport] = useState(false);
+  const pathname = usePathname();
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -25,7 +27,7 @@ export const Header = () => {
   return (
 
     <div
-      className={`fixed top-0 left-0 right-0 z-50 w-full bg-white dark:bg-transparent dark:backdrop-blur-sm transition-all duration-300 ${isScrolledBeyondViewport
+      className={`fixed top-0 left-0 right-0 z-50 w-full bg-white dark:bg-transparent dark:backdrop-blur-sm transition-all duration-300 ${pathname.startsWith("/components") || isScrolledBeyondViewport
         ? "shadow-md dark:shadow-[0_4px_10px_rgba(255,255,255,0.1)] border-b border-gray-200 dark:border-neutral-800"
         : ""
         }`}
