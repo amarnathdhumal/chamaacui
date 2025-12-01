@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -70,23 +70,23 @@ export default function FeatureSteps({
                 "w-full md:w-1/2 border border-black/10 dark:border-white/10 md:border-l-0 border-t-0 md:border-t relative p-4 md:p-5 overflow-hidden",
                 imageClassName
             )}>
-                <AnimatePresence mode="popLayout">
-                    <motion.div
-                        key={currentFeature}
-                        initial={{ y: "100%" }}
-                        animate={{ y: 0 }}
-                        exit={{ y: "-100%" }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                        className="relative w-full h-full"
-                    >
-                        <Image
-                            src={features[currentFeature].image}
-                            alt={features[currentFeature].title}
-                            fill
-                            className="rounded object-cover"
-                        />
-                    </motion.div>
-                </AnimatePresence>
+
+                <motion.div
+                    key={currentFeature}
+                    initial={{ y: "100%" }}
+                    animate={{ y: 0 }}
+
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="relative w-full h-full"
+                >
+                    <Image
+                        src={features[currentFeature].image}
+                        alt={features[currentFeature].title}
+                        fill
+                        className="rounded object-cover"
+                    />
+                </motion.div>
+
             </div>
         </div>
     );
