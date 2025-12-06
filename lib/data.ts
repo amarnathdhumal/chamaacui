@@ -91,7 +91,7 @@ export const componentCards: ComponentCardType[] = [
     {
     title: "Gauge",
     description: "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
-    imagePath: "/components/gauge.png",
+    imagePath: "/components/gauge.svg",
     link: "/components/gauge",
     category: "Sections",
     bgColor: "bg-black dark:bg-black",
