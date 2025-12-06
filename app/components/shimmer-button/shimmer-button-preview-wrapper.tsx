@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import FeatureStepsDemo from "./feature-steps-demo";
+import ShimmerButtonDemo from "./shimmer-button-demo";
 import ViewArea from "@/components/ui/view-area";
 import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 
-interface FeatureStepsPreviewWrapperProps {
+interface ShimmerButtonPreviewWrapperProps {
     title: string;
     description: string | React.ReactNode;
     code: React.ReactNode;
@@ -20,28 +20,28 @@ interface FeatureStepsPreviewWrapperProps {
     }>;
 }
 
-export default function FeatureStepsPreviewWrapper({
+export default function ShimmerButtonPreviewWrapper({
     title,
     description,
     code,
     installationSource,
     props,
-}: FeatureStepsPreviewWrapperProps) {
+}: ShimmerButtonPreviewWrapperProps) {
     return (
         <>
             <ViewArea
                 title={title}
                 description={description}
                 preview={
-                    <div className="w-full flex justify-center items-center  overflow-hidden h-full md:h-[550px] px-4 md:px-12 py-4">
-                        <FeatureStepsDemo />
+                    <div className="w-full h-[300px] flex justify-center items-center bg-white">
+                        <ShimmerButtonDemo />
                     </div>
                 }
                 code={code}
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge"]} />
+            <InstallationSection componentSource={installationSource} />
 
             {/* Main Props Section */}
             <PropsTable props={props} />

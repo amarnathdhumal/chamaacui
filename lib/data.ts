@@ -48,6 +48,12 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Buttons",
   },
   {
+    componentName: "Shimmer Button",
+    link: "/shimmer-button",
+    category: "Buttons",
+    isNew: true,
+  },
+  {
     componentName: "Slide Up Button",
     link: "/slideup-button",
     category: "Buttons",
@@ -128,6 +134,7 @@ export const componentCards: ComponentCardType[] = [
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
   },
+
   {
     title: "Animated Icons",
     description: "A collection of smooth, micro-interaction animations for your icons.",

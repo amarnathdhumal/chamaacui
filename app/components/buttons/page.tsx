@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import SlideUpButton from "../slideup-button/slide-up-button";
-import FocusButton from "../focus-button/focus-button";
+import ShimmerButton from "../shimmer-button/shimmer-button";
+import FocusButton from "./focus-button/focus-button";
 
 interface ButtonTypes {
     name: string;
@@ -15,6 +16,14 @@ interface ButtonTypes {
 }
 
 const buttons: ButtonTypes[] = [
+    {
+        name: "Shimmer Button",
+        component: ShimmerButton,
+        href: "/components/shimmer-button",
+        props: {
+            text: "Book a Free Call",
+        }
+    },
     {
         name: "Slide Up Button",
         component: SlideUpButton,

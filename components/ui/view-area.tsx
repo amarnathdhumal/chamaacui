@@ -42,7 +42,7 @@ const ViewArea = ({
         {activeTab === "preview" ? (
           <div
             ref={scrollContainerRef}
-            className={cn("overflow-y-auto hide-scrollbar px-4 relative", className)}
+            className={cn("overflow-y-auto hide-scrollbar  relative", className)}
           >
             {onRefresh && (
               <div className="absolute top-4 right-4 z-10">
