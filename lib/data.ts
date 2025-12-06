@@ -10,7 +10,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Carousel",
     link: "/carousel",
     category: "Gallery",
-    isNew: true,
   },
     {
     componentName: "Orbiting Icons",
@@ -71,6 +70,12 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Sections",
     isNew: true,
   },
+  {
+    componentName: "Gauge",
+    link: "/gauge",
+    category: "Sections",
+    isNew: true,
+  },
 ];
 
 export interface ComponentCardType {
@@ -83,6 +88,14 @@ export interface ComponentCardType {
 }
 
 export const componentCards: ComponentCardType[] = [
+    {
+    title: "Gauge",
+    description: "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
+    imagePath: "/components/gauge.png",
+    link: "/components/gauge",
+    category: "Sections",
+    bgColor: "bg-black dark:bg-black",
+  },
     {
     title: "Orbiting Icons",
     description: "A dynamic, rotating card component that displays a circular array of icons with smooth animations.",
