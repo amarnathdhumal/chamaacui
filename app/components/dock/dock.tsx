@@ -2,11 +2,12 @@
 
 import { cn } from "@/lib/utils";
 
-import { easeIn, easeOut, motion } from "motion/react";
+import { easeIn, easeOut, motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
-import React, { useState, useRef, createContext, useContext } from "react";
+import React, { useState, useRef, createContext, useContext, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
+import { X, Menu } from "lucide-react";
 
 // Context to manage dock state
 interface DockContextType {
@@ -47,6 +48,7 @@ export const Dock = ({
     const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({});
     const closeTimeoutsRef = useRef<Record<string, NodeJS.Timeout | null>>({});
     const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const { theme } = useTheme();
     const isDark = theme === "dark";
@@ -65,6 +67,18 @@ export const Dock = ({
         }, closeDelay);
     };
 
+    // Prevent scrolling when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isMobileMenuOpen]);
+
     return (
         <DockContext.Provider
             value={{
@@ -78,6 +92,7 @@ export const Dock = ({
             }}
         >
             <div className="w-full">
+                {/* Desktop Dock */}
                 <motion.nav
                     className="fixed bottom-[60px] left-0 w-full z-50 hidden md:block"
                     style={{ bottom: bottomOffset }}
@@ -88,7 +103,6 @@ export const Dock = ({
                                 "relative flex flex-col items-center justify-center overflow-hidden backdrop-blur-md bg-white dark:bg-black/50 border border-[#E0E0E0] dark:border-neutral-700 p-[3px] rounded-[25px]",
                                 className
                             )}
-
                             transition={{ duration: 0.2 }}
                         >
                             {/* Dropdown Contents */}
@@ -111,6 +125,90 @@ export const Dock = ({
                         </motion.div>
                     </div>
                 </motion.nav>
+
+                {/* Mobile Dock */}
+                <div className="md:hidden fixed bottom-8 left-0 w-full z-50 flex justify-center pointer-events-none">
+                    <div className="pointer-events-auto">
+                        <AnimatePresence>
+                            {isMobileMenuOpen && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 20 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="fixed inset-0 bg-white dark:bg-black z-40 flex flex-col pt-20 px-6 pb-32 overflow-y-auto"
+                                >
+                                    <div className="flex flex-col gap-6">
+                                        {React.Children.map(children, (child) => {
+                                            if (!React.isValidElement(child)) return null;
+
+                                            // Handle DockLink (Top level links)
+                                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                            if ((child.type as any).displayName === "DockLink") {
+                                                const props = child.props as DockLinkProps;
+                                                return (
+                                                    <Link
+                                                        href={props.href}
+                                                        className="text-black dark:text-white text-2xl font-medium"
+                                                        onClick={() => setIsMobileMenuOpen(false)}
+                                                    >
+                                                        {props.label}
+                                                    </Link>
+                                                );
+                                            }
+
+                                            // Handle DockItem (Sections with dropdowns)
+                                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                            if ((child.type as any).displayName === "DockItem") {
+                                                const props = child.props as DockItemProps;
+                                                return (
+                                                    <div className="flex flex-col gap-4">
+                                                        <span className="text-neutral-500 dark:text-neutral-400 text-lg">{props.label}</span>
+                                                        <div className="flex flex-col gap-4 pl-4 border-l border-neutral-200 dark:border-neutral-800">
+                                                            {React.Children.map(props.children, (subChild) => {
+                                                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                                                if (React.isValidElement(subChild) && (subChild.type as any).displayName === "DockDropdownItem") {
+                                                                    const subProps = subChild.props as DockDropdownItemProps;
+                                                                    return (
+                                                                        <Link
+                                                                            href={subProps.href}
+                                                                            className="text-black dark:text-white text-xl font-medium flex items-center gap-3"
+                                                                            onClick={() => setIsMobileMenuOpen(false)}
+                                                                        >
+                                                                            {subProps.image && (
+                                                                                <img src={subProps.image} alt="" className="w-8 h-8 rounded-lg object-cover" />
+                                                                            )}
+                                                                            {subProps.label}
+                                                                        </Link>
+                                                                    );
+                                                                }
+                                                                return null;
+                                                            })}
+                                                        </div>
+                                                    </div>
+                                                );
+                                            }
+                                            return null;
+                                        })}
+                                    </div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className={cn(
+                                "flex items-center gap-2 px-6 py-3 rounded-full shadow-lg transition-all duration-300 relative z-50",
+                                isMobileMenuOpen
+                                    ? "bg-transparent border border-black dark:border-white text-black dark:text-white"
+                                    : "bg-white dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800"
+                            )}
+                        >
+                            <span className="font-medium text-lg">Menu</span>
+                            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                        </button>
+                    </div>
+                </div>
             </div>
         </DockContext.Provider>
     );
