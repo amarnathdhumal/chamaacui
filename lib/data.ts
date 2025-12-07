@@ -8,7 +8,7 @@ export const sidebarData: SidebarDataTypes[] = [
   },
   // buttons
   {
-    componentName: "Buttons",
+    componentName: "Buttons Overview",
     link: "/buttons",
     category: "Buttons",
   },
@@ -60,10 +60,9 @@ export const sidebarData: SidebarDataTypes[] = [
     isNew: true,
   },
   {
-    componentName: "Animated Icons",
+    componentName: "Icons Overview",
     link: "/animated-icons",
     category: "Animated Icons",
-    isNew: true,
   },
   {
     componentName: "Copy",
