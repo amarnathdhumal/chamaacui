@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import SlideUpButton from "../slideup-button/slide-up-button";
 import ShimmerButton from "../shimmer-button/shimmer-button";
 import FocusButton from "./focus-button/focus-button";
+import PremiumButton from "../premium-button/premium-button";
 
 interface ButtonTypes {
     name: string;
@@ -16,6 +17,14 @@ interface ButtonTypes {
 }
 
 const buttons: ButtonTypes[] = [
+    {
+        name: "Premium Button",
+        component: PremiumButton,
+        href: "/components/premium-button",
+        props: {
+            text: "Premium Button",
+        }
+    },
     {
         name: "Shimmer Button",
         component: ShimmerButton,
@@ -41,6 +50,7 @@ const buttons: ButtonTypes[] = [
             children: "Contact us",
         }
     },
+
 ];
 
 export default function ButtonsPage() {
@@ -58,7 +68,7 @@ export default function ButtonsPage() {
                     <Link key={button.name} href={button.href} className=" block">
                         <motion.div
 
-                            className="flex flex-col items-center justify-center p-8 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors h-[200px]"
+                            className="flex flex-col items-center justify-center p-8 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors h-[200px]"
                         >
                             <div className="mb-4 scale-90 transition-transform duration-300">
                                 <button.component {...button.props} />

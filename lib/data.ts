@@ -6,6 +6,48 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "",
     category: "Overview",
   },
+  // buttons
+  {
+    componentName: "Buttons",
+    link: "/buttons",
+    category: "Buttons",
+  },
+
+  // sections
+   {
+    componentName: "Feature Steps",
+    link: "/feature-steps",
+    category: "Sections",
+    isNew: true,
+  },
+  {
+    componentName: "Gauge",
+    link: "/gauge",
+    category: "Sections",
+    isNew: true,
+  },
+  {
+    componentName: "Shimmer Button",
+    link: "/shimmer-button",
+    category: "Buttons",
+    isNew: true,
+  },
+  {
+    componentName: "Premium Button",
+    link: "/premium-button",
+    category: "Buttons",
+    isNew: true,
+  },
+  {
+    componentName: "Slide Up Button",
+    link: "/slideup-button",
+    category: "Buttons",
+  },
+  {
+    componentName: "Focus Button",
+    link: "/focus-button",
+    category: "Buttons",
+  },
     {
     componentName: "Carousel",
     link: "/carousel",
@@ -39,48 +81,11 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Adjustments",
     link: "/animated-icons/adjustments-icon",
     category: "Animated Icons",
-    
   },
-  
-  {
-    componentName: "Buttons",
-    link: "/buttons",
-    category: "Buttons",
-  },
-  {
-    componentName: "Shimmer Button",
-    link: "/shimmer-button",
-    category: "Buttons",
-    isNew: true,
-  },
-  {
-    componentName: "Slide Up Button",
-    link: "/slideup-button",
-    category: "Buttons",
-  },
-  {
-    componentName: "Focus Button",
-    link: "/focus-button",
-    category: "Buttons",
-    isNew: true,
-  },
-
   {
     componentName: "Dock",
     link: "/dock",
     category: "Navigation",
-  },
-  {
-    componentName: "Feature Steps",
-    link: "/feature-steps",
-    category: "Sections",
-    isNew: true,
-  },
-  {
-    componentName: "Gauge",
-    link: "/gauge",
-    category: "Sections",
-    isNew: true,
   },
 ];
 
@@ -126,6 +131,16 @@ export const componentCards: ComponentCardType[] = [
     category: "Gallery",
     bgColor: "bg-black dark:bg-black"
   },
+  
+  {
+    title: "Premium Button",
+    description: "A high-quality button with a dynamic arrow animation.",
+    imagePath: "/components/animated-text.png", // Using placeholder for now
+    link: "/components/premium-button",
+    category: "Buttons",
+    bgColor: "bg-black dark:bg-black",
+  },
+
   {
     title: "Buttons",
     description: "A collection of interactive and animated buttons for your applications.",

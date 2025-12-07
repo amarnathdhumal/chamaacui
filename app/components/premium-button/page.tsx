@@ -1,100 +1,85 @@
-import { cn } from "@/lib/utils";
+import fs from "fs";
+import path from "path";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CopyButton from "@/components/ui/copy-button";
+import PremiumButtonPreviewWrapper from "./premium-button-preview-wrapper";
 
-const PremiumButton = () => {
+export default function PremiumButtonPage() {
+    const componentPath = path.join(
+        process.cwd(),
+        "app/components/premium-button/premium-button.tsx"
+    );
+    const componentSource = fs.readFileSync(componentPath, "utf8");
+
+    const demoPath = path.join(
+        process.cwd(),
+        "app/components/premium-button/premium-button-demo.tsx"
+    );
+    const demoSource = fs.readFileSync(demoPath, "utf8");
+
     return (
-        <section className="flex justify-center items-center h-[600px] ">
-            <button className="relative rounded-[8px] border border-white/20 flex items-center gap-2 pl-[50px]  pr-3 tracking-tight  cursor-pointer h-[46px]">
-                <Box />
-                <span className=" font-medium ">Chat with Manu</span>
-            </button>
-        </section>
-    )
-}
-
-const Box = () => {
-    return (
-        <div className="absolute inset-y-0 left-1 my-auto size-9 rounded-sm bg-yellow-300 flex flex-col justify-center items-center gap-px transition-all duration-400 ease-out">
-
-            {/* 1st Box - First row of bubbles */}
-            <div className="flex gap-[2px]">
-                <Bubble />
-                <Bubble />
-                <Bubble />
-                <Bubble />
-                <Bubble highlight />
-                <Bubble />
-                <Bubble />
-
-            </div>
-            {/* 2nd Box - Second row of bubbles */}
-            <div className="flex gap-[2px]">
-                <Bubble />
-                <Bubble />
-
-                <Bubble />
-                <Bubble />
-                <Bubble />
-                <Bubble highlight />
-                <Bubble />
-            </div>
-            {/* 3rd Box - Third row of bubbles */}
-            <div className="flex gap-[2px]">
-                <Bubble highlight />
-                <Bubble highlight />
-
-                <Bubble highlight />
-                <Bubble highlight />
-                <Bubble highlight />
-                <Bubble highlight />
-                <Bubble highlight />
-            </div>
-            {/* 4th Box - Fourth row of bubbles */}
-            <div className="flex gap-[2px]">
-                <Bubble highlight />
-                <Bubble highlight />
-
-                <Bubble highlight />
-                <Bubble highlight />
-                <Bubble highlight />
-                <Bubble highlight />
-                <Bubble highlight />
-            </div>
-
-            {/* 5th Box - Fifth row of bubbles */}
-            <div className="flex gap-[2px]">
-                <Bubble />
-                <Bubble />
-                <Bubble />
-
-                <Bubble />
-                <Bubble />
-                <Bubble highlight />
-                <Bubble />
-            </div>
-            {/* 6th Box - Sixth row of bubbles */}
-            <div className="flex gap-[2px]">
-                <Bubble />
-                <Bubble />
-                <Bubble />
-                <Bubble />
-                <Bubble highlight />
-
-                <Bubble />
-                <Bubble />
-            </div>
-
-
-
-
-
+        <div className="pb-20">
+            <PremiumButtonPreviewWrapper
+                title="Premium Button"
+                description={
+                    <>
+                        A high-quality button with a dynamic arrow animation. Inspired by{" "}
+                        <a
+                            href="https://x.com/rolledpipe/status/1981067656473301194"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                        >
+                            Roshan
+                        </a>
+                        .
+                    </>
+                }
+                code={
+                    <div className="relative">
+                        <div className="absolute top-4 right-4">
+                            <CopyButton text={demoSource} />
+                        </div>
+                        <SyntaxHighlighter
+                            language="tsx"
+                            style={oneDark}
+                            wrapLongLines={true}
+                            customStyle={{
+                                margin: 0,
+                                padding: "1rem",
+                                fontSize: "14px",
+                                lineHeight: "1.5",
+                                width: "100%",
+                                maxWidth: "100%",
+                                boxSizing: "border-box",
+                                overflow: "auto",
+                                scrollbarWidth: "none",
+                                msOverflowStyle: "none",
+                            }}
+                        >
+                            {demoSource}
+                        </SyntaxHighlighter>
+                    </div>
+                }
+                installationSource={componentSource}
+                props={[
+                    {
+                        name: "text",
+                        type: "string",
+                        default: '"Premium Button"',
+                        description: "The text to display inside the button",
+                        required: false,
+                    },
+                    {
+                        name: "className",
+                        type: "string",
+                        default: "-",
+                        description: "Additional CSS classes for the button",
+                        required: false,
+                    },
+                ]}
+            />
         </div>
-    )
+    );
 }
-
-const Bubble = ({ highlight }: { highlight?: boolean }) => {
-    return (
-        <span className={cn("inline-block size-[3px] rounded-full bg-white/25", highlight && "bg-white animate-nudge")} />
-    )
-}
-
-export default PremiumButton;
