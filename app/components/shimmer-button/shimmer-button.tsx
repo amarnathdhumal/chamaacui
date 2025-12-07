@@ -15,9 +15,10 @@ const ShimmerButton = ({
     duration = 1.2
 }: ShimmerButtonProps) => {
     return (
-        <button className={cn("border border-white/10 px-5 py-[10px] text-[18px] rounded-[8px] cursor-pointer font-bold tracking-tight bg-black", className)}>
+        <button className={cn("group relative border border-white/10 bg-neutral-950 px-8 py-3 rounded-full cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98]", className)}>
+
             <motion.span
-                className="bg-clip-text text-transparent bg-[linear-gradient(110deg,#ffffff_0%,#ffffff_40%,#00c6ff_40%,#0072ff_55%,#ffffff_55%,#ffffff_100%)] bg-[length:200%_100%]"
+                className="relative block bg-clip-text text-transparent bg-[linear-gradient(110deg,#a1a1aa_0%,#a1a1aa_40%,#ffffff_50%,#a1a1aa_60%,#a1a1aa_100%)] bg-[length:200%_100%] font-medium text-base tracking-tight"
                 animate={{
                     backgroundPosition: ["0% 0%", "-200% 0%"],
                 }}
