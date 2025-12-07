@@ -22,7 +22,7 @@ const Sidebar = () => {
   }, {} as Record<string, typeof sidebarData>);
 
   return (
-    <div className="min-w-40 h-full flex flex-col sticky top-[114px]">
+    <div className="min-w-40 h-[calc(100vh-120px)] flex flex-col sticky top-[114px] overflow-y-auto hide-scrollbar pb-10">
       <ul className="flex flex-col gap-4">
         {Object.entries(groupedData).map(([category, items]) => (
           <li key={category} className="flex flex-col gap-4">

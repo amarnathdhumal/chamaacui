@@ -130,16 +130,6 @@ export const componentCards: ComponentCardType[] = [
     category: "Gallery",
     bgColor: "bg-black dark:bg-black"
   },
-  
-  {
-    title: "Premium Button",
-    description: "A high-quality button with a dynamic arrow animation.",
-    imagePath: "/components/animated-text.png", // Using placeholder for now
-    link: "/components/premium-button",
-    category: "Buttons",
-    bgColor: "bg-black dark:bg-black",
-  },
-
   {
     title: "Buttons",
     description: "A collection of interactive and animated buttons for your applications.",
