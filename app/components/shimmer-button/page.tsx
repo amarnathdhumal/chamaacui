@@ -22,7 +22,7 @@ export default function ShimmerButtonPage() {
         <div className="pb-20">
             <ShimmerButtonPreviewWrapper
                 title="Shimmer Button"
-                description="A button with a shimmering text animation effect, perfect for call-to-actions."
+                description="A button with a shimmering text animation effect."
                 code={
                     <div className="relative">
                         <div className="absolute top-4 right-4">

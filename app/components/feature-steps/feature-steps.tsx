@@ -26,14 +26,16 @@ export default function FeatureSteps({
     imageClassName = "h-[400px]",
 }: FeatureStepsProps) {
     const [currentFeature, setCurrentFeature] = useState(0);
+    const [progressKey, setProgressKey] = useState(0);
 
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentFeature((prev) => (prev + 1) % features.length);
+            setProgressKey((prev) => prev + 1);
         }, autoPlayInterval);
 
         return () => clearInterval(timer);
-    }, [autoPlayInterval]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [autoPlayInterval, currentFeature, features.length]); // Reset timer when currentFeature changes
 
     return (
         <div className={cn("flex flex-col md:flex-row w-full md:items-stretch max-w-[1440px] mx-auto", className)}>
@@ -43,7 +45,10 @@ export default function FeatureSteps({
                     <motion.div
                         key={index}
                         layoutId={feature.title}
-                        onClick={() => setCurrentFeature(index)}
+                        onClick={() => {
+                            setCurrentFeature(index);
+                            setProgressKey((prev) => prev + 1);
+                        }}
                         className="p-4 md:p-10 relative cursor-pointer"
                     >
                         <h3 className="text-base md:text-lg leading-none text-black dark:text-white">
@@ -54,7 +59,7 @@ export default function FeatureSteps({
                         </p>
                         {index === currentFeature && (
                             <motion.div
-
+                                key={progressKey}
                                 className="absolute h-[1px] bottom-0 left-0 bg-black dark:bg-white"
                                 initial={{ width: "0%" }}
                                 animate={{ width: "100%" }}
