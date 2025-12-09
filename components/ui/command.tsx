@@ -49,13 +49,13 @@ function CommandDialog({
         <DialogDescription>{description}</DialogDescription>
       </DialogHeader>
       <DialogContent
-        className={cn("overflow-hidden p-0 gap-0 shadow-[inset_0_-200px_200px_rgba(0,0,0,0.05)] dark:inset_0_-100px_200px_rgba(255,255,255,0.05)]", className)}
+        className={cn("overflow-hidden p-0 gap-0 ", className)}
         showCloseButton={showCloseButton}
       >
-        <Command className="[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
+        <Command className="[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[30%] after:content-[''] after:bg-gradient-to-t after:from-background after:to-transparent after:pointer-events-none after:z-10">
           {children}
         </Command>
-        {/* <div className="flex items-center justify-between border-t border-border px-4 py-2 text-xs  bg-white dark:bg-black">
+        <div className="flex items-center justify-between border-t border-border px-4 py-2 text-xs  bg-white dark:bg-black">
           <div className="flex items-center justify-between gap-1">
             <span className="text-base/7 text-black dark:text-white ">Chamaac</span>
           </div>
@@ -65,7 +65,7 @@ function CommandDialog({
               Esc
             </kbd>
           </div>
-        </div> */}
+        </div>
       </DialogContent>
     </Dialog>
   )
