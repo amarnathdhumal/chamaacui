@@ -75,7 +75,7 @@ const Sidebar = () => {
                       )}
                       {item.componentName}
                       {item.isNew && (
-                        <span className="ml-2 text-[10px]    text-green-500 border border-green-500 px-1.5 py-1 rounded-[16px] leading-none">
+                        <span className="ml-2 text-[10px] bg-[#adfa1d]    text-black px-1.5 py-1 rounded-[8px] leading-none">
                           New
                         </span>
                       )}
