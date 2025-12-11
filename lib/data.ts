@@ -26,18 +26,19 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Sections",
     isNew: true,
   },
+    {
+    componentName: "Premium Button",
+    link: "/premium-button",
+    category: "Buttons",
+    isNew: true,
+  },
   {
     componentName: "Shimmer Button",
     link: "/shimmer-button",
     category: "Buttons",
     isNew: true,
   },
-  {
-    componentName: "Premium Button",
-    link: "/premium-button",
-    category: "Buttons",
-    isNew: true,
-  },
+
   {
     componentName: "Slide Up Button",
     link: "/slideup-button",
@@ -106,14 +107,7 @@ export const componentCards: ComponentCardType[] = [
     category: "Sections",
     bgColor: "bg-black dark:bg-black",
   },
-    {
-    title: "Orbiting Icons",
-    description: "A dynamic, rotating card component that displays a circular array of icons with smooth animations.",
-    imagePath: "/components/orbiting-icons.png",
-    link: "/components/orbiting-icons",
-    category: "Cards",
-    bgColor: "bg-black dark:bg-black",
-  },
+   
   {
     title: "Feature Steps",
     description: "A dynamic feature showcase with auto-playing steps and synchronized image transitions.",
@@ -133,12 +127,19 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Buttons",
     description: "A collection of interactive and animated buttons for your applications.",
-    imagePath: "/components/buttons.png",
+    imagePath: "/components/buttons.svg",
     link: "/components/buttons",
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
   },
-
+ {
+    title: "Orbiting Icons",
+    description: "A dynamic, rotating card component that displays a circular array of icons with smooth animations.",
+    imagePath: "/components/orbiting-icons.png",
+    link: "/components/orbiting-icons",
+    category: "Cards",
+    bgColor: "bg-black dark:bg-black",
+  },
   {
     title: "Animated Icons",
     description: "A collection of smooth, micro-interaction animations for your icons.",
