@@ -70,11 +70,11 @@ export const Header = () => {
             {/* search input */}
             <button
               onClick={() => setOpen(true)}
-              className="flex items-center gap-2 p-2 text-sm hover:bg-muted rounded-[16px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-800 dark:text-gray-400"
+              className="flex items-center gap-2 px-2 md:px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[16px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-500 dark:text-gray-400"
             >
               <IconSearch size={16} />
               <span className="hidden md:inline-block text-sm/5 ">Search Components</span>
-              <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded-[8px] border bg-gray-100 dark:bg-[#111111] px-2 py-2  text-[12px] text-neutral-800 dark:text-gray-400 opacity-100">
+              <kbd className="pointer-events-none sm:inline-flex h-5 select-none items-center gap-1 rounded-[8px] border bg-gray-200 dark:bg-[#111111] px-2 py-2  text-[12px] text-neutral-500 dark:text-gray-400 opacity-100  hidden">
                 <span className="">⌘</span>K
               </kbd>
             </button>
@@ -84,10 +84,10 @@ export const Header = () => {
 
             <IconBrandX
               onClick={() => window.open("https://x.com/AmarnathDhumal", "_blank")}
-              className="text-neutral-800 dark:text-gray-400 my-4 leading-tight  cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full " />
+              className="text-neutral-500 dark:text-gray-400 my-4 leading-tight  cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full " />
             <IconBrightness
               onClick={toggleTheme}
-              className="text-neutral-800 dark:text-gray-400 my-4 leading-tight  cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
+              className="text-neutral-500 dark:text-gray-400 my-4 leading-tight  cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
             />
 
 
@@ -96,7 +96,7 @@ export const Header = () => {
       </div>
 
       <CommandDialog open={open} onOpenChange={setOpen} className="bg-white dark:bg-black rounded-[16px] border-gray-200 dark:border-neutral-800 ">
-        <CommandInput className=" py-2 text-sm/5 text-neutral-800 dark:text-gray-400 " placeholder="Type a command or search..." />
+        <CommandInput className=" py-2 text-sm/5 text-neutral-500 dark:text-gray-400 " placeholder="Type a command or search..." />
         <CommandList className="bg-white dark:bg-black ">
           <CommandEmpty>No results found.</CommandEmpty>
           {Object.entries(

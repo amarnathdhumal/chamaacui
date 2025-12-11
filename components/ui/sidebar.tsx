@@ -27,15 +27,15 @@ const Sidebar = () => {
         {Object.entries(groupedData).map(([category, items]) => (
           <li key={category} className="flex flex-col gap-4">
             {items.some(item => item.componentName === category) ? (
-              <Link href={`/components${items.find(item => item.componentName === category)?.link}`} className="text-lg font-medium text-black dark:text-white leading-none tracking-tight hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+              <Link href={`/components${items.find(item => item.componentName === category)?.link}`} className="text-base/7 md:text-lg/7 font-medium text-black dark:text-white  tracking-tight hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
                 {category}
               </Link>
             ) : (
-              <h3 className="text-lg font-medium text-black dark:text-white leading-none tracking-tight">
+              <h3 className="text-base/7 md:text-lg/7 font-medium text-black dark:text-white ">
                 {category}
               </h3>
             )}
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-4">
               {items.filter(item => item.componentName !== category).map((item) => {
                 const href = item.link === "" ? "/components" : `/components${item.link}`;
                 const isActive = item.link === ""
@@ -49,8 +49,8 @@ const Sidebar = () => {
                     <motion.a
                       href={href}
                       className={cn(
-                        "cursor-pointer font-normal text-sm flex flex-row items-center gap-[5px] leading-none",
-                        `${isActive ? "text-black dark:text-white  font-medium" : "text-gray-500 dark:text-gray-400 "}`
+                        "cursor-pointer font-normal text-sm/5 flex flex-row items-center gap-[5px] leading-none hover:text-black dark:hover:text-white hover:font-medium",
+                        `${isActive ? "text-black dark:text-white  font-medium" : "text-gray-600 dark:text-gray-400 "}`
                       )}
                       onMouseEnter={() => setHoveredItem(itemId)}
                       onMouseLeave={() => setHoveredItem(null)}

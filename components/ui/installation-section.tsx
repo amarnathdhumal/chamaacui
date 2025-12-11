@@ -5,6 +5,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
 
 interface InstallationSectionProps {
     componentSource: string;
@@ -32,32 +33,41 @@ export default function InstallationSection({
     const activeCommand = getInstallCommand(activePm, dependencies);
 
     return (
-        <div className="mb-8">
-            <h2 className="text-xl font-bold text-black dark:text-white mb-4">
+        <div className="mb-5 md:mb-10">
+            <h2 className="text-2xl/7 md:text-3xl/7 tracking-tight text-black dark:text-white mb-4">
                 Installation
             </h2>
 
             {/* Install Dependencies Section */}
             {dependencies.length > 0 && (
-                <div className="mb-4">
-                    <h3 className="text-lg font-semibold text-black dark:text-white mb-2">
+                <div className="mb-5 md:mb-10">
+                    <h3 className="text-base/7 md:text-xl/7 text-black dark:text-white mb-4">
                         Install Dependencies
                     </h3>
                     <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden">
                         <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-gray-200 dark:border-neutral-800">
-                            <div className="flex flex-wrap gap-1 ">
+                            <div className="flex flex-wrap gap-1 relative">
                                 {(["npm", "yarn", "pnpm", "bun"] as PackageManager[]).map((pm) => (
                                     <button
                                         key={pm}
                                         onClick={() => setActivePm(pm)}
                                         className={cn(
-                                            "px-4 py-2 rounded-[8px] text-sm font-medium transition-colors leading-none",
+                                            "px-4 py-2 rounded-[8px] text-sm/5  transition-colors leading-none relative z-10",
                                             activePm === pm
-                                                ? "bg-gray-200 dark:bg-neutral-800 text-neutral-700 dark:text-white"
+                                                ? "text-neutral-700 dark:text-white"
                                                 : "text-neutral-500 dark:text-gray-400 hover:text-neutral-700 dark:hover:text-gray-300"
                                         )}
                                     >
-                                        {pm}
+                                        {activePm === pm && (
+                                            <motion.div
+                                                layoutId="activeBackground"
+                                                className="absolute inset-0 bg-gray-200 dark:bg-neutral-800 rounded-[8px]"
+                                                transition={{
+                                                    duration: 0.3
+                                                }}
+                                            />
+                                        )}
+                                        <span className="relative z-10">{pm}</span>
                                     </button>
                                 ))}
                             </div>
@@ -69,7 +79,7 @@ export default function InstallationSection({
                                 <CopyButton text={activeCommand} />
                             </div>
                             <div className="p-4">
-                                <code className="text-sm font-mono text-neutral-800 dark:text-neutral-200">
+                                <code className="text-sm font-mono text-neutral-500 dark:text-neutral-200">
                                     {activeCommand}
                                 </code>
                             </div>
@@ -81,12 +91,12 @@ export default function InstallationSection({
 
             {/* Component Code Section */}
             <div>
-                <h3 className="text-lg font-semibold text-black dark:text-white mb-2">
+                <h3 className="text-base/7 md:text-xl/7 text-black dark:text-white mb-4">
                     Component Code
                 </h3>
                 <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden">
                     <div className="bg-gray-50 dark:bg-neutral-900 p-4 border-b border-gray-200 dark:border-neutral-800">
-                        <p className="text-sm text-neutral-600 dark:text-gray-400 leading-none">
+                        <p className="text-sm/5 text-neutral-500 dark:text-gray-400">
                             Copy and paste the component code into your project.
                         </p>
                     </div>

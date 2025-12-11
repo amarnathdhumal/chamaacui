@@ -56,14 +56,14 @@ const buttons: ButtonTypes[] = [
 export default function ButtonsPage() {
     return (
         <div className="w-full mx-auto">
-            <div className="mb-8">
-                <h1 className="text-3xl font-bold text-black dark:text-white mb-2">Buttons</h1>
-                <p className="text-neutral-600 dark:text-neutral-400">
+            <div className="mb-5 md:mb-10">
+                <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-medium tracking-tighter  text-black dark:text-white ">Buttons</h1>
+                <p className=" text-base/5 md:text-lg/7 text-neutral-500 dark:text-gray-400 tracking-tight mt-2 md:mt-4   max-w-[750px]">
                     A collection of interactive and animated buttons for your applications.
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                 {buttons.map((button) => (
                     <Link key={button.name} href={button.href} className=" block">
                         <motion.div

@@ -37,14 +37,14 @@ const icons: IconTypes[] = [
 export default function AnimatedIconsPage() {
     return (
         <div className="w-full  mx-auto ">
-            <div className="mb-8">
-                <h1 className="text-3xl font-bold text-black dark:text-white mb-2">Animated Icons</h1>
-                <p className="text-neutral-600 dark:text-neutral-400">
+            <div className="mb-5 md:mb-10">
+                <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-medium tracking-tighter  text-black dark:text-white mb-4">Animated Icons</h1>
+                <p className="text-base/5 md:text-lg/7 text-neutral-500 dark:text-gray-400 tracking-tight mt-4   max-w-[750px]">
                     A collection of smooth, micro-interaction animations for your icons.
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 ">
                 {icons.map((icon) => (
                     <Link key={icon.name} href={icon.href} className="group block">
                         <motion.div

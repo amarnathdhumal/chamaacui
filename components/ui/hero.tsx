@@ -1,7 +1,7 @@
 "use client";
 
 import GreenButton from "./green-button";
-import Header from "./header";
+import { Header } from "@/app/components/header";
 import Image from "next/image";
 import IconBox from "./icon-box";
 import { motion } from "framer-motion";

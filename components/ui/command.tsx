@@ -61,7 +61,7 @@ function CommandDialog({
           </div>
           <div className="flex gap-2 items-center ">
             <span className="text-sm/5 text-gray-500 dark:text-gray-400">Exit</span>
-            <kbd className="text-[12px] dark:bg-neutral-800 bg-gray-100 text-black dark:text-white px-2 py-2 rounded-[8px] leading-none ">
+            <kbd className="text-[12px] dark:bg-neutral-800 bg-gray-200 text-black dark:text-white px-2 py-2 rounded-[8px] leading-none ">
               Esc
             </kbd>
           </div>

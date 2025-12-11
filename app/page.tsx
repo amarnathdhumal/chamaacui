@@ -17,7 +17,7 @@ export default function Home() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-medium text-left text-black dark:text-white leading-[0.95] tracking-tighter" >
             Make your UI shine.
           </h1>
-          <p className="text-base/7 md:text-lg/7 text-left text-neutral-800 dark:text-gray-400 my-5">
+          <p className="text-base/5 md:text-lg/7 text-left text-neutral-500 dark:text-gray-400 my-5">
             A collection of beautiful, animated components to elevate your web projects instantly.
           </p>
           <div className="">

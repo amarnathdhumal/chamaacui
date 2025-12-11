@@ -19,12 +19,12 @@ const ViewArea = ({
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
 
   return (
-    <div className="flex flex-col w-full h-full mb-12 min-w-0 hide-scrollbar ">
-      <h1 className="text-4xl font-bold text-black dark:text-white">{title}</h1>
-      <p className="text-base text-neutral-800 dark:text-gray-400 my-4 leading-tight">
+    <div className="flex flex-col w-full h-full mb-10 md:mb-20 min-w-0 hide-scrollbar ">
+      <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-medium tracking-tighter text-black dark:text-white">{title}</h1>
+      <p className="text-base/5 md:text-lg/7 text-neutral-500 dark:text-gray-400 tracking-tight mt-2 md:mt-4 mb-5 md:mb-10  max-w-[750px]">
         {description}
       </p>
-      <div className="flex flex-row gap-4 mb-6">
+      <div className="flex flex-row gap-4 mb-4">
         <TabButton
           name="Preview"
           onClick={() => setActiveTab("preview")}

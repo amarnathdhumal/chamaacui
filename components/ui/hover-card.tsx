@@ -114,7 +114,7 @@ const GiftCard = () => {
 
         {/* Content */}
         <div className="   ">
-          <p className="text-[18px] font-medium text-center text-neutral-800">
+          <p className="text-[18px] font-medium text-center text-neutral-500">
             🎉 Your Coupon Code:
             <br />
             <span className="text-[32px] font-semibold text-green-600">

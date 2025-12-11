@@ -10,7 +10,7 @@ const Components = () => {
   return (
     <div className="flex flex-col w-full pb-12 ">
       {/* Component Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         {componentCards.map((component) => (
           <motion.div
             key={component.link}
@@ -29,7 +29,7 @@ const Components = () => {
 
               >
                 {/* Image Container */}
-                <div className={cn("relative w-full h-[300px] rounded-[12px] bg-gray-100 dark:bg-black  overflow-hidden border-gray-200 dark:border-neutral-800", component.bgColor)}>
+                <div className={cn("relative w-full h-[300px] rounded-[12px] bg-gray-200 dark:bg-black  overflow-hidden border-gray-200 dark:border-neutral-800", component.bgColor)}>
                   {component.imagePath ? (
                     <Image
                       src={component.imagePath}
@@ -60,11 +60,11 @@ const Components = () => {
                 </div>
 
                 {/* Content */}
-                <div className="py-4 px-3">
-                  <h3 className="text-xl font-semibold text-black dark:text-white mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+                <div className="py-2 md:py-4 px-2 md:px-3">
+                  <h3 className="text-xl/10 md:text-2xl/7 font-medium text-black dark:text-white  mb-2 md:mb-4 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                     {component.title}
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                  <p className="text-sm/5 text-gray-600 dark:text-gray-400 ">
                     {component.description}
                   </p>
                 </div>

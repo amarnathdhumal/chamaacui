@@ -19,7 +19,7 @@ export default function PremiumButtonPage() {
     const demoSource = fs.readFileSync(demoPath, "utf8");
 
     return (
-        <div className="pb-20">
+        <div className="">
             <PremiumButtonPreviewWrapper
                 title="Premium Button"
                 description={

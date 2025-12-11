@@ -169,7 +169,7 @@ const MarqueeCard = () => {
             <div className="from-white to-transparent pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l"></div>
 
             <div>
-                <h2 className="text-xl font-semibold text-neutral-800 text-center mt-2 ">
+                <h2 className="text-xl font-semibold text-neutral-500 text-center mt-2 ">
                     The Future of AI is Here
                 </h2>
 
