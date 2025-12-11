@@ -131,7 +131,7 @@ export default function NoiseDemoPage() {
                             <div className="bg-black/30 p-4 rounded-lg">
                                 <h4 className="font-semibold text-white mb-2">
                                     stitchTiles
-                                </h4>
+                                </h4>.
                                 <p className="text-sm text-gray-400">
                                     Set to stitch to ensure seamless tiling across the entire
                                     element.
