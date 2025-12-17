@@ -10,7 +10,7 @@ interface PremiumButtonProps {
 
 const PremiumButton = ({ text = "Premium Button", className }: PremiumButtonProps) => {
     return (
-        <button className={cn("relative rounded-[8px] flex items-center gap-2 pl-[48px] pr-4 tracking-tight cursor-pointer h-[44px] bg-black  hover:scale-[1.02] active:scale-[0.98] transition-all", className)}>
+        <button className={cn("relative rounded-[8px] flex items-center gap-2 pl-[48px] pr-4 tracking-tight cursor-pointer h-[44px] bg-black  hover:scale-[1.02] active:scale-[0.98] transition-all dark:border dark:border-neutral-800", className)}>
             <Box />
             <span className="font-medium text-white">{text}</span>
         </button>
