@@ -55,7 +55,7 @@ const OrbitingIcons = ({
 
     return (
 
-        <div className="bg-neutral-100 dark:bg-neutral-800 rounded-[32px] w-[300px] h-[300px] md:w-[400px] md:h-[400px] overflow-hidden relative flex flex-col items-center shadow-2xl">
+        <div className="bg-neutral-100 dark:bg-neutral-800 rounded-[32px] w-[300px] h-[300px] md:w-[400px] md:h-[350px] overflow-hidden relative flex flex-col items-center shadow-2xl">
 
             {/* Rotating Icons Centered */}
             <motion.div
@@ -114,7 +114,7 @@ const OrbitingIcons = ({
 const IconCard = ({ img }: IconProps) => {
     return (
         <motion.div
-            className="size-[50px] md:size-[80px] flex items-center justify-center relative rounded-full bg-white dark:bg-neutral-700 ">
+            className="size-[50px] md:size-[65px] flex items-center justify-center relative rounded-full bg-white dark:bg-neutral-700 ">
             <Image
                 alt="image"
                 src={img}

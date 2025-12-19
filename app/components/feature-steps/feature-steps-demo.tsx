@@ -25,7 +25,7 @@ const features = [
 
 export default function FeatureStepsDemo() {
     return (
-        <div className="w-full h-full flex items-center justify-center">
+        <div className="w-full h-screen flex items-center justify-center">
             <FeatureSteps
                 features={features}
                 autoPlayInterval={6000}
