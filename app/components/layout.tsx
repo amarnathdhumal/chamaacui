@@ -6,7 +6,7 @@ const ComponentLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex h-full ">
       <Header />
-      <div className="mt-[100px] md:mt-[114px] flex w-full min-w-0   lg:pl-12 max-w-[1440px] mx-auto">
+      <div className="mt-[100px] md:mt-[114px] flex w-full min-w-0   lg:pl-9 max-w-[1440px] mx-auto">
         <div className="hidden lg:block sticky top-28 self-start">
           <Sidebar />
         </div>
