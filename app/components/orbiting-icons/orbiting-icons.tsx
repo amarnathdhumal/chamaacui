@@ -32,7 +32,7 @@ interface OrbitingIconsProps {
 
 const OrbitingIcons = ({
     icons,
-    radius = 300,
+    radius = 250,
     duration = 40,
     title = "Automate Your Workflow",
     description = "Connect your favorite tools and boost productivity effortlessly."
@@ -42,20 +42,49 @@ const OrbitingIcons = ({
     // Calculate how many icons fit around the circle with gap
     const circumference = 2 * Math.PI * radius;
     // Use larger spacing to create gaps (1.2 factor)
-    const iconsNeeded = Math.floor(circumference / (iconSize * 1.1));
+    const iconsNeeded = Math.floor(circumference / (iconSize * 0.9));
 
-    // Repeat the icons array to fill the circle
+    // Distribute icons ensuring no back-to-back duplicates
     const repeatedIcons: string[] = [];
-    for (let i = 0; i < iconsNeeded; i++) {
-        repeatedIcons.push(icons[i % icons.length]);
-    }
 
-    // Trim to exact needed count
-    repeatedIcons.length = iconsNeeded;
+    // If we have enough unique icons, use them in a pattern that avoids adjacency
+    if (icons.length >= 2) {
+        for (let i = 0; i < iconsNeeded; i++) {
+            // Get the previous icon to avoid duplication
+            const prevIcon = repeatedIcons[i - 1];
+
+            // Find a suitable icon that's different from the previous one
+            let iconIndex = i % icons.length;
+
+            // If this icon would be the same as the previous, shift to the next one
+            if (icons[iconIndex] === prevIcon) {
+                iconIndex = (iconIndex + 1) % icons.length;
+            }
+
+            // Also check if this is the last icon and it would match the first (circular check)
+            if (i === iconsNeeded - 1 && icons[iconIndex] === repeatedIcons[0] && icons.length > 2) {
+                // Find an icon that's different from both the previous and the first
+                for (let j = 0; j < icons.length; j++) {
+                    const candidateIndex = (iconIndex + j) % icons.length;
+                    if (icons[candidateIndex] !== prevIcon && icons[candidateIndex] !== repeatedIcons[0]) {
+                        iconIndex = candidateIndex;
+                        break;
+                    }
+                }
+            }
+
+            repeatedIcons.push(icons[iconIndex]);
+        }
+    } else {
+        // If only 1 unique icon, just repeat it
+        for (let i = 0; i < iconsNeeded; i++) {
+            repeatedIcons.push(icons[0]);
+        }
+    }
 
     return (
 
-        <div className="bg-neutral-100 dark:bg-neutral-800 rounded-[32px] w-[300px] h-[300px] md:w-[400px] md:h-[350px] overflow-hidden relative flex flex-col items-center shadow-2xl">
+        <div className="bg-neutral-100 dark:bg-neutral-800 rounded-[32px] w-[300px] h-[300px] md:w-[375px] md:h-[350px] overflow-hidden relative flex flex-col items-center shadow-2xl">
 
             {/* Rotating Icons Centered */}
             <motion.div
@@ -63,8 +92,9 @@ const OrbitingIcons = ({
                 style={{
                     width: radius * 2,
                     height: radius * 2,
-                    top: '20%',
-
+                    top: '70px',
+                    left: '50%',
+                    marginLeft: -(radius), // Center horizontally by offsetting half the width
                 }}
                 animate={{
                     rotate: 360,
@@ -80,6 +110,8 @@ const OrbitingIcons = ({
                     const angle = (index / repeatedIcons.length) * 2 * Math.PI;
                     const x = radius + Math.cos(angle) * radius - 40; // -40 to center the icon (80px/2)
                     const y = radius + Math.sin(angle) * radius - 40;
+                    // Convert angle to degrees and add 90° to face the direction of travel (tangent)
+                    const rotationDeg = (angle * 180 / Math.PI) + 90;
 
                     return (
                         <div
@@ -88,6 +120,7 @@ const OrbitingIcons = ({
                                 position: 'absolute',
                                 left: `${x}px`,
                                 top: `${y}px`,
+                                transform: `rotate(${rotationDeg}deg)`,
                             }}
                         >
                             <IconCard img={item} index={index} />
