@@ -1,14 +1,13 @@
 "use client";
 
+import DancingLetters from "../components/dancing-letters/dancing-letters";
 
-export default function DockDemo() {
+export default function DancingLettersDemo() {
     return (
-        // Style based on descendants of a peer
-        <div className="text-[clamp(50px,80vw,280px)] text-center">
-            CHAMAAC
-
+        <div className="flex flex-col items-center justify-center gap-8 h-screen">
+            <DancingLetters
+                text="ANIMATE"
+            />
         </div>
-
-
     );
 }

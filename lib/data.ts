@@ -94,6 +94,7 @@ export interface ComponentCardType {
   title: string;
   description: string;
   imagePath: string;
+  videoSrc?: string;
   link: string;
   category: string;
   bgColor?: string;
@@ -104,32 +105,55 @@ export const componentCards: ComponentCardType[] = [
     title: "Gauge",
     description: "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
     imagePath: "/components/gauge.svg",
+    videoSrc: "https://assets.amarn.me/gauge.mp4",
     link: "/components/gauge",
     category: "Sections",
     bgColor: "bg-black dark:bg-black",
   },
    
-  {
-    title: "Feature Steps",
-    description: "A dynamic feature showcase with auto-playing steps and synchronized image transitions.",
-    imagePath: "/components/features-step.png",
-    link: "/components/feature-steps",
-    category: "Sections",
-    bgColor: "bg-black dark:bg-black",
-  },
+  
     {
     title: "Dancing Letters",
     description: "A sleek, interactive text animation component with physics-based effects.",
     imagePath: "/components/dancing-letters.svg",
+    videoSrc: "https://assets.amarn.me/dancing-lettersv3.mp4",
     link: "/components/dancing-letters",
     category: "Text Animations",
     bgColor: "bg-black dark:bg-black",
   },
   {
-    title: "Buttons",
+    title: "Premium Button",
     description: "A collection of interactive and animated buttons for your applications.",
-    imagePath: "/components/buttons.svg",
-    link: "/components/buttons",
+    imagePath: "/components/premium-button.svg",
+    videoSrc: "https://assets.amarn.me/premium_button.mp4",
+    link: "/components/premium-button",
+    category: "Buttons",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "Shimmer Button",
+    description: "A collection of interactive and animated buttons for your applications.",
+    imagePath: "/components/shimmer-button.svg",
+    videoSrc: "https://assets.amarn.me/shimmer-button.mp4",
+    link: "/components/shimmer-button",
+    category: "Buttons",
+    bgColor: "bg-black dark:bg-black",
+  },
+    {
+    title: "Slide Up Button",
+    description: "A collection of interactive and animated buttons for your applications.",
+    imagePath: "/components/slideup-button.svg",
+    videoSrc: "https://assets.amarn.me/slide-up-button.mp4",
+    link: "/components/slideup-button",
+    category: "Buttons",
+    bgColor: "bg-black dark:bg-black",
+  },
+    {
+    title: "Focus Button",
+    description: "A collection of interactive and animated buttons for your applications.",
+    imagePath: "/components/focus-button.svg",
+    videoSrc: "https://assets.amarn.me/focus-button.mp4",
+    link: "/components/focus-button",
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
   },
@@ -137,6 +161,7 @@ export const componentCards: ComponentCardType[] = [
     title: "Carousel",
     description: "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
     imagePath: "/components/carousel.png",
+    videoSrc: "https://assets.amarn.me/carousel.mp4",
     link: "/components/carousel",
     category: "Gallery",
     bgColor: "bg-black dark:bg-black"
@@ -145,6 +170,7 @@ export const componentCards: ComponentCardType[] = [
     title: "Animated Icons",
     description: "A collection of smooth, micro-interaction animations for your icons.",
     imagePath: "/components/animated-icons.png",
+    videoSrc: "https://assets.amarn.me/animated-icons.mp4",
     link: "/components/animated-icons",
     category: "Animated Icons",
     bgColor: "bg-black dark:bg-black"
@@ -154,9 +180,18 @@ export const componentCards: ComponentCardType[] = [
     title: "Dock",
     description: "A navigation dock component with smooth animations and hover effects, perfect for desktop interfaces.",
     imagePath: "/components/dock.svg",
+    videoSrc: "https://assets.amarn.me/dock.mp4",
     link: "/components/dock",
     category: "Navigation",
      bgColor: "bg-black dark:bg-black",
   },
-
+{
+    title: "Feature Steps",
+    description: "A dynamic feature showcase with auto-playing steps and synchronized image transitions.",
+    imagePath: "/components/features-step.png",
+    videoSrc: "https://assets.amarn.me/features-section.mp4",
+    link: "/components/feature-steps",
+    category: "Sections",
+    bgColor: "bg-black dark:bg-black",
+  },
 ];
