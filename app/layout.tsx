@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif, Outfit } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/components/ui/theme-provider";
@@ -23,6 +23,12 @@ const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
   subsets: ["latin"],
   weight: ["400"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -68,7 +74,7 @@ export default function RootLayout({
 
 
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased bg-white dark:bg-black  `}
+        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} ${outfit.variable} antialiased bg-white dark:bg-black  `}
       >
         <CSPostHogProvider>
           <PostHogPageView />

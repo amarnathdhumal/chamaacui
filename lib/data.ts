@@ -12,13 +12,18 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "/buttons",
     category: "Buttons",
   },
-
+  // text animations
+    {
+    componentName: "Dancing Letters",
+    link: "/dancing-letters",
+    category: "Text Animations",
+    isNew: true,
+  },
   // sections
    {
     componentName: "Feature Steps",
     link: "/feature-steps",
     category: "Sections",
-    isNew: true,
   },
   {
     componentName: "Gauge",
@@ -26,6 +31,7 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Sections",
     isNew: true,
   },
+
     {
     componentName: "Premium Button",
     link: "/premium-button",
@@ -36,7 +42,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Shimmer Button",
     link: "/shimmer-button",
     category: "Buttons",
-    isNew: true,
   },
 
   {
@@ -82,6 +87,7 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "/dock",
     category: "Navigation",
   },
+
 ];
 
 export interface ComponentCardType {
@@ -111,13 +117,13 @@ export const componentCards: ComponentCardType[] = [
     category: "Sections",
     bgColor: "bg-black dark:bg-black",
   },
-  {
-    title: "Carousel",
-    description: "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
-    imagePath: "/components/carousel.png",
-    link: "/components/carousel",
-    category: "Gallery",
-    bgColor: "bg-black dark:bg-black"
+    {
+    title: "Dancing Letters",
+    description: "A sleek, interactive text animation component with physics-based effects.",
+    imagePath: "/components/dancing-letters.svg",
+    link: "/components/dancing-letters",
+    category: "Text Animations",
+    bgColor: "bg-black dark:bg-black",
   },
   {
     title: "Buttons",
@@ -126,6 +132,14 @@ export const componentCards: ComponentCardType[] = [
     link: "/components/buttons",
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
+  },
+    {
+    title: "Carousel",
+    description: "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
+    imagePath: "/components/carousel.png",
+    link: "/components/carousel",
+    category: "Gallery",
+    bgColor: "bg-black dark:bg-black"
   },
   {
     title: "Animated Icons",
@@ -144,4 +158,5 @@ export const componentCards: ComponentCardType[] = [
     category: "Navigation",
      bgColor: "bg-black dark:bg-black",
   },
+
 ];
