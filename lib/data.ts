@@ -54,12 +54,7 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "/carousel",
     category: "Gallery",
   },
-    {
-    componentName: "Orbiting Icons",
-    link: "/orbiting-icons",
-    category: "Cards",
-    isNew: true,
-  },
+   
   {
     componentName: "Icons Overview",
     link: "/animated-icons",
@@ -130,14 +125,6 @@ export const componentCards: ComponentCardType[] = [
     imagePath: "/components/buttons.svg",
     link: "/components/buttons",
     category: "Buttons",
-    bgColor: "bg-black dark:bg-black",
-  },
- {
-    title: "Orbiting Icons",
-    description: "A dynamic, rotating card component that displays a circular array of icons with smooth animations.",
-    imagePath: "/components/orbiting-icons.png",
-    link: "/components/orbiting-icons",
-    category: "Cards",
     bgColor: "bg-black dark:bg-black",
   },
   {
