@@ -45,7 +45,10 @@ export default function DockPreviewWrapper({
                 title={title}
                 description={description}
                 preview={
-                    <div className="w-full h-[300px] flex justify-center items-center">
+                    <div className="w-full h-[300px] flex flex-col justify-center items-center gap-4">
+                        <h2 className="text-center text-2xl font-medium">
+                            The dock will show on bottom of the page
+                        </h2>
                         <DockDemo />
                     </div>
                 }
