@@ -2,6 +2,12 @@
 
 import { motion } from "motion/react";
 import { useState, useCallback, useEffect } from "react";
+import { Outfit } from "next/font/google";
+
+export const dancingFont = Outfit({
+    subsets: ["latin"],
+    variable: "--font-dancing",
+});
 
 interface DancingLettersProps {
     text?: string;
@@ -140,7 +146,7 @@ const DancingLetters = ({
 
     return (
         <motion.div
-            className={`flex items-center justify-center gap-[2px] md:gap-1 select-none ${className}`}
+            className={`flex items-center justify-center select-none ${dancingFont.variable} ${className}`}
 
             style={{ perspective: "1000px" }}
             initial="hidden"

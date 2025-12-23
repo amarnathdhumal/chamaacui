@@ -7,6 +7,7 @@ export default function DancingLettersDemo() {
         <div className="flex flex-col items-center justify-center gap-8 h-screen">
             <DancingLetters
                 text="ANIMATE"
+
             />
         </div>
     );
