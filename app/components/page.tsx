@@ -25,7 +25,7 @@ const ComponentCard = ({ component }: { component: typeof componentCards[0] }) =
         <motion.div
           className={cn(
             "group relative h-full rounded-[16px] border border-gray-200 dark:border-neutral-800 p-2",
-            "bg-white dark:bg-black",
+            "bg-gray-50 dark:bg-neutral-900",
             "overflow-hidden cursor-pointer",
             "transition-all duration-300",
             " hover:border-gray-300 dark:hover:border-neutral-700"
@@ -34,7 +34,7 @@ const ComponentCard = ({ component }: { component: typeof componentCards[0] }) =
           {/* Image Container */}
           <div
             className={cn(
-              "relative w-full aspect-video rounded-[12px] bg-gray-200 dark:bg-black overflow-hidden border-gray-200 dark:border-neutral-800",
+              "relative w-full aspect-video rounded-[12px] overflow-hidden ",
               component.bgColor
             )}
           >
@@ -53,7 +53,7 @@ const ComponentCard = ({ component }: { component: typeof componentCards[0] }) =
                 playsInline
                 onLoadedData={handleLoad}
                 className={cn(
-                  "w-full h-full object-cover transition-opacity duration-300",
+                  "w-full h-full object-cover transition-opacity  border-none outline-none duration-300 bg-gray-50 dark:bg-neutral-900",
                   isLoading ? "opacity-0" : "opacity-100"
                 )}
               />
@@ -91,11 +91,11 @@ const ComponentCard = ({ component }: { component: typeof componentCards[0] }) =
           </div>
 
           {/* Content */}
-          <div className="py-2 md:py-4 px-2 md:px-3">
-            <h3 className="text-xl/10 md:text-2xl/7 font-medium text-black dark:text-white mb-2 md:mb-4 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+          <div className="pb-2 pt-2 md:pt-4 px-2 md:px-2">
+            <h3 className="text-xl leading-none  font-medium text-black dark:text-white mb-2 md:mb-4  group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors tracking-[-0.01em]">
               {component.title}
             </h3>
-            <p className="text-sm/5 text-gray-600 dark:text-gray-400 ">
+            <p className="text-sm/5 text-gray-600 dark:text-gray-400 tracking-wide ">
               {component.description}
             </p>
           </div>
@@ -109,7 +109,7 @@ const Components = () => {
   return (
     <div className="flex flex-col w-full pb-12 ">
       {/* Component Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-5">
         {componentCards.map((component) => (
           <ComponentCard key={component.link} component={component} />
         ))}
