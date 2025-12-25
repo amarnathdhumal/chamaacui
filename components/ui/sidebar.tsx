@@ -31,7 +31,7 @@ const Sidebar = () => {
                 {category}
               </Link>
             ) : (
-              <h3 className="text-base/7 md:text-xl/7 font-medium text-black dark:text-white ">
+              <h3 className="text-base/7 md:text-lg/7 font-semibold text-black dark:text-white ">
                 {category}
               </h3>
             )}
