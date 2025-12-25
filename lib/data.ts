@@ -116,7 +116,15 @@ export const componentCards: ComponentCardType[] = [
     category: "Sections",
     bgColor: "bg-black dark:bg-black",
   },
-   
+    {
+    title: "Gif Text",
+    description: "A stunning text effect that uses a GIF as the fill color.",
+    imagePath: "/components/gif-text.svg", 
+    videoSrc: "https://assets.amarn.me/gif-text.mp4",
+    link: "/components/gif-text",
+    category: "Text Animations",
+    bgColor: "bg-black dark:bg-black",
+  },
   
     {
     title: "Dancing Letters",
@@ -127,15 +135,7 @@ export const componentCards: ComponentCardType[] = [
     category: "Text Animations",
     bgColor: "bg-black dark:bg-black",
   },
-  {
-    title: "Gif Text",
-    description: "A stunning text effect that uses a GIF as the fill color.",
-    imagePath: "/components/dancing-letters.svg", // Placeholder, ideally should be a screenshot of the video text
-    videoSrc: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2JlbXczemI2YnByaXhrN3ZmbmppdGthMjczdHVlaDVucWxpMzcwNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hTBdZxUHG2r0XwLFSL/giphy.mp4",
-    link: "/components/gif-text",
-    category: "Text Animations",
-    bgColor: "bg-black dark:bg-black",
-  },
+ 
   {
     title: "Premium Button",
     description: "A collection of interactive and animated buttons for your applications.",
