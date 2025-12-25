@@ -91,7 +91,7 @@ const ComponentCard = ({ component }: { component: typeof componentCards[0] }) =
           </div>
 
           {/* Content */}
-          <div className="pb-2 pt-2 md:pt-4 px-2 md:px-2">
+          <div className="pb-2 pt-4 px-2 md:px-2">
             <h3 className="text-xl leading-none  font-medium text-black dark:text-white mb-2 md:mb-4  group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors tracking-[-0.01em]">
               {component.title}
             </h3>
@@ -109,7 +109,7 @@ const Components = () => {
   return (
     <div className="flex flex-col w-full pb-12 ">
       {/* Component Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
         {componentCards.map((component) => (
           <ComponentCard key={component.link} component={component} />
         ))}
