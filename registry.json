@@ -1,0 +1,176 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "chamaac",
+  "homepage": "https://chamaac.com",
+  "items": [
+    {
+      "name": "gif-text",
+      "type": "registry:component",
+      "title": "Gif Text",
+      "description": "A stunning text effect that uses a GIF as the fill color.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/gif-text/gif-text.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "dancing-letters",
+      "type": "registry:component",
+      "title": "Dancing Letters",
+      "description": "Physics-based interactive text animations with multiple animation styles.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/dancing-letters/dancing-letters.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "premium-button",
+      "type": "registry:component",
+      "title": "Premium Button",
+      "description": "An animated button with a dynamic arrow grid animation.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/premium-button/premium-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-button",
+      "type": "registry:component",
+      "title": "Shimmer Button",
+      "description": "A button with a shimmer animation effect.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/shimmer-button/shimmer-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "slideup-button",
+      "type": "registry:component",
+      "title": "Slide Up Button",
+      "description": "A button with a smooth slide-up text animation on hover.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/slideup-button/slideup-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "focus-button",
+      "type": "registry:component",
+      "title": "Focus Button",
+      "description": "A button with a focus ring animation effect.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/focus-button/focus-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "gauge",
+      "type": "registry:component",
+      "title": "Gauge",
+      "description": "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/gauge/gauge.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:component",
+      "title": "Carousel",
+      "description": "A smooth, auto-playing 3D carousel component with layout animations.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/carousel/carousel.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "feature-steps",
+      "type": "registry:component",
+      "title": "Feature Steps",
+      "description": "A dynamic feature showcase with auto-playing steps and synchronized image transitions.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/feature-steps/feature-steps.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "dock",
+      "type": "registry:component",
+      "title": "Dock",
+      "description": "A navigation dock component with smooth animations and hover effects, perfect for desktop interfaces.",
+      "dependencies": ["motion", "clsx", "tailwind-merge", "lucide-react", "next-themes"],
+      "files": [
+        {
+          "path": "registry/chamaac/dock/dock.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "copy-icon",
+      "type": "registry:component",
+      "title": "Copy Icon",
+      "description": "An animated copy icon with smooth motion effects.",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/copy-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "wavy-icon",
+      "type": "registry:component",
+      "title": "Wavy Icon",
+      "description": "An animated wavy icon with smooth motion effects.",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/wavy-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "adjustments-icon",
+      "type": "registry:component",
+      "title": "Adjustments Icon",
+      "description": "An animated adjustments/settings icon with smooth motion effects.",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/adjustments-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gif-text",
+  "title": "Gif Text",
+  "description": "A stunning text effect that uses a GIF as the fill color.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/gif-text/gif-text.tsx",
+      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface GifTextProps {\n    /**\n     * The text to display\n     */\n    text?: string;\n    /**\n     * The source URL for the background image/gif\n     */\n    gif?: string;\n    /**\n     * Class for the text element\n     */\n    className?: string;\n    /**\n     * Class for the container (e.g. height, background)\n     */\n    containerClassName?: string;\n}\n\nconst GifText = ({\n    text = \"CHAMAAC\",\n    gif = \"https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2JlbXczemI2YnByaXhrN3ZmbmppdGthMjczdHVlaDVucWxpMzcwNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hTBdZxUHG2r0XwLFSL/giphy.gif\",\n    className,\n    containerClassName,\n}: GifTextProps) => {\n    return (\n        <div className={cn(\"flex flex-col items-center justify-center p-4\", containerClassName)}>\n            <h2\n                className={cn(\n                    \"text-[clamp(80px,12vw,150px)] font-extrabold text-transparent bg-clip-text bg-cover bg-center bg-no-repeat select-none text-center leading-tight uppercase\",\n                    className\n                )}\n                style={{\n                    backgroundImage: `url(${gif})`,\n                    WebkitBackgroundClip: \"text\",\n                    backgroundClip: \"text\",\n                }}\n            >\n                {text}\n            </h2>\n        </div>\n    );\n};\n\nexport default GifText;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

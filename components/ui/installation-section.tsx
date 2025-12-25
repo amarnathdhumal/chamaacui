@@ -34,14 +34,14 @@ export default function InstallationSection({
 
     return (
         <div className="mb-5 md:mb-10">
-            <h2 className="text-2xl/7 md:text-3xl/7 tracking-tight text-black dark:text-white mb-4">
+            <h2 className="text-2xl/7 md:text-3xl/7 tracking-tight text-black dark:text-white mb-4 font-semibold">
                 Installation
             </h2>
 
             {/* Install Dependencies Section */}
             {dependencies.length > 0 && (
                 <div className="mb-5 md:mb-10">
-                    <h3 className="text-base/7 md:text-xl/7 text-black dark:text-white mb-4">
+                    <h3 className="text-base/7 md:text-xl/7 text-black dark:text-white mb-4 font-medium">
                         Install Dependencies
                     </h3>
                     <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden">
@@ -91,7 +91,7 @@ export default function InstallationSection({
 
             {/* Component Code Section */}
             <div>
-                <h3 className="text-base/7 md:text-xl/7 text-black dark:text-white mb-4">
+                <h3 className="text-base/7 md:text-xl/7 text-black dark:text-white mb-4 font-medium">
                     Component Code
                 </h3>
                 <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden">
