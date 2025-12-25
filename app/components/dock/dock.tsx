@@ -249,7 +249,10 @@ export const DockItem = ({ children, label, id, renderType, className }: DockIte
                     duration: 0.3,
                     ease: "easeInOut"
                 }}
-                className={`w-full overflow-hidden ${isOpen ? 'pointer-events-auto min-h-[100px]' : 'pointer-events-none'}`}
+                className={cn(
+                    "w-full overflow-hidden",
+                    isOpen ? 'pointer-events-auto min-h-[100px]' : 'pointer-events-none'
+                )}
                 onMouseEnter={() => handleDropdownEnter(itemId)}
                 onMouseLeave={() => handleDropdownLeave(itemId)}
             >

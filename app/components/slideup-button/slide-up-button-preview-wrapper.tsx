@@ -41,7 +41,7 @@ export default function SlideUpButtonPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} />
+            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge"]} />
 
             {/* Props Section */}
             <PropsTable props={props} />

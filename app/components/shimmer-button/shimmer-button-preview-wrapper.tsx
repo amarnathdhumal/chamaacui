@@ -41,7 +41,7 @@ export default function ShimmerButtonPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} />
+            <InstallationSection componentSource={installationSource} dependencies={["clsx", "tailwind-merge"]} />
 
             {/* Main Props Section */}
             <PropsTable props={props} />

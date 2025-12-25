@@ -59,7 +59,7 @@ export default function GifTextPage() {
                         required: false,
                     },
                     {
-                        name: "imageUrl",
+                        name: "gif",
                         type: "string",
                         default: "URL",
                         description: "The source URL of the background image or GIF.",

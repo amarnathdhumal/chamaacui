@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { useState, useCallback, useEffect } from "react";
 import { Outfit } from "next/font/google";
+import { cn } from "@/lib/utils";
 
 export const dancingFont = Outfit({
     subsets: ["latin"],
@@ -146,7 +147,7 @@ const DancingLetters = ({
 
     return (
         <motion.div
-            className={`flex items-center justify-center select-none ${dancingFont.variable} ${className}`}
+            className={cn("flex items-center justify-center select-none", dancingFont.variable, className)}
 
             style={{ perspective: "1000px" }}
             initial="hidden"
@@ -200,16 +201,11 @@ const DancingLetters = ({
                         onAnimationComplete={(definition) => {
                             if (definition === "active") handleAnimationComplete(idx);
                         }}
-                        className={`
-                            relative
-                            inline-block
-                            text-5xl md:text-7xl lg:text-8xl
-                            font-bold
-                            text-neutral-900 dark:text-neutral-100
-                            cursor-pointer
-                            ${letterClassName}
-                            ${isActive ? "z-10" : "z-0"}
-                        `}
+                        className={cn(
+                            "relative inline-block text-5xl md:text-7xl lg:text-8xl font-bold text-neutral-900 dark:text-neutral-100 cursor-pointer",
+                            letterClassName,
+                            isActive ? "z-10" : "z-0"
+                        )}
                         style={{
                             transformOrigin: anim.transformOrigin,
                             transformStyle: "preserve-3d",

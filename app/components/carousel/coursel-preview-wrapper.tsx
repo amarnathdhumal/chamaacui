@@ -41,7 +41,7 @@ export default function CourselPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} />
+            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge"]} />
 
             {/* Main Props Section */}
             <PropsTable props={props} />
