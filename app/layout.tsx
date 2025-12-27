@@ -26,8 +26,6 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-
-
 export const metadata: Metadata = {
   title: "Chamaac | Premium UI Components",
   description:
@@ -67,8 +65,6 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-
-
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased bg-white dark:bg-black  `}
       >

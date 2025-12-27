@@ -41,7 +41,7 @@ export default function WavyIconPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} />
+            <InstallationSection componentSource={installationSource} componentName="wavy-icon" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />

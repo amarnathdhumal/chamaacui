@@ -41,7 +41,7 @@ export default function AdjustmentsHorizontalIconPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} />
+            <InstallationSection componentSource={installationSource} componentName="adjustments-icon" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />

@@ -41,7 +41,7 @@ export default function CopyIconPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} />
+            <InstallationSection componentSource={installationSource} componentName="copy-icon" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />

@@ -49,7 +49,7 @@ const Sidebar = () => {
                     <motion.a
                       href={href}
                       className={cn(
-                        "cursor-pointer font-normal text-sm/5  flex flex-row items-center relative  hover:text-black dark:hover:text-white hover:font-medium",
+                        " cursor-pointer font-normal text-sm/5  flex flex-row items-center relative  hover:text-black dark:hover:text-white hover:font-medium",
                         `${isActive ? "text-black dark:text-white  font-medium" : "text-gray-600 dark:text-gray-400 "}`
                       )}
                       onMouseEnter={() => setHoveredItem(itemId)}
