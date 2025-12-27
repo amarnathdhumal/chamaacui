@@ -41,7 +41,7 @@ export default function PremiumButtonPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["clsx", "tailwind-merge"]} />
+            <InstallationSection componentSource={installationSource} dependencies={["clsx", "tailwind-merge"]} componentName="premium-button" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />

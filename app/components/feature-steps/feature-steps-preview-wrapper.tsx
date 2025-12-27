@@ -41,7 +41,7 @@ export default function FeatureStepsPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge"]} />
+            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge"]} componentName="feature-steps" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />

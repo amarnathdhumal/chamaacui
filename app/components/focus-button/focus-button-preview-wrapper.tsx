@@ -42,7 +42,7 @@ export default function FocusButtonPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["clsx", "tailwind-merge"]} />
+            <InstallationSection componentSource={installationSource} dependencies={["clsx", "tailwind-merge"]} componentName="focus-button" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />

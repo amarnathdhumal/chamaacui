@@ -41,7 +41,7 @@ export default function GifTextPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["clsx", "tailwind-merge"]} />
+            <InstallationSection componentSource={installationSource} dependencies={["clsx", "tailwind-merge"]} componentName="gif-text" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />

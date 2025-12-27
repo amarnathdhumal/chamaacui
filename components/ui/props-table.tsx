@@ -14,7 +14,7 @@ interface PropsTableProps {
 export default function PropsTable({ props, title = "Props" }: PropsTableProps) {
     return (
         <div className="mb-8">
-            <h3 className="text-base/7 md:text-xl/7  text-black dark:text-white mb-4 font-medium">
+            <h3 className="text-base md:text-xl  text-black dark:text-white mb-4 font-medium">
                 {title}
             </h3>
             <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden">

@@ -22,6 +22,7 @@ export interface TabButtonTypes {
   onClick: () => void;
   isActive: boolean;
   icon: React.ReactNode;
+  layoutId?: string;
 }
 
 export interface CopyProps {

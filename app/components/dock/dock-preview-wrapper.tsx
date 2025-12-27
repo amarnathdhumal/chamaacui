@@ -56,7 +56,7 @@ export default function DockPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge", "lucide-react", "next-themes"]} />
+            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge", "lucide-react", "next-themes"]} componentName="dock" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />

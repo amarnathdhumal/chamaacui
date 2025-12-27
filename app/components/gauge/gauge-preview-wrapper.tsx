@@ -44,7 +44,7 @@ export default function GaugePreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge"]} />
+            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge"]} componentName="gauge" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />

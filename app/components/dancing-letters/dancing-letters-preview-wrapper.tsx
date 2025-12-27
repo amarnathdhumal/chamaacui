@@ -41,7 +41,7 @@ export default function DancingLettersPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge"]} />
+            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge"]} componentName="dancing-letters" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />
