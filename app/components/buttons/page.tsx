@@ -15,6 +15,7 @@ interface ButtonTypes {
     href: string;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     props?: any;
+    bgColor?: string;
 }
 
 const buttons: ButtonTypes[] = [
@@ -24,7 +25,8 @@ const buttons: ButtonTypes[] = [
         href: "/components/premium-button",
         props: {
             text: "Premium Button",
-        }
+        },
+        bgColor: "bg-white dark:bg-neutral-900"
     },
     {
         name: "Shimmer Button",
@@ -32,15 +34,17 @@ const buttons: ButtonTypes[] = [
         href: "/components/shimmer-button",
         props: {
             text: "Book a Free Call",
-        }
+        },
+        bgColor: "bg-white dark:bg-neutral-900"
     },
     {
         name: "Neo Brutalist Button",
         component: NeoBrutalistButton,
         href: "/components/neo-brutalist-button",
         props: {
-            text: "Neo Brutalist Button",
-        }
+            text: "Neo Brutalist",
+        },
+        bgColor: "bg-white"
     },
     {
         name: "Slide Up Button",
@@ -49,7 +53,8 @@ const buttons: ButtonTypes[] = [
         props: {
             children: "Hover me",
             className: "bg-[#f73b20] text-white",
-        }
+        },
+        bgColor: "bg-white dark:bg-neutral-900"
     },
     {
         name: "Focus Button",
@@ -57,7 +62,8 @@ const buttons: ButtonTypes[] = [
         href: "/components/focus-button",
         props: {
             children: "Contact us",
-        }
+        },
+        bgColor: "bg-white dark:bg-neutral-900"
     },
 
 ];
@@ -66,7 +72,7 @@ export default function ButtonsPage() {
     return (
         <div className="w-full mx-auto">
             <div className="mb-5 md:mb-10">
-                <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-medium tracking-tight  text-black dark:text-white ">Buttons</h1>
+                <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">Buttons</h1>
                 <p className=" text-base/5 md:text-lg/7 text-neutral-500 dark:text-gray-400 tracking-tight mt-2 md:mt-4   max-w-[750px]">
                     A collection of interactive and animated buttons for your applications.
                 </p>
@@ -77,7 +83,7 @@ export default function ButtonsPage() {
                     <Link key={button.name} href={button.href} className=" block">
                         <motion.div
 
-                            className="flex flex-col items-center justify-center p-8 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors h-[200px]"
+                            className={`flex flex-col items-center justify-center p-8 rounded-xl border border-neutral-200 dark:border-neutral-800 ${button.bgColor || "bg-white dark:bg-neutral-900"} hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors h-[200px]`}
                         >
                             <div className="mb-4 scale-90 transition-transform duration-300">
                                 <button.component {...button.props} />
