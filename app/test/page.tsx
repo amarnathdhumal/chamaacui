@@ -1,4 +1,4 @@
-import NeoBrutalistButton from "../components/neo-brutalist-button/neo-brutalist-button";
+import NeoBrutalistButton from "../components/buttons/neo-brutalist-button/neo-brutalist-button";
 
 const NeoBrutalistButtonDemo = () => {
     return (

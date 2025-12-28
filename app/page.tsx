@@ -1,7 +1,7 @@
 "use client";
 
 import { Header } from "./components/header";
-import SlideUpButton from "./components/slideup-button/slide-up-button";
+import SlideUpButton from "./components/buttons/slideup-button/slide-up-button";
 import { useRouter } from "next/navigation";
 import HeroGrid from "@/components/ui/hero-grid";
 

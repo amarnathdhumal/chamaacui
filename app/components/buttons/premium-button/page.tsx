@@ -3,26 +3,39 @@ import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
-import ShimmerButtonPreviewWrapper from "./shimmer-button-preview-wrapper";
+import PremiumButtonPreviewWrapper from "./premium-button-preview-wrapper";
 
-export default function ShimmerButtonPage() {
+export default function PremiumButtonPage() {
     const componentPath = path.join(
         process.cwd(),
-        "app/components/shimmer-button/shimmer-button.tsx"
+        "app/components/buttons/premium-button/premium-button.tsx"
     );
     const componentSource = fs.readFileSync(componentPath, "utf8");
 
     const demoPath = path.join(
         process.cwd(),
-        "app/components/shimmer-button/shimmer-button-demo.tsx"
+        "app/components/buttons/premium-button/premium-button-demo.tsx"
     );
     const demoSource = fs.readFileSync(demoPath, "utf8");
 
     return (
-        <div className="pb-20">
-            <ShimmerButtonPreviewWrapper
-                title="Shimmer Button"
-                description="A button with a shimmering text animation effect."
+        <div className="">
+            <PremiumButtonPreviewWrapper
+                title="Premium Button"
+                description={
+                    <>
+                        A high-quality button with a dynamic arrow animation. Inspired by{" "}
+                        <a
+                            href="https://x.com/rolledpipe/status/1981067656473301194"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+                        >
+                            Roshan
+                        </a>
+                        .
+                    </>
+                }
                 code={
                     <div className="relative">
                         <div className="absolute top-4 right-4">
@@ -54,7 +67,7 @@ export default function ShimmerButtonPage() {
                     {
                         name: "text",
                         type: "string",
-                        default: '"Book a Free Call"',
+                        default: '"Premium Button"',
                         description: "The text to display inside the button",
                         required: false,
                     },
@@ -63,13 +76,6 @@ export default function ShimmerButtonPage() {
                         type: "string",
                         default: "-",
                         description: "Additional CSS classes for the button",
-                        required: false,
-                    },
-                    {
-                        name: "duration",
-                        type: "number",
-                        default: "1.2",
-                        description: "Duration of the animation cycle in seconds",
                         required: false,
                     },
                 ]}

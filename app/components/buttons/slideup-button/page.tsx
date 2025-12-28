@@ -8,11 +8,11 @@ import CopyButton from "@/components/ui/copy-button";
 // file paths
 const filePath = path.join(
     process.cwd(),
-    "app/components/slideup-button/slide-up-button.tsx"
+    "app/components/buttons/slideup-button/slide-up-button.tsx"
 );
 const demoFilePath = path.join(
     process.cwd(),
-    "app/components/slideup-button/slide-up-button-demo.tsx"
+    "app/components/buttons/slideup-button/slide-up-button-demo.tsx"
 );
 const SlideUpButtonSource = fs.readFileSync(filePath, "utf-8");
 const SlideUpButtonDemoSource = fs.readFileSync(demoFilePath, "utf-8");

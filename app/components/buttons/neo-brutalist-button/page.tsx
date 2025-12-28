@@ -3,39 +3,26 @@ import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
-import PremiumButtonPreviewWrapper from "./premium-button-preview-wrapper";
+import NeoBrutalistButtonPreviewWrapper from "./neo-brutalist-button-preview-wrapper";
 
-export default function PremiumButtonPage() {
+export default function NeoBrutalistButtonPage() {
     const componentPath = path.join(
         process.cwd(),
-        "app/components/premium-button/premium-button.tsx"
+        "app/components/buttons/neo-brutalist-button/neo-brutalist-button.tsx"
     );
     const componentSource = fs.readFileSync(componentPath, "utf8");
 
     const demoPath = path.join(
         process.cwd(),
-        "app/components/premium-button/premium-button-demo.tsx"
+        "app/components/buttons/neo-brutalist-button/neo-brutalist-button-demo.tsx"
     );
     const demoSource = fs.readFileSync(demoPath, "utf8");
 
     return (
-        <div className="">
-            <PremiumButtonPreviewWrapper
-                title="Premium Button"
-                description={
-                    <>
-                        A high-quality button with a dynamic arrow animation. Inspired by{" "}
-                        <a
-                            href="https://x.com/rolledpipe/status/1981067656473301194"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                        >
-                            Roshan
-                        </a>
-                        .
-                    </>
-                }
+        <div className="pb-20">
+            <NeoBrutalistButtonPreviewWrapper
+                title="Neo Brutalist Button"
+                description="A bold, retro-styled button with skewed design, offset shadow, and shimmer effect."
                 code={
                     <div className="relative">
                         <div className="absolute top-4 right-4">
@@ -67,7 +54,7 @@ export default function PremiumButtonPage() {
                     {
                         name: "text",
                         type: "string",
-                        default: '"Premium Button"',
+                        default: '"Neo Brutalist"',
                         description: "The text to display inside the button",
                         required: false,
                     },
@@ -75,7 +62,7 @@ export default function PremiumButtonPage() {
                         name: "className",
                         type: "string",
                         default: "-",
-                        description: "Additional CSS classes for the button",
+                        description: "Additional CSS classes for styling (colors, shadows, borders, etc.)",
                         required: false,
                     },
                 ]}

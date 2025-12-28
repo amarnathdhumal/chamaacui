@@ -38,7 +38,7 @@ export default function AnimatedIconsPage() {
     return (
         <div className="w-full  mx-auto ">
             <div className="mb-5 md:mb-10">
-                <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-medium tracking-tight  text-black dark:text-white mb-4">Animated Icons</h1>
+                <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">Animated Icons</h1>
                 <p className="text-base/5 md:text-lg/7 text-neutral-500 dark:text-gray-400 tracking-tight mt-4   max-w-[750px]">
                     A collection of smooth, micro-interaction animations for your icons.
                 </p>

@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import SlideUpButton from "../slideup-button/slide-up-button";
-import ShimmerButton from "../shimmer-button/shimmer-button";
-import FocusButton from "../focus-button/focus-button";
-import PremiumButton from "../premium-button/premium-button";
-import NeoBrutalistButton from "../neo-brutalist-button/neo-brutalist-button";
+import SlideUpButton from "./slideup-button/slide-up-button";
+import ShimmerButton from "./shimmer-button/shimmer-button";
+import FocusButton from "./focus-button/focus-button";
+import NeoBrutalistButton from "./neo-brutalist-button/neo-brutalist-button";
+import PremiumButton from "./premium-button/premium-button";
 
 interface ButtonTypes {
     name: string;
@@ -22,7 +22,7 @@ const buttons: ButtonTypes[] = [
     {
         name: "Premium Button",
         component: PremiumButton,
-        href: "/components/premium-button",
+        href: "/components/buttons/premium-button",
         props: {
             text: "Premium Button",
         },
@@ -31,7 +31,7 @@ const buttons: ButtonTypes[] = [
     {
         name: "Shimmer Button",
         component: ShimmerButton,
-        href: "/components/shimmer-button",
+        href: "/components/buttons/shimmer-button",
         props: {
             text: "Book a Free Call",
         },
@@ -40,7 +40,7 @@ const buttons: ButtonTypes[] = [
     {
         name: "Neo Brutalist Button",
         component: NeoBrutalistButton,
-        href: "/components/neo-brutalist-button",
+        href: "/components/buttons/neo-brutalist-button",
         props: {
             text: "Neo Brutalist",
         },
@@ -49,7 +49,7 @@ const buttons: ButtonTypes[] = [
     {
         name: "Slide Up Button",
         component: SlideUpButton,
-        href: "/components/slideup-button",
+        href: "/components/buttons/slideup-button",
         props: {
             children: "Hover me",
             className: "bg-[#f73b20] text-white",
@@ -59,7 +59,7 @@ const buttons: ButtonTypes[] = [
     {
         name: "Focus Button",
         component: FocusButton,
-        href: "/components/focus-button",
+        href: "/components/buttons/focus-button",
         props: {
             children: "Contact us",
         },

@@ -1,32 +1,32 @@
-import FocusButtonPreviewWrapper from "./focus-button-preview-wrapper";
 import fs from "fs";
 import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
+import ShimmerButtonPreviewWrapper from "./shimmer-button-preview-wrapper";
 
-// file paths
-const filePath = path.join(
-    process.cwd(),
-    "app/components/focus-button/focus-button.tsx"
-);
-const demoFilePath = path.join(
-    process.cwd(),
-    "app/components/focus-button/focus-button-demo.tsx"
-);
-const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
+export default function ShimmerButtonPage() {
+    const componentPath = path.join(
+        process.cwd(),
+        "app/components/buttons/shimmer-button/shimmer-button.tsx"
+    );
+    const componentSource = fs.readFileSync(componentPath, "utf8");
 
-export default function FocusButtonPage() {
+    const demoPath = path.join(
+        process.cwd(),
+        "app/components/buttons/shimmer-button/shimmer-button-demo.tsx"
+    );
+    const demoSource = fs.readFileSync(demoPath, "utf8");
+
     return (
-        <div className="flex flex-col w-full">
-            <FocusButtonPreviewWrapper
-                title="Focus Button"
-                description="A minimal button with corner dash accents that expand on hover. Perfect for technical or brutalist designs."
+        <div className="pb-20">
+            <ShimmerButtonPreviewWrapper
+                title="Shimmer Button"
+                description="A button with a shimmering text animation effect."
                 code={
                     <div className="relative">
                         <div className="absolute top-4 right-4">
-                            <CopyButton text={DemoSource} />
+                            <CopyButton text={demoSource} />
                         </div>
                         <SyntaxHighlighter
                             language="tsx"
@@ -45,38 +45,31 @@ export default function FocusButtonPage() {
                                 msOverflowStyle: "none",
                             }}
                         >
-                            {DemoSource}
+                            {demoSource}
                         </SyntaxHighlighter>
                     </div>
                 }
-                installationSource={ComponentSource}
+                installationSource={componentSource}
                 props={[
                     {
-                        name: "children",
-                        type: "React.ReactNode",
-                        default: "-",
-                        description: "Button content",
-                        required: true,
+                        name: "text",
+                        type: "string",
+                        default: '"Book a Free Call"',
+                        description: "The text to display inside the button",
+                        required: false,
                     },
                     {
                         name: "className",
                         type: "string",
-                        default: '""',
-                        description: "Custom class names for styling",
-                        required: false,
-                    },
-                    {
-                        name: "dashColor",
-                        type: "string",
-                        default: '"black" | "white"',
-                        description: "Custom color for the corner dashes",
-                        required: false,
-                    },
-                    {
-                        name: "onClick",
-                        type: "() => void",
                         default: "-",
-                        description: "Click handler function",
+                        description: "Additional CSS classes for the button",
+                        required: false,
+                    },
+                    {
+                        name: "duration",
+                        type: "number",
+                        default: "1.2",
+                        description: "Duration of the animation cycle in seconds",
                         required: false,
                     },
                 ]}
