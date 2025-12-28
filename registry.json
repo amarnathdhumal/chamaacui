@@ -82,6 +82,19 @@
       ]
     },
     {
+      "name": "neo-brutalist-button",
+      "type": "registry:component",
+      "title": "Neo Brutalist Button",
+      "description": "A bold, retro-styled button with skewed design, offset shadow, and shimmer effect.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/neo-brutalist-button/neo-brutalist-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "gauge",
       "type": "registry:component",
       "title": "Gauge",

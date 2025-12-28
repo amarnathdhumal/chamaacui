@@ -60,6 +60,12 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "/focus-button",
     category: "Buttons",
   },
+  {
+    componentName: "Neo Brutalist Button",
+    link: "/neo-brutalist-button",
+    category: "Buttons",
+    isNew: true,
+  },
     {
     componentName: "Carousel",
     link: "/carousel",
@@ -125,16 +131,6 @@ export const componentCards: ComponentCardType[] = [
     category: "Text Animations",
     bgColor: "bg-black dark:bg-black",
   },
-  
-    {
-    title: "Dancing Letters",
-    description: "A sleek, interactive text animation component with physics-based effects.",
-    imagePath: "/components/dancing-letters.svg",
-    videoSrc: "https://assets.amarn.me/dancing-lettersv3.mp4",
-    link: "/components/dancing-letters",
-    category: "Text Animations",
-    bgColor: "bg-black dark:bg-black",
-  },
  
   {
     title: "Premium Button",
@@ -145,6 +141,15 @@ export const componentCards: ComponentCardType[] = [
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
   },
+     {
+    title: "Neo Brutalist Button",
+    description: "A bold, retro-styled button with skewed design, offset shadow, and shimmer effect.",
+    imagePath: "/components/neo-brutalist-button.svg",
+    videoSrc: "https://assets.amarn.me/neo-brutalist-button.mp4",
+    link: "/components/neo-brutalist-button",
+    category: "Buttons",
+    bgColor: "bg-black dark:bg-black",
+  },
   {
     title: "Shimmer Button",
     description: "A collection of interactive and animated buttons for your applications.",
@@ -152,6 +157,16 @@ export const componentCards: ComponentCardType[] = [
     videoSrc: "https://assets.amarn.me/shimmer-button.mp4",
     link: "/components/shimmer-button",
     category: "Buttons",
+    bgColor: "bg-black dark:bg-black",
+  },
+    
+    {
+    title: "Dancing Letters",
+    description: "A sleek, interactive text animation component with physics-based effects.",
+    imagePath: "/components/dancing-letters.svg",
+    videoSrc: "https://assets.amarn.me/dancing-lettersv3.mp4",
+    link: "/components/dancing-letters",
+    category: "Text Animations",
     bgColor: "bg-black dark:bg-black",
   },
     {
@@ -172,6 +187,7 @@ export const componentCards: ComponentCardType[] = [
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
   },
+ 
     {
     title: "Carousel",
     description: "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",

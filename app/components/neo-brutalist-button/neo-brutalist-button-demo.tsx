@@ -1,8 +1,8 @@
-import NeoBrutalistButton from "../components/neo-brutalist-button/neo-brutalist-button";
+import NeoBrutalistButton from "./neo-brutalist-button";
 
 const NeoBrutalistButtonDemo = () => {
     return (
-        <div className="flex justify-center items-center h-screen w-full">
+        <div className="flex justify-center items-center h-[300px] w-full">
             <NeoBrutalistButton text="Neo Brutalist" />
         </div>
     );

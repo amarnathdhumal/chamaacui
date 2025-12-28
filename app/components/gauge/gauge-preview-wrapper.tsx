@@ -35,7 +35,7 @@ export default function GaugePreviewWrapper({
                 title={title}
                 description={description}
                 preview={
-                    <div className="w-full h-[400px] flex justify-center items-center">
+                    <div className="w-full  flex justify-center items-center">
                         <GaugeDemo key={key} />
                     </div>
                 }

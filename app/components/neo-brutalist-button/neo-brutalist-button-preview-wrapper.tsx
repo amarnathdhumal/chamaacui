@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import ShimmerButtonDemo from "./shimmer-button-demo";
+import NeoBrutalistButtonDemo from "./neo-brutalist-button-demo";
 import ViewArea from "@/components/ui/view-area";
 import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 
-interface ShimmerButtonPreviewWrapperProps {
+interface NeoBrutalistButtonPreviewWrapperProps {
     title: string;
     description: string | React.ReactNode;
     code: React.ReactNode;
@@ -20,13 +20,13 @@ interface ShimmerButtonPreviewWrapperProps {
     }>;
 }
 
-export default function ShimmerButtonPreviewWrapper({
+export default function NeoBrutalistButtonPreviewWrapper({
     title,
     description,
     code,
     installationSource,
     props,
-}: ShimmerButtonPreviewWrapperProps) {
+}: NeoBrutalistButtonPreviewWrapperProps) {
     return (
         <>
             <ViewArea
@@ -34,14 +34,14 @@ export default function ShimmerButtonPreviewWrapper({
                 description={description}
                 preview={
                     <div className="w-full h-[300px] flex justify-center items-center bg-white">
-                        <ShimmerButtonDemo />
+                        <NeoBrutalistButtonDemo />
                     </div>
                 }
                 code={code}
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge"]} componentName="shimmer-button" />
+            <InstallationSection componentSource={installationSource} dependencies={["clsx", "tailwind-merge"]} componentName="neo-brutalist-button" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />
