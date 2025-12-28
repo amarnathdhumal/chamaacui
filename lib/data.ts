@@ -63,7 +63,7 @@ export const sidebarData: SidebarDataTypes[] = [
     {
     componentName: "Carousel",
     link: "/carousel",
-    category: "Gallery",
+    category: "Sections",
   },
    
   {
