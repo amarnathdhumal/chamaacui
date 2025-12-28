@@ -145,7 +145,7 @@ export const componentCards: ComponentCardType[] = [
     title: "Neo Brutalist Button",
     description: "A bold, retro-styled button with skewed design, offset shadow, and shimmer effect.",
     imagePath: "/components/neo-brutalist-button.svg",
-    videoSrc: "https://assets.amarn.me/neo-brutalist-button.mp4",
+    videoSrc: "https://assets.amarn.me/neo-brutalist-buttonv2.mp4",
     link: "/components/neo-brutalist-button",
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",

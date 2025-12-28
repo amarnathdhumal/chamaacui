@@ -35,7 +35,7 @@ const Sidebar = () => {
                 {category}
               </h3>
             )}
-            <ul className="flex flex-col gap-4">
+            <ul className="flex flex-col gap-2 border-l border-neutral-200 dark:border-neutral-800 ">
               {items.filter(item => item.componentName !== category).map((item) => {
                 const href = item.link === "" ? "/components" : `/components${item.link}`;
                 const isActive = item.link === ""
@@ -47,27 +47,33 @@ const Sidebar = () => {
                 return (
                   <li
                     key={itemId}
-                    className="relative pl-3"
+                    className="relative pl-4 py-0.5"
                     onMouseEnter={() => setHoveredItem(itemId)}
                     onMouseLeave={() => setHoveredItem(null)}
                   >
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[5px] h-[5px] flex items-center justify-center">
-                      {isActive && (
-                        <div className="absolute inset-0 m-auto w-[5px] h-[5px] rounded-full bg-black dark:bg-white" />
-                      )}
-                      {isHovered && (
-                        <motion.div
-                          layoutId="hover-dot"
-                          className="absolute inset-0 m-auto w-[5px] h-[5px] rounded-full bg-black dark:bg-white"
-                          transition={{
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 30,
-                          }}
-                        />
-                      )}
-                    </div>
-                    <motion.a
+                    {isActive && (
+                      <motion.div
+                        layoutId="active-sidebar-line"
+                        className="absolute -left-[1px] top-0 bottom-0 w-[2px] bg-black dark:bg-white"
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                    {isHovered && !isActive && (
+                      <motion.div
+                        layoutId="hover-sidebar-line"
+                        className="absolute -left-[1px] top-0 bottom-0 w-[2px] bg-neutral-300 dark:bg-neutral-700"
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                    <Link
                       href={href}
                       className={cn(
                         "cursor-pointer font-normal text-sm/5 flex flex-row items-center hover:text-black dark:hover:text-white hover:font-medium",
@@ -80,7 +86,7 @@ const Sidebar = () => {
                           New
                         </span>
                       )}
-                    </motion.a>
+                    </Link>
                   </li>
                 );
               })}

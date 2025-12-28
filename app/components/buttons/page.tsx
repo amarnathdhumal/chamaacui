@@ -4,8 +4,9 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import SlideUpButton from "../slideup-button/slide-up-button";
 import ShimmerButton from "../shimmer-button/shimmer-button";
-import FocusButton from "./focus-button/focus-button";
+import FocusButton from "../focus-button/focus-button";
 import PremiumButton from "../premium-button/premium-button";
+import NeoBrutalistButton from "../neo-brutalist-button/neo-brutalist-button";
 
 interface ButtonTypes {
     name: string;
@@ -31,6 +32,14 @@ const buttons: ButtonTypes[] = [
         href: "/components/shimmer-button",
         props: {
             text: "Book a Free Call",
+        }
+    },
+    {
+        name: "Neo Brutalist Button",
+        component: NeoBrutalistButton,
+        href: "/components/neo-brutalist-button",
+        props: {
+            text: "Neo Brutalist Button",
         }
     },
     {
