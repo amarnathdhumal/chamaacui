@@ -17,6 +17,14 @@ const demoFilePath = path.join(
 const SlideUpButtonSource = fs.readFileSync(filePath, "utf-8");
 const SlideUpButtonDemoSource = fs.readFileSync(demoFilePath, "utf-8");
 
+import { constructMetadata } from "@/lib/utils";
+
+export const metadata = constructMetadata({
+    title: "Slide Up Button",
+    description: "An animated button with a slide-up text effect on hover.",
+    image: "/components/slide-up-button.png",
+});
+
 export default function SlideUpButtonPage() {
     return (
         <div className="flex flex-col w-full">

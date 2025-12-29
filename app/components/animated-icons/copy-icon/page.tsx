@@ -17,6 +17,14 @@ const demoFilePath = path.join(
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
 const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
 
+import { constructMetadata } from "@/lib/utils";
+
+export const metadata = constructMetadata({
+    title: "Copy Icon",
+    description: "An animated copy icon that simulates the action of copying.",
+    image: "/components/animated-icons.png",
+});
+
 export default function CopyIconPage() {
     return (
         <div className="flex flex-col w-full">

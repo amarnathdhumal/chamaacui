@@ -4,6 +4,13 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
 import PremiumButtonPreviewWrapper from "./premium-button-preview-wrapper";
+import { constructMetadata } from "@/lib/utils";
+
+export const metadata = constructMetadata({
+    title: "Premium Button",
+    description: "A high-quality button with a dynamic arrow animation.",
+    image: "/components/buttons.png",
+});
 
 export default function PremiumButtonPage() {
     const componentPath = path.join(

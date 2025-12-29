@@ -4,6 +4,13 @@ import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
+import { constructMetadata } from "@/lib/utils";
+
+export const metadata = constructMetadata({
+    title: "Dock",
+    description: "A dock navigation component with animated dropdown menus, hover effects, and image previews.",
+    image: "/components/dock.svg",
+});
 
 // file paths
 const filePath = path.join(

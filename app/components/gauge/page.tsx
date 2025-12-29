@@ -4,6 +4,14 @@ import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
+import { constructMetadata } from "@/lib/utils";
+
+export const metadata = constructMetadata({
+    title: "Gauge",
+    description: "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
+    image: "/components/gauge.png",
+});
+
 
 // file paths
 const filePath = path.join(

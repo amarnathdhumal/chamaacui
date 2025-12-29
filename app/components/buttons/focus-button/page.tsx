@@ -4,6 +4,13 @@ import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
+import { constructMetadata } from "@/lib/utils";
+
+export const metadata = constructMetadata({
+    title: "Focus Button",
+    description: "A minimal button with corner dash accents that expand on hover.",
+    image: "/components/buttons.png",
+});
 
 // file paths
 const filePath = path.join(
@@ -16,6 +23,8 @@ const demoFilePath = path.join(
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
 const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
+
+
 
 export default function FocusButtonPage() {
     return (

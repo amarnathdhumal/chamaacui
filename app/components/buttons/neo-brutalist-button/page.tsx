@@ -5,6 +5,14 @@ import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
 import NeoBrutalistButtonPreviewWrapper from "./neo-brutalist-button-preview-wrapper";
 
+import { constructMetadata } from "@/lib/utils";
+
+export const metadata = constructMetadata({
+    title: "Neo Brutalist Button",
+    description: "A bold, retro-styled button with skewed design, offset shadow, and shimmer effect.",
+    image: "/components/buttons.png",
+});
+
 export default function NeoBrutalistButtonPage() {
     const componentPath = path.join(
         process.cwd(),

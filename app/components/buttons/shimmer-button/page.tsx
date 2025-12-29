@@ -5,6 +5,14 @@ import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
 import ShimmerButtonPreviewWrapper from "./shimmer-button-preview-wrapper";
 
+import { constructMetadata } from "@/lib/utils";
+
+export const metadata = constructMetadata({
+    title: "Shimmer Button",
+    description: "A button with a shimmering text animation effect.",
+    image: "/components/buttons.png",
+});
+
 export default function ShimmerButtonPage() {
     const componentPath = path.join(
         process.cwd(),

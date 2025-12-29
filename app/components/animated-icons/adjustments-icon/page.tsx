@@ -4,6 +4,7 @@ import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
+import { constructMetadata } from "@/lib/utils";
 
 // file paths
 const filePath = path.join(
@@ -16,6 +17,12 @@ const demoFilePath = path.join(
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
 const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
+
+export const metadata = constructMetadata({
+    title: "Adjustments Icon",
+    description: "An animated adjustments icon that simulates sliding controls.",
+    image: "/components/animated-icons.png",
+});
 
 export default function AdjustmentsHorizontalIconPage() {
     return (

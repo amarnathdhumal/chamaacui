@@ -4,6 +4,13 @@ import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
+import { constructMetadata } from "@/lib/utils";
+
+export const metadata = constructMetadata({
+    title: "Orbiting Icons",
+    description: "A dynamic, rotating card component that displays a circular array of icons with smooth animations.",
+    image: "/components/orbiting-icons.png",
+});
 
 // file paths
 const filePath = path.join(

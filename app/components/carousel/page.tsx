@@ -4,6 +4,14 @@ import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
+import { constructMetadata } from "@/lib/utils";
+
+export const metadata = constructMetadata({
+    title: "Carousel",
+    description: "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
+    image: "/components/carousel.png",
+});
+
 
 // file paths
 const filePath = path.join(
