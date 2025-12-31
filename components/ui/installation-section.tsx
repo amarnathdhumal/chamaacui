@@ -134,7 +134,7 @@ export default function InstallationSection({
                             <div>
                                 <div>
                                     <h4 className="text-lg font-medium text-black dark:text-white mb-4">
-                                        Step 2:  Copy and paste the component code into your project.
+                                        Step {dependencies.length > 0 ? 2 : 1}:  Copy and paste the component code into your project.
                                     </h4>
 
                                 </div>

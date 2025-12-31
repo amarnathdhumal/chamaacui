@@ -3,33 +3,33 @@ import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
-import JoinButtonPreviewWrapper from "./join-button-preview-wrapper";
+import GlowingBorderButtonPreviewWrapper from "./glowing-border-button-preview-wrapper";
 import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
-    title: "Join Button",
-    description: "A stylish join button with a gradient border and glowing effects.",
+    title: "Glowing Border Button",
+    description: "A stylish glowing border button with a gradient border and glowing effects.",
     image: "/components/buttons.png",
 });
 
-export default function JoinButtonPage() {
+export default function GlowingBorderButtonPage() {
     const componentPath = path.join(
         process.cwd(),
-        "app/components/buttons/join-button/join-button.tsx"
+        "app/components/buttons/glowing-border-button/glowing-border-button.tsx"
     );
     const componentSource = fs.readFileSync(componentPath, "utf8");
 
     const demoPath = path.join(
         process.cwd(),
-        "app/components/buttons/join-button/join-button-demo.tsx"
+        "app/components/buttons/glowing-border-button/glowing-border-button-demo.tsx"
     );
     const demoSource = fs.readFileSync(demoPath, "utf8");
 
     return (
         <div className="">
-            <JoinButtonPreviewWrapper
-                title="Join Button"
-                description="A stylish join button with a gradient border and glowing effects."
+            <GlowingBorderButtonPreviewWrapper
+                title="Glowing Border Button"
+                description="A stylish glowing border button with a gradient border and glowing effects."
                 code={
                     <div className="relative">
                         <div className="absolute top-4 right-4">
@@ -57,7 +57,15 @@ export default function JoinButtonPage() {
                     </div>
                 }
                 installationSource={componentSource}
-                props={[]}
+                props={[
+                    {
+                        name: "className",
+                        type: "string",
+                        default: "-",
+                        description: "Additional CSS classes to style the button",
+                        required: false,
+                    },
+                ]}
             />
         </div>
     );

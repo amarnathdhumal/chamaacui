@@ -7,6 +7,8 @@ import ShimmerButton from "./shimmer-button/shimmer-button";
 import FocusButton from "./focus-button/focus-button";
 import NeoBrutalistButton from "./neo-brutalist-button/neo-brutalist-button";
 import PremiumButton from "./premium-button/premium-button";
+import GlowingBorderButton from "./glowing-border-button/glowing-border-button";
+import { ArrowRight } from "lucide-react";
 
 
 interface ButtonTypes {
@@ -27,7 +29,14 @@ const buttons: ButtonTypes[] = [
         props: {
             text: "Premium Button",
         },
-        bgColor: "bg-white dark:bg-neutral-900"
+    },
+    {
+        name: "Glowing Border Button",
+        component: GlowingBorderButton,
+        href: "/components/buttons/glowing-border-button",
+        props: {
+            text: "Glowing Border Button",
+        },
     },
     {
         name: "Shimmer Button",
@@ -36,7 +45,6 @@ const buttons: ButtonTypes[] = [
         props: {
             text: "Book a Free Call",
         },
-        bgColor: "bg-white dark:bg-neutral-900"
     },
     {
         name: "Neo Brutalist Button",
@@ -45,7 +53,6 @@ const buttons: ButtonTypes[] = [
         props: {
             text: "Neo Brutalist",
         },
-        bgColor: "bg-white"
     },
     {
         name: "Slide Up Button",
@@ -55,7 +62,6 @@ const buttons: ButtonTypes[] = [
             children: "Hover me",
             className: "bg-[#f73b20] text-white",
         },
-        bgColor: "bg-white dark:bg-neutral-900"
     },
     {
         name: "Focus Button",
@@ -64,9 +70,7 @@ const buttons: ButtonTypes[] = [
         props: {
             children: "Contact us",
         },
-        bgColor: "bg-white dark:bg-neutral-900"
     },
-
 ];
 
 export default function ButtonsGrid() {
@@ -81,19 +85,20 @@ export default function ButtonsGrid() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                 {buttons.map((button) => (
-                    <Link key={button.name} href={button.href} className=" block">
-                        <motion.div
 
-                            className={`flex flex-col items-center justify-center p-8 rounded-xl border border-neutral-200 dark:border-neutral-800 ${button.bgColor || "bg-white dark:bg-neutral-900"} hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors h-[200px]`}
-                        >
-                            <div className="mb-4 scale-90 transition-transform duration-300">
-                                <button.component {...button.props} />
-                            </div>
-                            <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-white transition-colors">
-                                {button.name}
-                            </span>
-                        </motion.div>
-                    </Link>
+                    <motion.div
+                        key={button.name}
+                        className={`relative flex flex-col items-center justify-center p-8 rounded-xl border border-neutral-200 dark:border-[#3B3B3B] bg-white dark:bg-neutral-800   transition-colors h-[200px] `}
+                    >
+                        <div className="mb-4 scale-90 transition-transform duration-300">
+                            <button.component {...button.props} />
+                        </div>
+
+                        <Link href={button.href} className="absolute bottom-4 right-4 p-2 rounded-full bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors">
+                            <ArrowRight className="w-4 h-4" />
+                        </Link>
+                    </motion.div>
+
                 ))}
             </div>
         </div>

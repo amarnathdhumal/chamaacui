@@ -45,6 +45,12 @@ export const sidebarData: SidebarDataTypes[] = [
     isNew: true,
   },
   {
+    componentName: "Glowing Border Button",
+    link: "/buttons/glowing-border-button",
+    category: "Buttons",
+    isNew: true,
+  },
+  {
     componentName: "Shimmer Button",
     link: "/buttons/shimmer-button",
     category: "Buttons",
@@ -147,6 +153,15 @@ export const componentCards: ComponentCardType[] = [
     imagePath: "/components/neo-brutalist-button.svg",
     videoSrc: "https://assets.amarn.me/neo-brutalist-buttonv2.mp4",
     link: "/components/buttons/neo-brutalist-button",
+    category: "Buttons",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "Glowing Border Button",
+    description: "A button with a glowing border effect.",
+    imagePath: "/components/glowing-border-button.svg",
+    videoSrc: "https://assets.amarn.me/glowing-border-button.mp4",
+    link: "/components/buttons/glowing-border-button",
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
   },

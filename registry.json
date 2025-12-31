@@ -95,6 +95,19 @@
       ]
     },
     {
+      "name": "glowing-border-button",
+      "type": "registry:component",
+      "title": "Glowing Border Button",
+      "description": "A stylish button with a glowing border animation.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/glowing-border-button/glowing-border-button.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "gauge",
       "type": "registry:component",
       "title": "Gauge",

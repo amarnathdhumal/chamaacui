@@ -1,11 +1,12 @@
-import NeoBrutalistButton from "../components/buttons/neo-brutalist-button/neo-brutalist-button";
+import React from "react";
+import GlowingBorderButton from "../components/buttons/glowing-border-button/glowing-border-button";
 
-const NeoBrutalistButtonDemo = () => {
+const GlowingBorderButtonDemo = () => {
     return (
-        <div className="flex justify-center items-center h-screen w-full">
-            <NeoBrutalistButton text="Neo Brutalist" />
+        <div className="w-full h-screen flex justify-center items-center bg-white dark:bg-black">
+            <GlowingBorderButton />
         </div>
     );
 };
 
-export default NeoBrutalistButtonDemo;
+export default GlowingBorderButtonDemo;

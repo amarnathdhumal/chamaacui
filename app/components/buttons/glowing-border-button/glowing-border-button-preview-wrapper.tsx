@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import JoinButtonDemo from "./join-button-demo";
+import GlowingBorderButtonDemo from "./glowing-border-button-demo";
 import ViewArea from "@/components/ui/view-area";
 import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 
-interface JoinButtonPreviewWrapperProps {
+interface GlowingBorderButtonPreviewWrapperProps {
     title: string;
     description: string | React.ReactNode;
     code: React.ReactNode;
@@ -20,28 +20,28 @@ interface JoinButtonPreviewWrapperProps {
     }>;
 }
 
-export default function JoinButtonPreviewWrapper({
+export default function GlowingBorderButtonPreviewWrapper({
     title,
     description,
     code,
     installationSource,
     props,
-}: JoinButtonPreviewWrapperProps) {
+}: GlowingBorderButtonPreviewWrapperProps) {
     return (
         <>
             <ViewArea
                 title={title}
                 description={description}
                 preview={
-                    <div className="w-full h-[300px] flex justify-center items-center bg-white dark:bg-black">
-                        <JoinButtonDemo />
-                    </div>
+
+                    <GlowingBorderButtonDemo />
+
                 }
                 code={code}
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={[]} componentName="join-button" />
+            <InstallationSection componentSource={installationSource} dependencies={[]} componentName="glowing-border-button" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />
