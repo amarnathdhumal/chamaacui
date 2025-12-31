@@ -35,7 +35,7 @@ const GlowingBorderButton = ({ className }: GlowingBorderButtonProps) => {
                 <div
                     className={cn(
                         "content relative z-10 flex h-full items-center justify-center gap-2 rounded-[16px] transition-all duration-300 ease-in-out",
-                        "bg-white dark:bg-black", // Deep dark background
+                        "bg-white dark:bg-black",
 
                     )}
                 >

@@ -138,6 +138,11 @@ nextjs-portal {
   display: none;
 }
 
+/* Selection */
+::selection {
+  @apply bg-foreground text-background;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
