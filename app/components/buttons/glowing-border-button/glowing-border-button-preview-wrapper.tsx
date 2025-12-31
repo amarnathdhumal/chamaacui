@@ -41,7 +41,7 @@ export default function GlowingBorderButtonPreviewWrapper({
             />
 
             {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={[]} componentName="glowing-border-button" />
+            <InstallationSection componentSource={installationSource} dependencies={["clsx", "tailwind-merge"]} componentName="glowing-border-button" />
 
             {/* Main Props Section */}
             <PropsTable props={props} />
