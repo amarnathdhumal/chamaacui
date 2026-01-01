@@ -59,7 +59,7 @@ export const Header = () => {
       >
         <div className="flex justify-between items-center max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12">
           <div >
-            <Link href="/" className="font-semibold text-[20px] leading-none">Chamaac</Link>
+            <Link href="/" className="font-bold text-[20px] leading-none tracking-tight">Chamaac UI</Link>
 
           </div>
           <div className="flex items-center gap-2 md:gap-4 flex-row relative z-10" >
