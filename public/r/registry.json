@@ -4,6 +4,19 @@
   "homepage": "https://chamaac.com",
   "items": [
     {
+      "name": "text-loop",
+      "type": "registry:component",
+      "title": "Text Loop",
+      "description": "An animated text loop with typewriter and gradient effect.",
+      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/chamaac/text-loop/text-loop.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "gif-text",
       "type": "registry:component",
       "title": "Gif Text",

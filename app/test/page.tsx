@@ -1,12 +1,12 @@
-import React from "react";
-import GlowingBorderButton from "../components/buttons/glowing-border-button/glowing-border-button";
+"use client";
 
-const GlowingBorderButtonDemo = () => {
+import React from 'react';
+import TextLoop from '../components/text-loop/text-loop';
+
+export default function TextLoopDemo() {
     return (
-        <div className="w-full h-screen flex justify-center items-center bg-white dark:bg-black">
-            <GlowingBorderButton />
+        <div className="flex items-center justify-center p-10 h-full w-full bg-white dark:bg-black  rounded-md h-screen">
+            <TextLoop />
         </div>
     );
-};
-
-export default GlowingBorderButtonDemo;
+}

@@ -25,6 +25,12 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Text Animations",
     isNew: true,
   },
+  {
+    componentName: "Text Loop",
+    link: "/text-loop",
+    category: "Text Animations",
+    isNew: true,
+  },
   // sections
    {
     componentName: "Feature Steps",
@@ -120,6 +126,15 @@ export interface ComponentCardType {
 
 export const componentCards: ComponentCardType[] = [
     {
+    title: "Text Loop",
+    description: "An animated text loop with typewriter and gradient effect.",
+    imagePath: "/components/text-loop.svg", 
+    videoSrc: "https://assets.amarn.me/text-loop.mp4",
+    link: "/components/text-loop",
+    category: "Text Animations",
+    bgColor: "bg-black dark:bg-black",
+  },
+    {
     title: "Gauge",
     description: "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
     imagePath: "/components/gauge.svg",
@@ -136,8 +151,7 @@ export const componentCards: ComponentCardType[] = [
     link: "/components/gif-text",
     category: "Text Animations",
     bgColor: "bg-black dark:bg-black",
-  },
- 
+  }, 
   {
     title: "Premium Button",
     description: "A collection of interactive and animated buttons for your applications.",

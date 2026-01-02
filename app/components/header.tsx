@@ -59,7 +59,7 @@ export const Header = () => {
       >
         <div className="flex justify-between items-center max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12">
           <div >
-            <Link href="/" className="flex flex-row items-center gap-[5px]">
+            <Link href="/" className="flex flex-row items-center gap-[8px]">
               <div className="bg-black dark:bg-white p-1 rounded-[8px]">
                 <svg width="25" height="25" viewBox="0 0 355 426" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path className="fill-white dark:fill-black" d="M184.467 0.319128C163.534 2.05246 140.201 8.1858 120.334 17.5191C101.534 26.3191 76.2007 43.5191 77.934 46.3191C78.334 46.9858 80.8673 47.5191 83.8007 47.5191C91.4007 47.5191 117.001 52.1858 134.734 56.7191C166.601 64.9858 197.801 78.8525 224.601 96.7191C266.467 124.452 293.934 162.852 299.934 202.186C301.534 212.319 301.001 220.452 297.667 237.519C297.001 240.986 297.534 240.586 301.934 234.186C328.067 196.452 346.067 146.986 353.801 92.4525C356.201 74.7191 356.201 74.7191 340.067 58.7191C311.534 30.1858 278.334 11.7858 240.867 3.65246C228.201 0.985795 198.867 -0.747539 184.467 0.319128Z" />
