@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence, Transition } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -69,10 +70,9 @@ export default function TextLoop({
                 {/* Cursor Line */}
                 <motion.div
                     className={cn(
-                        "w-[3px] md:w-[4px] bg-violet-500",
+                        "w-[3px] md:w-[4px] bg-violet-500 h-[1.10em] sm:h-[1em]",
                         cursorClassName
                     )}
-                    style={{ height: "1em" }}
                     animate={{ opacity: [1, 0.5] }}
                     transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
                 />

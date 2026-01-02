@@ -19,7 +19,13 @@ export default function PropsTable({ props, title = "Props" }: PropsTableProps) 
             </h3>
             <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden">
                 <div className="overflow-x-auto">
-                    <table className="w-full border-collapse">
+                    <table className="w-full border-collapse md:table-fixed">
+                        <colgroup>
+                            <col className="w-[15%]" />
+                            <col className="w-[15%]" />
+                            <col className="w-[30%]" />
+                            <col className="w-[40%]" />
+                        </colgroup>
                         <thead>
                             <tr className="bg-gray-50 dark:bg-neutral-900 border-b border-gray-200 dark:border-neutral-800 text-base/7 ">
                                 <th className="text-left p-4 text-base/7 text-black dark:text-white leading-none font-medium">
@@ -53,7 +59,7 @@ export default function PropsTable({ props, title = "Props" }: PropsTableProps) 
                                     <td className="p-4 text-base/7 text-neutral-500 dark:text-gray-400  leading-none">
                                         {prop.type}
                                     </td>
-                                    <td className="p-4 text-base/7 text-neutral-500 dark:text-gray-400  leading-none">
+                                    <td className="p-4 min-w-[300px] md:text-base/7 text-neutral-500 dark:text-gray-400  leading-none">
                                         {prop.default}
                                     </td>
                                     <td className="p-4 text-base/7 text-neutral-500 dark:text-gray-400">
