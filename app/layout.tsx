@@ -54,6 +54,9 @@ export const metadata: Metadata = {
       "Explore a collection of stunning and interactive UI components crafted with Next.js and Motion.",
     images: ["/images/og-image.png"],
   },
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
