@@ -56,7 +56,9 @@ export default function TextLoop({
                         )} />
 
                         <span className={cn(
-                            "relative bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-violet-800 pr-1",
+                            "relative bg-clip-text text-transparent",
+                            "bg-gradient-to-r from-violet-400 to-violet-800",
+                            "dark:bg-gradient-to-r from-violet-400 to-violet-600 pr-1",
                             rotatingTextClassName
                         )}>
                             {rotatingTexts[index]}
