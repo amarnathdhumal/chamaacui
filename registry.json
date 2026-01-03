@@ -210,6 +210,19 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "ai-input",
+      "type": "registry:component",
+      "title": "AI Input",
+      "description": "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
+      "dependencies": ["motion", "clsx", "tailwind-merge", "lucide-react"],
+      "files": [
+        {
+          "path": "registry/chamaac/ai-input/ai-input.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

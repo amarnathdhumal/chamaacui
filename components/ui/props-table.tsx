@@ -56,7 +56,7 @@ export default function PropsTable({ props, title = "Props" }: PropsTableProps) 
                                         {prop.name}
                                         {prop.required && <span className="text-red-500 ml-1">*</span>}
                                     </td>
-                                    <td className="p-4 text-base/7 text-neutral-500 dark:text-gray-400  leading-none">
+                                    <td className="p-4 text-base/10 text-neutral-500 dark:text-gray-400  leading-none">
                                         {prop.type}
                                     </td>
                                     <td className="p-4 min-w-[300px] md:text-base/7 text-neutral-500 dark:text-gray-400  leading-none">

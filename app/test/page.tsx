@@ -1,12 +1,15 @@
-"use client";
+import { constructMetadata } from "@/lib/utils";
+import { AIInput } from "@/registry/chamaac/ai-input/ai-input";
 
-import React from 'react';
-import TextLoop from '../components/text-loop/text-loop';
+export const metadata = constructMetadata({
+    title: "AI Input",
+    description: "A polished AI input component with inspiration and model selection.",
+})
 
-export default function TextLoopDemo() {
+export default function AIInputPage() {
     return (
-        <div className="flex items-center justify-center p-10 h-full w-full bg-white dark:bg-black  rounded-md h-screen">
-            <TextLoop />
+        <div className="min-h-screen ">
+            <AIInput />
         </div>
-    );
+    )
 }

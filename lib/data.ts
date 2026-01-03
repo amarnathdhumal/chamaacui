@@ -49,7 +49,7 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Buttons",
   },
   {
-    componentName: "Glowing Border Button",
+    componentName: "Glowing Border ",
     link: "/buttons/glowing-border-button",
     category: "Buttons",
     isNew: true,
@@ -71,7 +71,7 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Buttons",
   },
   {
-    componentName: "Neo Brutalist Button",
+    componentName: "Neo Brutalist ",
     link: "/buttons/neo-brutalist-button",
     category: "Buttons",
     isNew: true,
@@ -108,6 +108,12 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Dock",
     link: "/dock",
     category: "Navigation",
+  },
+  {
+    componentName: "AI Input",
+    link: "/ai-input",
+    category: "Inputs",
+    isNew: true,
   },
 
 ];
@@ -242,6 +248,15 @@ export const componentCards: ComponentCardType[] = [
     link: "/components/dock",
     category: "Navigation",
      bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "AI Input",
+    description: "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
+    imagePath: "/components/ai-input.svg",
+    videoSrc: "https://assets.amarn.me/ai-input.mp4",
+    link: "/components/ai-input",
+    category: "Inputs",
+    bgColor: "bg-black dark:bg-black",
   },
 {
     title: "Feature Steps",
