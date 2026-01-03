@@ -13,11 +13,16 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Buttons",
   },
   // text animations
+   {
+    componentName: "Text Loop",
+    link: "/text-loop",
+    category: "Text Animations",
+    isNew: true,
+  },
   {
     componentName: "Dancing Letters",
     link: "/dancing-letters",
     category: "Text Animations",
-    isNew: true,
   },
   {
     componentName: "Gif Text",
@@ -25,12 +30,7 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Text Animations",
     isNew: true,
   },
-  {
-    componentName: "Text Loop",
-    link: "/text-loop",
-    category: "Text Animations",
-    isNew: true,
-  },
+ 
   // sections
    {
     componentName: "Feature Steps",
@@ -41,14 +41,12 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Gauge",
     link: "/gauge",
     category: "Sections",
-    isNew: true,
   },
 
     {
     componentName: "Premium Button",
     link: "/buttons/premium-button",
     category: "Buttons",
-    isNew: true,
   },
   {
     componentName: "Glowing Border Button",

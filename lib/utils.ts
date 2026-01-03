@@ -10,7 +10,7 @@ export function constructMetadata({
   title,
   description,
   image = "/images/og-image.png",
-  icons = "/favicon.ico",
+  icons = "/favicon.png",
   noIndex = false,
 }: {
   title?: string;
