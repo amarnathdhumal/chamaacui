@@ -15,11 +15,11 @@ export const metadata = constructMetadata({
 // file paths
 const filePath = path.join(
     process.cwd(),
-    "app/components/dancing-letters/dancing-letters.tsx"
+    "app/components/text-animations/dancing-letters/dancing-letters.tsx"
 );
 const demoFilePath = path.join(
     process.cwd(),
-    "app/components/dancing-letters/dancing-letters-demo.tsx"
+    "app/components/text-animations/dancing-letters/dancing-letters-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
 const DemoSource = fs.readFileSync(demoFilePath, "utf-8");

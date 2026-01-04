@@ -19,7 +19,7 @@ const filePath = path.join(
 );
 const demoFilePath = path.join(
     process.cwd(),
-    "app/components/ai-input/ai-input-demo.tsx"
+    "app/components/inputs/ai-input/ai-input-demo.tsx"
 );
 const AIInputSource = fs.readFileSync(filePath, "utf-8");
 const AIInputDemoSource = fs.readFileSync(demoFilePath, "utf-8");

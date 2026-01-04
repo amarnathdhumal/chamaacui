@@ -16,11 +16,11 @@ export const metadata = constructMetadata({
 // file paths
 const filePath = path.join(
     process.cwd(),
-    "app/components/gauge/gauge.tsx"
+    "app/components/sections/gauge/gauge.tsx"
 );
 const demoFilePath = path.join(
     process.cwd(),
-    "app/components/gauge/gauge-demo.tsx"
+    "app/components/sections/gauge/gauge-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
 const DemoSource = fs.readFileSync(demoFilePath, "utf-8");

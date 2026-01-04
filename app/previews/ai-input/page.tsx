@@ -1,4 +1,4 @@
-import AIInputDemo from "@/app/components/ai-input/ai-input-demo";
+import AIInputDemo from "@/app/components/inputs/ai-input/ai-input-demo";
 
 export default function AIInputPreviewPage() {
     return <AIInputDemo />;

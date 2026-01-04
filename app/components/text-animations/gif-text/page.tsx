@@ -1,4 +1,4 @@
-import FeatureStepsPreviewWrapper from "./feature-steps-preview-wrapper";
+import GifTextPreviewWrapper from "./gif-text-preview-wrapper";
 import fs from "fs";
 import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -7,42 +7,29 @@ import CopyButton from "@/components/ui/copy-button";
 import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
-    title: "Feature Steps",
-    description: "A dynamic feature showcase component with auto-playing steps and synchronized image transitions.",
-    image: "/components/features-step.png",
+    title: "Gif Text",
+    description: "A stunning text effect that uses a GIF as the fill color.",
+    image: "/components/gif-text.svg",
 });
 
 // file paths
 const filePath = path.join(
     process.cwd(),
-    "app/components/feature-steps/feature-steps.tsx"
+    "app/components/text-animations/gif-text/gif-text.tsx"
 );
 const demoFilePath = path.join(
     process.cwd(),
-    "app/components/feature-steps/feature-steps-demo.tsx"
+    "app/components/text-animations/gif-text/gif-text-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
 const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
 
-export default function FeatureStepsPage() {
+export default function GifTextPage() {
     return (
         <div className="flex flex-col w-full">
-            <FeatureStepsPreviewWrapper
-                title="Feature Steps"
-                description={
-                    <>
-                        A dynamic feature showcase component with auto-playing steps and synchronized image transitions. Inspired from{" "}
-                        <a
-                            href="https://opensox.ai/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                        >
-                            Opensox
-                        </a>
-                        .
-                    </>
-                }
+            <GifTextPreviewWrapper
+                title="Gif Text"
+                description="A stunning text effect that uses a GIF as the fill color."
                 code={
                     <div className="relative">
                         <div className="absolute top-4 right-4">
@@ -72,30 +59,30 @@ export default function FeatureStepsPage() {
                 installationSource={ComponentSource}
                 props={[
                     {
-                        name: "features",
-                        type: "Feature[]",
-                        default: "-",
-                        description: "Array of feature objects containing title, content, and image.",
-                        required: true,
-                    },
-                    {
-                        name: "autoPlayInterval",
-                        type: "number",
-                        default: "6000",
-                        description: "Interval in milliseconds for auto-playing steps.",
+                        name: "text",
+                        type: "string",
+                        default: '"CHAMAAC"',
+                        description: "The text content to mask the video.",
                         required: false,
                     },
                     {
-                        name: "imageClassName",
+                        name: "gif",
                         type: "string",
-                        default: '"h-[400px]"',
-                        description: "Tailwind class for the height of the image container, useful for mobile responsiveness.",
+                        default: "URL",
+                        description: "The source URL of the background image or GIF.",
                         required: false,
                     },
                     {
                         name: "className",
                         type: "string",
-                        default: '""',
+                        default: "undefined",
+                        description: "Additional classes for the text element.",
+                        required: false,
+                    },
+                    {
+                        name: "containerClassName",
+                        type: "string",
+                        default: "undefined",
                         description: "Additional classes for the container.",
                         required: false,
                     },

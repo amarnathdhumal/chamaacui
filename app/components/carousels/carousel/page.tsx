@@ -16,11 +16,11 @@ export const metadata = constructMetadata({
 // file paths
 const filePath = path.join(
     process.cwd(),
-    "app/components/carousel/coursel.tsx"
+    "app/components/carousels/carousel/coursel.tsx"
 );
 const demoFilePath = path.join(
     process.cwd(),
-    "app/components/carousel/coursel-demo.tsx"
+    "app/components/carousels/carousel/coursel-demo.tsx"
 );
 const CourselSource = fs.readFileSync(filePath, "utf-8");
 const CourselDemoSource = fs.readFileSync(demoFilePath, "utf-8");
