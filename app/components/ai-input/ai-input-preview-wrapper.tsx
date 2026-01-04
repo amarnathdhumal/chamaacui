@@ -5,7 +5,7 @@ import ViewArea from "@/components/ui/view-area";
 import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
-import { IconAlertCircle } from "@tabler/icons-react";
+import { IconAlertCircle, IconArrowUpRight } from "@tabler/icons-react";
 
 interface AIInputPreviewWrapperProps {
     title: string;
@@ -61,10 +61,12 @@ export default function AIInputPreviewWrapper({
                             </p>
                             <SlideUpButton
                                 onClick={() => window.open("/previews/ai-input", "_blank")}
-                                className="
-                px-4 py-2 md:px-6 md:py-3
-                bg-black dark:bg-white text-white dark:text-black text-sm md:text-base  ">
-                                Open Preview
+                                className="px-4 py-2 md:px-6 md:py-3 bg-black dark:bg-white text-white dark:text-black text-sm md:text-base"
+                            >
+                                <span className="flex items-center gap-2">
+                                    Open Preview
+                                    <IconArrowUpRight className="w-5 h-5" />
+                                </span>
                             </SlideUpButton>
                         </div>
 
