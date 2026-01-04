@@ -37,6 +37,12 @@ bun run dev
 
 We welcome contributions from the community. Please read our [Contribution Guidelines](CONTRIBUTING.md) to get started.
 
+## Support the Project
+
+If you find Chamaac UI helpful, please consider giving it a star on GitHub. It helps the project grow and motivates us to keep building.
+
+[![Star on GitHub](https://img.shields.io/github/stars/amarnathdhumal/chamaacui?style=social)](https://github.com/amarnathdhumal/chamaacui)
+
 ## License
 
 This project is licensed under the MIT License.
