@@ -1,3 +1,4 @@
+"use client";
 import { motion, SVGMotionProps } from "motion/react";
 
 const HeroGrid = () => {

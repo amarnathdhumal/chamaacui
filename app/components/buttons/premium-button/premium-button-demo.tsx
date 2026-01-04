@@ -1,4 +1,4 @@
-import PremiumButton from "./premium-button";
+import PremiumButton from "@/registry/chamaac/premium-button/premium-button";
 
 const PremiumButtonDemo = () => {
     return (

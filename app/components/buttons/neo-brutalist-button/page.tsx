@@ -16,7 +16,7 @@ export const metadata = constructMetadata({
 export default function NeoBrutalistButtonPage() {
     const componentPath = path.join(
         process.cwd(),
-        "app/components/buttons/neo-brutalist-button/neo-brutalist-button.tsx"
+        "registry/chamaac/neo-brutalist-button/neo-brutalist-button.tsx"
     );
     const componentSource = fs.readFileSync(componentPath, "utf8");
 
@@ -71,6 +71,13 @@ export default function NeoBrutalistButtonPage() {
                         type: "string",
                         default: "-",
                         description: "Additional CSS classes for styling (colors, shadows, borders, etc.)",
+                        required: false,
+                    },
+                    {
+                        name: "onClick",
+                        type: "() => void",
+                        default: "-",
+                        description: "Click handler function",
                         required: false,
                     },
                 ]}

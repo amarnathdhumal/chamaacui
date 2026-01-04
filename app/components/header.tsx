@@ -68,7 +68,7 @@ export const Header = () => {
                 </svg>
               </div>
               <div>
-                <p className="font-bold text-[20px] leading-none tracking-tight ">Chamaac UI</p>
+                <p className="font-bold text-[20px] leading-none tracking-tight hidden md:block ">Chamaac UI</p>
               </div>
             </Link>
 

@@ -8,7 +8,7 @@ import CopyButton from "@/components/ui/copy-button";
 // file paths
 const filePath = path.join(
     process.cwd(),
-    "app/components/buttons/slideup-button/slide-up-button.tsx"
+    "registry/chamaac/slideup-button/slideup-button.tsx"
 );
 const demoFilePath = path.join(
     process.cwd(),
@@ -119,6 +119,13 @@ export default function SlideUpButtonPage() {
                         type: "number",
                         default: "0.8",
                         description: "Opacity value for the button on hover (0-1)",
+                        required: false,
+                    },
+                    {
+                        name: "onClick",
+                        type: "() => void",
+                        default: "-",
+                        description: "Click handler function",
                         required: false,
                     },
                 ]}

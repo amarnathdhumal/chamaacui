@@ -1,6 +1,6 @@
 "use client";
 
-import SlideUpButton from "./slide-up-button";
+import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 
 export default function SlideUpButtonDemo() {
     return (

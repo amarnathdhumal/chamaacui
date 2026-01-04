@@ -15,7 +15,7 @@ export const metadata = constructMetadata({
 export default function GlowingBorderButtonPage() {
     const componentPath = path.join(
         process.cwd(),
-        "app/components/buttons/glowing-border-button/glowing-border-button.tsx"
+        "registry/chamaac/glowing-border-button/glowing-border-button.tsx"
     );
     const componentSource = fs.readFileSync(componentPath, "utf8");
 
@@ -63,6 +63,13 @@ export default function GlowingBorderButtonPage() {
                         type: "string",
                         default: "-",
                         description: "Additional CSS classes to style the button",
+                        required: false,
+                    },
+                    {
+                        name: "onClick",
+                        type: "() => void",
+                        default: "-",
+                        description: "Click handler function",
                         required: false,
                     },
                 ]}

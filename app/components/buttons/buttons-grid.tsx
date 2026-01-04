@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { motion } from "motion/react";
-import SlideUpButton from "./slideup-button/slide-up-button";
-import ShimmerButton from "./shimmer-button/shimmer-button";
+import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
+import ShimmerButton from "@/registry/chamaac/shimmer-button/shimmer-button";
 import FocusButton from "./focus-button/focus-button";
-import NeoBrutalistButton from "./neo-brutalist-button/neo-brutalist-button";
-import PremiumButton from "./premium-button/premium-button";
-import GlowingBorderButton from "./glowing-border-button/glowing-border-button";
+import NeoBrutalistButton from "@/registry/chamaac/neo-brutalist-button/neo-brutalist-button";
+import PremiumButton from "@/registry/chamaac/premium-button/premium-button";
+import GlowingBorderButton from "@/registry/chamaac/glowing-border-button/glowing-border-button";
 import { ArrowRight } from "lucide-react";
 
 

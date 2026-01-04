@@ -15,7 +15,7 @@ export const metadata = constructMetadata({
 export default function PremiumButtonPage() {
     const componentPath = path.join(
         process.cwd(),
-        "app/components/buttons/premium-button/premium-button.tsx"
+        "registry/chamaac/premium-button/premium-button.tsx"
     );
     const componentSource = fs.readFileSync(componentPath, "utf8");
 
@@ -83,6 +83,13 @@ export default function PremiumButtonPage() {
                         type: "string",
                         default: "-",
                         description: "Additional CSS classes for the button",
+                        required: false,
+                    },
+                    {
+                        name: "onClick",
+                        type: "() => void",
+                        default: "-",
+                        description: "Click handler function",
                         required: false,
                     },
                 ]}

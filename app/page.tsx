@@ -1,12 +1,11 @@
-"use client";
+
 
 import { Header } from "./components/header";
-import SlideUpButton from "./components/buttons/slideup-button/slide-up-button";
-import { useRouter } from "next/navigation";
+import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import HeroGrid from "@/components/ui/hero-grid";
+import Link from "next/link";
 
 export default function Home() {
-  const router = useRouter();
   return (
     <div className="relative h-full lg:h-screen w-full dark:bg-black bg-white overflow-hidden flex flex-col max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12">
       <Header />
@@ -21,7 +20,7 @@ export default function Home() {
             A collection of beautiful, animated components to elevate your web projects instantly.
           </p>
           <div className="">
-            <div onClick={() => router.push("/components")} className="w-fit">
+            <Link href="/components" className="w-fit">
               <SlideUpButton
 
                 className="
@@ -29,7 +28,7 @@ export default function Home() {
                 bg-black dark:bg-white text-white dark:text-black text-sm md:text-base  ">
                 Explore Components
               </SlideUpButton>
-            </div>
+            </Link>
           </div>
         </div>
 
@@ -38,6 +37,6 @@ export default function Home() {
           <HeroGrid />
         </div>
       </div>
-    </div>
+    </div >
   );
 }

@@ -5,11 +5,13 @@ import { cn } from "@/lib/utils";
 interface NeoBrutalistButtonProps {
     text?: string;
     className?: string;
+    onClick?: () => void;
 }
 
 const NeoBrutalistButton = ({
     text = "Click Me",
     className,
+    onClick,
 }: NeoBrutalistButtonProps) => {
     return (
         <>
@@ -30,6 +32,7 @@ const NeoBrutalistButton = ({
                 }
             `}</style>
             <button
+                onClick={onClick}
                 className={cn(
                     "group relative overflow-hidden px-6 py-3 cursor-pointer",
                     "bg-[#ff90e8] text-black",

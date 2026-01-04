@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion } from "motion/react";
-
 import { cn } from "@/lib/utils";
 
 interface SlideUpButtonProps {
@@ -13,6 +12,7 @@ interface SlideUpButtonProps {
     cloneDelay?: number;
     buttonScale?: number;
     buttonOpacity?: number;
+    onClick?: () => void;
 }
 
 const SlideUpButton = ({
@@ -23,6 +23,7 @@ const SlideUpButton = ({
     cloneDelay = 0.12,
     buttonScale = 0.98,
     buttonOpacity = 0.8,
+    onClick,
 }: SlideUpButtonProps) => {
     const buttonVariants = {
         initial: { scale: 1 },
@@ -41,6 +42,7 @@ const SlideUpButton = ({
 
     return (
         <motion.button
+            onClick={onClick}
             variants={buttonVariants}
             initial="initial"
             whileHover="hover"

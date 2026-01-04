@@ -16,7 +16,7 @@ export const metadata = constructMetadata({
 export default function ShimmerButtonPage() {
     const componentPath = path.join(
         process.cwd(),
-        "app/components/buttons/shimmer-button/shimmer-button.tsx"
+        "registry/chamaac/shimmer-button/shimmer-button.tsx"
     );
     const componentSource = fs.readFileSync(componentPath, "utf8");
 
@@ -78,6 +78,13 @@ export default function ShimmerButtonPage() {
                         type: "number",
                         default: "1.2",
                         description: "Duration of the animation cycle in seconds",
+                        required: false,
+                    },
+                    {
+                        name: "onClick",
+                        type: "() => void",
+                        default: "-",
+                        description: "Click handler function",
                         required: false,
                     },
                 ]}

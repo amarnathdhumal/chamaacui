@@ -1,4 +1,4 @@
-import ShimmerButton from "./shimmer-button";
+import ShimmerButton from "@/registry/chamaac/shimmer-button/shimmer-button";
 
 const ShimmerButtonDemo = () => {
     return (

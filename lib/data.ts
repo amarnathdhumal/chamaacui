@@ -192,7 +192,15 @@ export const componentCards: ComponentCardType[] = [
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
   },
-    
+     {
+    title: "AI Input",
+    description: "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
+    imagePath: "/components/ai-input.svg",
+    videoSrc: "https://assets.amarn.me/ai-input.mp4",
+    link: "/components/ai-input",
+    category: "Inputs",
+    bgColor: "bg-black dark:bg-black",
+  },
     {
     title: "Dancing Letters",
     description: "A sleek, interactive text animation component with physics-based effects.",
@@ -248,15 +256,6 @@ export const componentCards: ComponentCardType[] = [
     link: "/components/dock",
     category: "Navigation",
      bgColor: "bg-black dark:bg-black",
-  },
-  {
-    title: "AI Input",
-    description: "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
-    imagePath: "/components/ai-input.svg",
-    videoSrc: "https://assets.amarn.me/ai-input.mp4",
-    link: "/components/ai-input",
-    category: "Inputs",
-    bgColor: "bg-black dark:bg-black",
   },
 {
     title: "Feature Steps",

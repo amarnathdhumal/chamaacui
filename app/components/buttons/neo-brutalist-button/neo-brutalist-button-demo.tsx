@@ -1,4 +1,4 @@
-import NeoBrutalistButton from "./neo-brutalist-button";
+import NeoBrutalistButton from "@/registry/chamaac/neo-brutalist-button/neo-brutalist-button";
 
 const NeoBrutalistButtonDemo = () => {
     return (

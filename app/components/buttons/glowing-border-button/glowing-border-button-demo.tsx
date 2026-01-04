@@ -1,5 +1,5 @@
 import React from "react";
-import GlowingBorderButton from "./glowing-border-button";
+import GlowingBorderButton from "@/registry/chamaac/glowing-border-button/glowing-border-button";
 
 const GlowingBorderButtonDemo = () => {
     return (
