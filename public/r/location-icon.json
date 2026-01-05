@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "location-icon",
+  "title": "Location Icon",
+  "description": "An animated location icon that rotates like a compass.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/location-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface LocationIconProps extends SVGMotionProps<SVGSVGElement> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n}\n\nconst LocationIcon = (props: LocationIconProps) => {\n    const { size = 24, duration = 3, strokeWidth = 2, className, ...restProps } = props;\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n            overflow=\"visible\"\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            <motion.path\n                d=\"M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5\"\n                animate={{ rotate: [0, 15, -10, 0] }}\n                transition={{ duration: duration, repeat: Infinity, ease: \"easeInOut\" }}\n                style={{ originX: \"12px\", originY: \"12px\" }}\n            />\n        </motion.svg>\n    )\n}\n\nexport default LocationIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -5,12 +5,13 @@ import { motion, SVGMotionProps } from "motion/react";
 interface AdjustmentsHorizontalIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
+    strokeWidth?: number;
 }
 
 const AdjustmentsHorizontalIcon = (
     props: AdjustmentsHorizontalIconProps
 ) => {
-    const { size = 24, duration = 1.2, className, ...restProps } = props;
+    const { size = 24, duration = 1.2, strokeWidth = 2, className, ...restProps } = props;
     return (
         <motion.svg
             {...restProps}
@@ -19,7 +20,7 @@ const AdjustmentsHorizontalIcon = (
             height={size}
             viewBox="0 0 24 24"
             stroke="currentColor"
-            strokeWidth={2}
+            strokeWidth={strokeWidth}
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
@@ -36,7 +37,7 @@ const AdjustmentsHorizontalIcon = (
                 }}
                 className="fill-white dark:fill-black"
                 stroke="currentColor"
-                strokeWidth={2}
+                strokeWidth={strokeWidth}
                 d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
             />
 
@@ -52,7 +53,7 @@ const AdjustmentsHorizontalIcon = (
                 }}
                 className="fill-white dark:fill-black"
                 stroke="currentColor"
-                strokeWidth={2}
+                strokeWidth={strokeWidth}
                 d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
             />
 
@@ -68,7 +69,7 @@ const AdjustmentsHorizontalIcon = (
                 }}
                 className="fill-white dark:fill-black"
                 stroke="currentColor"
-                strokeWidth={2}
+                strokeWidth={strokeWidth}
                 d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
             />
         </motion.svg>

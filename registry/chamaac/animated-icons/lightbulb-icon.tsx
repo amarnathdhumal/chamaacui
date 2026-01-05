@@ -1,0 +1,40 @@
+"use client";
+
+import { motion, SVGMotionProps } from "motion/react";
+
+interface LightbulbIconProps extends SVGMotionProps<SVGSVGElement> {
+    size?: number;
+    duration?: number;
+    strokeWidth?: number;
+}
+
+const LightbulbIcon = (props: LightbulbIconProps) => {
+    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;
+
+    return (
+        <motion.svg
+            {...restProps}
+            xmlns="http://www.w3.org/2000/svg"
+            width={size}
+            height={size}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={className}
+        >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <motion.path
+                d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7"
+                animate={{ opacity: [0.2, 1, 0.2] }}
+                transition={{ duration: duration, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <path d="M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0 -1 3a2 2 0 0 1 -4 0a3.5 3.5 0 0 0 -1 -3" />
+            <path d="M9.7 17l4.6 0" />
+        </motion.svg>
+    )
+}
+
+export default LightbulbIcon;

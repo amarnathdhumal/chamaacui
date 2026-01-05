@@ -8,7 +8,11 @@
       "type": "registry:component",
       "title": "Text Loop",
       "description": "An animated text loop with typewriter and gradient effect.",
-      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/text-loop/text-loop.tsx",
@@ -21,7 +25,10 @@
       "type": "registry:component",
       "title": "Gif Text",
       "description": "A stunning text effect that uses a GIF as the fill color.",
-      "dependencies": ["clsx", "tailwind-merge"],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/gif-text/gif-text.tsx",
@@ -34,7 +41,11 @@
       "type": "registry:component",
       "title": "Dancing Letters",
       "description": "Physics-based interactive text animations with multiple animation styles.",
-      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/dancing-letters/dancing-letters.tsx",
@@ -47,7 +58,10 @@
       "type": "registry:component",
       "title": "Premium Button",
       "description": "An animated button with a dynamic arrow grid animation.",
-      "dependencies": ["clsx", "tailwind-merge"],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/premium-button/premium-button.tsx",
@@ -60,7 +74,10 @@
       "type": "registry:component",
       "title": "Shimmer Button",
       "description": "A button with a shimmer animation effect.",
-      "dependencies": ["clsx", "tailwind-merge"],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/shimmer-button/shimmer-button.tsx",
@@ -73,7 +90,11 @@
       "type": "registry:component",
       "title": "Slide Up Button",
       "description": "A button with a smooth slide-up text animation on hover.",
-      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/slideup-button/slideup-button.tsx",
@@ -86,7 +107,10 @@
       "type": "registry:component",
       "title": "Focus Button",
       "description": "A button with a focus ring animation effect.",
-      "dependencies": ["clsx", "tailwind-merge"],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/focus-button/focus-button.tsx",
@@ -99,7 +123,10 @@
       "type": "registry:component",
       "title": "Neo Brutalist Button",
       "description": "A bold, retro-styled button with skewed design, offset shadow, and shimmer effect.",
-      "dependencies": ["clsx", "tailwind-merge"],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/neo-brutalist-button/neo-brutalist-button.tsx",
@@ -112,7 +139,10 @@
       "type": "registry:component",
       "title": "Glowing Border Button",
       "description": "A stylish button with a glowing border animation.",
-      "dependencies": ["clsx", "tailwind-merge"],
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/glowing-border-button/glowing-border-button.tsx",
@@ -125,7 +155,11 @@
       "type": "registry:component",
       "title": "Gauge",
       "description": "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
-      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/gauge/gauge.tsx",
@@ -138,7 +172,11 @@
       "type": "registry:component",
       "title": "Carousel",
       "description": "A smooth, auto-playing 3D carousel component with layout animations.",
-      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/carousel/carousel.tsx",
@@ -151,7 +189,11 @@
       "type": "registry:component",
       "title": "Feature Steps",
       "description": "A dynamic feature showcase with auto-playing steps and synchronized image transitions.",
-      "dependencies": ["motion", "clsx", "tailwind-merge"],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
       "files": [
         {
           "path": "registry/chamaac/feature-steps/feature-steps.tsx",
@@ -164,7 +206,13 @@
       "type": "registry:component",
       "title": "Dock",
       "description": "A navigation dock component with smooth animations and hover effects, perfect for desktop interfaces.",
-      "dependencies": ["motion", "clsx", "tailwind-merge", "lucide-react", "next-themes"],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge",
+        "lucide-react",
+        "next-themes"
+      ],
       "files": [
         {
           "path": "registry/chamaac/dock/dock.tsx",
@@ -177,7 +225,9 @@
       "type": "registry:component",
       "title": "Copy Icon",
       "description": "An animated copy icon with smooth motion effects.",
-      "dependencies": ["motion"],
+      "dependencies": [
+        "motion"
+      ],
       "files": [
         {
           "path": "registry/chamaac/animated-icons/copy-icon.tsx",
@@ -190,7 +240,9 @@
       "type": "registry:component",
       "title": "Wavy Icon",
       "description": "An animated wavy icon with smooth motion effects.",
-      "dependencies": ["motion"],
+      "dependencies": [
+        "motion"
+      ],
       "files": [
         {
           "path": "registry/chamaac/animated-icons/wavy-icon.tsx",
@@ -203,7 +255,9 @@
       "type": "registry:component",
       "title": "Adjustments Icon",
       "description": "An animated adjustments/settings icon with smooth motion effects.",
-      "dependencies": ["motion"],
+      "dependencies": [
+        "motion"
+      ],
       "files": [
         {
           "path": "registry/chamaac/animated-icons/adjustments-icon.tsx",
@@ -216,10 +270,270 @@
       "type": "registry:component",
       "title": "AI Input",
       "description": "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
-      "dependencies": ["motion", "clsx", "tailwind-merge", "lucide-react"],
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge",
+        "lucide-react"
+      ],
       "files": [
         {
           "path": "registry/chamaac/ai-input/ai-input.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "scan-icon",
+      "type": "registry:component",
+      "title": "Scan Icon",
+      "description": "An animated scan icon with a moving scan line.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/scan-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "bell-icon",
+      "type": "registry:component",
+      "title": "Bell Icon",
+      "description": "An animated bell icon that rings.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/bell-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "settings-icon",
+      "type": "registry:component",
+      "title": "Settings Icon",
+      "description": "An animated settings icon that rotates.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/settings-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "activity-icon",
+      "type": "registry:component",
+      "title": "Activity Icon",
+      "description": "An animated activity icon with a heartbeat line.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/activity-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "refresh-icon",
+      "type": "registry:component",
+      "title": "Refresh Icon",
+      "description": "An animated refresh icon that rotates.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/refresh-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "wifi-icon",
+      "type": "registry:component",
+      "title": "Wifi Icon",
+      "description": "An animated wifi icon with pulsing signal bars.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/wifi-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "arrow-right-icon",
+      "type": "registry:component",
+      "title": "Arrow Right Icon",
+      "description": "An animated arrow right icon that moves horizontally.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/arrow-right-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "download-icon",
+      "type": "registry:component",
+      "title": "Download Icon",
+      "description": "An animated download icon with a bouncing arrow.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/download-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "globe-icon",
+      "type": "registry:component",
+      "title": "Globe Icon",
+      "description": "An animated globe icon that rotates continuously.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/globe-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "star-icon",
+      "type": "registry:component",
+      "title": "Star Icon",
+      "description": "An animated star icon that twinkles and rotates.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/star-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "hourglass-icon",
+      "type": "registry:component",
+      "title": "Hourglass Icon",
+      "description": "An animated hourglass icon that rotates.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/hourglass-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "lightbulb-icon",
+      "type": "registry:component",
+      "title": "Lightbulb Icon",
+      "description": "An animated lightbulb icon with pulsing rays.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/lightbulb-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "music-icon",
+      "type": "registry:component",
+      "title": "Music Icon",
+      "description": "An animated music icon with dancing notes.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/music-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "heart-icon",
+      "type": "registry:component",
+      "title": "Heart Icon",
+      "description": "An animated heart icon that beats.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/heart-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "mail-icon",
+      "type": "registry:component",
+      "title": "Mail Icon",
+      "description": "An animated mail icon with a moving envelope flap.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/mail-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "location-icon",
+      "type": "registry:component",
+      "title": "Location Icon",
+      "description": "An animated location icon that rotates like a compass.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/location-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "lock-icon",
+      "type": "registry:component",
+      "title": "Lock Icon",
+      "description": "An animated lock icon that locks and unlocks.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/lock-icon.tsx",
           "type": "registry:component"
         }
       ]

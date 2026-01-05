@@ -5,12 +5,13 @@ import { motion, SVGMotionProps } from "motion/react";
 interface WavyIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
+    strokeWidth?: number;
 }
 
 const WavyIcon = (
     props: WavyIconProps
 ) => {
-    const { size = 24, duration = 0.8, className, ...restProps } = props;
+    const { size = 24, duration = 0.8, strokeWidth = 2, className, ...restProps } = props;
     return (
         <motion.svg
             {...restProps}
@@ -20,7 +21,7 @@ const WavyIcon = (
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth={2}
+            strokeWidth={strokeWidth}
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}

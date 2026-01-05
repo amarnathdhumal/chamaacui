@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "lock-icon",
+  "title": "Lock Icon",
+  "description": "An animated lock icon that locks and unlocks.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/lock-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface LockIconProps extends SVGMotionProps<SVGSVGElement> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n}\n\nconst LockIcon = (props: LockIconProps) => {\n    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n            overflow=\"visible\"\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            <path d=\"M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z\" />\n            <path d=\"M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0\" />\n            <motion.path\n                d=\"M8 11v-4a4 4 0 1 1 8 0v4\"\n                initial={{ pathLength: 0, opacity: 0 }}\n                animate={{ pathLength: 1, opacity: 1 }}\n                transition={{ duration: duration, repeat: Infinity, ease: \"easeInOut\", repeatDelay: 1, repeatType: \"reverse\" }}\n            />\n        </motion.svg>\n    )\n}\n\nexport default LockIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

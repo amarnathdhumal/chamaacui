@@ -2,15 +2,15 @@
 
 import { motion, SVGMotionProps } from "motion/react";
 
-interface CopyIconProps extends SVGMotionProps<SVGSVGElement> {
+interface StarIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
+    strokeWidth?: number;
 }
 
-const CopyIcon = (
-    props: CopyIconProps
-) => {
-    const { size = 24, duration = 1.5, className, ...restProps } = props;
+const StarIcon = (props: StarIconProps) => {
+    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;
+
     return (
         <motion.svg
             {...restProps}
@@ -20,35 +20,25 @@ const CopyIcon = (
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth={2}
+            strokeWidth={strokeWidth}
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            overflow="visible"
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-
-            <motion.rect
-                width="12" height="12" rx="2"
-                animate={{
-                    x: [8, 4, 8],
-                    y: [8, 4, 8],
-                }}
+            <motion.path
+                d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"
+                animate={{ scale: [1, 1.2, 1], rotate: [0, 5, -5, 0] }}
                 transition={{
                     duration: duration,
                     ease: "easeInOut",
                     repeat: Infinity,
                 }}
-                stroke="currentColor"
-                fill="none"
-            />
-
-            <rect
-                x="8" y="8" width="12" height="12" rx="2"
-                className="fill-gray-100 dark:fill-[#111111]"
-                stroke="currentColor"
+                style={{ originX: "12px", originY: "12px" }}
             />
         </motion.svg>
     )
 }
 
-export default CopyIcon;
+export default StarIcon;

@@ -5,12 +5,13 @@ import { motion, SVGMotionProps } from "motion/react";
 interface CopyIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
+    strokeWidth?: number;
 }
 
 const CopyIcon = (
     props: CopyIconProps
 ) => {
-    const { size = 24, duration = 1.5, className, ...restProps } = props;
+    const { size = 24, duration = 1.5, strokeWidth = 2, className, ...restProps } = props;
     return (
         <motion.svg
             {...restProps}
@@ -20,7 +21,7 @@ const CopyIcon = (
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth={2}
+            strokeWidth={strokeWidth}
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
@@ -39,6 +40,7 @@ const CopyIcon = (
                     repeat: Infinity,
                 }}
                 stroke="currentColor"
+                strokeWidth={strokeWidth}
                 fill="none"
             />
 
@@ -46,6 +48,7 @@ const CopyIcon = (
                 x="8" y="8" width="12" height="12" rx="2"
                 className="fill-gray-100 dark:fill-[#111111]"
                 stroke="currentColor"
+                strokeWidth={strokeWidth}
             />
         </motion.svg>
     )

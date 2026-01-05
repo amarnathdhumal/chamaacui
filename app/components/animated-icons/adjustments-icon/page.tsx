@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/utils";
 // file paths
 const filePath = path.join(
     process.cwd(),
-    "app/components/animated-icons/adjustments-icon/adjustments-icon.tsx"
+    "registry/chamaac/animated-icons/adjustments-icon.tsx"
 );
 const demoFilePath = path.join(
     process.cwd(),
@@ -78,6 +78,13 @@ export default function AdjustmentsHorizontalIconPage() {
                         default: "1.2",
                         description: "Duration of the animation in seconds",
                         required: false,
+                    },
+                    {
+                        name: "strokeWidth",
+                        type: "number",
+                        default: "2",
+                        description: "Stroke width of the icon",
+                        required: false
                     },
                 ]}
             />

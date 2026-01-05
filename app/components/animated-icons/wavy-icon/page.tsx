@@ -4,7 +4,6 @@ import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";
-
 import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
@@ -16,7 +15,7 @@ export const metadata = constructMetadata({
 // file paths
 const filePath = path.join(
     process.cwd(),
-    "app/components/animated-icons/wavy-icon/wavy-icon.tsx"
+    "registry/chamaac/animated-icons/wavy-icon.tsx"
 );
 const demoFilePath = path.join(
     process.cwd(),
@@ -79,6 +78,13 @@ export default function WavyIconPage() {
                         default: "0.8",
                         description: "Duration of the animation in seconds",
                         required: false,
+                    },
+                    {
+                        name: "strokeWidth",
+                        type: "number",
+                        default: "2",
+                        description: "Stroke width of the icon",
+                        required: false
                     },
                 ]}
             />

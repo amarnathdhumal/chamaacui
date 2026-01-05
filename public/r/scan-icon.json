@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scan-icon",
+  "title": "Scan Icon",
+  "description": "An animated scan icon with a moving scan line.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/scan-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface ScanIconProps extends SVGMotionProps<SVGSVGElement> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n}\n\nconst ScanIcon = (props: ScanIconProps) => {\n    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            <path d=\"M4 7v-1a2 2 0 0 1 2 -2h2\" />\n            <path d=\"M4 17v1a2 2 0 0 0 2 2h2\" />\n            <path d=\"M16 4h2a2 2 0 0 1 2 2v1\" />\n            <path d=\"M16 20h2a2 2 0 0 0 2 -2v-1\" />\n            <motion.line\n                strokeWidth={1}\n                x1=\"5\" y1=\"12\" x2=\"19\" y2=\"12\"\n                animate={{\n                    y: [-8, 8, -8]\n                }}\n                transition={{\n                    duration: duration,\n                    ease: \"linear\",\n                    repeat: Infinity,\n                }}\n            />\n        </motion.svg>\n    )\n}\n\nexport default ScanIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

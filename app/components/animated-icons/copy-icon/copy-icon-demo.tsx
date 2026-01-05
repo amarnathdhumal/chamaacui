@@ -1,11 +1,14 @@
 "use client";
 
-import CopyIcon from "./copy-icon";
+import CopyIcon from "@/registry/chamaac/animated-icons/copy-icon";
 
 export default function CopyIconDemo() {
     return (
-
-        <CopyIcon className="text-black dark:text-white size-12" />
-
+        <CopyIcon
+            className="text-black dark:text-white"
+            size={48}
+            duration={1.5}
+            strokeWidth={2}
+        />
     );
 }

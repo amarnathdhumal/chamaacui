@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mail-icon",
+  "title": "Mail Icon",
+  "description": "An animated mail icon with a moving envelope flap.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/mail-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface MailIconProps extends SVGMotionProps<SVGSVGElement> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n}\n\nconst MailIcon = (props: MailIconProps) => {\n    const { size = 24, duration = 4, strokeWidth = 2, className, ...restProps } = props;\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n            overflow=\"visible\"\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            <motion.path\n                d=\"M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z\"\n                animate={{ y: [0, -2, 0] }}\n                transition={{ duration: duration, repeat: Infinity, ease: \"easeInOut\" }}\n            />\n            <motion.path\n                d=\"M3 7l9 6l9 -6\"\n                initial={{ pathLength: 0, opacity: 0 }}\n                animate={{ pathLength: 1, opacity: 1 }}\n                transition={{ duration: duration / 2, repeat: Infinity, ease: \"easeInOut\", repeatDelay: 1 }}\n            />\n        </motion.svg>\n    )\n}\n\nexport default MailIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
