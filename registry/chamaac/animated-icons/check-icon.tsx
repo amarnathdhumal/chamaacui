@@ -2,14 +2,14 @@
 
 import { motion, SVGMotionProps } from "motion/react";
 
-interface DownloadIconProps extends SVGMotionProps<SVGSVGElement> {
+interface CheckIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
 }
 
-const DownloadIcon = (props: DownloadIconProps) => {
-    const { size = 24, duration = 1, strokeWidth = 2, className, ...restProps } = props;
+const CheckIcon = (props: CheckIconProps) => {
+    const { size = 24, duration = 2.5, strokeWidth = 2, className, ...restProps } = props;
 
     return (
         <motion.svg
@@ -26,20 +26,27 @@ const DownloadIcon = (props: DownloadIconProps) => {
             className={className}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-            <motion.g
-                animate={{ y: [0, 3, 0] }}
+            {/* Circle */}
+            <circle
+                cx="12"
+                cy="12"
+                r="9"
+                fill="none"
+            />
+            {/* Checkmark */}
+            <motion.path
+                d="M9 12l2 2l4 -4"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: [0, 1, 1, 0] }}
                 transition={{
                     duration: duration,
                     ease: "easeInOut",
                     repeat: Infinity,
+                    times: [0, 0.4, 0.8, 1],
                 }}
-            >
-                <path d="M7 10l5 5l5 -5" />
-                <path d="M12 3l0 12" />
-            </motion.g>
+            />
         </motion.svg>
-    )
-}
+    );
+};
 
-export default DownloadIcon;
+export default CheckIcon;

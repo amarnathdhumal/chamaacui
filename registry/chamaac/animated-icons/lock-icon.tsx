@@ -9,7 +9,7 @@ interface LockIconProps extends SVGMotionProps<SVGSVGElement> {
 }
 
 const LockIcon = (props: LockIconProps) => {
-    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 24, duration = 1, strokeWidth = 2, className, ...restProps } = props;
 
     return (
         <motion.svg

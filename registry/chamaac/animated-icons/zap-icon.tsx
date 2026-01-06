@@ -2,14 +2,14 @@
 
 import { motion, SVGMotionProps } from "motion/react";
 
-interface DownloadIconProps extends SVGMotionProps<SVGSVGElement> {
+interface ZapIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
 }
 
-const DownloadIcon = (props: DownloadIconProps) => {
-    const { size = 24, duration = 1, strokeWidth = 2, className, ...restProps } = props;
+const ZapIcon = (props: ZapIconProps) => {
+    const { size = 24, duration = 1.5, strokeWidth = 2, className, ...restProps } = props;
 
     return (
         <motion.svg
@@ -26,20 +26,22 @@ const DownloadIcon = (props: DownloadIconProps) => {
             className={className}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-            <motion.g
-                animate={{ y: [0, 3, 0] }}
+            <motion.path
+                d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"
+                animate={{
+                    opacity: [1, 0.4, 1, 0.6, 1],
+                    scale: [1, 1.02, 0.98, 1.01, 1],
+                }}
                 transition={{
                     duration: duration,
                     ease: "easeInOut",
                     repeat: Infinity,
+                    times: [0, 0.2, 0.4, 0.7, 1],
                 }}
-            >
-                <path d="M7 10l5 5l5 -5" />
-                <path d="M12 3l0 12" />
-            </motion.g>
+                style={{ transformOrigin: "center" }}
+            />
         </motion.svg>
-    )
-}
+    );
+};
 
-export default DownloadIcon;
+export default ZapIcon;

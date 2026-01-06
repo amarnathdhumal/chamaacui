@@ -6,6 +6,12 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "",
     category: "Overview",
   },
+  // animated icons
+  {
+    componentName: "Icons Overview",
+    link: "/animated-icons",
+    category: "Animated Icons",
+  },
   // buttons
   {
     componentName: "Buttons Overview",
@@ -96,28 +102,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Carousel",
     link: "/carousels/carousel",
     category: "Carousels",
-  },
-
-  // animated icons
-  {
-    componentName: "Icons Overview",
-    link: "/animated-icons",
-    category: "Animated Icons",
-  },
-  {
-    componentName: "Copy",
-    link: "/animated-icons/copy-icon",
-    category: "Animated Icons",
-  },
-  {
-    componentName: "Wavy",
-    link: "/animated-icons/wavy-icon",
-    category: "Animated Icons",
-  },
-  {
-    componentName: "Adjustments",
-    link: "/animated-icons/adjustments-icon",
-    category: "Animated Icons",
   },
 ];
 
