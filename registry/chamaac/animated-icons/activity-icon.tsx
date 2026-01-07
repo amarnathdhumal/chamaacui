@@ -6,10 +6,37 @@ interface ActivityIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const ActivityIcon = (props: ActivityIconProps) => {
-    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const pathAnimationProps = isHovered
+        ? {
+            initial: { pathLength: 0, opacity: 0 },
+            whileHover: {
+                pathLength: 1,
+                opacity: 1,
+                transition: {
+                    duration: duration,
+                    ease: "easeInOut" as const,
+                },
+            },
+        }
+        : {
+            initial: { pathLength: 0, opacity: 0 },
+            animate: {
+                pathLength: 1,
+                opacity: 1,
+            },
+            transition: {
+                duration: duration,
+                ease: "easeInOut" as const,
+                repeat: Infinity,
+                repeatType: "reverse" as const,
+            },
+        };
 
     return (
         <motion.svg
@@ -28,17 +55,7 @@ const ActivityIcon = (props: ActivityIconProps) => {
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path
                 d="M3 12h4.5l1.5 -6l4 12l2 -9l1.5 3h4.5"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{
-                    pathLength: 1,
-                    opacity: 1
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "reverse"
-                }}
+                {...pathAnimationProps}
             />
         </motion.svg>
     )

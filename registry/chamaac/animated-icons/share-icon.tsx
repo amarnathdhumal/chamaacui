@@ -6,10 +6,27 @@ interface ShareIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidt
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const ShareIcon = (props: ShareIconProps) => {
-    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const topNodeProps = isHovered
+        ? { whileHover: { scale: [1, 1.15, 1], transition: { duration: duration * 0.5, ease: "easeInOut" as const } } }
+        : { animate: { scale: [1, 1.15, 1] }, transition: { duration: duration * 0.5, ease: "easeInOut" as const, repeat: Infinity } };
+
+    const bottomNodeProps = isHovered
+        ? { whileHover: { scale: [1, 1.15, 1], transition: { duration: duration * 0.5, ease: "easeInOut" as const, delay: duration * 0.25 } } }
+        : { animate: { scale: [1, 1.15, 1] }, transition: { duration: duration * 0.5, ease: "easeInOut" as const, repeat: Infinity, delay: duration * 0.25 } };
+
+    const line1Props = isHovered
+        ? { whileHover: { pathLength: [0.5, 1, 0.5], opacity: [0.5, 1, 0.5], transition: { duration: duration, ease: "easeInOut" as const } } }
+        : { animate: { pathLength: [0.5, 1, 0.5], opacity: [0.5, 1, 0.5] }, transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity } };
+
+    const line2Props = isHovered
+        ? { whileHover: { pathLength: [0.5, 1, 0.5], opacity: [0.5, 1, 0.5], transition: { duration: duration, ease: "easeInOut" as const, delay: duration * 0.25 } } }
+        : { animate: { pathLength: [0.5, 1, 0.5], opacity: [0.5, 1, 0.5] }, transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, delay: duration * 0.25 } };
 
     return (
         <motion.svg
@@ -27,63 +44,11 @@ const ShareIcon = (props: ShareIconProps) => {
             overflow="visible"
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            {/* Center node */}
             <circle cx="6" cy="12" r="3" />
-            {/* Top right node */}
-            <motion.circle
-                cx="18"
-                cy="6"
-                r="3"
-                animate={{
-                    scale: [1, 1.15, 1],
-                }}
-                transition={{
-                    duration: duration * 0.5,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                }}
-            />
-            {/* Bottom right node */}
-            <motion.circle
-                cx="18"
-                cy="18"
-                r="3"
-                animate={{
-                    scale: [1, 1.15, 1],
-                }}
-                transition={{
-                    duration: duration * 0.5,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    delay: duration * 0.25,
-                }}
-            />
-            {/* Lines */}
-            <motion.path
-                d="M8.7 10.7l6.6 -3.4"
-                animate={{
-                    pathLength: [0.5, 1, 0.5],
-                    opacity: [0.5, 1, 0.5],
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                }}
-            />
-            <motion.path
-                d="M8.7 13.3l6.6 3.4"
-                animate={{
-                    pathLength: [0.5, 1, 0.5],
-                    opacity: [0.5, 1, 0.5],
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    delay: duration * 0.25,
-                }}
-            />
+            <motion.circle cx="18" cy="6" r="3" {...topNodeProps} />
+            <motion.circle cx="18" cy="18" r="3" {...bottomNodeProps} />
+            <motion.path d="M8.7 10.7l6.6 -3.4" {...line1Props} />
+            <motion.path d="M8.7 13.3l6.6 3.4" {...line2Props} />
         </motion.svg>
     );
 };

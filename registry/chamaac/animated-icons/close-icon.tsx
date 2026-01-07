@@ -2,26 +2,26 @@
 
 import { motion, SVGMotionProps } from "motion/react";
 
-interface ArrowRightIconProps extends SVGMotionProps<SVGSVGElement> {
+interface CloseIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
 }
 
-const ArrowRightIcon = (props: ArrowRightIconProps) => {
-    const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+const CloseIcon = (props: CloseIconProps) => {
+    const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
-    const pathAnimationProps = isHovered
+    const rotateProps = isHovered
         ? {
             whileHover: {
-                x: [0, 4, 0],
+                rotate: 180,
                 transition: { duration: duration, ease: "easeInOut" as const },
             },
         }
         : {
-            animate: { x: [0, 4, 0] },
-            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity },
+            animate: { rotate: 180 },
+            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, repeatDelay: 1 },
         };
 
     return (
@@ -37,13 +37,13 @@ const ArrowRightIcon = (props: ArrowRightIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            {...rotateProps}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <motion.path d="M5 12l14 0" {...pathAnimationProps} />
-            <motion.path d="M13 18l6 -6" {...pathAnimationProps} />
-            <motion.path d="M13 6l6 6" {...pathAnimationProps} />
+            <path d="M18 6l-12 12" />
+            <path d="M6 6l12 12" />
         </motion.svg>
-    )
-}
+    );
+};
 
-export default ArrowRightIcon;
+export default CloseIcon;

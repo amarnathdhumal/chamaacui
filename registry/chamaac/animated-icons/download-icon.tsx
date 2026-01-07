@@ -6,10 +6,32 @@ interface DownloadIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const DownloadIcon = (props: DownloadIconProps) => {
-    const { size = 24, duration = 1, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const groupAnimationProps = isHovered
+        ? {
+            whileHover: {
+                y: [0, 3, 0],
+                transition: {
+                    duration: duration,
+                    ease: "easeInOut" as const,
+                },
+            },
+        }
+        : {
+            animate: {
+                y: [0, 3, 0],
+            },
+            transition: {
+                duration: duration,
+                ease: "easeInOut" as const,
+                repeat: Infinity,
+            },
+        };
 
     return (
         <motion.svg
@@ -27,14 +49,7 @@ const DownloadIcon = (props: DownloadIconProps) => {
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-            <motion.g
-                animate={{ y: [0, 3, 0] }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                }}
-            >
+            <motion.g {...groupAnimationProps}>
                 <path d="M7 10l5 5l5 -5" />
                 <path d="M12 3l0 12" />
             </motion.g>

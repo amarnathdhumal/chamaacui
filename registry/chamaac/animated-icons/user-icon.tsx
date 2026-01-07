@@ -2,35 +2,26 @@
 
 import { motion, SVGMotionProps } from "motion/react";
 
-interface UploadIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
+interface UserIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
 }
 
-const UploadIcon = (props: UploadIconProps) => {
+const UserIcon = (props: UserIconProps) => {
     const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
-    const groupAnimationProps = isHovered
+    const headProps = isHovered
         ? {
             whileHover: {
-                y: [0, -3, 0],
-                transition: {
-                    duration: duration,
-                    ease: "easeInOut" as const,
-                },
+                y: [0, -2, 0],
+                transition: { duration: duration, ease: "easeInOut" as const },
             },
         }
         : {
-            animate: {
-                y: [0, -3, 0],
-            },
-            transition: {
-                duration: duration,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
-            },
+            animate: { y: [0, -2, 0] },
+            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity },
         };
 
     return (
@@ -49,13 +40,10 @@ const UploadIcon = (props: UploadIconProps) => {
             overflow="visible"
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-            <motion.g {...groupAnimationProps}>
-                <path d="M7 9l5 -5l5 5" />
-                <path d="M12 4l0 12" />
-            </motion.g>
+            <motion.circle cx="12" cy="7" r="4" {...headProps} />
+            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
         </motion.svg>
     );
 };
 
-export default UploadIcon;
+export default UserIcon;

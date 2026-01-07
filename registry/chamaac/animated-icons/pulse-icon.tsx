@@ -6,10 +6,23 @@ interface PulseIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidt
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const PulseIcon = (props: PulseIconProps) => {
-    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const ring1Props = isHovered
+        ? { whileHover: { r: [4, 8], opacity: [0.8, 0], transition: { duration: duration, ease: "easeOut" as const } } }
+        : { animate: { r: [4, 8], opacity: [0.8, 0] }, transition: { duration: duration, ease: "easeOut" as const, repeat: Infinity } };
+
+    const ring2Props = isHovered
+        ? { whileHover: { r: [4, 8], opacity: [0.8, 0], transition: { duration: duration, ease: "easeOut" as const, delay: duration * 0.5 } } }
+        : { animate: { r: [4, 8], opacity: [0.8, 0] }, transition: { duration: duration, ease: "easeOut" as const, repeat: Infinity, delay: duration * 0.5 } };
+
+    const ring3Props = isHovered
+        ? { whileHover: { r: [6, 11], opacity: [0.5, 0], transition: { duration: duration, ease: "easeOut" as const, delay: duration * 0.25 } } }
+        : { animate: { r: [6, 11], opacity: [0.5, 0] }, transition: { duration: duration, ease: "easeOut" as const, repeat: Infinity, delay: duration * 0.25 } };
 
     return (
         <motion.svg
@@ -27,56 +40,10 @@ const PulseIcon = (props: PulseIconProps) => {
             overflow="visible"
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            {/* Center dot */}
             <circle cx="12" cy="12" r="2" fill="currentColor" />
-            {/* Pulse rings */}
-            <motion.circle
-                cx="12"
-                cy="12"
-                r="6"
-                fill="none"
-                animate={{
-                    r: [4, 8],
-                    opacity: [0.8, 0],
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "easeOut",
-                    repeat: Infinity,
-                }}
-            />
-            <motion.circle
-                cx="12"
-                cy="12"
-                r="6"
-                fill="none"
-                animate={{
-                    r: [4, 8],
-                    opacity: [0.8, 0],
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "easeOut",
-                    repeat: Infinity,
-                    delay: duration * 0.5,
-                }}
-            />
-            <motion.circle
-                cx="12"
-                cy="12"
-                r="10"
-                fill="none"
-                animate={{
-                    r: [6, 11],
-                    opacity: [0.5, 0],
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "easeOut",
-                    repeat: Infinity,
-                    delay: duration * 0.25,
-                }}
-            />
+            <motion.circle cx="12" cy="12" r="6" fill="none" {...ring1Props} />
+            <motion.circle cx="12" cy="12" r="6" fill="none" {...ring2Props} />
+            <motion.circle cx="12" cy="12" r="10" fill="none" {...ring3Props} />
         </motion.svg>
     );
 };

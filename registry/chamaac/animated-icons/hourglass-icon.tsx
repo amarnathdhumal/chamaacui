@@ -6,10 +6,33 @@ interface HourglassIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const HourglassIcon = (props: HourglassIconProps) => {
-    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const animationProps = isHovered
+        ? {
+            whileHover: {
+                rotate: 180,
+                transition: {
+                    duration: duration,
+                    ease: "easeInOut" as const,
+                },
+            },
+        }
+        : {
+            animate: {
+                rotate: 180,
+            },
+            transition: {
+                duration: duration,
+                repeat: Infinity,
+                repeatDelay: 1,
+                ease: "easeInOut" as const,
+            },
+        };
 
     return (
         <motion.svg
@@ -24,13 +47,7 @@ const HourglassIcon = (props: HourglassIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
-            animate={{ rotate: 180 }}
-            transition={{
-                duration: duration,
-                repeat: Infinity,
-                repeatDelay: 1,
-                ease: "easeInOut",
-            }}
+            {...animationProps}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1" />

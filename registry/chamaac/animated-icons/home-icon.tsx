@@ -2,35 +2,26 @@
 
 import { motion, SVGMotionProps } from "motion/react";
 
-interface UploadIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
+interface HomeIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
 }
 
-const UploadIcon = (props: UploadIconProps) => {
+const HomeIcon = (props: HomeIconProps) => {
     const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
-    const groupAnimationProps = isHovered
+    const bounceProps = isHovered
         ? {
             whileHover: {
-                y: [0, -3, 0],
-                transition: {
-                    duration: duration,
-                    ease: "easeInOut" as const,
-                },
+                y: [0, -4, 0],
+                transition: { duration: duration, ease: "easeInOut" as const },
             },
         }
         : {
-            animate: {
-                y: [0, -3, 0],
-            },
-            transition: {
-                duration: duration,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
-            },
+            animate: { y: [0, -4, 0] },
+            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity },
         };
 
     return (
@@ -47,15 +38,14 @@ const UploadIcon = (props: UploadIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            {...bounceProps}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-            <motion.g {...groupAnimationProps}>
-                <path d="M7 9l5 -5l5 5" />
-                <path d="M12 4l0 12" />
-            </motion.g>
+            <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+            <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
         </motion.svg>
     );
 };
 
-export default UploadIcon;
+export default HomeIcon;

@@ -6,10 +6,32 @@ interface ScanIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const ScanIcon = (props: ScanIconProps) => {
-    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const lineAnimationProps = isHovered
+        ? {
+            whileHover: {
+                y: [-8, 8, -8],
+                transition: {
+                    duration: duration,
+                    ease: "linear" as const,
+                },
+            },
+        }
+        : {
+            animate: {
+                y: [-8, 8, -8],
+            },
+            transition: {
+                duration: duration,
+                ease: "linear" as const,
+                repeat: Infinity,
+            },
+        };
 
     return (
         <motion.svg
@@ -33,14 +55,7 @@ const ScanIcon = (props: ScanIconProps) => {
             <motion.line
                 strokeWidth={1}
                 x1="5" y1="12" x2="19" y2="12"
-                animate={{
-                    y: [-8, 8, -8]
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "linear",
-                    repeat: Infinity,
-                }}
+                {...lineAnimationProps}
             />
         </motion.svg>
     )

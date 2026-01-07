@@ -6,10 +6,39 @@ interface VolumeIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWid
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const VolumeIcon = (props: VolumeIconProps) => {
-    const { size = 24, duration = 1.5, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const innerWaveProps = isHovered
+        ? {
+            whileHover: {
+                opacity: [0.5, 1, 0.5, 1, 0.5],
+                scaleX: [1, 1.05, 0.95, 1.05, 1],
+                x: [0, 0.5, -0.25, 0.5, 0],
+                transition: { duration: duration, ease: "easeInOut" as const },
+            },
+        }
+        : {
+            animate: { opacity: [0.5, 1, 0.5, 1, 0.5], scaleX: [1, 1.05, 0.95, 1.05, 1], x: [0, 0.5, -0.25, 0.5, 0] },
+            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity },
+        };
+
+    const outerWaveProps = isHovered
+        ? {
+            whileHover: {
+                opacity: [0.3, 1, 0.3, 1, 0.3],
+                scaleX: [1, 1.1, 0.95, 1.1, 1],
+                x: [0, 1, -0.25, 1, 0],
+                transition: { duration: duration, ease: "easeInOut" as const, delay: 0.1 },
+            },
+        }
+        : {
+            animate: { opacity: [0.3, 1, 0.3, 1, 0.3], scaleX: [1, 1.1, 0.95, 1.1, 1], x: [0, 1, -0.25, 1, 0] },
+            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, delay: 0.1 },
+        };
 
     return (
         <motion.svg
@@ -27,41 +56,9 @@ const VolumeIcon = (props: VolumeIconProps) => {
             overflow="visible"
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            {/* Speaker base */}
-
             <path d="M6 15h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l3.5 -4.5a.8 .8 0 0 1 1.5 .5v14a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5" />
-
-            {/* Sound wave - inner */}
-            <motion.path
-                d="M15 8a5 5 0 0 1 0 8"
-                animate={{
-                    opacity: [0.5, 1, 0.5, 1, 0.5],
-                    scaleX: [1, 1.05, 0.95, 1.05, 1],
-                    x: [0, 0.5, -0.25, 0.5, 0],
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                }}
-                style={{ transformOrigin: "15px 12px" }}
-            />
-            {/* Sound wave - outer */}
-            <motion.path
-                d="M18 5a9 9 0 0 1 0 14"
-                animate={{
-                    opacity: [0.3, 1, 0.3, 1, 0.3],
-                    scaleX: [1, 1.1, 0.95, 1.1, 1],
-                    x: [0, 1, -0.25, 1, 0],
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    delay: 0.1,
-                }}
-                style={{ transformOrigin: "18px 12px" }}
-            />
+            <motion.path d="M15 8a5 5 0 0 1 0 8" style={{ transformOrigin: "15px 12px" }} {...innerWaveProps} />
+            <motion.path d="M18 5a9 9 0 0 1 0 14" style={{ transformOrigin: "18px 12px" }} {...outerWaveProps} />
         </motion.svg>
     );
 };

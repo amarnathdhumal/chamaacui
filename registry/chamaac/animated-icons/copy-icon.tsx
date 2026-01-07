@@ -6,12 +6,37 @@ interface CopyIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const CopyIcon = (
     props: CopyIconProps
 ) => {
-    const { size = 24, duration = 1.5, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const rectAnimationProps = isHovered
+        ? {
+            whileHover: {
+                x: [8, 4, 8],
+                y: [8, 4, 8],
+                transition: {
+                    duration: duration,
+                    ease: "easeInOut" as const,
+                },
+            },
+        }
+        : {
+            animate: {
+                x: [8, 4, 8],
+                y: [8, 4, 8],
+            },
+            transition: {
+                duration: duration,
+                ease: "easeInOut" as const,
+                repeat: Infinity,
+            },
+        };
+
     return (
         <motion.svg
             {...restProps}
@@ -30,18 +55,10 @@ const CopyIcon = (
 
             <motion.rect
                 width="12" height="12" rx="2"
-                animate={{
-                    x: [8, 4, 8],
-                    y: [8, 4, 8],
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                }}
                 stroke="currentColor"
                 strokeWidth={strokeWidth}
                 fill="none"
+                {...rectAnimationProps}
             />
 
             <rect

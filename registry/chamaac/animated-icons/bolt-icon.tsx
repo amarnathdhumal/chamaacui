@@ -2,35 +2,27 @@
 
 import { motion, SVGMotionProps } from "motion/react";
 
-interface UploadIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
+interface BoltIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
 }
 
-const UploadIcon = (props: UploadIconProps) => {
+const BoltIcon = (props: BoltIconProps) => {
     const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
-    const groupAnimationProps = isHovered
+    const flashProps = isHovered
         ? {
             whileHover: {
-                y: [0, -3, 0],
-                transition: {
-                    duration: duration,
-                    ease: "easeInOut" as const,
-                },
+                opacity: [1, 0.4, 1, 0.6, 1],
+                scale: [1, 1.02, 0.98, 1.01, 1],
+                transition: { duration: duration, ease: "easeInOut" as const, times: [0, 0.2, 0.4, 0.7, 1] },
             },
         }
         : {
-            animate: {
-                y: [0, -3, 0],
-            },
-            transition: {
-                duration: duration,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
-            },
+            animate: { opacity: [1, 0.4, 1, 0.6, 1], scale: [1, 1.02, 0.98, 1.01, 1] },
+            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, times: [0, 0.2, 0.4, 0.7, 1] },
         };
 
     return (
@@ -46,16 +38,12 @@ const UploadIcon = (props: UploadIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
-            overflow="visible"
+            {...flashProps}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
-            <motion.g {...groupAnimationProps}>
-                <path d="M7 9l5 -5l5 5" />
-                <path d="M12 4l0 12" />
-            </motion.g>
+            <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
         </motion.svg>
     );
 };
 
-export default UploadIcon;
+export default BoltIcon;

@@ -6,10 +6,34 @@ interface StarIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const StarIcon = (props: StarIconProps) => {
-    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const pathAnimationProps = isHovered
+        ? {
+            whileHover: {
+                scale: [1, 1.2, 1],
+                rotate: [0, 5, -5, 0],
+                transition: {
+                    duration: duration,
+                    ease: "easeInOut" as const,
+                },
+            },
+        }
+        : {
+            animate: {
+                scale: [1, 1.2, 1],
+                rotate: [0, 5, -5, 0],
+            },
+            transition: {
+                duration: duration,
+                ease: "easeInOut" as const,
+                repeat: Infinity,
+            },
+        };
 
     return (
         <motion.svg
@@ -29,13 +53,8 @@ const StarIcon = (props: StarIconProps) => {
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path
                 d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"
-                animate={{ scale: [1, 1.2, 1], rotate: [0, 5, -5, 0] }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                }}
                 style={{ originX: "12px", originY: "12px" }}
+                {...pathAnimationProps}
             />
         </motion.svg>
     )

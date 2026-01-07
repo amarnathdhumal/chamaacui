@@ -2,27 +2,26 @@
 
 import { motion, SVGMotionProps } from "motion/react";
 
-interface MusicIconProps extends SVGMotionProps<SVGSVGElement> {
+interface ClockIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
 }
 
-const MusicIcon = (props: MusicIconProps) => {
+const ClockIcon = (props: ClockIconProps) => {
     const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
-    const groupAnimationProps = isHovered
+    const handProps = isHovered
         ? {
             whileHover: {
-                y: [0, -4, 0],
-                rotate: [0, -5, 5, 0],
-                transition: { duration: duration, ease: "easeInOut" as const },
+                rotate: 360,
+                transition: { duration: duration, ease: "linear" as const },
             },
         }
         : {
-            animate: { y: [0, -4, 0], rotate: [0, -5, 5, 0] },
-            transition: { duration: duration, repeat: Infinity, ease: "easeInOut" as const },
+            animate: { rotate: 360 },
+            transition: { duration: duration, ease: "linear" as const, repeat: Infinity },
         };
 
     return (
@@ -38,16 +37,15 @@ const MusicIcon = (props: MusicIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
-            overflow="visible"
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <motion.g {...groupAnimationProps}>
-                <path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                <path d="M9 17v-13h10v9.5" />
-                <path d="M9 8h10" />
+            <circle cx="12" cy="12" r="9" />
+            {/* Clock hands rotating */}
+            <motion.g style={{ transformOrigin: "12px 12px" }} {...handProps}>
+                <path d="M12 7v5l3 3" />
             </motion.g>
         </motion.svg>
-    )
-}
+    );
+};
 
-export default MusicIcon;
+export default ClockIcon;

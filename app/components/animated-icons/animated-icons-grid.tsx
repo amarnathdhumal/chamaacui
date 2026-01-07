@@ -41,11 +41,21 @@ import ShieldIcon from "@/registry/chamaac/animated-icons/shield-icon";
 import UploadIcon from "@/registry/chamaac/animated-icons/upload-icon";
 import MessageIcon from "@/registry/chamaac/animated-icons/message-icon";
 import SearchIcon from "@/registry/chamaac/animated-icons/search-icon";
+import CloseIcon from "@/registry/chamaac/animated-icons/close-icon";
+import ClockIcon from "@/registry/chamaac/animated-icons/clock-icon";
+import CoffeeIcon from "@/registry/chamaac/animated-icons/coffee-icon";
+import LayersIcon from "@/registry/chamaac/animated-icons/layers-icon";
+import PencilIcon from "@/registry/chamaac/animated-icons/pencil-icon";
+import MoonIcon from "@/registry/chamaac/animated-icons/moon-icon";
+import MicrophoneIcon from "@/registry/chamaac/animated-icons/microphone-icon";
+import SunIcon from "@/registry/chamaac/animated-icons/sun-icon";
+import TrashIcon from "@/registry/chamaac/animated-icons/trash-icon";
 
 interface IconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 interface IconTypes {
@@ -88,6 +98,15 @@ const icons: IconTypes[] = [
     { name: "Upload", slug: "upload-icon", component: UploadIcon, href: "#" },
     { name: "Message", slug: "message-icon", component: MessageIcon, href: "#" },
     { name: "Search", slug: "search-icon", component: SearchIcon, href: "#" },
+    { name: "Close", slug: "close-icon", component: CloseIcon, href: "#" },
+    { name: "Clock", slug: "clock-icon", component: ClockIcon, href: "#" },
+    { name: "Coffee", slug: "coffee-icon", component: CoffeeIcon, href: "#" },
+    { name: "Layers", slug: "layers-icon", component: LayersIcon, href: "#" },
+    { name: "Pencil", slug: "pencil-icon", component: PencilIcon, href: "#" },
+    { name: "Moon", slug: "moon-icon", component: MoonIcon, href: "#" },
+    { name: "Microphone", slug: "microphone-icon", component: MicrophoneIcon, href: "#" },
+    { name: "Sun", slug: "sun-icon", component: SunIcon, href: "#" },
+    { name: "Trash", slug: "trash-icon", component: TrashIcon, href: "#" },
 ];
 
 interface IconCardProps {
@@ -128,7 +147,6 @@ function IconCard({ icon }: IconCardProps) {
     return (
         <Link href={icon.href} className="group block">
             <motion.div
-
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 className="relative flex flex-col items-center justify-center  rounded-[16px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black transition-colors h-[150px]"
@@ -185,7 +203,7 @@ function IconCard({ icon }: IconCardProps) {
                 </AnimatePresence>
 
                 <div className="mb-4 text-black dark:text-white  transition-transform duration-300">
-                    <icon.component size={48} />
+                    <icon.component size={40} />
                 </div>
                 <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-white transition-colors">
                     {icon.name}

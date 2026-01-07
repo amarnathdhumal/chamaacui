@@ -2,25 +2,25 @@
 
 import { motion, SVGMotionProps } from "motion/react";
 
-interface ArrowRightIconProps extends SVGMotionProps<SVGSVGElement> {
+interface CloudIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
 }
 
-const ArrowRightIcon = (props: ArrowRightIconProps) => {
-    const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+const CloudIcon = (props: CloudIconProps) => {
+    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
-    const pathAnimationProps = isHovered
+    const floatProps = isHovered
         ? {
             whileHover: {
-                x: [0, 4, 0],
+                y: [0, -4, 0],
                 transition: { duration: duration, ease: "easeInOut" as const },
             },
         }
         : {
-            animate: { x: [0, 4, 0] },
+            animate: { y: [0, -4, 0] },
             transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity },
         };
 
@@ -37,13 +37,13 @@ const ArrowRightIcon = (props: ArrowRightIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            overflow="visible"
+            {...floatProps}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <motion.path d="M5 12l14 0" {...pathAnimationProps} />
-            <motion.path d="M13 18l6 -6" {...pathAnimationProps} />
-            <motion.path d="M13 6l6 6" {...pathAnimationProps} />
+            <path d="M6.657 18c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878z" />
         </motion.svg>
-    )
-}
+    );
+};
 
-export default ArrowRightIcon;
+export default CloudIcon;

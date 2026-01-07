@@ -6,10 +6,34 @@ interface SearchIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWid
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const SearchIcon = (props: SearchIconProps) => {
-    const { size = 24, duration = 2, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 1.2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const groupAnimationProps = isHovered
+        ? {
+            whileHover: {
+                rotate: [0, -25, 15, 0],
+                transition: {
+                    duration: duration,
+                    type: "spring" as const,
+                    bounce: 0.5,
+                },
+            },
+        }
+        : {
+            animate: {
+                rotate: [0, -25, 15, 0],
+            },
+            transition: {
+                duration: duration,
+                ease: "easeInOut" as const,
+                repeat: Infinity,
+                repeatDelay: 1,
+            },
+        };
 
     return (
         <motion.svg
@@ -27,20 +51,12 @@ const SearchIcon = (props: SearchIconProps) => {
             overflow="visible"
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            {/* Magnifying glass */}
             <motion.g
-                animate={{
-                    x: [0, 2, 0, -2, 0],
-                    y: [0, -1, 0, 1, 0],
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                }}
+                {...groupAnimationProps}
+                style={{ originX: "21px", originY: "21px" }}
             >
-                <circle cx="10" cy="10" r="7" />
-                <path d="M21 21l-6 -6" />
+                <motion.circle cx="10" cy="10" r="7" />
+                <motion.path d="M21 21l-6 -6" />
             </motion.g>
         </motion.svg>
     );

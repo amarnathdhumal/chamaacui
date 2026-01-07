@@ -6,10 +6,24 @@ interface ZapIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const ZapIcon = (props: ZapIconProps) => {
-    const { size = 24, duration = 1.5, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const pathAnimationProps = isHovered
+        ? {
+            whileHover: {
+                opacity: [1, 0.4, 1, 0.6, 1],
+                scale: [1, 1.02, 0.98, 1.01, 1],
+                transition: { duration: duration, ease: "easeInOut" as const, times: [0, 0.2, 0.4, 0.7, 1] },
+            },
+        }
+        : {
+            animate: { opacity: [1, 0.4, 1, 0.6, 1], scale: [1, 1.02, 0.98, 1.01, 1] },
+            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, times: [0, 0.2, 0.4, 0.7, 1] },
+        };
 
     return (
         <motion.svg
@@ -28,17 +42,8 @@ const ZapIcon = (props: ZapIconProps) => {
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path
                 d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11"
-                animate={{
-                    opacity: [1, 0.4, 1, 0.6, 1],
-                    scale: [1, 1.02, 0.98, 1.01, 1],
-                }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    times: [0, 0.2, 0.4, 0.7, 1],
-                }}
                 style={{ transformOrigin: "center" }}
+                {...pathAnimationProps}
             />
         </motion.svg>
     );

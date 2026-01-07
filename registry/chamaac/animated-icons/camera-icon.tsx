@@ -2,25 +2,25 @@
 
 import { motion, SVGMotionProps } from "motion/react";
 
-interface ArrowRightIconProps extends SVGMotionProps<SVGSVGElement> {
+interface CameraIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
 }
 
-const ArrowRightIcon = (props: ArrowRightIconProps) => {
-    const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+const CameraIcon = (props: CameraIconProps) => {
+    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
-    const pathAnimationProps = isHovered
+    const lensProps = isHovered
         ? {
             whileHover: {
-                x: [0, 4, 0],
+                scale: [1, 1.2, 1],
                 transition: { duration: duration, ease: "easeInOut" as const },
             },
         }
         : {
-            animate: { x: [0, 4, 0] },
+            animate: { scale: [1, 1.2, 1] },
             transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity },
         };
 
@@ -39,11 +39,11 @@ const ArrowRightIcon = (props: ArrowRightIconProps) => {
             className={className}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <motion.path d="M5 12l14 0" {...pathAnimationProps} />
-            <motion.path d="M13 18l6 -6" {...pathAnimationProps} />
-            <motion.path d="M13 6l6 6" {...pathAnimationProps} />
+            <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+            {/* Lens with zoom animation */}
+            <motion.circle cx="12" cy="13" r="3" style={{ transformOrigin: "12px 13px" }} {...lensProps} />
         </motion.svg>
-    )
-}
+    );
+};
 
-export default ArrowRightIcon;
+export default CameraIcon;

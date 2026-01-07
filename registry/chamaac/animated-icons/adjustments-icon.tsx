@@ -6,12 +6,26 @@ interface AdjustmentsHorizontalIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
+    isHovered?: boolean;
 }
 
 const AdjustmentsHorizontalIcon = (
     props: AdjustmentsHorizontalIconProps
 ) => {
-    const { size = 24, duration = 1.2, strokeWidth = 2, className, ...restProps } = props;
+    const { size = 28, duration = 1.2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+
+    const path1Props = isHovered
+        ? { whileHover: { x: [0, -10, 0], transition: { duration: duration, ease: "easeInOut" as const } } }
+        : { animate: { x: [0, -10, 0] }, transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, repeatType: "loop" as const } };
+
+    const path2Props = isHovered
+        ? { whileHover: { x: [0, 10, 0], transition: { duration: duration, ease: "easeInOut" as const } } }
+        : { animate: { x: [0, 10, 0] }, transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, repeatType: "loop" as const } };
+
+    const path3Props = isHovered
+        ? { whileHover: { x: [0, -10, 0], transition: { duration: duration, ease: "easeInOut" as const } } }
+        : { animate: { x: [0, -10, 0] }, transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, repeatType: "loop" as const } };
+
     return (
         <motion.svg
             {...restProps}
@@ -28,49 +42,29 @@ const AdjustmentsHorizontalIcon = (
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 6l15 0" />
             <motion.path
-                animate={{ x: [0, -10, 0] }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "loop",
-                }}
                 className="fill-white dark:fill-black"
                 stroke="currentColor"
                 strokeWidth={strokeWidth}
                 d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
+                {...path1Props}
             />
 
             <path d="M4 12l15 0" />
-
             <motion.path
-                animate={{ x: [0, 10, 0] }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "loop",
-                }}
                 className="fill-white dark:fill-black"
                 stroke="currentColor"
                 strokeWidth={strokeWidth}
                 d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
+                {...path2Props}
             />
-
 
             <path d="M4 18l15 0" />
             <motion.path
-                animate={{ x: [0, -10, 0] }}
-                transition={{
-                    duration: duration,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatType: "loop",
-                }}
                 className="fill-white dark:fill-black"
                 stroke="currentColor"
                 strokeWidth={strokeWidth}
                 d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
+                {...path3Props}
             />
         </motion.svg>
     );
