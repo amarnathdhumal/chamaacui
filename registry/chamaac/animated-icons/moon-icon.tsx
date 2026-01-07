@@ -10,18 +10,28 @@ interface MoonIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth
 }
 
 const MoonIcon = (props: MoonIconProps) => {
-    const { size = 28, duration = 4, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
     const moonProps = isHovered
         ? {
             whileHover: {
-                rotate: [0, 360],
-                transition: { duration: duration, ease: "linear" as const },
+                animate: { rotate: [0, -20, 20, -10, 10, 0] },
+                transition: {
+                    duration: duration,
+                    ease: "easeInOut" as const,
+                    repeat: Infinity,
+                    repeatDelay: 0.3,
+                },
             },
         }
         : {
-            animate: { rotate: [0, 360] },
-            transition: { duration: duration * 4, ease: "linear" as const, repeat: Infinity },
+            animate: { rotate: [0, -20, 20, -10, 10, 0] },
+            transition: {
+                duration: duration,
+                ease: "easeInOut" as const,
+                repeat: Infinity,
+                repeatDelay: 0.3,
+            },
         };
 
     return (

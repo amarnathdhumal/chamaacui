@@ -10,40 +10,40 @@ interface CoffeeIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWid
 }
 
 const CoffeeIcon = (props: CoffeeIconProps) => {
-    const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
-    const steam1Props = isHovered
-        ? {
-            initial: { pathLength: 0, opacity: 0 },
-            whileHover: { pathLength: 1, opacity: 1, transition: { duration: duration, ease: "easeInOut" as const } }
-        }
-        : {
-            initial: { pathLength: 0, opacity: 0 },
-            animate: { pathLength: 1, opacity: 1 },
-            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, repeatType: "reverse" as const }
-        };
+    // S-shaped paths for more realistic steam
+    const path1 = "M6 9C6 7 8 7 8 5C8 3 6 3 6 1";
+    const path2 = "M12 9C12 7 14 7 14 5C14 3 12 3 12 1";
+    const path3 = "M18 9C18 7 20 7 20 5C20 3 18 3 18 1";
 
-    const steam2Props = isHovered
-        ? {
-            initial: { pathLength: 0, opacity: 0 },
-            whileHover: { pathLength: 1, opacity: 1, transition: { duration: duration, ease: "easeInOut" as const, delay: 0.2 } }
-        }
-        : {
-            initial: { pathLength: 0, opacity: 0 },
-            animate: { pathLength: 1, opacity: 1 },
-            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, repeatType: "reverse" as const, delay: 0.2 }
-        };
-
-    const steam3Props = isHovered
-        ? {
-            initial: { pathLength: 0, opacity: 0 },
-            whileHover: { pathLength: 1, opacity: 1, transition: { duration: duration, ease: "easeInOut" as const, delay: 0.4 } }
-        }
-        : {
-            initial: { pathLength: 0, opacity: 0 },
-            animate: { pathLength: 1, opacity: 1 },
-            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, repeatType: "reverse" as const, delay: 0.4 }
-        };
+    const getSteamProps = (delay: number) => {
+        const props = isHovered
+            ? {
+                initial: { pathLength: 0, opacity: 0, y: 3 },
+                whileHover: {
+                    pathLength: 1,
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: duration * 0.5, ease: "easeOut" }
+                }
+            }
+            : {
+                animate: {
+                    pathLength: [0, 0.5, 1], // Grow from nothing
+                    opacity: [0, 1, 0], // Smooth fade in/out
+                    y: [0, -4, -8], // Rise from path origin upwards
+                },
+                transition: {
+                    duration: duration,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    delay: delay,
+                    repeatDelay: 0.2
+                }
+            };
+        return props as SVGMotionProps<SVGPathElement>;
+    };
 
     return (
         <motion.svg
@@ -61,13 +61,24 @@ const CoffeeIcon = (props: CoffeeIconProps) => {
             overflow="visible"
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            {/* Steam with path draw animation */}
-            <motion.path d="M8 2c0 1.5 .5 2.5 1 3.5" {...steam1Props} />
-            <motion.path d="M12 2c0 1.5 .5 2.5 1 3.5" {...steam2Props} />
-            <motion.path d="M16 2c0 1.5 .5 2.5 1 3.5" {...steam3Props} />
+
             {/* Cup */}
             <path d="M3 10h14v5a4 4 0 0 1 -4 4h-6a4 4 0 0 1 -4 -4v-5z" />
             <path d="M17 10h1a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-1" />
+
+            {/* Steam - larger S-curves */}
+            <motion.path
+                d={path1}
+                {...getSteamProps(0)}
+            />
+            <motion.path
+                d={path2}
+                {...getSteamProps(duration * 0.33)}
+            />
+            <motion.path
+                d={path3}
+                {...getSteamProps(duration * 0.66)}
+            />
         </motion.svg>
     );
 };

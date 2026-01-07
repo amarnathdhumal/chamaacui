@@ -10,22 +10,35 @@ interface ClockIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidt
 }
 
 const ClockIcon = (props: ClockIconProps) => {
-    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const { size = 28, duration = 0.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
-    const handProps = isHovered
+    const shakeProps = isHovered
         ? {
             whileHover: {
-                rotate: 360,
-                transition: { duration: duration, ease: "linear" as const },
+                rotate: [0, -10, 10, -10, 10, 0],
+                scale: [1, 1.1, 1.1, 1],
+                transition: {
+                    duration: duration,
+                    ease: "easeInOut" as const,
+                },
             },
         }
         : {
-            animate: { rotate: 360 },
-            transition: { duration: duration, ease: "linear" as const, repeat: Infinity },
+            animate: {
+                rotate: [0, -10, 10, -10, 10, 0],
+                scale: [1, 1.1, 1.1, 1],
+            },
+            transition: {
+                duration: duration,
+                ease: "easeInOut" as const,
+                repeat: Infinity,
+                repeatDelay: 1,
+            },
         };
 
     return (
         <motion.svg
+            {...shakeProps}
             {...restProps}
             xmlns="http://www.w3.org/2000/svg"
             width={size}
@@ -39,11 +52,15 @@ const ClockIcon = (props: ClockIconProps) => {
             className={className}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <circle cx="12" cy="12" r="9" />
-            {/* Clock hands rotating */}
-            <motion.g style={{ transformOrigin: "12px 12px" }} {...handProps}>
-                <path d="M12 7v5l3 3" />
-            </motion.g>
+            <path d="M5 13a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+
+
+            <path d="M7 4l-2.75 2" />
+            <path d="M17 4l2.75 2" />
+
+
+            <path d="M12 10l0 3l2 0" />
+
         </motion.svg>
     );
 };

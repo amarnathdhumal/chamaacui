@@ -10,7 +10,7 @@ interface TrashIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidt
 }
 
 const TrashIcon = (props: TrashIconProps) => {
-    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
     const lidProps = isHovered
         ? {
@@ -21,8 +21,16 @@ const TrashIcon = (props: TrashIconProps) => {
             },
         }
         : {
-            animate: { y: [0, -3, 0], rotate: [0, -10, 0] },
-            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity },
+            animate: {
+                y: [-1],
+                rotate: [0, -10, 10, -5, 5, 0]
+            },
+            transition: {
+                duration: duration,
+                ease: "easeInOut" as const,
+                repeat: Infinity,
+
+            },
         };
 
     return (
@@ -42,7 +50,7 @@ const TrashIcon = (props: TrashIconProps) => {
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             {/* Lid */}
-            <motion.g style={{ transformOrigin: "12px 7px" }} {...lidProps}>
+            <motion.g  {...lidProps}>
                 <path d="M4 7l16 0" />
                 <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
             </motion.g>

@@ -10,7 +10,7 @@ interface LayersIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWid
 }
 
 const LayersIcon = (props: LayersIconProps) => {
-    const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
     const layer1Props = isHovered
         ? { whileHover: { y: [0, -3, 0], transition: { duration: duration, ease: "easeInOut" as const } } }

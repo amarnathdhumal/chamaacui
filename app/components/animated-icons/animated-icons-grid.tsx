@@ -43,11 +43,8 @@ import MessageIcon from "@/registry/chamaac/animated-icons/message-icon";
 import SearchIcon from "@/registry/chamaac/animated-icons/search-icon";
 import CloseIcon from "@/registry/chamaac/animated-icons/close-icon";
 import ClockIcon from "@/registry/chamaac/animated-icons/clock-icon";
-import CoffeeIcon from "@/registry/chamaac/animated-icons/coffee-icon";
 import LayersIcon from "@/registry/chamaac/animated-icons/layers-icon";
-import PencilIcon from "@/registry/chamaac/animated-icons/pencil-icon";
 import MoonIcon from "@/registry/chamaac/animated-icons/moon-icon";
-import MicrophoneIcon from "@/registry/chamaac/animated-icons/microphone-icon";
 import SunIcon from "@/registry/chamaac/animated-icons/sun-icon";
 import TrashIcon from "@/registry/chamaac/animated-icons/trash-icon";
 
@@ -100,11 +97,8 @@ const icons: IconTypes[] = [
     { name: "Search", slug: "search-icon", component: SearchIcon, href: "#" },
     { name: "Close", slug: "close-icon", component: CloseIcon, href: "#" },
     { name: "Clock", slug: "clock-icon", component: ClockIcon, href: "#" },
-    { name: "Coffee", slug: "coffee-icon", component: CoffeeIcon, href: "#" },
     { name: "Layers", slug: "layers-icon", component: LayersIcon, href: "#" },
-    { name: "Pencil", slug: "pencil-icon", component: PencilIcon, href: "#" },
     { name: "Moon", slug: "moon-icon", component: MoonIcon, href: "#" },
-    { name: "Microphone", slug: "microphone-icon", component: MicrophoneIcon, href: "#" },
     { name: "Sun", slug: "sun-icon", component: SunIcon, href: "#" },
     { name: "Trash", slug: "trash-icon", component: TrashIcon, href: "#" },
 ];

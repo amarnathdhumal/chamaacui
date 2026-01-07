@@ -10,18 +10,28 @@ interface CloseIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidt
 }
 
 const CloseIcon = (props: CloseIconProps) => {
-    const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const { size = 28, duration = 0.8, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
     const rotateProps = isHovered
         ? {
             whileHover: {
-                rotate: 180,
-                transition: { duration: duration, ease: "easeInOut" as const },
+                rotate: [0, -20, 20, -20, 20, 0],
+                transition: {
+                    duration: duration,
+                    ease: "easeInOut" as const,
+                },
             },
         }
         : {
-            animate: { rotate: 180 },
-            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, repeatDelay: 1 },
+            animate: {
+                rotate: [0, -20, 20, -20, 20, 0],
+            },
+            transition: {
+                duration: duration,
+                ease: "easeInOut" as const,
+                repeat: Infinity,
+                repeatDelay: 1,
+            },
         };
 
     return (
