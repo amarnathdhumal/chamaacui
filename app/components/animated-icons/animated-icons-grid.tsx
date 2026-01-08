@@ -145,6 +145,7 @@ function IconCard({ icon }: IconCardProps) {
         }
     };
 
+
     const handleCopyCli = async (e: React.MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
