@@ -50,6 +50,10 @@ import TrashIcon from "@/registry/chamaac/animated-icons/trash-icon";
 import BatteryIcon from "@/registry/chamaac/animated-icons/battery-icon";
 import GiftIcon from "@/registry/chamaac/animated-icons/gift-icon";
 import CrownIcon from "@/registry/chamaac/animated-icons/crown-icon";
+import BellRingIcon from "@/registry/chamaac/animated-icons/bell-ring-icon";
+import MagnetIcon from "@/registry/chamaac/animated-icons/magnet-icon";
+import BrushIcon from "@/registry/chamaac/animated-icons/brush-icon";
+import CompassIcon from "@/registry/chamaac/animated-icons/compass-icon";
 
 interface IconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
@@ -107,6 +111,10 @@ const icons: IconTypes[] = [
     { name: "Battery", slug: "battery-icon", component: BatteryIcon, href: "#" },
     { name: "Gift", slug: "gift-icon", component: GiftIcon, href: "#" },
     { name: "Crown", slug: "crown-icon", component: CrownIcon, href: "#" },
+    { name: "Bell Ring", slug: "bell-ring-icon", component: BellRingIcon, href: "#" },
+    { name: "Magnet", slug: "magnet-icon", component: MagnetIcon, href: "#" },
+    { name: "Brush", slug: "brush-icon", component: BrushIcon, href: "#" },
+    { name: "Compass", slug: "compass-icon", component: CompassIcon, href: "#" },
 
 ];
 
@@ -224,7 +232,7 @@ export default function AnimatedIconsGrid() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6">
                 {icons.map((icon) => (
                     <IconCard key={icon.name} icon={icon} />
                 ))}

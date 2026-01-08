@@ -10,7 +10,7 @@ interface BatteryIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWi
 }
 
 const BatteryIcon = (props: BatteryIconProps) => {
-    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
 
     // Each bar appears at a specific point in the animation cycle
     // Bar 1: appears at 0%, stays until reset
