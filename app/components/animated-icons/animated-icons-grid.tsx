@@ -47,6 +47,9 @@ import LayersIcon from "@/registry/chamaac/animated-icons/layers-icon";
 import MoonIcon from "@/registry/chamaac/animated-icons/moon-icon";
 import SunIcon from "@/registry/chamaac/animated-icons/sun-icon";
 import TrashIcon from "@/registry/chamaac/animated-icons/trash-icon";
+import BatteryIcon from "@/registry/chamaac/animated-icons/battery-icon";
+import GiftIcon from "@/registry/chamaac/animated-icons/gift-icon";
+import CrownIcon from "@/registry/chamaac/animated-icons/crown-icon";
 
 interface IconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
@@ -101,6 +104,10 @@ const icons: IconTypes[] = [
     { name: "Moon", slug: "moon-icon", component: MoonIcon, href: "#" },
     { name: "Sun", slug: "sun-icon", component: SunIcon, href: "#" },
     { name: "Trash", slug: "trash-icon", component: TrashIcon, href: "#" },
+    { name: "Battery", slug: "battery-icon", component: BatteryIcon, href: "#" },
+    { name: "Gift", slug: "gift-icon", component: GiftIcon, href: "#" },
+    { name: "Crown", slug: "crown-icon", component: CrownIcon, href: "#" },
+
 ];
 
 interface IconCardProps {
