@@ -629,21 +629,6 @@
       ]
     },
     {
-      "name": "loading-icon",
-      "type": "registry:component",
-      "title": "Loading Icon",
-      "description": "An animated loading icon with spinning animation.",
-      "dependencies": [
-        "motion"
-      ],
-      "files": [
-        {
-          "path": "registry/chamaac/animated-icons/loading-icon.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
       "name": "sparkle-icon",
       "type": "registry:component",
       "title": "Sparkle Icon",

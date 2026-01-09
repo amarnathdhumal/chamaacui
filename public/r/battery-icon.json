@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "battery-icon",
+  "title": "Battery Icon",
+  "description": "An animated battery icon with charging effect.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/battery-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface BatteryIconProps extends Omit<SVGMotionProps<SVGSVGElement>, \"strokeWidth\"> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n    isHovered?: boolean;\n}\n\nconst BatteryIcon = (props: BatteryIconProps) => {\n    const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;\n\n    // Each bar appears at a specific point in the animation cycle\n    // Bar 1: appears at 0%, stays until reset\n    // Bar 2: appears at 25%, stays until reset  \n    // Bar 3: appears at 50%, stays until reset\n    // Bar 4: appears at 75%, stays until 100%, then all reset\n\n    const getBarProps = (barIndex: number) => {\n        // Calculate when this bar should appear (0-1 scale)\n        const appearTime = barIndex * 0.2; // 0, 0.2, 0.4, 0.6\n        const resetTime = 0.9; // All bars reset near end\n\n        return isHovered\n            ? {\n                whileHover: {\n                    opacity: [0, 0, 1, 1, 0],\n                    transition: {\n                        duration: duration * 0.5,\n                        ease: \"easeOut\" as const,\n                        times: [0, appearTime, appearTime + 0.1, resetTime, 1]\n                    }\n                }\n            }\n            : {\n                animate: {\n                    opacity: [0, 0, 1, 1, 0],\n                },\n                transition: {\n                    duration: duration,\n                    ease: \"linear\" as const,\n                    repeat: Infinity,\n                    times: [0, appearTime, appearTime + 0.05, resetTime, 1]\n                }\n            };\n    };\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n            overflow=\"visible\"\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            {/* Battery body */}\n            <path d=\"M6 7h11a2 2 0 0 1 2 2v.5a.5 .5 0 0 0 .5 .5a.5 .5 0 0 1 .5 .5v3a.5 .5 0 0 1 -.5 .5a.5 .5 0 0 0 -.5 .5v.5a2 2 0 0 1 -2 2h-11a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2\" />\n            {/* Charging bars - fill sequentially */}\n            <motion.path d=\"M7 10l0 4\" {...getBarProps(0)} />\n            <motion.path d=\"M10 10l0 4\" {...getBarProps(1)} />\n            <motion.path d=\"M13 10l0 4\" {...getBarProps(2)} />\n            <motion.path d=\"M16 10l0 4\" {...getBarProps(3)} />\n        </motion.svg>\n    );\n};\n\nexport default BatteryIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

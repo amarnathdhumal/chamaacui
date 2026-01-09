@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "close-icon",
+  "title": "Close Icon",
+  "description": "An animated close/X icon.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/close-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface CloseIconProps extends Omit<SVGMotionProps<SVGSVGElement>, \"strokeWidth\"> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n    isHovered?: boolean;\n}\n\nconst CloseIcon = (props: CloseIconProps) => {\n    const { size = 28, duration = 0.8, strokeWidth = 2, isHovered = false, className, ...restProps } = props;\n\n    const rotateProps = isHovered\n        ? {\n            whileHover: {\n                rotate: [0, -20, 20, -20, 20, 0],\n                transition: {\n                    duration: duration,\n                    ease: \"easeInOut\" as const,\n                },\n            },\n        }\n        : {\n            animate: {\n                rotate: [0, -20, 20, -20, 20, 0],\n            },\n            transition: {\n                duration: duration,\n                ease: \"easeInOut\" as const,\n                repeat: Infinity,\n                repeatDelay: 1,\n            },\n        };\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n            {...rotateProps}\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            <path d=\"M18 6l-12 12\" />\n            <path d=\"M6 6l12 12\" />\n        </motion.svg>\n    );\n};\n\nexport default CloseIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

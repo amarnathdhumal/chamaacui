@@ -537,6 +537,111 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "rocket-icon",
+      "type": "registry:component",
+      "title": "Rocket Icon",
+      "description": "An animated rocket icon with launch thrust animation.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/rocket-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "zap-icon",
+      "type": "registry:component",
+      "title": "Zap Icon",
+      "description": "An animated zap icon with electric flash effect.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/zap-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "eye-icon",
+      "type": "registry:component",
+      "title": "Eye Icon",
+      "description": "An animated eye icon with blinking and looking animation.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/eye-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "send-icon",
+      "type": "registry:component",
+      "title": "Send Icon",
+      "description": "An animated send icon with paper airplane flying motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/send-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "volume-icon",
+      "type": "registry:component",
+      "title": "Volume Icon",
+      "description": "An animated volume icon with pulsing sound waves.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/volume-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "check-icon",
+      "type": "registry:component",
+      "title": "Check Icon",
+      "description": "An animated check icon with drawing circle and checkmark.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/check-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sparkle-icon",
+      "type": "registry:component",
+      "title": "Sparkle Icon",
+      "description": "An animated sparkle icon with twinkling stars.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/sparkle-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

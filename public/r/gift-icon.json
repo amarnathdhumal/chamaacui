@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gift-icon",
+  "title": "Gift Icon",
+  "description": "An animated gift box icon with shake effect.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/gift-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface GiftIconProps extends Omit<SVGMotionProps<SVGSVGElement>, \"strokeWidth\"> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n    isHovered?: boolean;\n}\n\nconst GiftIcon = (props: GiftIconProps) => {\n    const { size = 28, duration = 0.8, strokeWidth = 2, isHovered = false, className, ...restProps } = props;\n\n    const shakeProps = isHovered\n        ? {\n            whileHover: {\n                rotate: [0, -8, 8, -6, 6, -3, 3, 0],\n                y: [0, -2, 0, -1, 0],\n                transition: { duration: duration, ease: \"easeInOut\" as const }\n            }\n        }\n        : {\n            animate: {\n                rotate: [0, -8, 8, -6, 6, -3, 3, 0],\n                y: [0, -2, 0, -1, 0],\n            },\n            transition: {\n                duration: duration,\n                ease: \"easeInOut\" as const,\n                repeat: Infinity,\n                repeatDelay: 1.5\n            }\n        };\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n            overflow=\"visible\"\n            style={{ transformOrigin: \"center bottom\" }}\n            {...shakeProps}\n        >\n            <motion.g >\n                <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n                {/* Gift lid */}\n                <path d=\"M3 9a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1l0 -2\" />\n                {/* Ribbon center */}\n                <path d=\"M12 8l0 13\" />\n\n                <path d=\"M7.5 8a2.5 2.5 0 0 1 0 -5a4.8 8 0 0 1 4.5 5a4.8 8 0 0 1 4.5 -5a2.5 2.5 0 0 1 0 5\" />\n            </motion.g>\n            {/* Bow */}\n\n            {/* Gift body */}\n            <path d=\"M19 12v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7\" />\n\n        </motion.svg>\n    );\n};\n\nexport default GiftIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

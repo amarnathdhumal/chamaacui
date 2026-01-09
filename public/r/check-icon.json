@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "check-icon",
+  "title": "Check Icon",
+  "description": "An animated check icon with drawing circle and checkmark.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/check-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface CheckIconProps extends Omit<SVGMotionProps<SVGSVGElement>, \"strokeWidth\"> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n    isHovered?: boolean;\n}\n\nconst CheckIcon = (props: CheckIconProps) => {\n    const { size = 28, duration = 2.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;\n\n    const pathAnimationProps = isHovered\n        ? {\n            initial: { pathLength: 0 },\n            whileHover: {\n                pathLength: [0, 1, 1, 0],\n                transition: { duration: duration, ease: \"easeInOut\" as const, times: [0, 0.4, 0.8, 1] },\n            },\n        }\n        : {\n            initial: { pathLength: 0 },\n            animate: { pathLength: [0, 1, 1, 0] },\n            transition: { duration: duration, ease: \"easeInOut\" as const, repeat: Infinity, times: [0, 0.4, 0.8, 1] },\n        };\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            <circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"none\" />\n            <motion.path d=\"M9 12l2 2l4 -4\" {...pathAnimationProps} />\n        </motion.svg>\n    );\n};\n\nexport default CheckIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "crown-icon",
+  "title": "Crown Icon",
+  "description": "An animated crown icon.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/crown-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface CrownIconProps extends Omit<SVGMotionProps<SVGSVGElement>, \"strokeWidth\"> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n    isHovered?: boolean;\n}\n\nconst CrownIcon = (props: CrownIconProps) => {\n    const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;\n\n\n    const sparkle1Props = isHovered\n        ? {\n            whileHover: {\n                rotate: [0, -8, 8, -6, 6, -3, 3, 0],\n                y: [0, -2, 0, -1, 0],\n                transition: { duration: duration, ease: \"easeInOut\" as const }\n            }\n        }\n        : {\n            animate: {\n                rotate: [0, -15, 15, -10, 10, -5, 5, 0],\n                y: [0, -2, 0, -1, 0],\n            },\n            transition: {\n                duration: duration,\n                ease: \"easeInOut\" as const,\n                repeat: Infinity,\n                repeatDelay: 1.5\n            }\n        };\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n            overflow=\"visible\"\n            {...sparkle1Props}\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n\n            {/* Crown */}\n            <motion.g style={{ transformOrigin: \"center\" }} >\n                <path d=\"M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z\" />\n            </motion.g>\n        </motion.svg>\n    );\n};\n\nexport default CrownIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

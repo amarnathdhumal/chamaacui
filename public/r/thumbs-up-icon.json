@@ -1,0 +1,17 @@
+{
+    "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+    "name": "thumbs-up-icon",
+    "title": "Thumbs Up Icon",
+    "description": "An animated thumbs up icon with a fun bounce effect.",
+    "dependencies": [
+        "motion"
+    ],
+    "files": [
+        {
+            "path": "registry/chamaac/animated-icons/thumbs-up-icon.tsx",
+            "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface ThumbsUpIconProps extends Omit<SVGMotionProps<SVGSVGElement>, \"strokeWidth\"> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n    isHovered?: boolean;\n}\n\nconst ThumbsUpIcon = (props: ThumbsUpIconProps) => {\n    const { size = 28, duration = 0.8, strokeWidth = 2, isHovered = false, className, ...restProps } = props;\n\n    const thumbProps = isHovered\n        ? {\n            whileHover: {\n                rotate: [0, -15, 5, -10, 0],\n                y: [0, -3, 0],\n                transition: { duration: duration, ease: \"easeInOut\" as const }\n            }\n        }\n        : {\n            animate: {\n                rotate: [0, -15, 5, -10, 0],\n                y: [0, -2, 0],\n            },\n            transition: {\n                duration: duration,\n                ease: \"easeInOut\" as const,\n                repeat: Infinity,\n                repeatDelay: 1.2\n            }\n        };\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n            overflow=\"visible\"\n            style={{ transformOrigin: \"center bottom\" }}\n            {...thumbProps}\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            <path d=\"M7 11v8a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-7a1 1 0 0 1 1 -1h3a4 4 0 0 0 4 -4v-1a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1 -2 2h-7a3 3 0 0 1 -3 -3\" />\n        </motion.svg>\n    );\n};\n\nexport default ThumbsUpIcon;\n",
+            "type": "registry:component"
+        }
+    ],
+    "type": "registry:component"
+}

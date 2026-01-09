@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnet-icon",
+  "title": "Magnet Icon",
+  "description": "An animated magnet icon with attraction effect.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/magnet-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface MagnetIconProps extends Omit<SVGMotionProps<SVGSVGElement>, \"strokeWidth\"> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n    isHovered?: boolean;\n}\n\nconst MagnetIcon = (props: MagnetIconProps) => {\n    const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;\n\n    const magnetProps = isHovered\n        ? {\n            whileHover: {\n                y: [0, -3, 0],\n                transition: { duration: duration * 0.4, ease: \"easeInOut\" as const }\n            }\n        }\n        : {\n            animate: {\n                y: [0, -2, 0],\n            },\n            transition: {\n                duration: duration,\n                ease: \"easeInOut\" as const,\n                repeat: Infinity,\n            }\n        };\n\n    const particleProps = (delay: number, xOffset: number) => ({\n        animate: {\n            y: [8, -2],\n            x: [xOffset, xOffset * 0.5],\n            opacity: [0, 1, 0],\n            scale: [0.5, 1, 0.5],\n        },\n        transition: {\n            duration: duration * 0.8,\n            ease: \"easeOut\" as const,\n            repeat: Infinity,\n            delay: delay,\n        }\n    });\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n            overflow=\"visible\"\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            {/* Magnet body */}\n            <motion.g {...magnetProps}>\n                <path d=\"M4 13v-8a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v8a6 6 0 0 0 6 0v-8a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v8a8 8 0 0 1 -16 0\" />\n                <path d=\"M4 8l5 0\" />\n                <path d=\"M15 8l4 0\" />\n            </motion.g>\n            {/* Magnetic particles */}\n            <motion.circle cx=\"10\" cy=\"18\" r=\"1\" fill=\"currentColor\" stroke=\"none\" {...particleProps(0, -2)} />\n            <motion.circle cx=\"14\" cy=\"18\" r=\"1\" fill=\"currentColor\" stroke=\"none\" {...particleProps(duration * 0.3, 2)} />\n            <motion.circle cx=\"12\" cy=\"19\" r=\"0.8\" fill=\"currentColor\" stroke=\"none\" {...particleProps(duration * 0.6, 0)} />\n        </motion.svg>\n    );\n};\n\nexport default MagnetIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

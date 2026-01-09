@@ -50,10 +50,8 @@ import TrashIcon from "@/registry/chamaac/animated-icons/trash-icon";
 import BatteryIcon from "@/registry/chamaac/animated-icons/battery-icon";
 import GiftIcon from "@/registry/chamaac/animated-icons/gift-icon";
 import CrownIcon from "@/registry/chamaac/animated-icons/crown-icon";
-import BellRingIcon from "@/registry/chamaac/animated-icons/bell-ring-icon";
 import MagnetIcon from "@/registry/chamaac/animated-icons/magnet-icon";
-import BrushIcon from "@/registry/chamaac/animated-icons/brush-icon";
-import CompassIcon from "@/registry/chamaac/animated-icons/compass-icon";
+import ThumbsUpIcon from "@/registry/chamaac/animated-icons/thumbs-up-icon";
 
 interface IconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
@@ -97,25 +95,22 @@ const icons: IconTypes[] = [
     { name: "Volume", slug: "volume-icon", component: VolumeIcon, href: "/components/animated-icons/volume-icon" },
     { name: "Check", slug: "check-icon", component: CheckIcon, href: "/components/animated-icons/check-icon" },
     { name: "Sparkle", slug: "sparkle-icon", component: SparkleIcon, href: "/components/animated-icons/sparkle-icon" },
-    { name: "Calendar", slug: "calendar-icon", component: CalendarIcon, href: "#" },
-    { name: "Shield", slug: "shield-icon", component: ShieldIcon, href: "#" },
-    { name: "Upload", slug: "upload-icon", component: UploadIcon, href: "#" },
-    { name: "Message", slug: "message-icon", component: MessageIcon, href: "#" },
-    { name: "Search", slug: "search-icon", component: SearchIcon, href: "#" },
-    { name: "Close", slug: "close-icon", component: CloseIcon, href: "#" },
-    { name: "Clock", slug: "clock-icon", component: ClockIcon, href: "#" },
-    { name: "Layers", slug: "layers-icon", component: LayersIcon, href: "#" },
-    { name: "Moon", slug: "moon-icon", component: MoonIcon, href: "#" },
-    { name: "Sun", slug: "sun-icon", component: SunIcon, href: "#" },
-    { name: "Trash", slug: "trash-icon", component: TrashIcon, href: "#" },
-    { name: "Battery", slug: "battery-icon", component: BatteryIcon, href: "#" },
-    { name: "Gift", slug: "gift-icon", component: GiftIcon, href: "#" },
-    { name: "Crown", slug: "crown-icon", component: CrownIcon, href: "#" },
-    { name: "Bell Ring", slug: "bell-ring-icon", component: BellRingIcon, href: "#" },
-    { name: "Magnet", slug: "magnet-icon", component: MagnetIcon, href: "#" },
-    { name: "Brush", slug: "brush-icon", component: BrushIcon, href: "#" },
-    { name: "Compass", slug: "compass-icon", component: CompassIcon, href: "#" },
-
+    { name: "Calendar", slug: "calendar-icon", component: CalendarIcon, href: "/components/animated-icons/calendar-icon" },
+    { name: "Shield", slug: "shield-icon", component: ShieldIcon, href: "/components/animated-icons/shield-icon" },
+    { name: "Upload", slug: "upload-icon", component: UploadIcon, href: "/components/animated-icons/upload-icon" },
+    { name: "Message", slug: "message-icon", component: MessageIcon, href: "/components/animated-icons/message-icon" },
+    { name: "Search", slug: "search-icon", component: SearchIcon, href: "/components/animated-icons/search-icon" },
+    { name: "Close", slug: "close-icon", component: CloseIcon, href: "/components/animated-icons/close-icon" },
+    { name: "Clock", slug: "clock-icon", component: ClockIcon, href: "/components/animated-icons/clock-icon" },
+    { name: "Layers", slug: "layers-icon", component: LayersIcon, href: "/components/animated-icons/layers-icon" },
+    { name: "Moon", slug: "moon-icon", component: MoonIcon, href: "/components/animated-icons/moon-icon" },
+    { name: "Sun", slug: "sun-icon", component: SunIcon, href: "/components/animated-icons/sun-icon" },
+    { name: "Trash", slug: "trash-icon", component: TrashIcon, href: "/components/animated-icons/trash-icon" },
+    { name: "Battery", slug: "battery-icon", component: BatteryIcon, href: "/components/animated-icons/battery-icon" },
+    { name: "Gift", slug: "gift-icon", component: GiftIcon, href: "/components/animated-icons/gift-icon" },
+    { name: "Crown", slug: "crown-icon", component: CrownIcon, href: "/components/animated-icons/crown-icon" },
+    { name: "Magnet", slug: "magnet-icon", component: MagnetIcon, href: "/components/animated-icons/magnet-icon" },
+    { name: "Thumbs Up", slug: "thumbs-up-icon", component: ThumbsUpIcon, href: "/components/animated-icons/thumbs-up-icon" },
 ];
 
 interface IconCardProps {

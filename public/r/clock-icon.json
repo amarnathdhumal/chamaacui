@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "clock-icon",
+  "title": "Clock Icon",
+  "description": "An animated clock/alarm icon.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/clock-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface ClockIconProps extends Omit<SVGMotionProps<SVGSVGElement>, \"strokeWidth\"> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n    isHovered?: boolean;\n}\n\nconst ClockIcon = (props: ClockIconProps) => {\n    const { size = 28, duration = 0.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;\n\n    const shakeProps = isHovered\n        ? {\n            whileHover: {\n                rotate: [0, -10, 10, -10, 10, 0],\n                scale: [1, 1.1, 1.1, 1],\n                transition: {\n                    duration: duration,\n                    ease: \"easeInOut\" as const,\n                },\n            },\n        }\n        : {\n            animate: {\n                rotate: [0, -10, 10, -10, 10, 0],\n                scale: [1, 1.1, 1.1, 1],\n            },\n            transition: {\n                duration: duration,\n                ease: \"easeInOut\" as const,\n                repeat: Infinity,\n                repeatDelay: 1,\n            },\n        };\n\n    return (\n        <motion.svg\n            {...shakeProps}\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            <path d=\"M5 13a7 7 0 1 0 14 0a7 7 0 1 0 -14 0\" />\n\n\n            <path d=\"M7 4l-2.75 2\" />\n            <path d=\"M17 4l2.75 2\" />\n\n\n            <path d=\"M12 10l0 3l2 0\" />\n\n        </motion.svg>\n    );\n};\n\nexport default ClockIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

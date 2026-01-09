@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sun-icon",
+  "title": "Sun Icon",
+  "description": "An animated sun icon with rotation effect.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/sun-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface SunIconProps extends Omit<SVGMotionProps<SVGSVGElement>, \"strokeWidth\"> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n    isHovered?: boolean;\n}\n\nconst SunIcon = (props: SunIconProps) => {\n    const { size = 28, duration = 4, strokeWidth = 2, isHovered = false, className, ...restProps } = props;\n\n    const rotateProps = isHovered\n        ? {\n            whileHover: {\n                rotate: 360,\n                transition: { duration: duration, ease: \"linear\" as const },\n            },\n        }\n        : {\n            animate: { rotate: 360 },\n            transition: { duration: duration, ease: \"linear\" as const, repeat: Infinity },\n        };\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n            {...rotateProps}\n        >\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            <circle cx=\"12\" cy=\"12\" r=\"4\" />\n            <path d=\"M12 2v2\" />\n            <path d=\"M12 20v2\" />\n            <path d=\"M4.93 4.93l1.41 1.41\" />\n            <path d=\"M17.66 17.66l1.41 1.41\" />\n            <path d=\"M2 12h2\" />\n            <path d=\"M20 12h2\" />\n            <path d=\"M6.34 17.66l-1.41 1.41\" />\n            <path d=\"M19.07 4.93l-1.41 1.41\" />\n        </motion.svg>\n    );\n};\n\nexport default SunIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}

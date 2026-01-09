@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "eye-icon",
+  "title": "Eye Icon",
+  "description": "An animated eye icon with blinking and looking animation.",
+  "dependencies": [
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "registry/chamaac/animated-icons/eye-icon.tsx",
+      "content": "\"use client\";\n\nimport { motion, SVGMotionProps } from \"motion/react\";\n\ninterface EyeIconProps extends Omit<SVGMotionProps<SVGSVGElement>, \"strokeWidth\"> {\n    size?: number;\n    duration?: number;\n    strokeWidth?: number;\n    isHovered?: boolean;\n}\n\nconst EyeIcon = (props: EyeIconProps) => {\n    const { size = 28, duration = 3, strokeWidth = 2, isHovered = false, className, ...restProps } = props;\n\n    const eyeAnimation = {\n        d: [\n            \"M3 12c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6z\",\n            \"M3 12c2.4 4 5.4 6 9 6c3.6 0 6.6 -2 9 -6c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6z\",\n            \"M3 12c2.4 4 5.4 6 9 6c3.6 0 6.6 -2 9 -6c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6z\",\n            \"M3 12c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6z\",\n        ],\n    };\n\n    const lidAnimation = {\n        d: [\n            \"M3 12c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6\",\n            \"M3 12c2.4 4 5.4 6 9 6c3.6 0 6.6 -2 9 -6\",\n            \"M3 12c2.4 4 5.4 6 9 6c3.6 0 6.6 -2 9 -6\",\n            \"M3 12c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6\",\n        ],\n    };\n\n    const clipAnimationProps = isHovered\n        ? { whileHover: { ...eyeAnimation, transition: { duration: duration, ease: \"easeInOut\" as const, times: [0, 0.4, 0.6, 1] } } }\n        : { animate: eyeAnimation, transition: { duration: duration, ease: \"easeInOut\" as const, repeat: Infinity, times: [0, 0.4, 0.6, 1] } };\n\n    const lidAnimationProps = isHovered\n        ? { whileHover: { ...lidAnimation, transition: { duration: duration, ease: \"easeInOut\" as const, times: [0, 0.4, 0.6, 1] } } }\n        : { animate: lidAnimation, transition: { duration: duration, ease: \"easeInOut\" as const, repeat: Infinity, times: [0, 0.4, 0.6, 1] } };\n\n    return (\n        <motion.svg\n            {...restProps}\n            xmlns=\"http://www.w3.org/2000/svg\"\n            width={size}\n            height={size}\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            stroke=\"currentColor\"\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n            strokeLinejoin=\"round\"\n            className={className}\n        >\n            <defs>\n                <clipPath id=\"eyeClip\">\n                    <motion.path\n                        d=\"M3 12c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6z\"\n                        {...clipAnimationProps}\n                    />\n                </clipPath>\n            </defs>\n            <path stroke=\"none\" d=\"M0 0h24v24H0z\" fill=\"none\" />\n            <g clipPath=\"url(#eyeClip)\">\n                <path d=\"M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0\" />\n            </g>\n            <path d=\"M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6\" />\n            <motion.path\n                d=\"M3 12c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6\"\n                {...lidAnimationProps}\n            />\n        </motion.svg>\n    );\n};\n\nexport default EyeIcon;\n",
+      "type": "registry:component"
+    }
+  ],
+  "type": "registry:component"
+}
