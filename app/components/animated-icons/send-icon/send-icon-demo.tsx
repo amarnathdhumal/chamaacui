@@ -7,8 +7,10 @@ export default function SendIconDemo() {
         <SendIcon
             className="text-black dark:text-white"
             size={40}
-            duration={2}
+            duration={1}
             strokeWidth={2}
+            repeatDelay={1}
+            ease="easeInOut"
         />
     );
 }

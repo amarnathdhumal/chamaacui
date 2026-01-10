@@ -11,6 +11,11 @@ import {
 } from "@/components/ui/tooltip";
 import CopyIcon from "@/registry/chamaac/animated-icons/copy-icon";
 import WavyIcon from "@/registry/chamaac/animated-icons/wavy-icon";
+import MenuIcon from "@/registry/chamaac/animated-icons/menu-icon";
+
+import CartIcon from "@/registry/chamaac/animated-icons/cart-icon";
+
+import AlertCircleIcon from "@/registry/chamaac/animated-icons/alert-circle-icon";
 import AdjustmentsHorizontalIcon from "@/registry/chamaac/animated-icons/adjustments-icon";
 import ScanIcon from "@/registry/chamaac/animated-icons/scan-icon";
 import BellIcon from "@/registry/chamaac/animated-icons/bell-icon";
@@ -19,6 +24,21 @@ import ActivityIcon from "@/registry/chamaac/animated-icons/activity-icon";
 import RefreshIcon from "@/registry/chamaac/animated-icons/refresh-icon";
 import WifiIcon from "@/registry/chamaac/animated-icons/wifi-icon";
 import ArrowRightIcon from "@/registry/chamaac/animated-icons/arrow-right-icon";
+import ArrowLeftIcon from "@/registry/chamaac/animated-icons/arrow-left-icon";
+import ArrowUpIcon from "@/registry/chamaac/animated-icons/arrow-up-icon";
+import ArrowDownIcon from "@/registry/chamaac/animated-icons/arrow-down-icon";
+import ArrowUpRightIcon from "@/registry/chamaac/animated-icons/arrow-up-right-icon";
+import ArrowUpLeftIcon from "@/registry/chamaac/animated-icons/arrow-up-left-icon";
+import ArrowDownLeftIcon from "@/registry/chamaac/animated-icons/arrow-down-left-icon";
+import ArrowDownRightIcon from "@/registry/chamaac/animated-icons/arrow-down-right-icon";
+import ChevronRightIcon from "@/registry/chamaac/animated-icons/chevron-right-icon";
+import ChevronLeftIcon from "@/registry/chamaac/animated-icons/chevron-left-icon";
+import ChevronUpIcon from "@/registry/chamaac/animated-icons/chevron-up-icon";
+import ChevronDownIcon from "@/registry/chamaac/animated-icons/chevron-down-icon";
+import ChevronsRightIcon from "@/registry/chamaac/animated-icons/chevrons-right-icon";
+import ChevronsLeftIcon from "@/registry/chamaac/animated-icons/chevrons-left-icon";
+import ChevronsUpIcon from "@/registry/chamaac/animated-icons/chevrons-up-icon";
+import ChevronsDownIcon from "@/registry/chamaac/animated-icons/chevrons-down-icon";
 import DownloadIcon from "@/registry/chamaac/animated-icons/download-icon";
 import GlobeIcon from "@/registry/chamaac/animated-icons/globe-icon";
 import StarIcon from "@/registry/chamaac/animated-icons/star-icon";
@@ -50,7 +70,7 @@ import TrashIcon from "@/registry/chamaac/animated-icons/trash-icon";
 import BatteryIcon from "@/registry/chamaac/animated-icons/battery-icon";
 import GiftIcon from "@/registry/chamaac/animated-icons/gift-icon";
 import CrownIcon from "@/registry/chamaac/animated-icons/crown-icon";
-import MagnetIcon from "@/registry/chamaac/animated-icons/magnet-icon";
+
 import ThumbsUpIcon from "@/registry/chamaac/animated-icons/thumbs-up-icon";
 
 interface IconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -69,6 +89,9 @@ interface IconTypes {
 
 const icons: IconTypes[] = [
     { name: "Copy", slug: "copy-icon", component: CopyIcon, href: "/components/animated-icons/copy-icon" },
+    { name: "Menu", slug: "menu-icon", component: MenuIcon, href: "/components/animated-icons/menu-icon" },
+    { name: "Alert", slug: "alert-circle-icon", component: AlertCircleIcon, href: "/components/animated-icons/alert-circle-icon" },
+    { name: "Cart", slug: "cart-icon", component: CartIcon, href: "/components/animated-icons/cart-icon" },
     { name: "Wavy", slug: "wavy-icon", component: WavyIcon, href: "/components/animated-icons/wavy-icon" },
     { name: "Adjustments", slug: "adjustments-icon", component: AdjustmentsHorizontalIcon, href: "/components/animated-icons/adjustments-icon" },
     { name: "Scan", slug: "scan-icon", component: ScanIcon, href: "/components/animated-icons/scan-icon" },
@@ -78,6 +101,21 @@ const icons: IconTypes[] = [
     { name: "Refresh", slug: "refresh-icon", component: RefreshIcon, href: "/components/animated-icons/refresh-icon" },
     { name: "Wifi", slug: "wifi-icon", component: WifiIcon, href: "/components/animated-icons/wifi-icon" },
     { name: "Arrow Right", slug: "arrow-right-icon", component: ArrowRightIcon, href: "/components/animated-icons/arrow-right-icon" },
+    { name: "Arrow Left", slug: "arrow-left-icon", component: ArrowLeftIcon, href: "/components/animated-icons/arrow-left-icon" },
+    { name: "Arrow Up", slug: "arrow-up-icon", component: ArrowUpIcon, href: "/components/animated-icons/arrow-up-icon" },
+    { name: "Arrow Down", slug: "arrow-down-icon", component: ArrowDownIcon, href: "/components/animated-icons/arrow-down-icon" },
+    { name: "Arrow Up Right", slug: "arrow-up-right-icon", component: ArrowUpRightIcon, href: "/components/animated-icons/arrow-up-right-icon" },
+    { name: "Arrow Up Left", slug: "arrow-up-left-icon", component: ArrowUpLeftIcon, href: "/components/animated-icons/arrow-up-left-icon" },
+    { name: "Arrow Down Left", slug: "arrow-down-left-icon", component: ArrowDownLeftIcon, href: "/components/animated-icons/arrow-down-left-icon" },
+    { name: "Arrow Down Right", slug: "arrow-down-right-icon", component: ArrowDownRightIcon, href: "/components/animated-icons/arrow-down-right-icon" },
+    { name: "Chevron Right", slug: "chevron-right-icon", component: ChevronRightIcon, href: "/components/animated-icons/chevron-right-icon" },
+    { name: "Chevron Left", slug: "chevron-left-icon", component: ChevronLeftIcon, href: "/components/animated-icons/chevron-left-icon" },
+    { name: "Chevron Up", slug: "chevron-up-icon", component: ChevronUpIcon, href: "/components/animated-icons/chevron-up-icon" },
+    { name: "Chevron Down", slug: "chevron-down-icon", component: ChevronDownIcon, href: "/components/animated-icons/chevron-down-icon" },
+    { name: "Chevrons Right", slug: "chevrons-right-icon", component: ChevronsRightIcon, href: "/components/animated-icons/chevrons-right-icon" },
+    { name: "Chevrons Left", slug: "chevrons-left-icon", component: ChevronsLeftIcon, href: "/components/animated-icons/chevrons-left-icon" },
+    { name: "Chevrons Up", slug: "chevrons-up-icon", component: ChevronsUpIcon, href: "/components/animated-icons/chevrons-up-icon" },
+    { name: "Chevrons Down", slug: "chevrons-down-icon", component: ChevronsDownIcon, href: "/components/animated-icons/chevrons-down-icon" },
     { name: "Download", slug: "download-icon", component: DownloadIcon, href: "/components/animated-icons/download-icon" },
     { name: "Globe", slug: "globe-icon", component: GlobeIcon, href: "/components/animated-icons/globe-icon" },
     { name: "Star", slug: "star-icon", component: StarIcon, href: "/components/animated-icons/star-icon" },
@@ -109,7 +147,7 @@ const icons: IconTypes[] = [
     { name: "Battery", slug: "battery-icon", component: BatteryIcon, href: "/components/animated-icons/battery-icon" },
     { name: "Gift", slug: "gift-icon", component: GiftIcon, href: "/components/animated-icons/gift-icon" },
     { name: "Crown", slug: "crown-icon", component: CrownIcon, href: "/components/animated-icons/crown-icon" },
-    { name: "Magnet", slug: "magnet-icon", component: MagnetIcon, href: "/components/animated-icons/magnet-icon" },
+
     { name: "Thumbs Up", slug: "thumbs-up-icon", component: ThumbsUpIcon, href: "/components/animated-icons/thumbs-up-icon" },
 ];
 
@@ -220,7 +258,7 @@ function IconCard({ icon, isHoveredMode }: IconCardProps) {
 }
 
 export default function AnimatedIconsGrid() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+     
     const [isHoveredMode, setIsHoveredMode] = useState(false);
 
     return (
@@ -233,17 +271,17 @@ export default function AnimatedIconsGrid() {
                             A collection of smooth, micro-interaction animations for your icons.
                         </p>
                     </div>
-                    {/* <button
+                    <button
                         onClick={() => setIsHoveredMode(!isHoveredMode)}
                         className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${isHoveredMode
-                                ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25"
-                                : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                            ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25"
+                            : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700"
                             }`}
                     >
                         <span className={`w-2 h-2 rounded-full transition-colors ${isHoveredMode ? "bg-white animate-pulse" : "bg-green-500 animate-pulse"
                             }`} />
                         {isHoveredMode ? "Hover to Animate" : "Auto Animating"}
-                    </button> */}
+                    </button>
                 </div>
             </div>
 

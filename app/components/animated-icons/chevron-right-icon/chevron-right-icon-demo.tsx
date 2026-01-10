@@ -1,13 +1,13 @@
 "use client";
 
-import LockIcon from "@/registry/chamaac/animated-icons/lock-icon";
+import ChevronRightIcon from "@/registry/chamaac/animated-icons/chevron-right-icon";
 
-export default function LockIconDemo() {
+export default function ChevronRightIconDemo() {
     return (
-        <LockIcon
+        <ChevronRightIcon
             className="text-black dark:text-white"
             size={40}
-            duration={1.2}
+            duration={1.5}
             strokeWidth={2}
             repeatDelay={1}
             ease="easeInOut"

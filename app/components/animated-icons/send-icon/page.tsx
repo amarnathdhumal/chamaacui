@@ -13,7 +13,7 @@ const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
 
 export const metadata = constructMetadata({
     title: "Send Icon",
-    description: "An animated send icon with paper airplane flying motion.",
+    description: "An animated send icon with a launch-ready rotation and scale effect.",
     image: "/components/animated-icons.png",
 });
 
@@ -22,7 +22,7 @@ export default function SendIconPage() {
         <div className="flex flex-col w-full">
             <SendIconPreviewWrapper
                 title="Send Icon"
-                description="An animated send icon with paper airplane flying motion."
+                description="An animated send icon with a launch-ready rotation and scale effect."
                 code={
                     <div className="relative">
                         <div className="absolute top-4 right-4"><CopyButton text={DemoSource} /></div>
@@ -32,14 +32,28 @@ export default function SendIconPage() {
                 installationSource={ComponentSource}
                 props={[
                     { name: "className", type: "string", default: "-", description: "Custom class names for styling the SVG", required: false },
-                    { name: "size", type: "number", default: "24", description: "Size of the icon in pixels", required: false },
-                    { name: "duration", type: "number", default: "2", description: "Duration of the animation in seconds", required: false },
+                    { name: "size", type: "number", default: "28", description: "Size of the icon in pixels", required: false },
+                    { name: "duration", type: "number", default: "1", description: "Duration of the animation in seconds", required: false },
                     { name: "strokeWidth", type: "number", default: "2", description: "Stroke width of the icon", required: false },
                     {
                         name: "isHovered",
                         type: "boolean",
                         default: "false",
                         description: "When true, animation only plays on hover. When false, animation loops continuously.",
+                        required: false,
+                    },
+                    {
+                        name: "repeatDelay",
+                        type: "number",
+                        default: "1",
+                        description: "Delay between animation loops in seconds",
+                        required: false,
+                    },
+                    {
+                        name: "ease",
+                        type: "Easing",
+                        default: '"easeInOut"',
+                        description: "Animation easing function (e.g., 'linear', 'easeIn', 'easeOut', 'easeInOut')",
                         required: false,
                     },
                 ]}

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, SVGMotionProps, Easing } from "motion/react";
 
-interface SendIconProps extends SVGMotionProps<SVGSVGElement> {
+interface IconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
@@ -12,29 +12,23 @@ interface SendIconProps extends SVGMotionProps<SVGSVGElement> {
     ease?: Easing;
 }
 
-const SendIcon = (props: SendIconProps) => {
+const ArrowDownIcon = (props: IconProps) => {
     const {
-        size = 28,              // Icon size in pixels
-        duration = 1,           // Animation duration in seconds
-        strokeWidth = 2,        // SVG stroke width
-        isHovered = false,      // When true, animate only on hover
-        repeatDelay = 1,        // Delay between animation loops (seconds)
-        ease = "easeInOut",     // Animation easing function
+        size = 28,
+        duration = 1.5,
+        strokeWidth = 2,
+        isHovered = false,
+        repeatDelay = 1,
+        ease = "easeInOut",
         className,
         ...restProps
     } = props;
 
     const [isHoveredInternal, setIsHoveredInternal] = useState(false);
-
     const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-    const groupAnimationProps = {
-        animate: shouldAnimate ? {
-            rotate: [0, 45, 0],
-            scale: [1, 1.2, 1],
-            x: [0, -2, 0], // slight translation as per request
-            y: [0, 1, 0],
-        } : { rotate: 0, scale: 1, x: 0, y: 0 },
+    const animation = {
+        animate: shouldAnimate ? { y: [0, 4, 0] } : { x: 0, y: 0 },
         transition: {
             duration: duration,
             ease: ease,
@@ -61,15 +55,9 @@ const SendIcon = (props: SendIconProps) => {
             onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <motion.g
-                style={{ originX: "12px", originY: "12px" }}
-                {...groupAnimationProps}
-            >
-                <path d="M10 14l11 -11" />
-                <path d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5" />
-            </motion.g>
+            <motion.path d="M12 5l0 14" {...animation} /><motion.path d="M18 13l-6 6" {...animation} /><motion.path d="M6 13l6 6" {...animation} />
         </motion.svg>
-    );
-};
+    )
+}
 
-export default SendIcon;
+export default ArrowDownIcon;

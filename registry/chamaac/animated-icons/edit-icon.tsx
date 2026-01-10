@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion, SVGMotionProps, Easing } from "motion/react";
 
-interface LockIconProps extends SVGMotionProps<SVGSVGElement> {
+interface IconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
@@ -12,25 +12,28 @@ interface LockIconProps extends SVGMotionProps<SVGSVGElement> {
     ease?: Easing;
 }
 
-const LockIcon = (props: LockIconProps) => {
+
+const EditIcon = (props: IconProps) => {
     const {
-        size = 28,              // Icon size in pixels
-        duration = 1.2,           // Animation duration in seconds
-        strokeWidth = 2,        // SVG stroke width
-        isHovered = false,      // When true, animate only on hover
-        repeatDelay = 1,        // Delay between animation loops (seconds)
-        ease = "easeInOut",     // Animation easing function
+        size = 28,
+        duration = 1.5,
+        strokeWidth = 2,
+        isHovered = false,
+        repeatDelay = 1,
+        ease = "easeInOut",
         className,
         ...restProps
     } = props;
 
     const [isHoveredInternal, setIsHoveredInternal] = useState(false);
-
     const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-    const pathAnimationProps = {
-        animate: shouldAnimate ? { pathLength: [0, 1, 1, 0], opacity: 1 } : { pathLength: 1, opacity: 1 },
-        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, ease: ease, repeatDelay: repeatDelay, repeatType: "reverse" as const },
+    
+    const transition = {
+        duration: duration,
+        ease: ease,
+        repeat: isHovered ? 0 : Infinity,
+        repeatDelay: repeatDelay,
     };
 
     return (
@@ -46,16 +49,25 @@ const LockIcon = (props: LockIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
-            overflow="visible"
             onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
             onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />
-            <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
-            <motion.path d="M8 11v-4a4 4 0 1 1 8 0v4" {...pathAnimationProps} />
+            <motion.path 
+                d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" 
+                animate={shouldAnimate ? { rotate: [0, -5, 5, 0], x: [0, 1, 0] } : { rotate: 0, x: 0 }}
+                transition={transition}
+                style={{ originX: "50%", originY: "50%" }}
+            />
+            <motion.line 
+                x1="13.5" y1="6.5" x2="17.5" y2="10.5" 
+                animate={shouldAnimate ? { rotate: [0, -5, 5, 0], x: [0, 1, 0] } : { rotate: 0, x: 0 }}
+                transition={transition}
+                style={{ originX: "50%", originY: "50%" }}
+            />
         </motion.svg>
     )
+    
 }
 
-export default LockIcon;
+export default EditIcon;
