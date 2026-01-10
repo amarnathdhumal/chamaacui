@@ -13,10 +13,10 @@ interface IconProps extends SVGMotionProps<SVGSVGElement> {
 }
 
 
-const CartIcon = (props: IconProps) => {
+const CreditCardIcon = (props: IconProps) => {
     const {
         size = 28,
-        duration = 1,
+        duration = 1.5,
         strokeWidth = 2,
         isHovered = false,
         repeatDelay = 1,
@@ -28,7 +28,7 @@ const CartIcon = (props: IconProps) => {
     const [isHoveredInternal, setIsHoveredInternal] = useState(false);
     const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-
+    
     const transition = {
         duration: duration,
         ease: ease,
@@ -49,23 +49,24 @@ const CartIcon = (props: IconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            overflow="visible"
             onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
             onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-            overflow="visible"
         >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <motion.g
-                animate={shouldAnimate ? { x: [0, 5, 0] } : { x: 0 }}
-                transition={transition}
-            >
-                <circle cx="6" cy="19" r="2" />
-                <circle cx="17" cy="19" r="2" />
-                <path d="M17 17h-11v-14h-2" />
-                <path d="M6 5l14 1l-1 7h-13" />
-            </motion.g>
+             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+             <motion.g
+                animate={shouldAnimate ? { rotateY: [0, 180, 360] } : { rotateY: 0 }}
+                transition={{ ...transition, duration: duration * 2 }}
+                style={{ originX: "50%", originY: "50%" }}
+             >
+                <rect x="3" y="5" width="18" height="14" rx="3" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+                <line x1="7" y1="15" x2="7.01" y2="15" />
+                <line x1="11" y1="15" x2="13" y2="15" />
+             </motion.g>
         </motion.svg>
     )
-
+    
 }
 
-export default CartIcon;
+export default CreditCardIcon;

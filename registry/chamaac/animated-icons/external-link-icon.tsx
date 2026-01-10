@@ -13,10 +13,10 @@ interface IconProps extends SVGMotionProps<SVGSVGElement> {
 }
 
 
-const CartIcon = (props: IconProps) => {
+const ExternalLinkIcon = (props: IconProps) => {
     const {
         size = 28,
-        duration = 1,
+        duration = 1.5,
         strokeWidth = 2,
         isHovered = false,
         repeatDelay = 1,
@@ -28,7 +28,7 @@ const CartIcon = (props: IconProps) => {
     const [isHoveredInternal, setIsHoveredInternal] = useState(false);
     const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-
+    
     const transition = {
         duration: duration,
         ease: ease,
@@ -51,21 +51,22 @@ const CartIcon = (props: IconProps) => {
             className={className}
             onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
             onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-            overflow="visible"
         >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <motion.g
-                animate={shouldAnimate ? { x: [0, 5, 0] } : { x: 0 }}
+             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+             <path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" />
+             <motion.path 
+                d="M11 13l9 -9" 
+                animate={shouldAnimate ? { x: [0, 2, 0], y: [0, -2, 0] } : { x: 0, y: 0 }}
                 transition={transition}
-            >
-                <circle cx="6" cy="19" r="2" />
-                <circle cx="17" cy="19" r="2" />
-                <path d="M17 17h-11v-14h-2" />
-                <path d="M6 5l14 1l-1 7h-13" />
-            </motion.g>
+             />
+             <motion.path 
+                d="M15 4h5v5" 
+                animate={shouldAnimate ? { x: [0, 2, 0], y: [0, -2, 0] } : { x: 0, y: 0 }}
+                transition={transition}
+             />
         </motion.svg>
     )
-
+    
 }
 
-export default CartIcon;
+export default ExternalLinkIcon;

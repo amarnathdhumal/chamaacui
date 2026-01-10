@@ -32,11 +32,11 @@ const SlideUpButton = ({
 
     const textVariants = {
         initial: { y: 0 },
-        hover: { y: "-190%" },
+        hover: { y: "-200%" },
     };
 
     const cloneVariants = {
-        initial: { y: "190%", rotate: 20 },
+        initial: { y: "200%", rotate: 20 },
         hover: { y: 0, rotate: 0 },
     };
 

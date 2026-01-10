@@ -1,265 +1,21 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
-import { motion, SVGMotionProps, AnimatePresence } from "motion/react";
-import { IconCopy, IconCheck, IconTerminal2 } from "@tabler/icons-react";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
-import CopyIcon from "@/registry/chamaac/animated-icons/copy-icon";
-import WavyIcon from "@/registry/chamaac/animated-icons/wavy-icon";
-import MenuIcon from "@/registry/chamaac/animated-icons/menu-icon";
+import { IconSearch } from "@tabler/icons-react";
+import { icons } from "./icons-data";
+import IconCard from "./icon-card";
+import TabButton from "@/components/ui/tab-button";
 
-import CartIcon from "@/registry/chamaac/animated-icons/cart-icon";
-
-import AlertCircleIcon from "@/registry/chamaac/animated-icons/alert-circle-icon";
-import AdjustmentsHorizontalIcon from "@/registry/chamaac/animated-icons/adjustments-icon";
-import ScanIcon from "@/registry/chamaac/animated-icons/scan-icon";
-import BellIcon from "@/registry/chamaac/animated-icons/bell-icon";
-import SettingsIcon from "@/registry/chamaac/animated-icons/settings-icon";
-import ActivityIcon from "@/registry/chamaac/animated-icons/activity-icon";
-import RefreshIcon from "@/registry/chamaac/animated-icons/refresh-icon";
-import WifiIcon from "@/registry/chamaac/animated-icons/wifi-icon";
-import ArrowRightIcon from "@/registry/chamaac/animated-icons/arrow-right-icon";
-import ArrowLeftIcon from "@/registry/chamaac/animated-icons/arrow-left-icon";
-import ArrowUpIcon from "@/registry/chamaac/animated-icons/arrow-up-icon";
-import ArrowDownIcon from "@/registry/chamaac/animated-icons/arrow-down-icon";
-import ArrowUpRightIcon from "@/registry/chamaac/animated-icons/arrow-up-right-icon";
-import ArrowUpLeftIcon from "@/registry/chamaac/animated-icons/arrow-up-left-icon";
-import ArrowDownLeftIcon from "@/registry/chamaac/animated-icons/arrow-down-left-icon";
-import ArrowDownRightIcon from "@/registry/chamaac/animated-icons/arrow-down-right-icon";
-import ChevronRightIcon from "@/registry/chamaac/animated-icons/chevron-right-icon";
-import ChevronLeftIcon from "@/registry/chamaac/animated-icons/chevron-left-icon";
-import ChevronUpIcon from "@/registry/chamaac/animated-icons/chevron-up-icon";
-import ChevronDownIcon from "@/registry/chamaac/animated-icons/chevron-down-icon";
-import ChevronsRightIcon from "@/registry/chamaac/animated-icons/chevrons-right-icon";
-import ChevronsLeftIcon from "@/registry/chamaac/animated-icons/chevrons-left-icon";
-import ChevronsUpIcon from "@/registry/chamaac/animated-icons/chevrons-up-icon";
-import ChevronsDownIcon from "@/registry/chamaac/animated-icons/chevrons-down-icon";
-import DownloadIcon from "@/registry/chamaac/animated-icons/download-icon";
-import GlobeIcon from "@/registry/chamaac/animated-icons/globe-icon";
-import StarIcon from "@/registry/chamaac/animated-icons/star-icon";
-import HourglassIcon from "@/registry/chamaac/animated-icons/hourglass-icon";
-import LightbulbIcon from "@/registry/chamaac/animated-icons/lightbulb-icon";
-import MusicIcon from "@/registry/chamaac/animated-icons/music-icon";
-import HeartIcon from "@/registry/chamaac/animated-icons/heart-icon";
-import MailIcon from "@/registry/chamaac/animated-icons/mail-icon";
-import LocationIcon from "@/registry/chamaac/animated-icons/location-icon";
-import LockIcon from "@/registry/chamaac/animated-icons/lock-icon";
-import RocketIcon from "@/registry/chamaac/animated-icons/rocket-icon";
-import ZapIcon from "@/registry/chamaac/animated-icons/zap-icon";
-import EyeIcon from "@/registry/chamaac/animated-icons/eye-icon";
-import SendIcon from "@/registry/chamaac/animated-icons/send-icon";
-import VolumeIcon from "@/registry/chamaac/animated-icons/volume-icon";
-import CheckIcon from "@/registry/chamaac/animated-icons/check-icon";
-import SparkleIcon from "@/registry/chamaac/animated-icons/sparkle-icon";
-import CalendarIcon from "@/registry/chamaac/animated-icons/calendar-icon";
-import ShieldIcon from "@/registry/chamaac/animated-icons/shield-icon";
-import UploadIcon from "@/registry/chamaac/animated-icons/upload-icon";
-import MessageIcon from "@/registry/chamaac/animated-icons/message-icon";
-import SearchIcon from "@/registry/chamaac/animated-icons/search-icon";
-import CloseIcon from "@/registry/chamaac/animated-icons/close-icon";
-import ClockIcon from "@/registry/chamaac/animated-icons/clock-icon";
-import LayersIcon from "@/registry/chamaac/animated-icons/layers-icon";
-import MoonIcon from "@/registry/chamaac/animated-icons/moon-icon";
-import SunIcon from "@/registry/chamaac/animated-icons/sun-icon";
-import TrashIcon from "@/registry/chamaac/animated-icons/trash-icon";
-import BatteryIcon from "@/registry/chamaac/animated-icons/battery-icon";
-import GiftIcon from "@/registry/chamaac/animated-icons/gift-icon";
-import CrownIcon from "@/registry/chamaac/animated-icons/crown-icon";
-
-import ThumbsUpIcon from "@/registry/chamaac/animated-icons/thumbs-up-icon";
-
-interface IconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
-    size?: number;
-    duration?: number;
-    strokeWidth?: number;
-    isHovered?: boolean;
-}
-
-interface IconTypes {
-    name: string;
-    slug: string;
-    component: React.ComponentType<IconProps>;
-    href: string;
-}
-
-const icons: IconTypes[] = [
-    { name: "Copy", slug: "copy-icon", component: CopyIcon, href: "/components/animated-icons/copy-icon" },
-    { name: "Menu", slug: "menu-icon", component: MenuIcon, href: "/components/animated-icons/menu-icon" },
-    { name: "Alert", slug: "alert-circle-icon", component: AlertCircleIcon, href: "/components/animated-icons/alert-circle-icon" },
-    { name: "Cart", slug: "cart-icon", component: CartIcon, href: "/components/animated-icons/cart-icon" },
-    { name: "Wavy", slug: "wavy-icon", component: WavyIcon, href: "/components/animated-icons/wavy-icon" },
-    { name: "Adjustments", slug: "adjustments-icon", component: AdjustmentsHorizontalIcon, href: "/components/animated-icons/adjustments-icon" },
-    { name: "Scan", slug: "scan-icon", component: ScanIcon, href: "/components/animated-icons/scan-icon" },
-    { name: "Bell", slug: "bell-icon", component: BellIcon, href: "/components/animated-icons/bell-icon" },
-    { name: "Settings", slug: "settings-icon", component: SettingsIcon, href: "/components/animated-icons/settings-icon" },
-    { name: "Activity", slug: "activity-icon", component: ActivityIcon, href: "/components/animated-icons/activity-icon" },
-    { name: "Refresh", slug: "refresh-icon", component: RefreshIcon, href: "/components/animated-icons/refresh-icon" },
-    { name: "Wifi", slug: "wifi-icon", component: WifiIcon, href: "/components/animated-icons/wifi-icon" },
-    { name: "Arrow Right", slug: "arrow-right-icon", component: ArrowRightIcon, href: "/components/animated-icons/arrow-right-icon" },
-    { name: "Arrow Left", slug: "arrow-left-icon", component: ArrowLeftIcon, href: "/components/animated-icons/arrow-left-icon" },
-    { name: "Arrow Up", slug: "arrow-up-icon", component: ArrowUpIcon, href: "/components/animated-icons/arrow-up-icon" },
-    { name: "Arrow Down", slug: "arrow-down-icon", component: ArrowDownIcon, href: "/components/animated-icons/arrow-down-icon" },
-    { name: "Arrow Up Right", slug: "arrow-up-right-icon", component: ArrowUpRightIcon, href: "/components/animated-icons/arrow-up-right-icon" },
-    { name: "Arrow Up Left", slug: "arrow-up-left-icon", component: ArrowUpLeftIcon, href: "/components/animated-icons/arrow-up-left-icon" },
-    { name: "Arrow Down Left", slug: "arrow-down-left-icon", component: ArrowDownLeftIcon, href: "/components/animated-icons/arrow-down-left-icon" },
-    { name: "Arrow Down Right", slug: "arrow-down-right-icon", component: ArrowDownRightIcon, href: "/components/animated-icons/arrow-down-right-icon" },
-    { name: "Chevron Right", slug: "chevron-right-icon", component: ChevronRightIcon, href: "/components/animated-icons/chevron-right-icon" },
-    { name: "Chevron Left", slug: "chevron-left-icon", component: ChevronLeftIcon, href: "/components/animated-icons/chevron-left-icon" },
-    { name: "Chevron Up", slug: "chevron-up-icon", component: ChevronUpIcon, href: "/components/animated-icons/chevron-up-icon" },
-    { name: "Chevron Down", slug: "chevron-down-icon", component: ChevronDownIcon, href: "/components/animated-icons/chevron-down-icon" },
-    { name: "Chevrons Right", slug: "chevrons-right-icon", component: ChevronsRightIcon, href: "/components/animated-icons/chevrons-right-icon" },
-    { name: "Chevrons Left", slug: "chevrons-left-icon", component: ChevronsLeftIcon, href: "/components/animated-icons/chevrons-left-icon" },
-    { name: "Chevrons Up", slug: "chevrons-up-icon", component: ChevronsUpIcon, href: "/components/animated-icons/chevrons-up-icon" },
-    { name: "Chevrons Down", slug: "chevrons-down-icon", component: ChevronsDownIcon, href: "/components/animated-icons/chevrons-down-icon" },
-    { name: "Download", slug: "download-icon", component: DownloadIcon, href: "/components/animated-icons/download-icon" },
-    { name: "Globe", slug: "globe-icon", component: GlobeIcon, href: "/components/animated-icons/globe-icon" },
-    { name: "Star", slug: "star-icon", component: StarIcon, href: "/components/animated-icons/star-icon" },
-    { name: "Hourglass", slug: "hourglass-icon", component: HourglassIcon, href: "/components/animated-icons/hourglass-icon" },
-    { name: "Lightbulb", slug: "lightbulb-icon", component: LightbulbIcon, href: "/components/animated-icons/lightbulb-icon" },
-    { name: "Music", slug: "music-icon", component: MusicIcon, href: "/components/animated-icons/music-icon" },
-    { name: "Heart", slug: "heart-icon", component: HeartIcon, href: "/components/animated-icons/heart-icon" },
-    { name: "Mail", slug: "mail-icon", component: MailIcon, href: "/components/animated-icons/mail-icon" },
-    { name: "Location", slug: "location-icon", component: LocationIcon, href: "/components/animated-icons/location-icon" },
-    { name: "Lock", slug: "lock-icon", component: LockIcon, href: "/components/animated-icons/lock-icon" },
-    { name: "Rocket", slug: "rocket-icon", component: RocketIcon, href: "/components/animated-icons/rocket-icon" },
-    { name: "Zap", slug: "zap-icon", component: ZapIcon, href: "/components/animated-icons/zap-icon" },
-    { name: "Eye", slug: "eye-icon", component: EyeIcon, href: "/components/animated-icons/eye-icon" },
-    { name: "Send", slug: "send-icon", component: SendIcon, href: "/components/animated-icons/send-icon" },
-    { name: "Volume", slug: "volume-icon", component: VolumeIcon, href: "/components/animated-icons/volume-icon" },
-    { name: "Check", slug: "check-icon", component: CheckIcon, href: "/components/animated-icons/check-icon" },
-    { name: "Sparkle", slug: "sparkle-icon", component: SparkleIcon, href: "/components/animated-icons/sparkle-icon" },
-    { name: "Calendar", slug: "calendar-icon", component: CalendarIcon, href: "/components/animated-icons/calendar-icon" },
-    { name: "Shield", slug: "shield-icon", component: ShieldIcon, href: "/components/animated-icons/shield-icon" },
-    { name: "Upload", slug: "upload-icon", component: UploadIcon, href: "/components/animated-icons/upload-icon" },
-    { name: "Message", slug: "message-icon", component: MessageIcon, href: "/components/animated-icons/message-icon" },
-    { name: "Search", slug: "search-icon", component: SearchIcon, href: "/components/animated-icons/search-icon" },
-    { name: "Close", slug: "close-icon", component: CloseIcon, href: "/components/animated-icons/close-icon" },
-    { name: "Clock", slug: "clock-icon", component: ClockIcon, href: "/components/animated-icons/clock-icon" },
-    { name: "Layers", slug: "layers-icon", component: LayersIcon, href: "/components/animated-icons/layers-icon" },
-    { name: "Moon", slug: "moon-icon", component: MoonIcon, href: "/components/animated-icons/moon-icon" },
-    { name: "Sun", slug: "sun-icon", component: SunIcon, href: "/components/animated-icons/sun-icon" },
-    { name: "Trash", slug: "trash-icon", component: TrashIcon, href: "/components/animated-icons/trash-icon" },
-    { name: "Battery", slug: "battery-icon", component: BatteryIcon, href: "/components/animated-icons/battery-icon" },
-    { name: "Gift", slug: "gift-icon", component: GiftIcon, href: "/components/animated-icons/gift-icon" },
-    { name: "Crown", slug: "crown-icon", component: CrownIcon, href: "/components/animated-icons/crown-icon" },
-
-    { name: "Thumbs Up", slug: "thumbs-up-icon", component: ThumbsUpIcon, href: "/components/animated-icons/thumbs-up-icon" },
-];
-
-interface IconCardProps {
-    icon: IconTypes;
-    isHoveredMode: boolean;
-}
-
-function IconCard({ icon, isHoveredMode }: IconCardProps) {
-    const [isHovered, setIsHovered] = useState(false);
-    const [codeCopied, setCodeCopied] = useState(false);
-    const [cliCopied, setCliCopied] = useState(false);
-
-    const cliCommand = `npx shadcn@latest add "https://chamaac.com/r/${icon.slug}.json"`;
-
-    const handleCopyCode = async (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        try {
-            const response = await fetch(`/r/${icon.slug}.json`);
-            const data = await response.json();
-            if (data.files && data.files[0]?.content) {
-                await navigator.clipboard.writeText(data.files[0].content);
-                setCodeCopied(true);
-                setTimeout(() => setCodeCopied(false), 2000);
-            }
-        } catch (error) {
-            console.error("Failed to copy code:", error);
-        }
-    };
-
-
-    const handleCopyCli = async (e: React.MouseEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-        await navigator.clipboard.writeText(cliCommand);
-        setCliCopied(true);
-        setTimeout(() => setCliCopied(false), 2000);
-    };
-
-    return (
-        <Link href={icon.href} className="group block">
-            <motion.div
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                className="relative flex flex-col items-center justify-center  rounded-[16px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black transition-colors h-[150px]"
-            >
-                {/* Hover action buttons */}
-                <AnimatePresence>
-                    {isHovered && (
-                        <motion.div
-                            initial={{ opacity: 0, y: -4 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -4 }}
-                            transition={{ duration: 0.15 }}
-                            className="absolute top-3 right-3 flex gap-1.5"
-                        >
-                            {/* Copy Code Button */}
-                            <Tooltip>
-                                <TooltipTrigger asChild>
-                                    <button
-                                        onClick={handleCopyCode}
-                                        className="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
-                                    >
-                                        {codeCopied ? (
-                                            <IconCheck className="size-4 text-green-500" />
-                                        ) : (
-                                            <IconCopy className="size-4 text-neutral-600 dark:text-neutral-400" />
-                                        )}
-                                    </button>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>{codeCopied ? "Copied!" : "Copy Code"}</p>
-                                </TooltipContent>
-                            </Tooltip>
-
-                            {/* Copy CLI Command Button */}
-                            <Tooltip>
-                                <TooltipTrigger asChild>
-                                    <button
-                                        onClick={handleCopyCli}
-                                        className="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
-                                    >
-                                        {cliCopied ? (
-                                            <IconCheck className="size-4 text-green-500" />
-                                        ) : (
-                                            <IconTerminal2 className="size-4 text-neutral-600 dark:text-neutral-400" />
-                                        )}
-                                    </button>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>{cliCopied ? "Copied!" : "Copy CLI Command"}</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-
-                <div className="mb-4 text-black dark:text-white  transition-transform duration-300">
-                    <icon.component size={40} isHovered={isHoveredMode} />
-                </div>
-                <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-white transition-colors">
-                    {icon.name}
-                </span>
-            </motion.div>
-        </Link>
-    );
-}
+import { MousePointer2, Infinity } from "lucide-react";
 
 export default function AnimatedIconsGrid() {
-     
+
     const [isHoveredMode, setIsHoveredMode] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const filteredIcons = icons
+        .filter((icon) => icon.name.toLowerCase().includes(searchQuery.toLowerCase()))
+        .sort((a, b) => a.name.localeCompare(b.name));
 
     return (
         <div className="w-full mx-auto mb-20">
@@ -271,25 +27,60 @@ export default function AnimatedIconsGrid() {
                             A collection of smooth, micro-interaction animations for your icons.
                         </p>
                     </div>
-                    <button
-                        onClick={() => setIsHoveredMode(!isHoveredMode)}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${isHoveredMode
-                            ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25"
-                            : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700"
-                            }`}
-                    >
-                        <span className={`w-2 h-2 rounded-full transition-colors ${isHoveredMode ? "bg-white animate-pulse" : "bg-green-500 animate-pulse"
-                            }`} />
-                        {isHoveredMode ? "Hover to Animate" : "Auto Animating"}
-                    </button>
+
                 </div>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6">
-                {icons.map((icon) => (
-                    <IconCard key={icon.name} icon={icon} isHoveredMode={isHoveredMode} />
-                ))}
+            <div className=" mb-6 flex items-center justify-between gap-4">
+
+                <div className="w-full max-w-[50%] relative">
+                    <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 dark:text-gray-400 size-4" />
+                    <input
+                        type="text"
+                        placeholder="Search icons..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full pl-10 pr-4 py-3 rounded-[16px] border border-gray-200 dark:border-neutral-800 bg-white dark:bg-black text-black dark:text-white transition-all placeholder:text-neutral-500 focus:outline-none "
+                    />
+                </div>
+                <div className="flex h-12 items-center justify-center rounded-[12px] bg-neutral-100 p-1 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+                    <TabButton
+                        name="Infinite"
+                        onClick={() => setIsHoveredMode(false)}
+                        isActive={!isHoveredMode}
+                        icon={<Infinity size={18} />}
+                        layoutId="icon-grid-tab"
+                    />
+                    <TabButton
+                        name="Hover"
+                        onClick={() => setIsHoveredMode(true)}
+                        isActive={isHoveredMode}
+                        icon={<MousePointer2 size={18} />}
+                        layoutId="icon-grid-tab"
+                    />
+                </div>
+
             </div>
+
+            {filteredIcons.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-20 text-center">
+                    <div className="p-4 rounded-full bg-neutral-100 dark:bg-neutral-800 mb-4">
+                        <IconSearch className="size-8 text-neutral-400" />
+                    </div>
+                    <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 mb-2">
+                        No icons found
+                    </h3>
+                    <p className="text-neutral-500 dark:text-neutral-400 max-w-[300px]">
+                        We couldn&apos;t find any icons matching &quot;{searchQuery}&quot;. Try searching for something else.
+                    </p>
+                </div>
+            ) : (
+                <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-2 md:gap-5">
+                    {filteredIcons.map((icon) => (
+                        <IconCard key={icon.name} icon={icon} isHoveredMode={isHoveredMode} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
