@@ -35,6 +35,13 @@ export default function LockIconPage() {
                     { name: "size", type: "number", default: "24", description: "Size of the icon in pixels", required: false },
                     { name: "duration", type: "number", default: "2", description: "Duration of the animation in seconds", required: false },
                     { name: "strokeWidth", type: "number", default: "2", description: "Stroke width of the icon", required: false },
+                    {
+                        name: "isHovered",
+                        type: "boolean",
+                        default: "false",
+                        description: "When true, animation only plays on hover. When false, animation loops continuously.",
+                        required: false,
+                    },
                 ]}
             />
         </div>

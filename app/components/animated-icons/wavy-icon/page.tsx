@@ -86,6 +86,13 @@ export default function WavyIconPage() {
                         description: "Stroke width of the icon",
                         required: false
                     },
+                    {
+                        name: "isHovered",
+                        type: "boolean",
+                        default: "false",
+                        description: "When true, animation only plays on hover. When false, animation loops continuously.",
+                        required: false,
+                    },
                 ]}
             />
         </div>
