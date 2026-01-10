@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface AdjustmentsHorizontalIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -13,18 +14,24 @@ const AdjustmentsHorizontalIcon = (
     props: AdjustmentsHorizontalIconProps
 ) => {
     const { size = 28, duration = 1.2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const path1Props = isHovered
-        ? { whileHover: { x: [0, -10, 0], transition: { duration: duration, ease: "easeInOut" as const } } }
-        : { animate: { x: [0, -10, 0] }, transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, repeatType: "loop" as const } };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-    const path2Props = isHovered
-        ? { whileHover: { x: [0, 10, 0], transition: { duration: duration, ease: "easeInOut" as const } } }
-        : { animate: { x: [0, 10, 0] }, transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, repeatType: "loop" as const } };
+    const path1Props = {
+        animate: shouldAnimate ? { x: [0, -10, 0] } : { x: 0 },
+        transition: { duration: duration, ease: "easeInOut" as const, repeat: isHovered ? 0 : Infinity, repeatType: "loop" as const }
+    };
 
-    const path3Props = isHovered
-        ? { whileHover: { x: [0, -10, 0], transition: { duration: duration, ease: "easeInOut" as const } } }
-        : { animate: { x: [0, -10, 0] }, transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, repeatType: "loop" as const } };
+    const path2Props = {
+        animate: shouldAnimate ? { x: [0, 10, 0] } : { x: 0 },
+        transition: { duration: duration, ease: "easeInOut" as const, repeat: isHovered ? 0 : Infinity, repeatType: "loop" as const }
+    };
+
+    const path3Props = {
+        animate: shouldAnimate ? { x: [0, -10, 0] } : { x: 0 },
+        transition: { duration: duration, ease: "easeInOut" as const, repeat: isHovered ? 0 : Infinity, repeatType: "loop" as const }
+    };
 
     return (
         <motion.svg
@@ -38,6 +45,8 @@ const AdjustmentsHorizontalIcon = (
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 6l15 0" />

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface SparkleIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -11,45 +12,24 @@ interface SparkleIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWi
 
 const SparkleIcon = (props: SparkleIconProps) => {
     const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const mainSparkleProps = isHovered
-        ? {
-            whileHover: {
-                scale: [1, 1.1, 1],
-                rotate: [0, 10, 0, -10, 0],
-                transition: { duration: duration, ease: "easeInOut" as const },
-            },
-        }
-        : {
-            animate: { scale: [1, 1.1, 1], rotate: [0, 10, 0, -10, 0] },
-            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-    const smallSparkle1Props = isHovered
-        ? {
-            whileHover: {
-                opacity: [0.3, 1, 0.3],
-                scale: [0.8, 1.2, 0.8],
-                transition: { duration: duration * 0.8, ease: "easeInOut" as const, delay: duration * 0.2 },
-            },
-        }
-        : {
-            animate: { opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] },
-            transition: { duration: duration * 0.8, ease: "easeInOut" as const, repeat: Infinity, delay: duration * 0.2 },
-        };
+    const mainSparkleProps = {
+        animate: shouldAnimate ? { scale: [1, 1.1, 1], rotate: [0, 10, 0, -10, 0] } : { scale: 1, rotate: 0 },
+        transition: { duration: duration, ease: "easeInOut" as const, repeat: isHovered ? 0 : Infinity },
+    };
 
-    const smallSparkle2Props = isHovered
-        ? {
-            whileHover: {
-                opacity: [0.3, 1, 0.3],
-                scale: [0.8, 1.2, 0.8],
-                transition: { duration: duration * 0.8, ease: "easeInOut" as const, delay: duration * 0.5 },
-            },
-        }
-        : {
-            animate: { opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] },
-            transition: { duration: duration * 0.8, ease: "easeInOut" as const, repeat: Infinity, delay: duration * 0.5 },
-        };
+    const smallSparkle1Props = {
+        animate: shouldAnimate ? { opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] } : { opacity: 1, scale: 1 },
+        transition: { duration: duration * 0.8, ease: "easeInOut" as const, repeat: isHovered ? 0 : Infinity, delay: duration * 0.2 },
+    };
+
+    const smallSparkle2Props = {
+        animate: shouldAnimate ? { opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] } : { opacity: 1, scale: 1 },
+        transition: { duration: duration * 0.8, ease: "easeInOut" as const, repeat: isHovered ? 0 : Infinity, delay: duration * 0.5 },
+    };
 
     return (
         <motion.svg
@@ -65,6 +45,8 @@ const SparkleIcon = (props: SparkleIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path

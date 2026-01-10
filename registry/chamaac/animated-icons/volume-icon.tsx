@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface VolumeIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -11,34 +12,27 @@ interface VolumeIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWid
 
 const VolumeIcon = (props: VolumeIconProps) => {
     const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const innerWaveProps = isHovered
-        ? {
-            whileHover: {
-                opacity: [0.5, 1, 0.5, 1, 0.5],
-                scaleX: [1, 1.05, 0.95, 1.05, 1],
-                x: [0, 0.5, -0.25, 0.5, 0],
-                transition: { duration: duration, ease: "easeInOut" as const },
-            },
-        }
-        : {
-            animate: { opacity: [0.5, 1, 0.5, 1, 0.5], scaleX: [1, 1.05, 0.95, 1.05, 1], x: [0, 0.5, -0.25, 0.5, 0] },
-            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-    const outerWaveProps = isHovered
-        ? {
-            whileHover: {
-                opacity: [0.3, 1, 0.3, 1, 0.3],
-                scaleX: [1, 1.1, 0.95, 1.1, 1],
-                x: [0, 1, -0.25, 1, 0],
-                transition: { duration: duration, ease: "easeInOut" as const, delay: 0.1 },
-            },
-        }
-        : {
-            animate: { opacity: [0.3, 1, 0.3, 1, 0.3], scaleX: [1, 1.1, 0.95, 1.1, 1], x: [0, 1, -0.25, 1, 0] },
-            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, delay: 0.1 },
-        };
+    const innerWaveProps = {
+        animate: shouldAnimate ? {
+            opacity: [0.5, 1, 0.5, 1, 0.5],
+            scaleX: [1, 1.05, 0.95, 1.05, 1],
+            x: [0, 0.5, -0.25, 0.5, 0]
+        } : { opacity: 1, scaleX: 1, x: 0 },
+        transition: { duration: duration, ease: "easeInOut" as const, repeat: isHovered ? 0 : Infinity },
+    };
+
+    const outerWaveProps = {
+        animate: shouldAnimate ? {
+            opacity: [0.3, 1, 0.3, 1, 0.3],
+            scaleX: [1, 1.1, 0.95, 1.1, 1],
+            x: [0, 1, -0.25, 1, 0]
+        } : { opacity: 1, scaleX: 1, x: 0 },
+        transition: { duration: duration, ease: "easeInOut" as const, repeat: isHovered ? 0 : Infinity, delay: 0.1 },
+    };
 
     return (
         <motion.svg
@@ -54,6 +48,8 @@ const VolumeIcon = (props: VolumeIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M6 15h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l3.5 -4.5a.8 .8 0 0 1 1.5 .5v14a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5" />

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface RocketIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -11,52 +12,33 @@ interface RocketIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWid
 
 const RocketIcon = (props: RocketIconProps) => {
     const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const bodyAnimationProps = isHovered
-        ? {
-            whileHover: {
-                y: [0, -2, 0],
-                x: [0, 1, 0],
-                transition: {
-                    duration: duration * 0.5,
-                    ease: "easeInOut" as const,
-                },
-            },
-        }
-        : {
-            animate: {
-                y: [0, -2, 0],
-                x: [0, 1, 0],
-            },
-            transition: {
-                duration: duration * 0.5,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
-            },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-    const flameAnimationProps = isHovered
-        ? {
-            whileHover: {
-                opacity: [0.4, 1, 0.4],
-                scale: [0.8, 1.1, 0.8],
-                transition: {
-                    duration: duration * 0.15,
-                    ease: "easeInOut" as const,
-                },
-            },
-        }
-        : {
-            animate: {
-                opacity: [0.4, 1, 0.4],
-                scale: [0.8, 1.1, 0.8],
-            },
-            transition: {
-                duration: duration * 0.15,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
-            },
-        };
+    const bodyAnimationProps = {
+        animate: shouldAnimate ? {
+            y: [0, -2, 0],
+            x: [0, 1, 0],
+        } : { y: 0, x: 0 },
+        transition: {
+            duration: duration * 0.5,
+            ease: "easeInOut" as const,
+            repeat: isHovered ? 0 : Infinity,
+        },
+    };
+
+    const flameAnimationProps = {
+        animate: shouldAnimate ? {
+            opacity: [0.4, 1, 0.4],
+            scale: [0.8, 1.1, 0.8],
+        } : { opacity: 0.4, scale: 0.8 },
+        transition: {
+            duration: duration * 0.15,
+            ease: "easeInOut" as const,
+            repeat: isHovered ? 0 : Infinity,
+        },
+    };
 
     return (
         <motion.svg
@@ -72,6 +54,8 @@ const RocketIcon = (props: RocketIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.g {...bodyAnimationProps}>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface HourglassIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,28 +12,21 @@ interface HourglassIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const HourglassIcon = (props: HourglassIconProps) => {
     const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const animationProps = isHovered
-        ? {
-            whileHover: {
-                rotate: 180,
-                transition: {
-                    duration: duration,
-                    ease: "easeInOut" as const,
-                },
-            },
-        }
-        : {
-            animate: {
-                rotate: 180,
-            },
-            transition: {
-                duration: duration,
-                repeat: Infinity,
-                repeatDelay: 1,
-                ease: "easeInOut" as const,
-            },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const animationProps = {
+        animate: shouldAnimate ? {
+            rotate: 180,
+        } : { rotate: 0 },
+        transition: {
+            duration: duration,
+            repeat: isHovered ? 0 : Infinity,
+            repeatDelay: 1,
+            ease: "easeInOut" as const,
+        },
+    };
 
     return (
         <motion.svg
@@ -47,6 +41,8 @@ const HourglassIcon = (props: HourglassIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
             {...animationProps}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface SettingsIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,27 +12,18 @@ interface SettingsIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const SettingsIcon = (props: SettingsIconProps) => {
     const { size = 28, duration = 4, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const animationProps = isHovered
-        ? {
-            whileHover: {
-                rotate: 360,
-                transition: {
-                    duration: duration,
-                    ease: "linear" as const,
-                },
-            },
-        }
-        : {
-            animate: {
-                rotate: 360,
-            },
-            transition: {
-                duration: duration,
-                ease: "linear" as const,
-                repeat: Infinity,
-            },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const animationProps = {
+        animate: shouldAnimate ? { rotate: 360 } : { rotate: 0 },
+        transition: {
+            duration: duration,
+            ease: "linear" as const,
+            repeat: isHovered ? 0 : Infinity,
+        },
+    };
 
     return (
         <motion.svg
@@ -46,6 +38,8 @@ const SettingsIcon = (props: SettingsIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
             {...animationProps}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />

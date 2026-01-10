@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface WifiIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,22 +12,29 @@ interface WifiIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const WifiIcon = (props: WifiIconProps) => {
     const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const path1Props = isHovered
-        ? { whileHover: { opacity: [0.3, 1, 0.3], transition: { duration: duration, delay: 0 } } }
-        : { animate: { opacity: [0.3, 1, 0.3] }, transition: { duration: duration, repeat: Infinity, delay: 0 } };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-    const path2Props = isHovered
-        ? { whileHover: { opacity: [0.3, 1, 0.3], transition: { duration: duration, delay: 0.2 } } }
-        : { animate: { opacity: [0.3, 1, 0.3] }, transition: { duration: duration, repeat: Infinity, delay: 0.2 } };
+    const path1Props = {
+        animate: shouldAnimate ? { opacity: [0.3, 1, 0.3] } : { opacity: 1 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, delay: 0 }
+    };
 
-    const path3Props = isHovered
-        ? { whileHover: { opacity: [0.3, 1, 0.3], transition: { duration: duration, delay: 0.4 } } }
-        : { animate: { opacity: [0.3, 1, 0.3] }, transition: { duration: duration, repeat: Infinity, delay: 0.4 } };
+    const path2Props = {
+        animate: shouldAnimate ? { opacity: [0.3, 1, 0.3] } : { opacity: 1 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, delay: 0.2 }
+    };
 
-    const path4Props = isHovered
-        ? { whileHover: { opacity: [0.3, 1, 0.3], transition: { duration: duration, delay: 0.6 } } }
-        : { animate: { opacity: [0.3, 1, 0.3] }, transition: { duration: duration, repeat: Infinity, delay: 0.6 } };
+    const path3Props = {
+        animate: shouldAnimate ? { opacity: [0.3, 1, 0.3] } : { opacity: 1 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, delay: 0.4 }
+    };
+
+    const path4Props = {
+        animate: shouldAnimate ? { opacity: [0.3, 1, 0.3] } : { opacity: 1 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, delay: 0.6 }
+    };
 
     return (
         <motion.svg
@@ -41,6 +49,8 @@ const WifiIcon = (props: WifiIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path d="M12 18l.01 0" {...path1Props} />

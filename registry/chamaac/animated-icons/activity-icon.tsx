@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface ActivityIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,32 +12,22 @@ interface ActivityIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const ActivityIcon = (props: ActivityIconProps) => {
     const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const pathAnimationProps = isHovered
-        ? {
-            initial: { pathLength: 0, opacity: 0 },
-            whileHover: {
-                pathLength: 1,
-                opacity: 1,
-                transition: {
-                    duration: duration,
-                    ease: "easeInOut" as const,
-                },
-            },
-        }
-        : {
-            initial: { pathLength: 0, opacity: 0 },
-            animate: {
-                pathLength: 1,
-                opacity: 1,
-            },
-            transition: {
-                duration: duration,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
-                repeatType: "reverse" as const,
-            },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const pathAnimationProps = {
+        animate: shouldAnimate ? {
+            pathLength: [0, 1, 1, 0],
+            opacity: 1,
+        } : { pathLength: 1, opacity: 1 },
+        transition: {
+            duration: duration,
+            ease: "easeInOut" as const,
+            repeat: isHovered ? 0 : Infinity,
+            repeatType: "reverse" as const,
+        },
+    };
 
     return (
         <motion.svg
@@ -51,6 +42,8 @@ const ActivityIcon = (props: ActivityIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path

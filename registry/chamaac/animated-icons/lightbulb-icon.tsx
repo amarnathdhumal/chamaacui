@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface LightbulbIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,18 +12,14 @@ interface LightbulbIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const LightbulbIcon = (props: LightbulbIconProps) => {
     const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const pathAnimationProps = isHovered
-        ? {
-            whileHover: {
-                opacity: [0.2, 1, 0.2],
-                transition: { duration: duration, ease: "easeInOut" as const },
-            },
-        }
-        : {
-            animate: { opacity: [0.2, 1, 0.2] },
-            transition: { duration: duration, repeat: Infinity, ease: "easeInOut" as const },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const pathAnimationProps = {
+        animate: shouldAnimate ? { opacity: [0.2, 1, 0.2] } : { opacity: 1 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, ease: "easeInOut" as const },
+    };
 
     return (
         <motion.svg
@@ -37,6 +34,8 @@ const LightbulbIcon = (props: LightbulbIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface StarIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,29 +12,21 @@ interface StarIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const StarIcon = (props: StarIconProps) => {
     const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const pathAnimationProps = isHovered
-        ? {
-            whileHover: {
-                scale: [1, 1.2, 1],
-                rotate: [0, 5, -5, 0],
-                transition: {
-                    duration: duration,
-                    ease: "easeInOut" as const,
-                },
-            },
-        }
-        : {
-            animate: {
-                scale: [1, 1.2, 1],
-                rotate: [0, 5, -5, 0],
-            },
-            transition: {
-                duration: duration,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
-            },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const pathAnimationProps = {
+        animate: shouldAnimate ? {
+            scale: [1, 1.2, 1],
+            rotate: [0, 5, -5, 0],
+        } : { scale: 1, rotate: 0 },
+        transition: {
+            duration: duration,
+            ease: "easeInOut" as const,
+            repeat: isHovered ? 0 : Infinity,
+        },
+    };
 
     return (
         <motion.svg
@@ -49,6 +42,8 @@ const StarIcon = (props: StarIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path

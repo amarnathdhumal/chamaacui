@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface MailIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,21 +12,19 @@ interface MailIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const MailIcon = (props: MailIconProps) => {
     const { size = 28, duration = 4, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const envelopeProps = isHovered
-        ? { whileHover: { y: [0, -2, 0], transition: { duration: duration, ease: "easeInOut" as const } } }
-        : { animate: { y: [0, -2, 0] }, transition: { duration: duration, repeat: Infinity, ease: "easeInOut" as const } };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-    const flapProps = isHovered
-        ? {
-            initial: { pathLength: 0, opacity: 0 },
-            whileHover: { pathLength: 1, opacity: 1, transition: { duration: duration / 2, ease: "easeInOut" as const } },
-        }
-        : {
-            initial: { pathLength: 0, opacity: 0 },
-            animate: { pathLength: 1, opacity: 1 },
-            transition: { duration: duration / 2, repeat: Infinity, ease: "easeInOut" as const, repeatDelay: 1 },
-        };
+    const envelopeProps = {
+        animate: shouldAnimate ? { y: [0, -2, 0] } : { y: 0 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, ease: "easeInOut" as const }
+    };
+
+    const flapProps = {
+        animate: shouldAnimate ? { pathLength: [0, 1, 1, 0], opacity: 1 } : { pathLength: 1, opacity: 1 },
+        transition: { duration: duration / 2, repeat: isHovered ? 0 : Infinity, ease: "easeInOut" as const, repeatDelay: 1 },
+    };
 
     return (
         <motion.svg
@@ -41,6 +40,8 @@ const MailIcon = (props: MailIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path

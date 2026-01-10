@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface LocationIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,18 +12,14 @@ interface LocationIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const LocationIcon = (props: LocationIconProps) => {
     const { size = 28, duration = 3, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const pathAnimationProps = isHovered
-        ? {
-            whileHover: {
-                rotate: [0, 15, -10, 0],
-                transition: { duration: duration, ease: "easeInOut" as const },
-            },
-        }
-        : {
-            animate: { rotate: [0, 15, -10, 0] },
-            transition: { duration: duration, repeat: Infinity, ease: "easeInOut" as const },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const pathAnimationProps = {
+        animate: shouldAnimate ? { rotate: [0, 15, -10, 0] } : { rotate: 0 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, ease: "easeInOut" as const },
+    };
 
     return (
         <motion.svg
@@ -38,6 +35,8 @@ const LocationIcon = (props: LocationIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path

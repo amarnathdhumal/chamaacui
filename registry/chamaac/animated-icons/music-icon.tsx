@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface MusicIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,19 +12,14 @@ interface MusicIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const MusicIcon = (props: MusicIconProps) => {
     const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const groupAnimationProps = isHovered
-        ? {
-            whileHover: {
-                y: [0, -4, 0],
-                rotate: [0, -5, 5, 0],
-                transition: { duration: duration, ease: "easeInOut" as const },
-            },
-        }
-        : {
-            animate: { y: [0, -4, 0], rotate: [0, -5, 5, 0] },
-            transition: { duration: duration, repeat: Infinity, ease: "easeInOut" as const },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const groupAnimationProps = {
+        animate: shouldAnimate ? { y: [0, -4, 0], rotate: [0, -5, 5, 0] } : { y: 0, rotate: 0 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, ease: "easeInOut" as const },
+    };
 
     return (
         <motion.svg
@@ -39,6 +35,8 @@ const MusicIcon = (props: MusicIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.g {...groupAnimationProps}>

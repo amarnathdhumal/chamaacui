@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface ThumbsUpIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -11,27 +12,22 @@ interface ThumbsUpIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeW
 
 const ThumbsUpIcon = (props: ThumbsUpIconProps) => {
     const { size = 28, duration = 0.8, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const thumbProps = isHovered
-        ? {
-            whileHover: {
-                rotate: [0, -15, 5, -10, 0],
-                y: [0, -3, 0],
-                transition: { duration: duration, ease: "easeInOut" as const }
-            }
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const thumbProps = {
+        animate: shouldAnimate ? {
+            rotate: [0, -15, 5, -10, 0],
+            y: [0, -2, 0],
+        } : { rotate: 0, y: 0 },
+        transition: {
+            duration: duration,
+            ease: "easeInOut" as const,
+            repeat: isHovered ? 0 : Infinity,
+            repeatDelay: 1.2
         }
-        : {
-            animate: {
-                rotate: [0, -15, 5, -10, 0],
-                y: [0, -2, 0],
-            },
-            transition: {
-                duration: duration,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
-                repeatDelay: 1.2
-            }
-        };
+    };
 
     return (
         <motion.svg
@@ -48,6 +44,8 @@ const ThumbsUpIcon = (props: ThumbsUpIconProps) => {
             className={className}
             overflow="visible"
             style={{ transformOrigin: "center bottom" }}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
             {...thumbProps}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />

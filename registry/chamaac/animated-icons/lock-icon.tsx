@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface LockIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,21 +12,14 @@ interface LockIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const LockIcon = (props: LockIconProps) => {
     const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const pathAnimationProps = isHovered
-        ? {
-            initial: { pathLength: 0, opacity: 0 },
-            whileHover: {
-                pathLength: 1,
-                opacity: 1,
-                transition: { duration: duration, ease: "easeInOut" as const },
-            },
-        }
-        : {
-            initial: { pathLength: 0, opacity: 0 },
-            animate: { pathLength: 1, opacity: 1 },
-            transition: { duration: duration, repeat: Infinity, ease: "easeInOut" as const, repeatDelay: 1, repeatType: "reverse" as const },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const pathAnimationProps = {
+        animate: shouldAnimate ? { pathLength: [0, 1, 1, 0], opacity: 1 } : { pathLength: 1, opacity: 1 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, ease: "easeInOut" as const, repeatDelay: 1, repeatType: "reverse" as const },
+    };
 
     return (
         <motion.svg
@@ -41,6 +35,8 @@ const LockIcon = (props: LockIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M5 13a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v6a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-6z" />

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface MoonIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -11,28 +12,19 @@ interface MoonIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth
 
 const MoonIcon = (props: MoonIconProps) => {
     const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const moonProps = isHovered
-        ? {
-            whileHover: {
-                animate: { rotate: [0, -20, 20, -10, 10, 0] },
-                transition: {
-                    duration: duration,
-                    ease: "easeInOut" as const,
-                    repeat: Infinity,
-                    repeatDelay: 0.3,
-                },
-            },
-        }
-        : {
-            animate: { rotate: [0, -20, 20, -10, 10, 0] },
-            transition: {
-                duration: duration,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
-                repeatDelay: 0.3,
-            },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const moonProps = {
+        animate: shouldAnimate ? { rotate: [0, -20, 20, -10, 10, 0] } : { rotate: 0 },
+        transition: {
+            duration: duration,
+            ease: "easeInOut" as const,
+            repeat: isHovered ? 0 : Infinity,
+            repeatDelay: 0.3,
+        },
+    };
 
     return (
         <motion.svg
@@ -47,6 +39,8 @@ const MoonIcon = (props: MoonIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
             {...moonProps}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />

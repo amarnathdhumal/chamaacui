@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface SendIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -11,29 +12,21 @@ interface SendIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth
 
 const SendIcon = (props: SendIconProps) => {
     const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const groupAnimationProps = isHovered
-        ? {
-            whileHover: {
-                x: [0, 3, 0],
-                y: [0, -2, 0],
-                transition: {
-                    duration: duration,
-                    ease: "easeInOut" as const,
-                },
-            },
-        }
-        : {
-            animate: {
-                x: [0, 3, 0],
-                y: [0, -2, 0],
-            },
-            transition: {
-                duration: duration,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
-            },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const groupAnimationProps = {
+        animate: shouldAnimate ? {
+            x: [0, 3, 0],
+            y: [0, -2, 0],
+        } : { x: 0, y: 0 },
+        transition: {
+            duration: duration,
+            ease: "easeInOut" as const,
+            repeat: isHovered ? 0 : Infinity,
+        },
+    };
 
     return (
         <motion.svg
@@ -49,6 +42,8 @@ const SendIcon = (props: SendIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.g {...groupAnimationProps}>

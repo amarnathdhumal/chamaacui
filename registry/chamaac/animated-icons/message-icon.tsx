@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface MessageIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -11,18 +12,24 @@ interface MessageIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWi
 
 const MessageIcon = (props: MessageIconProps) => {
     const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const dot1Props = isHovered
-        ? { whileHover: { opacity: [0.3, 1, 0.3], transition: { duration: duration, delay: 0 } } }
-        : { animate: { opacity: [0.3, 1, 0.3] }, transition: { duration: duration, repeat: Infinity, delay: 0 } };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-    const dot2Props = isHovered
-        ? { whileHover: { opacity: [0.3, 1, 0.3], transition: { duration: duration, delay: duration * 0.2 } } }
-        : { animate: { opacity: [0.3, 1, 0.3] }, transition: { duration: duration, repeat: Infinity, delay: duration * 0.2 } };
+    const dot1Props = {
+        animate: shouldAnimate ? { opacity: [0.3, 1, 0.3] } : { opacity: 1 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, delay: 0 }
+    };
 
-    const dot3Props = isHovered
-        ? { whileHover: { opacity: [0.3, 1, 0.3], transition: { duration: duration, delay: duration * 0.4 } } }
-        : { animate: { opacity: [0.3, 1, 0.3] }, transition: { duration: duration, repeat: Infinity, delay: duration * 0.4 } };
+    const dot2Props = {
+        animate: shouldAnimate ? { opacity: [0.3, 1, 0.3] } : { opacity: 1 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, delay: duration * 0.2 }
+    };
+
+    const dot3Props = {
+        animate: shouldAnimate ? { opacity: [0.3, 1, 0.3] } : { opacity: 1 },
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, delay: duration * 0.4 }
+    };
 
     return (
         <motion.svg
@@ -37,6 +44,8 @@ const MessageIcon = (props: MessageIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" />

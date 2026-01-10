@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface ZapIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -11,19 +12,17 @@ interface ZapIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"
 
 const ZapIcon = (props: ZapIconProps) => {
     const { size = 28, duration = 1.5, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const pathAnimationProps = isHovered
-        ? {
-            whileHover: {
-                opacity: [1, 0.4, 1, 0.6, 1],
-                scale: [1, 1.02, 0.98, 1.01, 1],
-                transition: { duration: duration, ease: "easeInOut" as const, times: [0, 0.2, 0.4, 0.7, 1] },
-            },
-        }
-        : {
-            animate: { opacity: [1, 0.4, 1, 0.6, 1], scale: [1, 1.02, 0.98, 1.01, 1] },
-            transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, times: [0, 0.2, 0.4, 0.7, 1] },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const pathAnimationProps = {
+        animate: shouldAnimate ? {
+            opacity: [1, 0.4, 1, 0.6, 1],
+            scale: [1, 1.02, 0.98, 1.01, 1]
+        } : { opacity: 1, scale: 1 },
+        transition: { duration: duration, ease: "easeInOut" as const, repeat: isHovered ? 0 : Infinity, times: [0, 0.2, 0.4, 0.7, 1] },
+    };
 
     return (
         <motion.svg
@@ -38,6 +37,8 @@ const ZapIcon = (props: ZapIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path

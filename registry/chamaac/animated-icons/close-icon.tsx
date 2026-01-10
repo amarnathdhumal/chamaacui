@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface CloseIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -11,28 +12,21 @@ interface CloseIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidt
 
 const CloseIcon = (props: CloseIconProps) => {
     const { size = 28, duration = 0.8, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const rotateProps = isHovered
-        ? {
-            whileHover: {
-                rotate: [0, -20, 20, -20, 20, 0],
-                transition: {
-                    duration: duration,
-                    ease: "easeInOut" as const,
-                },
-            },
-        }
-        : {
-            animate: {
-                rotate: [0, -20, 20, -20, 20, 0],
-            },
-            transition: {
-                duration: duration,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
-                repeatDelay: 1,
-            },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const rotateProps = {
+        animate: shouldAnimate ? {
+            rotate: [0, -20, 20, -20, 20, 0],
+        } : { rotate: 0 },
+        transition: {
+            duration: duration,
+            ease: "easeInOut" as const,
+            repeat: isHovered ? 0 : Infinity,
+            repeatDelay: 1,
+        },
+    };
 
     return (
         <motion.svg
@@ -47,6 +41,8 @@ const CloseIcon = (props: CloseIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
             {...rotateProps}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />

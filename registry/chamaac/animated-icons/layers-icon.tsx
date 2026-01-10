@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface LayersIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -11,14 +12,19 @@ interface LayersIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWid
 
 const LayersIcon = (props: LayersIconProps) => {
     const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const layer1Props = isHovered
-        ? { whileHover: { y: [0, -3, 0], transition: { duration: duration, ease: "easeInOut" as const } } }
-        : { animate: { y: [0, -3, 0] }, transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity } };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-    const layer2Props = isHovered
-        ? { whileHover: { y: [0, -1.5, 0], transition: { duration: duration, ease: "easeInOut" as const, delay: 0.1 } } }
-        : { animate: { y: [0, -1.5, 0] }, transition: { duration: duration, ease: "easeInOut" as const, repeat: Infinity, delay: 0.1 } };
+    const layer1Props = {
+        animate: shouldAnimate ? { y: [0, -3, 0] } : { y: 0 },
+        transition: { duration: duration, ease: "easeInOut" as const, repeat: isHovered ? 0 : Infinity }
+    };
+
+    const layer2Props = {
+        animate: shouldAnimate ? { y: [0, -1.5, 0] } : { y: 0 },
+        transition: { duration: duration, ease: "easeInOut" as const, repeat: isHovered ? 0 : Infinity, delay: 0.1 }
+    };
 
     return (
         <motion.svg
@@ -34,6 +40,8 @@ const LayersIcon = (props: LayersIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <motion.path d="M12 4l-8 4l8 4l8 -4l-8 -4" {...layer1Props} />

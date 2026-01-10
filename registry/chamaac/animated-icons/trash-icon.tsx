@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface TrashIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -11,27 +12,21 @@ interface TrashIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidt
 
 const TrashIcon = (props: TrashIconProps) => {
     const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const lidProps = isHovered
-        ? {
-            whileHover: {
-                y: [0, -3, 0],
-                rotate: [0, -10, 0],
-                transition: { duration: duration, ease: "easeInOut" as const },
-            },
-        }
-        : {
-            animate: {
-                y: [-1],
-                rotate: [0, -10, 10, -5, 5, 0]
-            },
-            transition: {
-                duration: duration,
-                ease: "easeInOut" as const,
-                repeat: Infinity,
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
 
-            },
-        };
+    const lidProps = {
+        animate: shouldAnimate ? {
+            y: [-1],
+            rotate: [0, -10, 10, -5, 5, 0]
+        } : { y: 0, rotate: 0 },
+        transition: {
+            duration: duration,
+            ease: "easeInOut" as const,
+            repeat: isHovered ? 0 : Infinity,
+        },
+    };
 
     return (
         <motion.svg
@@ -47,14 +42,14 @@ const TrashIcon = (props: TrashIconProps) => {
             strokeLinejoin="round"
             className={className}
             overflow="visible"
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            {/* Lid */}
             <motion.g  {...lidProps}>
                 <path d="M4 7l16 0" />
                 <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
             </motion.g>
-            {/* Bin body */}
             <path d="M10 11l0 6" />
             <path d="M14 11l0 6" />
             <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />

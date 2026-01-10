@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface GlobeIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,27 +12,20 @@ interface GlobeIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const GlobeIcon = (props: GlobeIconProps) => {
     const { size = 28, duration = 8, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const animationProps = isHovered
-        ? {
-            whileHover: {
-                rotate: 360,
-                transition: {
-                    duration: duration,
-                    ease: "linear" as const,
-                },
-            },
-        }
-        : {
-            animate: {
-                rotate: 360,
-            },
-            transition: {
-                duration: duration,
-                ease: "linear" as const,
-                repeat: Infinity,
-            },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const animationProps = {
+        animate: shouldAnimate ? {
+            rotate: 360,
+        } : { rotate: 0 },
+        transition: {
+            duration: duration,
+            ease: "linear" as const,
+            repeat: isHovered ? 0 : Infinity,
+        },
+    };
 
     return (
         <motion.svg
@@ -46,6 +40,8 @@ const GlobeIcon = (props: GlobeIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
             {...animationProps}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />

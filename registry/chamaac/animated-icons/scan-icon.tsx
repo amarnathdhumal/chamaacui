@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, SVGMotionProps } from "motion/react";
 
 interface ScanIconProps extends SVGMotionProps<SVGSVGElement> {
@@ -11,27 +12,18 @@ interface ScanIconProps extends SVGMotionProps<SVGSVGElement> {
 
 const ScanIcon = (props: ScanIconProps) => {
     const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
-    const lineAnimationProps = isHovered
-        ? {
-            whileHover: {
-                y: [-8, 8, -8],
-                transition: {
-                    duration: duration,
-                    ease: "linear" as const,
-                },
-            },
-        }
-        : {
-            animate: {
-                y: [-8, 8, -8],
-            },
-            transition: {
-                duration: duration,
-                ease: "linear" as const,
-                repeat: Infinity,
-            },
-        };
+    const shouldAnimate = isHovered ? isHoveredInternal : true;
+
+    const lineAnimationProps = {
+        animate: shouldAnimate ? { y: [-8, 8, -8] } : { y: 0 },
+        transition: {
+            duration: duration,
+            ease: "linear" as const,
+            repeat: isHovered ? 0 : Infinity,
+        },
+    };
 
     return (
         <motion.svg
@@ -46,6 +38,8 @@ const ScanIcon = (props: ScanIconProps) => {
             strokeLinecap="round"
             strokeLinejoin="round"
             className={className}
+            onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+            onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M4 7v-1a2 2 0 0 1 2 -2h2" />
