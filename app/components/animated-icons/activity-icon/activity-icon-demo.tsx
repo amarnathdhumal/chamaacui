@@ -6,9 +6,10 @@ export default function ActivityIconDemo() {
     return (
         <ActivityIcon
             className="text-black dark:text-white"
-            size={48}
+            size={40}
             duration={2}
             strokeWidth={2}
+            ease="easeInOut"
         />
     );
 }

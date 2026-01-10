@@ -6,7 +6,7 @@ export default function BatteryIconDemo() {
     return (
         <BatteryIcon
             className="text-black dark:text-white"
-            size={48}
+            size={40}
             duration={1}
             strokeWidth={2}
         />

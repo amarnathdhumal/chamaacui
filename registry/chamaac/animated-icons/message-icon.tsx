@@ -28,7 +28,7 @@ const MessageIcon = (props: MessageIconProps) => {
 
     const dot3Props = {
         animate: shouldAnimate ? { opacity: [0.3, 1, 0.3] } : { opacity: 1 },
-        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, delay: duration * 0.4 }
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, }
     };
 
     return (

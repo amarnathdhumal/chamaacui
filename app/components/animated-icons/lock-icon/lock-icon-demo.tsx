@@ -6,9 +6,11 @@ export default function LockIconDemo() {
     return (
         <LockIcon
             className="text-black dark:text-white"
-            size={48}
-            duration={2}
+            size={40}
+            duration={1}
             strokeWidth={2}
+            repeatDelay={1}
+            ease="easeInOut"
         />
     );
 }

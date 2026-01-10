@@ -1,17 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps } from "motion/react";
+import { motion, SVGMotionProps, Easing } from "motion/react";
 
 interface ActivityIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
+    ease?: Easing;
 }
 
 const ActivityIcon = (props: ActivityIconProps) => {
-    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const {
+        size = 28,              // Icon size in pixels
+        duration = 2,           // Animation duration in seconds
+        strokeWidth = 2,        // SVG stroke width
+        isHovered = false,      // When true, animate only on hover
+        ease = "easeInOut",     // Animation easing function
+        className,
+        ...restProps
+    } = props;
+
     const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
     const shouldAnimate = isHovered ? isHoveredInternal : true;
@@ -23,7 +33,7 @@ const ActivityIcon = (props: ActivityIconProps) => {
         } : { pathLength: 1, opacity: 1 },
         transition: {
             duration: duration,
-            ease: "easeInOut" as const,
+            ease: ease,
             repeat: isHovered ? 0 : Infinity,
             repeatType: "reverse" as const,
         },

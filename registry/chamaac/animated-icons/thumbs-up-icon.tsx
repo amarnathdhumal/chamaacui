@@ -1,17 +1,29 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps } from "motion/react";
+import { motion, SVGMotionProps, Easing } from "motion/react";
 
 interface ThumbsUpIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
+    repeatDelay?: number;
+    ease?: Easing;
 }
 
 const ThumbsUpIcon = (props: ThumbsUpIconProps) => {
-    const { size = 28, duration = 0.8, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const {
+        size = 28,              // Icon size in pixels
+        duration = 0.8,         // Animation duration in seconds
+        strokeWidth = 2,        // SVG stroke width
+        isHovered = false,      // When true, animate only on hover
+        repeatDelay = 1.2,      // Delay between animation loops (seconds)
+        ease = "easeInOut",     // Animation easing function
+        className,
+        ...restProps
+    } = props;
+
     const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
     const shouldAnimate = isHovered ? isHoveredInternal : true;
@@ -23,9 +35,9 @@ const ThumbsUpIcon = (props: ThumbsUpIconProps) => {
         } : { rotate: 0, y: 0 },
         transition: {
             duration: duration,
-            ease: "easeInOut" as const,
+            ease: ease,
             repeat: isHovered ? 0 : Infinity,
-            repeatDelay: 1.2
+            repeatDelay: repeatDelay,
         }
     };
 

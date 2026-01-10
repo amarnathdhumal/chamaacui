@@ -15,7 +15,6 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { sidebarData } from "@/lib/data";
-import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 
 const Logo = () => {
   return (
@@ -111,16 +110,9 @@ export const Header = () => {
               </kbd>
             </button>
 
-            <SlideUpButton
+            <IconBrandGithub
               onClick={() => window.open("https://github.com/amarnathdhumal/chamaacui", "_blank")}
-              className="px-4 py-2 bg-black dark:bg-white text-white dark:text-black text-sm "
-            >
-              <span className="flex items-center gap-2">
-                Star on GitHub
-                <IconBrandGithub className="w-4 h-4" />
-              </span>
-            </SlideUpButton>
-
+              className="text-neutral-500 dark:text-gray-400 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full " />
             <IconBrandX
               onClick={() => window.open("https://x.com/AmarnathDhumal", "_blank")}
               className="text-neutral-500 dark:text-gray-400 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full " />

@@ -6,7 +6,7 @@ export default function GlobeIconDemo() {
     return (
         <GlobeIcon
             className="text-black dark:text-white"
-            size={48}
+            size={40}
             duration={8}
             strokeWidth={2}
         />

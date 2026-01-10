@@ -1,17 +1,29 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps } from "motion/react";
+import { motion, SVGMotionProps, Easing } from "motion/react";
 
 interface MoonIconProps extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
+    repeatDelay?: number;
+    ease?: Easing;
 }
 
 const MoonIcon = (props: MoonIconProps) => {
-    const { size = 28, duration = 1, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const {
+        size = 28,              // Icon size in pixels
+        duration = 1,           // Animation duration in seconds
+        strokeWidth = 2,        // SVG stroke width
+        isHovered = false,      // When true, animate only on hover
+        repeatDelay = 0.3,      // Delay between animation loops (seconds)
+        ease = "easeInOut",     // Animation easing function
+        className,
+        ...restProps
+    } = props;
+
     const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
     const shouldAnimate = isHovered ? isHoveredInternal : true;
@@ -20,9 +32,9 @@ const MoonIcon = (props: MoonIconProps) => {
         animate: shouldAnimate ? { rotate: [0, -20, 20, -10, 10, 0] } : { rotate: 0 },
         transition: {
             duration: duration,
-            ease: "easeInOut" as const,
+            ease: ease,
             repeat: isHovered ? 0 : Infinity,
-            repeatDelay: 0.3,
+            repeatDelay: repeatDelay,
         },
     };
 

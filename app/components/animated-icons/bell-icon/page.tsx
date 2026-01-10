@@ -75,7 +75,7 @@ export default function BellIconPage() {
                     {
                         name: "duration",
                         type: "number",
-                        default: "2",
+                        default: "1.3",
                         description: "Duration of the animation in seconds",
                         required: false,
                     },
@@ -91,6 +91,20 @@ export default function BellIconPage() {
                         type: "boolean",
                         default: "false",
                         description: "When true, animation only plays on hover. When false, animation loops continuously.",
+                        required: false,
+                    },
+                    {
+                        name: "repeatDelay",
+                        type: "number",
+                        default: "1",
+                        description: "Delay between animation loops in seconds",
+                        required: false,
+                    },
+                    {
+                        name: "ease",
+                        type: "Easing",
+                        default: '"easeInOut"',
+                        description: "Animation easing function (e.g., 'linear', 'easeIn', 'easeOut', 'easeInOut')",
                         required: false,
                     },
                 ]}

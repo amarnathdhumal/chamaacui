@@ -93,6 +93,20 @@ export default function ThumbsUpIconPage() {
                         description: "If true, animation only plays on hover",
                         required: false
                     },
+                    {
+                        name: "repeatDelay",
+                        type: "number",
+                        default: "1.2",
+                        description: "Delay between animation loops in seconds",
+                        required: false,
+                    },
+                    {
+                        name: "ease",
+                        type: "Easing",
+                        default: '"easeInOut"',
+                        description: "Animation easing function (e.g., 'linear', 'easeIn', 'easeOut', 'easeInOut')",
+                        required: false,
+                    },
                 ]}
             />
         </div>

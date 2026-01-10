@@ -6,7 +6,7 @@ export default function LocationIconDemo() {
     return (
         <LocationIcon
             className="text-black dark:text-white"
-            size={48}
+            size={40}
             duration={3}
             strokeWidth={2}
         />

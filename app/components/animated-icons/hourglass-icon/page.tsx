@@ -42,6 +42,20 @@ export default function HourglassIconPage() {
                         description: "When true, animation only plays on hover. When false, animation loops continuously.",
                         required: false,
                     },
+                    {
+                        name: "repeatDelay",
+                        type: "number",
+                        default: "1",
+                        description: "Delay between animation loops in seconds",
+                        required: false,
+                    },
+                    {
+                        name: "ease",
+                        type: "Easing",
+                        default: '"easeInOut"',
+                        description: "Animation easing function (e.g., 'linear', 'easeIn', 'easeOut', 'easeInOut')",
+                        required: false,
+                    },
                 ]}
             />
         </div>

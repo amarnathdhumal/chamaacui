@@ -115,9 +115,10 @@ const icons: IconTypes[] = [
 
 interface IconCardProps {
     icon: IconTypes;
+    isHoveredMode: boolean;
 }
 
-function IconCard({ icon }: IconCardProps) {
+function IconCard({ icon, isHoveredMode }: IconCardProps) {
     const [isHovered, setIsHovered] = useState(false);
     const [codeCopied, setCodeCopied] = useState(false);
     const [cliCopied, setCliCopied] = useState(false);
@@ -208,7 +209,7 @@ function IconCard({ icon }: IconCardProps) {
                 </AnimatePresence>
 
                 <div className="mb-4 text-black dark:text-white  transition-transform duration-300">
-                    <icon.component size={40} />
+                    <icon.component size={40} isHovered={isHoveredMode} />
                 </div>
                 <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-white transition-colors">
                     {icon.name}
@@ -219,18 +220,36 @@ function IconCard({ icon }: IconCardProps) {
 }
 
 export default function AnimatedIconsGrid() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [isHoveredMode, setIsHoveredMode] = useState(false);
+
     return (
         <div className="w-full mx-auto mb-20">
             <div className="mb-5 md:mb-10">
-                <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">Animated Icons</h1>
-                <p className="text-base/5 md:text-lg/7 text-neutral-500 dark:text-gray-400 tracking-tight mt-4 max-w-[750px]">
-                    A collection of smooth, micro-interaction animations for your icons.
-                </p>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                        <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">Animated Icons</h1>
+                        <p className="text-base/5 md:text-lg/7 text-neutral-500 dark:text-gray-400 tracking-tight mt-4 max-w-[750px]">
+                            A collection of smooth, micro-interaction animations for your icons.
+                        </p>
+                    </div>
+                    {/* <button
+                        onClick={() => setIsHoveredMode(!isHoveredMode)}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 whitespace-nowrap ${isHoveredMode
+                                ? "bg-blue-500 text-white shadow-lg shadow-blue-500/25"
+                                : "bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-700"
+                            }`}
+                    >
+                        <span className={`w-2 h-2 rounded-full transition-colors ${isHoveredMode ? "bg-white animate-pulse" : "bg-green-500 animate-pulse"
+                            }`} />
+                        {isHoveredMode ? "Hover to Animate" : "Auto Animating"}
+                    </button> */}
+                </div>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6">
                 {icons.map((icon) => (
-                    <IconCard key={icon.name} icon={icon} />
+                    <IconCard key={icon.name} icon={icon} isHoveredMode={isHoveredMode} />
                 ))}
             </div>
         </div>

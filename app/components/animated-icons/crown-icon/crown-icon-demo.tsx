@@ -6,9 +6,11 @@ export default function CrownIconDemo() {
     return (
         <CrownIcon
             className="text-black dark:text-white"
-            size={48}
+            size={40}
             duration={1}
             strokeWidth={2}
+            repeatDelay={1.5}
+            ease="easeInOut"
         />
     );
 }

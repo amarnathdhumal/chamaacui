@@ -1,17 +1,29 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps } from "motion/react";
+import { motion, SVGMotionProps, Easing } from "motion/react";
 
 interface HourglassIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
+    repeatDelay?: number;
+    ease?: Easing;
 }
 
 const HourglassIcon = (props: HourglassIconProps) => {
-    const { size = 28, duration = 2, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const {
+        size = 28,              // Icon size in pixels
+        duration = 2,           // Animation duration in seconds
+        strokeWidth = 2,        // SVG stroke width
+        isHovered = false,      // When true, animate only on hover
+        repeatDelay = 1,        // Delay between animation loops (seconds)
+        ease = "easeInOut",     // Animation easing function
+        className,
+        ...restProps
+    } = props;
+
     const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
     const shouldAnimate = isHovered ? isHoveredInternal : true;
@@ -23,8 +35,8 @@ const HourglassIcon = (props: HourglassIconProps) => {
         transition: {
             duration: duration,
             repeat: isHovered ? 0 : Infinity,
-            repeatDelay: 1,
-            ease: "easeInOut" as const,
+            repeatDelay: repeatDelay,
+            ease: ease,
         },
     };
 

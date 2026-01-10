@@ -42,6 +42,13 @@ export default function ActivityIconPage() {
                         description: "When true, animation only plays on hover. When false, animation loops continuously.",
                         required: false,
                     },
+                    {
+                        name: "ease",
+                        type: "Easing",
+                        default: '"easeInOut"',
+                        description: "Animation easing function (e.g., 'linear', 'easeIn', 'easeOut', 'easeInOut')",
+                        required: false,
+                    },
                 ]}
             />
         </div>

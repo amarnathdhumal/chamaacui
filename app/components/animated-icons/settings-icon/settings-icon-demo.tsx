@@ -6,7 +6,7 @@ export default function SettingsIconDemo() {
     return (
         <SettingsIcon
             className="text-black dark:text-white"
-            size={48}
+            size={40}
             duration={4}
             strokeWidth={2}
         />

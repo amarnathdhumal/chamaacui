@@ -6,7 +6,7 @@ export default function SunIconDemo() {
     return (
         <SunIcon
             className="text-black dark:text-white"
-            size={48}
+            size={40}
             duration={4}
             strokeWidth={2}
         />

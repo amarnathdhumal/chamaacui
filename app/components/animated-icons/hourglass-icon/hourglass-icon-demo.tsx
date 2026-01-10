@@ -6,9 +6,11 @@ export default function HourglassIconDemo() {
     return (
         <HourglassIcon
             className="text-black dark:text-white"
-            size={48}
+            size={40}
             duration={2}
             strokeWidth={2}
+            repeatDelay={1}
+            ease="easeInOut"
         />
     );
 }

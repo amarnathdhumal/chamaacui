@@ -1,29 +1,41 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps } from "motion/react";
+import { motion, SVGMotionProps, Easing } from "motion/react";
 
 interface MailIconProps extends SVGMotionProps<SVGSVGElement> {
     size?: number;
     duration?: number;
     strokeWidth?: number;
     isHovered?: boolean;
+    repeatDelay?: number;
+    ease?: Easing;
 }
 
 const MailIcon = (props: MailIconProps) => {
-    const { size = 28, duration = 4, strokeWidth = 2, isHovered = false, className, ...restProps } = props;
+    const {
+        size = 28,              // Icon size in pixels
+        duration = 4,           // Animation duration in seconds
+        strokeWidth = 2,        // SVG stroke width
+        isHovered = false,      // When true, animate only on hover
+        repeatDelay = 1,        // Delay between animation loops (seconds)
+        ease = "easeInOut",     // Animation easing function
+        className,
+        ...restProps
+    } = props;
+
     const [isHoveredInternal, setIsHoveredInternal] = useState(false);
 
     const shouldAnimate = isHovered ? isHoveredInternal : true;
 
     const envelopeProps = {
         animate: shouldAnimate ? { y: [0, -2, 0] } : { y: 0 },
-        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, ease: "easeInOut" as const }
+        transition: { duration: duration, repeat: isHovered ? 0 : Infinity, ease: ease }
     };
 
     const flapProps = {
         animate: shouldAnimate ? { pathLength: [0, 1, 1, 0], opacity: 1 } : { pathLength: 1, opacity: 1 },
-        transition: { duration: duration / 2, repeat: isHovered ? 0 : Infinity, ease: "easeInOut" as const, repeatDelay: 1 },
+        transition: { duration: duration / 2, repeat: isHovered ? 0 : Infinity, ease: ease, repeatDelay: repeatDelay },
     };
 
     return (

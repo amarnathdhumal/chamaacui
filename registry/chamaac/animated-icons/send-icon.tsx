@@ -18,9 +18,10 @@ const SendIcon = (props: SendIconProps) => {
 
     const groupAnimationProps = {
         animate: shouldAnimate ? {
-            x: [0, 3, 0],
-            y: [0, -2, 0],
-        } : { x: 0, y: 0 },
+            x: [0, 8, 0],
+            y: [0, -8, 0],
+            opacity: [1, 0, 1],
+        } : { x: 0, y: 0, opacity: 1 },
         transition: {
             duration: duration,
             ease: "easeInOut" as const,
