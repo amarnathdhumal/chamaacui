@@ -117,6 +117,15 @@ export interface ComponentCardType {
 
 export const componentCards: ComponentCardType[] = [
   {
+    title: "Animated Icons",
+    description: "A collection of smooth, micro-interaction animations for your icons.",
+    imagePath: "/components/animated-icons.png",
+    videoSrc: "https://assets.amarn.me/animated-iconsv2.mp4",
+    link: "/components/animated-icons",
+    category: "Animated Icons",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
     title: "Text Loop",
     description: "An animated text loop with typewriter and gradient effect.",
     imagePath: "/components/text-loop.svg",
@@ -222,15 +231,6 @@ export const componentCards: ComponentCardType[] = [
     videoSrc: "https://assets.amarn.me/carousel.mp4",
     link: "/components/carousels/carousel",
     category: "Carousels",
-    bgColor: "bg-black dark:bg-black",
-  },
-  {
-    title: "Animated Icons",
-    description: "A collection of smooth, micro-interaction animations for your icons.",
-    imagePath: "/components/animated-icons.png",
-    videoSrc: "https://assets.amarn.me/animated-icons.mp4",
-    link: "/components/animated-icons",
-    category: "Animated Icons",
     bgColor: "bg-black dark:bg-black",
   },
   {
