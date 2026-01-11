@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { IconCopy, IconCheck, IconTerminal2 } from "@tabler/icons-react";
+import { Loader2 } from "lucide-react";
 import {
     Tooltip,
     TooltipContent,
@@ -19,6 +20,7 @@ interface IconCardProps {
 export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
     const [isHovered, setIsHovered] = useState(false);
     const [codeCopied, setCodeCopied] = useState(false);
+    const [isCopyingCode, setIsCopyingCode] = useState(false);
     const [cliCopied, setCliCopied] = useState(false);
 
     const cliCommand = `npx shadcn@latest add "https://chamaac.com/r/${icon.slug}.json"`;
@@ -26,6 +28,7 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
     const handleCopyCode = async (e: React.MouseEvent) => {
         e.preventDefault();
         e.stopPropagation();
+        setIsCopyingCode(true);
         try {
             const response = await fetch(`/r/${icon.slug}.json`);
             const data = await response.json();
@@ -36,6 +39,8 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
             }
         } catch (error) {
             console.error("Failed to copy code:", error);
+        } finally {
+            setIsCopyingCode(false);
         }
     };
 
@@ -74,6 +79,8 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
                                     >
                                         {codeCopied ? (
                                             <IconCheck className="size-4 dark:text-white text-black" />
+                                        ) : isCopyingCode ? (
+                                            <Loader2 className="size-4 animate-spin text-neutral-600 dark:text-neutral-400" />
                                         ) : (
                                             <IconCopy className="size-4 text-neutral-600 dark:text-neutral-400" />
                                         )}
