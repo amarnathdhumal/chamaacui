@@ -6,6 +6,13 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "",
     category: "Overview",
   },
+  // backgrounds
+  {
+    componentName: "Interactive Grid",
+    link: "/backgrounds/interactive-grid",
+    category: "Backgrounds",
+    isNew: true,
+  },
   // animated icons
   {
     componentName: "Icons Overview",
@@ -48,7 +55,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Neo Brutalist",
     link: "/buttons/neo-brutalist-button",
     category: "Buttons",
-    isNew: true,
   },
 
   // text animations
@@ -132,6 +138,15 @@ export const componentCards: ComponentCardType[] = [
     videoSrc: "https://assets.amarn.me/text-loop.mp4",
     link: "/components/text-animations/text-loop",
     category: "Text Animations",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "Interactive Grid",
+    description: "A highly interactive, mouse-sensitive grid background rendered on HTML5 Canvas.",
+    imagePath: "/components/backgrounds.png",
+    videoSrc: "https://assets.amarn.me/interactive-grid.mp4",
+    link: "/components/backgrounds/interactive-grid",
+    category: "Backgrounds",
     bgColor: "bg-black dark:bg-black",
   },
   {

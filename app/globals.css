@@ -44,6 +44,8 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -117,6 +119,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
     font-family: "Geist", "Instrument Sans", "Instrument Serif", sans-serif;
@@ -124,12 +127,15 @@
 }
 
 .hide-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
+  /* Chrome, Safari and Opera */
   width: 0;
   height: 0;
 }

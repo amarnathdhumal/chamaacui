@@ -4,6 +4,23 @@
   "homepage": "https://chamaac.com",
   "items": [
     {
+      "name": "interactive-grid-background",
+      "type": "registry:component",
+      "title": "Interactive Grid Background",
+      "description": "A highly interactive, mouse-sensitive grid background rendered on HTML5 Canvas.",
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/backgrounds/interactive-grid-background.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "text-loop",
       "type": "registry:component",
       "title": "Text Loop",
