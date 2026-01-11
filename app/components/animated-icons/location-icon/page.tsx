@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/utils";
 const filePath = path.join(process.cwd(), "registry/chamaac/animated-icons/location-icon.tsx");
 const demoFilePath = path.join(process.cwd(), "app/components/animated-icons/location-icon/location-icon-demo.tsx");
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("@/registry/chamaac/animated-icons/", "@/components/");
+const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("@/registry/chamaac/animated-icons/", "@/components/animated-icons/");
 
 export const metadata = constructMetadata({
     title: "Location Icon",

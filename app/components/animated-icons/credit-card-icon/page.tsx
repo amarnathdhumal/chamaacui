@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/utils";
 const filePath = path.join(process.cwd(), "registry/chamaac/animated-icons/credit-card-icon.tsx");
 const demoFilePath = path.join(process.cwd(), "app/components/animated-icons/credit-card-icon/credit-card-icon-demo.tsx");
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("@/registry/chamaac/animated-icons/", "@/components/");
+const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("@/registry/chamaac/animated-icons/", "@/components/animated-icons/");
 
 export const metadata = constructMetadata({
     title: "Credit Card Icon",

@@ -16,7 +16,7 @@ const demoFilePath = path.join(
     "app/components/animated-icons/message-icon/message-icon-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("@/registry/chamaac/animated-icons/", "@/components/");
+const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("@/registry/chamaac/animated-icons/", "@/components/animated-icons/");
 
 export const metadata = constructMetadata({
     title: "Message Icon",
