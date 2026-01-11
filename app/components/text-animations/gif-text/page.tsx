@@ -22,7 +22,7 @@ const demoFilePath = path.join(
     "app/components/text-animations/gif-text/gif-text-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("./gif-text", "@/components/gif-text");
 
 export default function GifTextPage() {
     return (

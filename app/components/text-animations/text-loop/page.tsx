@@ -22,7 +22,7 @@ const demoFilePath = path.join(
     "app/components/text-animations/text-loop/text-loop-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("./text-loop", "@/components/text-loop");
 
 export default function TextLoopPage() {
     return (

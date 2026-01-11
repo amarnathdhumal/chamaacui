@@ -22,7 +22,7 @@ const demoFilePath = path.join(
     "app/components/text-animations/dancing-letters/dancing-letters-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("./dancing-letters", "@/components/dancing-letters");
 
 export default function DancingLettersPage() {
     return (

@@ -23,7 +23,7 @@ const demoFilePath = path.join(
     "app/components/sections/gauge/gauge-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("./gauge", "@/components/gauge");
 
 export default function GaugePage() {
     return (

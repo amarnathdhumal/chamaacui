@@ -22,7 +22,10 @@ const demoFilePath = path.join(
     "app/components/inputs/ai-input/ai-input-demo.tsx"
 );
 const AIInputSource = fs.readFileSync(filePath, "utf-8");
-const AIInputDemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const AIInputDemoSource = fs.readFileSync(demoFilePath, "utf-8").replace(
+    '@/registry/chamaac/ai-input/ai-input',
+    '@/components/ai-input'
+);
 
 export default function AIInputPage() {
     return (

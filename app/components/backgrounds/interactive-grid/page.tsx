@@ -23,7 +23,7 @@ export default function InteractiveGridPage() {
         process.cwd(),
         "app/components/backgrounds/interactive-grid/interactive-grid-demo.tsx"
     );
-    const demoSource = fs.readFileSync(demoPath, "utf8");
+    const demoSource = fs.readFileSync(demoPath, "utf8").replace("@/registry/chamaac/backgrounds/interactive-grid-background", "@/components/interactive-grid-background");
 
     return (
         <div className="pb-20">

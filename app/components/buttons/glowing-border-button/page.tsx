@@ -23,7 +23,7 @@ export default function GlowingBorderButtonPage() {
         process.cwd(),
         "app/components/buttons/glowing-border-button/glowing-border-button-demo.tsx"
     );
-    const demoSource = fs.readFileSync(demoPath, "utf8");
+    const demoSource = fs.readFileSync(demoPath, "utf8").replace("@/registry/chamaac/glowing-border-button/glowing-border-button", "@/components/glowing-border-button");
 
     return (
         <div className="">

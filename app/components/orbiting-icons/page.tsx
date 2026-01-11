@@ -22,7 +22,7 @@ const demoFilePath = path.join(
     "app/components/orbiting-icons/orbiting-icons-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("./orbiting-icons", "@/components/orbiting-icons");
 
 export default function OrbitingIconsPage() {
     return (

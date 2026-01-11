@@ -24,7 +24,7 @@ export default function ShimmerButtonPage() {
         process.cwd(),
         "app/components/buttons/shimmer-button/shimmer-button-demo.tsx"
     );
-    const demoSource = fs.readFileSync(demoPath, "utf8");
+    const demoSource = fs.readFileSync(demoPath, "utf8").replace("@/registry/chamaac/shimmer-button/shimmer-button", "@/components/shimmer-button");
 
     return (
         <div className="pb-20">

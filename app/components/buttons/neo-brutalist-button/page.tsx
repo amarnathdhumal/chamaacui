@@ -24,7 +24,7 @@ export default function NeoBrutalistButtonPage() {
         process.cwd(),
         "app/components/buttons/neo-brutalist-button/neo-brutalist-button-demo.tsx"
     );
-    const demoSource = fs.readFileSync(demoPath, "utf8");
+    const demoSource = fs.readFileSync(demoPath, "utf8").replace("@/registry/chamaac/neo-brutalist-button/neo-brutalist-button", "@/components/neo-brutalist-button");
 
     return (
         <div className="pb-20">

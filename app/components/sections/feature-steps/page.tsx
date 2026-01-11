@@ -22,7 +22,7 @@ const demoFilePath = path.join(
     "app/components/sections/feature-steps/feature-steps-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("./feature-steps", "@/components/feature-steps");
 
 export default function FeatureStepsPage() {
     return (

@@ -22,7 +22,7 @@ const demoFilePath = path.join(
     "app/components/navigation/dock/dock-demo.tsx"
 );
 const DockSource = fs.readFileSync(filePath, "utf-8");
-const DockDemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const DockDemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("./dock", "@/components/dock");
 
 export default function DockPage() {
     return (

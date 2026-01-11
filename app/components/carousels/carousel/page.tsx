@@ -23,7 +23,7 @@ const demoFilePath = path.join(
     "app/components/carousels/carousel/coursel-demo.tsx"
 );
 const CourselSource = fs.readFileSync(filePath, "utf-8");
-const CourselDemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const CourselDemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("./coursel", "@/components/carousel");
 
 export default function CourselPage() {
     return (

@@ -22,7 +22,7 @@ const demoFilePath = path.join(
     "app/components/buttons/focus-button/focus-button-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("./focus-button", "@/components/focus-button");
 
 
 

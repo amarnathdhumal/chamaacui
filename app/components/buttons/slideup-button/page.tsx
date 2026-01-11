@@ -15,7 +15,7 @@ const demoFilePath = path.join(
     "app/components/buttons/slideup-button/slide-up-button-demo.tsx"
 );
 const SlideUpButtonSource = fs.readFileSync(filePath, "utf-8");
-const SlideUpButtonDemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const SlideUpButtonDemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("@/registry/chamaac/slideup-button/slideup-button", "@/components/slideup-button");
 
 import { constructMetadata } from "@/lib/utils";
 

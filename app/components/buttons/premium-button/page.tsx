@@ -23,7 +23,7 @@ export default function PremiumButtonPage() {
         process.cwd(),
         "app/components/buttons/premium-button/premium-button-demo.tsx"
     );
-    const demoSource = fs.readFileSync(demoPath, "utf8");
+    const demoSource = fs.readFileSync(demoPath, "utf8").replace("@/registry/chamaac/premium-button/premium-button", "@/components/premium-button");
 
     return (
         <div className="">

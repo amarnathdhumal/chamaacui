@@ -22,7 +22,7 @@ const demoFilePath = path.join(
     "app/components/animated-icons/wavy-icon/wavy-icon-demo.tsx"
 );
 const ComponentSource = fs.readFileSync(filePath, "utf-8");
-const DemoSource = fs.readFileSync(demoFilePath, "utf-8");
+const DemoSource = fs.readFileSync(demoFilePath, "utf-8").replace("@/registry/chamaac/animated-icons/", "@/components/");
 
 export default function WavyIconPage() {
     return (
