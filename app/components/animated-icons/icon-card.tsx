@@ -70,10 +70,10 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
                                 <TooltipTrigger asChild>
                                     <button
                                         onClick={handleCopyCode}
-                                        className="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+                                        className="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
                                     >
                                         {codeCopied ? (
-                                            <IconCheck className="size-4 text-green-500" />
+                                            <IconCheck className="size-4 dark:text-white text-black" />
                                         ) : (
                                             <IconCopy className="size-4 text-neutral-600 dark:text-neutral-400" />
                                         )}
@@ -89,10 +89,10 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
                                 <TooltipTrigger asChild>
                                     <button
                                         onClick={handleCopyCli}
-                                        className="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
+                                        className="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
                                     >
                                         {cliCopied ? (
-                                            <IconCheck className="size-4 text-green-500" />
+                                            <IconCheck className="size-4 dark:text-white text-black" />
                                         ) : (
                                             <IconTerminal2 className="size-4 text-neutral-600 dark:text-neutral-400" />
                                         )}

@@ -642,6 +642,546 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "menu-icon",
+      "type": "registry:component",
+      "title": "Menu Icon",
+      "description": "An animated menu icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/menu-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "alert-circle-icon",
+      "type": "registry:component",
+      "title": "Alert Icon",
+      "description": "An animated alert icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/alert-circle-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "external-link-icon",
+      "type": "registry:component",
+      "title": "External Link Icon",
+      "description": "An animated external link icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/external-link-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "cloud-icon",
+      "type": "registry:component",
+      "title": "Cloud Icon",
+      "description": "An animated cloud icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/cloud-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "credit-card-icon",
+      "type": "registry:component",
+      "title": "Credit Card Icon",
+      "description": "An animated credit card icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/credit-card-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "cart-icon",
+      "type": "registry:component",
+      "title": "Cart Icon",
+      "description": "An animated cart icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/cart-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "arrow-left-icon",
+      "type": "registry:component",
+      "title": "Arrow Left Icon",
+      "description": "An animated arrow left icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/arrow-left-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "arrow-up-icon",
+      "type": "registry:component",
+      "title": "Arrow Up Icon",
+      "description": "An animated arrow up icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/arrow-up-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "arrow-down-icon",
+      "type": "registry:component",
+      "title": "Arrow Down Icon",
+      "description": "An animated arrow down icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/arrow-down-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "arrow-up-right-icon",
+      "type": "registry:component",
+      "title": "Arrow Up Right Icon",
+      "description": "An animated arrow up right icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/arrow-up-right-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "arrow-up-left-icon",
+      "type": "registry:component",
+      "title": "Arrow Up Left Icon",
+      "description": "An animated arrow up left icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/arrow-up-left-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "arrow-down-left-icon",
+      "type": "registry:component",
+      "title": "Arrow Down Left Icon",
+      "description": "An animated arrow down left icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/arrow-down-left-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "arrow-down-right-icon",
+      "type": "registry:component",
+      "title": "Arrow Down Right Icon",
+      "description": "An animated arrow down right icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/arrow-down-right-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "chevron-right-icon",
+      "type": "registry:component",
+      "title": "Chevron Right Icon",
+      "description": "An animated chevron right icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/chevron-right-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "chevron-left-icon",
+      "type": "registry:component",
+      "title": "Chevron Left Icon",
+      "description": "An animated chevron left icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/chevron-left-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "chevron-up-icon",
+      "type": "registry:component",
+      "title": "Chevron Up Icon",
+      "description": "An animated chevron up icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/chevron-up-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "chevron-down-icon",
+      "type": "registry:component",
+      "title": "Chevron Down Icon",
+      "description": "An animated chevron down icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/chevron-down-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "chevrons-right-icon",
+      "type": "registry:component",
+      "title": "Chevrons Right Icon",
+      "description": "An animated chevrons right icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/chevrons-right-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "chevrons-left-icon",
+      "type": "registry:component",
+      "title": "Chevrons Left Icon",
+      "description": "An animated chevrons left icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/chevrons-left-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "chevrons-up-icon",
+      "type": "registry:component",
+      "title": "Chevrons Up Icon",
+      "description": "An animated chevrons up icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/chevrons-up-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "chevrons-down-icon",
+      "type": "registry:component",
+      "title": "Chevrons Down Icon",
+      "description": "An animated chevrons down icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/chevrons-down-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "calendar-icon",
+      "type": "registry:component",
+      "title": "Calendar Icon",
+      "description": "An animated calendar icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/calendar-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "shield-icon",
+      "type": "registry:component",
+      "title": "Shield Icon",
+      "description": "An animated shield icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/shield-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "upload-icon",
+      "type": "registry:component",
+      "title": "Upload Icon",
+      "description": "An animated upload icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/upload-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "message-icon",
+      "type": "registry:component",
+      "title": "Message Icon",
+      "description": "An animated message icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/message-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "search-icon",
+      "type": "registry:component",
+      "title": "Search Icon",
+      "description": "An animated search icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/search-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "close-icon",
+      "type": "registry:component",
+      "title": "Close Icon",
+      "description": "An animated close icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/close-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "clock-icon",
+      "type": "registry:component",
+      "title": "Clock Icon",
+      "description": "An animated clock icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/clock-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "layers-icon",
+      "type": "registry:component",
+      "title": "Layers Icon",
+      "description": "An animated layers icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/layers-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "moon-icon",
+      "type": "registry:component",
+      "title": "Moon Icon",
+      "description": "An animated moon icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/moon-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "sun-icon",
+      "type": "registry:component",
+      "title": "Sun Icon",
+      "description": "An animated sun icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/sun-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "trash-icon",
+      "type": "registry:component",
+      "title": "Trash Icon",
+      "description": "An animated trash icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/trash-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "battery-icon",
+      "type": "registry:component",
+      "title": "Battery Icon",
+      "description": "An animated battery icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/battery-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "gift-icon",
+      "type": "registry:component",
+      "title": "Gift Icon",
+      "description": "An animated gift icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/gift-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "crown-icon",
+      "type": "registry:component",
+      "title": "Crown Icon",
+      "description": "An animated crown icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/crown-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "thumbs-up-icon",
+      "type": "registry:component",
+      "title": "Thumbs Up Icon",
+      "description": "An animated thumbs up icon.",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/animated-icons/thumbs-up-icon.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }
