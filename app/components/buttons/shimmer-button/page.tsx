@@ -10,7 +10,7 @@ import { constructMetadata } from "@/lib/utils";
 export const metadata = constructMetadata({
     title: "Shimmer Button",
     description: "A button with a shimmering text animation effect.",
-    image: "/components/buttons.png",
+    image: "/components/buttons/shimmer.png",
 });
 
 export default function ShimmerButtonPage() {

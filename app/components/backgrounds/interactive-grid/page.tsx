@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/utils";
 export const metadata = constructMetadata({
     title: "Interactive Grid Background",
     description: "A highly interactive, mouse-sensitive grid background.",
-    image: "/components/backgrounds.png",
+    image: "/components/backgrounds/interactive-grid.png",
 });
 
 export default function InteractiveGridPage() {
@@ -29,7 +29,7 @@ export default function InteractiveGridPage() {
         <div className="pb-20">
             <InteractiveGridPreviewWrapper
                 title="Interactive Grid Background"
-                description="A highly interactive, mouse-sensitive grid background rendered on HTML5 Canvas."
+                description="A highly interactive, mouse-sensitive grid background."
                 code={
                     <div className="relative">
                         <div className="absolute top-4 right-4">

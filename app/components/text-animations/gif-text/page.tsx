@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/utils";
 export const metadata = constructMetadata({
     title: "Gif Text",
     description: "A stunning text effect that uses a GIF as the fill color.",
-    image: "/components/gif-text.svg",
+    image: "/components/text-animations/gif-text.png",
 });
 
 // file paths

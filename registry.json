@@ -7,7 +7,7 @@
       "name": "interactive-grid-background",
       "type": "registry:component",
       "title": "Interactive Grid Background",
-      "description": "A highly interactive, mouse-sensitive grid background rendered on HTML5 Canvas.",
+      "description": "A highly interactive, mouse-sensitive grid background.",
       "dependencies": [
         "motion",
         "clsx",

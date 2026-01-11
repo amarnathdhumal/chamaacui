@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/utils";
 export const metadata = constructMetadata({
     title: "Premium Button",
     description: "A high-quality button with a dynamic arrow animation.",
-    image: "/components/buttons.png",
+    image: "/components/buttons/premium-button.png",
 });
 
 export default function PremiumButtonPage() {

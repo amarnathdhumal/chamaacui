@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/utils";
 export const metadata = constructMetadata({
     title: "Focus Button",
     description: "A minimal button with corner dash accents that expand on hover.",
-    image: "/components/buttons.png",
+    image: "/components/buttons/focus-button.png",
 });
 
 // file paths

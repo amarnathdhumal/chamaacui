@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/utils";
 export const metadata = constructMetadata({
     title: "Dancing Letters",
     description: "Physics-based interactive text animations.",
-    image: "/components/dancing-letters.svg",
+    image: "/components/text-animations/dancing-letters.png",
 });
 
 // file paths

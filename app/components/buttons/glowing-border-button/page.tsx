@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/utils";
 export const metadata = constructMetadata({
     title: "Glowing Border Button",
     description: "A stylish glowing border button with a gradient border and glowing effects.",
-    image: "/components/buttons.png",
+    image: "/components/buttons/glowing-border.png",
 });
 
 export default function GlowingBorderButtonPage() {

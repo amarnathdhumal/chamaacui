@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/utils";
 export const metadata = constructMetadata({
     title: "Dock",
     description: "A dock navigation component with animated dropdown menus, hover effects, and image previews.",
-    image: "/components/dock.svg",
+    image: "/components/navigation/dock.png",
 });
 
 // file paths

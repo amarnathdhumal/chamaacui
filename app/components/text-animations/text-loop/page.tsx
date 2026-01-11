@@ -9,7 +9,7 @@ import { constructMetadata } from "@/lib/utils";
 export const metadata = constructMetadata({
     title: "Text Loop",
     description: "An animated text loop with typewriter and gradient effect.",
-    image: "/components/text-loop.svg",
+    image: "/components/text-animations/text-loop.png",
 });
 
 // file paths

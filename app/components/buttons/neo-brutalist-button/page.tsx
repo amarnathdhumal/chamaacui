@@ -10,7 +10,7 @@ import { constructMetadata } from "@/lib/utils";
 export const metadata = constructMetadata({
     title: "Neo Brutalist Button",
     description: "A bold, retro-styled button with skewed design, offset shadow, and shimmer effect.",
-    image: "/components/buttons.png",
+    image: "/components/buttons/ne0-brutalist.png",
 });
 
 export default function NeoBrutalistButtonPage() {

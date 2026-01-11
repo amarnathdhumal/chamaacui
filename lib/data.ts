@@ -6,18 +6,18 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "",
     category: "Overview",
   },
+  // animated icons
+  {
+    componentName: "Icons Overview",
+    link: "/animated-icons",
+    category: "Animated Icons",
+  },
   // backgrounds
   {
     componentName: "Interactive Grid",
     link: "/backgrounds/interactive-grid",
     category: "Backgrounds",
     isNew: true,
-  },
-  // animated icons
-  {
-    componentName: "Icons Overview",
-    link: "/animated-icons",
-    category: "Animated Icons",
   },
   // buttons
   {
@@ -134,7 +134,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Text Loop",
     description: "An animated text loop with typewriter and gradient effect.",
-    imagePath: "/components/text-loop.svg",
+    imagePath: "/components/text-animations/text-loop.png",
     videoSrc: "https://assets.amarn.me/text-loop.mp4",
     link: "/components/text-animations/text-loop",
     category: "Text Animations",
@@ -142,8 +142,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Interactive Grid",
-    description: "A highly interactive, mouse-sensitive grid background rendered on HTML5 Canvas.",
-    imagePath: "/components/backgrounds.png",
+    description: "A highly interactive, mouse-sensitive grid background rendered.",
+    imagePath: "/components/backgrounds/interactive-grid.png",
     videoSrc: "https://assets.amarn.me/interactive-grid.mp4",
     link: "/components/backgrounds/interactive-grid",
     category: "Backgrounds",
@@ -152,7 +152,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Gauge",
     description: "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
-    imagePath: "/components/gauge.svg",
+    imagePath: "/components/gauge.png",
     videoSrc: "https://assets.amarn.me/gauge.mp4",
     link: "/components/sections/gauge",
     category: "Sections",
@@ -161,7 +161,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Gif Text",
     description: "A stunning text effect that uses a GIF as the fill color.",
-    imagePath: "/components/gif-text.svg",
+    imagePath: "/components/text-animations/gif-text.png",
     videoSrc: "https://assets.amarn.me/gif-text.mp4",
     link: "/components/text-animations/gif-text",
     category: "Text Animations",
@@ -170,7 +170,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Premium Button",
     description: "A collection of interactive and animated buttons for your applications.",
-    imagePath: "/components/premium-button.svg",
+    imagePath: "/components/buttons/premium-button.png",
     videoSrc: "https://assets.amarn.me/premium_button.mp4",
     link: "/components/buttons/premium-button",
     category: "Buttons",
@@ -179,7 +179,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Neo Brutalist Button",
     description: "A bold, retro-styled button with skewed design, offset shadow, and shimmer effect.",
-    imagePath: "/components/neo-brutalist-button.svg",
+    imagePath: "/components/buttons/ne0-brutalist.png",
     videoSrc: "https://assets.amarn.me/neo-brutalist-buttonv2.mp4",
     link: "/components/buttons/neo-brutalist-button",
     category: "Buttons",
@@ -188,7 +188,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Glowing Border Button",
     description: "A button with a glowing border effect.",
-    imagePath: "/components/glowing-border-button.svg",
+    imagePath: "/components/buttons/glowing-border.png",
     videoSrc: "https://assets.amarn.me/glowing-border-button.mp4",
     link: "/components/buttons/glowing-border-button",
     category: "Buttons",
@@ -197,7 +197,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Shimmer Button",
     description: "A collection of interactive and animated buttons for your applications.",
-    imagePath: "/components/shimmer-button.svg",
+    imagePath: "/components/buttons/shimmer.png",
     videoSrc: "https://assets.amarn.me/shimmer-button.mp4",
     link: "/components/buttons/shimmer-button",
     category: "Buttons",
@@ -206,7 +206,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "AI Input",
     description: "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
-    imagePath: "/components/ai-input.svg",
+    imagePath: "/components/inputs/ai-input.png",
     videoSrc: "https://assets.amarn.me/ai-input.mp4",
     link: "/components/inputs/ai-input",
     category: "Inputs",
@@ -215,7 +215,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Dancing Letters",
     description: "A sleek, interactive text animation component with physics-based effects.",
-    imagePath: "/components/dancing-letters.svg",
+    imagePath: "/components/text-animations/dancing-letters.png",
     videoSrc: "https://assets.amarn.me/dancing-lettersv3.mp4",
     link: "/components/text-animations/dancing-letters",
     category: "Text Animations",
@@ -224,7 +224,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Slide Up Button",
     description: "A collection of interactive and animated buttons for your applications.",
-    imagePath: "/components/slideup-button.svg",
+    imagePath: "/components/slide-up-button.png",
     videoSrc: "https://assets.amarn.me/slide-up-button.mp4",
     link: "/components/buttons/slideup-button",
     category: "Buttons",
@@ -233,7 +233,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Focus Button",
     description: "A collection of interactive and animated buttons for your applications.",
-    imagePath: "/components/focus-button.svg",
+    imagePath: "/components/buttons/focus-button.png",
     videoSrc: "https://assets.amarn.me/focus-button.mp4",
     link: "/components/buttons/focus-button",
     category: "Buttons",
@@ -251,7 +251,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Dock",
     description: "A navigation dock component with smooth animations and hover effects, perfect for desktop interfaces.",
-    imagePath: "/components/dock.svg",
+    imagePath: "/components/navigation/dock.png",
     videoSrc: "https://assets.amarn.me/dock.mp4",
     link: "/components/navigation/dock",
     category: "Navigation",
