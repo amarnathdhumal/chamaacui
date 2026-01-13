@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 // --- Types ---
 interface HexNode {
@@ -22,7 +23,11 @@ interface Particle {
     history: { x: number; y: number }[];
 }
 
-export default function NeuralHexBackground() {
+interface NeuralHexBackgroundProps {
+    className?: string;
+}
+
+export default function NeuralHexBackground({ className }: NeuralHexBackgroundProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useEffect(() => {
@@ -41,9 +46,13 @@ export default function NeuralHexBackground() {
         };
 
         // --- Palette ---
-        // A sophisticated, non-default palette.
+        // Enhanced Green/Teal Palette for depth
         const PALETTE = [
-            "#22C55E"
+            "#4ade80", // Green 400 (Bright)
+            "#22c55e", // Green 500 (Base)
+            "#10b981", // Emerald 500
+            "#34d399", // Emerald 400
+            "#059669", // Emerald 600 (Darker depth)
         ];
 
         const BG_COLOR = "#000000";
@@ -177,8 +186,6 @@ export default function NeuralHexBackground() {
 
             // 2. Grid lines removed to avoid diamond shapes
 
-
-
             // 3. Draw Nodes (Flashes)
             // Normal blending for a crisp look
             ctx.globalCompositeOperation = "source-over"; // Default
@@ -209,15 +216,12 @@ export default function NeuralHexBackground() {
 
                 // Sparkle head
                 ctx.fillStyle = "#ffffff";
+                ctx.shadowColor = p.color;
+                ctx.shadowBlur = CONFIG.glowStrength * 1.5; // Premium glow
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
                 ctx.fill();
-
-                // Slight glow only on the head
-                // ctx.shadowColor = p.color;
-                // ctx.shadowBlur = 4;
-                // ctx.fill();
-                // ctx.shadowBlur = 0;
+                ctx.shadowBlur = 0; // Reset
             }
         };
 
@@ -232,12 +236,20 @@ export default function NeuralHexBackground() {
         };
 
         const resize = () => {
+            const dpr = window.devicePixelRatio || 1;
             width = window.innerWidth;
             height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
+
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+
+            // Scale context to ensure all drawing operations match the higher resolution
+            ctx.scale(dpr, dpr);
+
+            // Re-create grid based on logical width/height
             createGrid();
 
+            // Initial fill
             ctx.fillStyle = BG_COLOR;
             ctx.fillRect(0, 0, width, height);
         };
@@ -253,7 +265,7 @@ export default function NeuralHexBackground() {
     }, []);
 
     return (
-        <div className="fixed inset-0 overflow-hidden  -z-10">
+        <div className={cn("fixed inset-0 overflow-hidden -z-10", className)}>
             <canvas ref={canvasRef} className="block w-full h-full" />
         </div>
     );
