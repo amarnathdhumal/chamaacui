@@ -3,9 +3,7 @@
   "name": "search-icon",
   "title": "Search Icon",
   "description": "An animated search icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/search-icon.tsx",

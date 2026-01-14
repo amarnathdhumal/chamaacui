@@ -3,9 +3,7 @@
   "name": "hourglass-icon",
   "title": "Hourglass Icon",
   "description": "An animated hourglass icon that rotates.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/hourglass-icon.tsx",

@@ -3,11 +3,7 @@
   "name": "stats-cards",
   "title": "Stats Cards",
   "description": "A set of animated statistic cards with hover effects.",
-  "dependencies": [
-    "motion",
-    "clsx",
-    "tailwind-merge"
-  ],
+  "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {
       "path": "registry/chamaac/stats-cards/stats-cards.tsx",

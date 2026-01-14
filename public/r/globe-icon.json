@@ -3,9 +3,7 @@
   "name": "globe-icon",
   "title": "Globe Icon",
   "description": "An animated globe icon that rotates continuously.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/globe-icon.tsx",

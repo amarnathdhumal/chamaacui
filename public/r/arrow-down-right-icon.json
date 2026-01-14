@@ -3,9 +3,7 @@
   "name": "arrow-down-right-icon",
   "title": "Arrow Down Right Icon",
   "description": "An animated arrow down right icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/arrow-down-right-icon.tsx",

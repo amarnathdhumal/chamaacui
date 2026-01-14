@@ -3,9 +3,7 @@
   "name": "thumbs-up-icon",
   "title": "Thumbs Up Icon",
   "description": "An animated thumbs up icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/thumbs-up-icon.tsx",

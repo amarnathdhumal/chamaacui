@@ -3,9 +3,7 @@
   "name": "menu-icon",
   "title": "Menu Icon",
   "description": "An animated menu icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/menu-icon.tsx",

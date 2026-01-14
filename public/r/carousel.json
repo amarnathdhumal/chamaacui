@@ -3,11 +3,7 @@
   "name": "carousel",
   "title": "Carousel",
   "description": "A smooth, auto-playing 3D carousel component with layout animations.",
-  "dependencies": [
-    "motion",
-    "clsx",
-    "tailwind-merge"
-  ],
+  "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {
       "path": "registry/chamaac/carousel/carousel.tsx",

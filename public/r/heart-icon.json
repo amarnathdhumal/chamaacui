@@ -3,9 +3,7 @@
   "name": "heart-icon",
   "title": "Heart Icon",
   "description": "An animated heart icon that beats.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/heart-icon.tsx",

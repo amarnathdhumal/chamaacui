@@ -3,9 +3,7 @@
   "name": "chevron-up-icon",
   "title": "Chevron Up Icon",
   "description": "An animated chevron up icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/chevron-up-icon.tsx",

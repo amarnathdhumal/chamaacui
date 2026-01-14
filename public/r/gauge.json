@@ -3,11 +3,7 @@
   "name": "gauge",
   "title": "Gauge",
   "description": "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
-  "dependencies": [
-    "motion",
-    "clsx",
-    "tailwind-merge"
-  ],
+  "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {
       "path": "registry/chamaac/gauge/gauge.tsx",

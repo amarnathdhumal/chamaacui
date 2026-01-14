@@ -39,7 +39,7 @@ We welcome contributions from the community. Please read our [Contribution Guide
 
 ## Support the Project
 
-If you find Chamaac UI helpful, please consider giving it a star. 
+If you find Chamaac UI helpful, please consider giving it a star.
 
 ## License
 

@@ -3,9 +3,7 @@
   "name": "arrow-down-icon",
   "title": "Arrow Down Icon",
   "description": "An animated arrow down icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/arrow-down-icon.tsx",

@@ -3,9 +3,7 @@
   "name": "cloud-icon",
   "title": "Cloud Icon",
   "description": "An animated cloud icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/cloud-icon.tsx",

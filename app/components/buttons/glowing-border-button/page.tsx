@@ -7,73 +7,79 @@ import GlowingBorderButtonPreviewWrapper from "./glowing-border-button-preview-w
 import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
-    title: "Glowing Border Button",
-    description: "A stylish glowing border button with a gradient border and glowing effects.",
-    image: "/components/buttons/glowing-border.png",
+  title: "Glowing Border Button",
+  description:
+    "A stylish glowing border button with a gradient border and glowing effects.",
+  image: "/components/buttons/glowing-border.png",
 });
 
 export default function GlowingBorderButtonPage() {
-    const componentPath = path.join(
-        process.cwd(),
-        "registry/chamaac/glowing-border-button/glowing-border-button.tsx"
-    );
-    const componentSource = fs.readFileSync(componentPath, "utf8");
+  const componentPath = path.join(
+    process.cwd(),
+    "registry/chamaac/glowing-border-button/glowing-border-button.tsx"
+  );
+  const componentSource = fs.readFileSync(componentPath, "utf8");
 
-    const demoPath = path.join(
-        process.cwd(),
-        "app/components/buttons/glowing-border-button/glowing-border-button-demo.tsx"
+  const demoPath = path.join(
+    process.cwd(),
+    "app/components/buttons/glowing-border-button/glowing-border-button-demo.tsx"
+  );
+  const demoSource = fs
+    .readFileSync(demoPath, "utf8")
+    .replace(
+      "@/registry/chamaac/glowing-border-button/glowing-border-button",
+      "@/components/glowing-border-button"
     );
-    const demoSource = fs.readFileSync(demoPath, "utf8").replace("@/registry/chamaac/glowing-border-button/glowing-border-button", "@/components/glowing-border-button");
 
-    return (
-        <div className="">
-            <GlowingBorderButtonPreviewWrapper
-                title="Glowing Border Button"
-                description="A stylish glowing border button with a gradient border and glowing effects."
-                code={
-                    <div className="relative">
-                        <div className="absolute top-4 right-4">
-                            <CopyButton text={demoSource} />
-                        </div>
-                        <SyntaxHighlighter
-                            language="tsx"
-                            style={oneDark}
-                            wrapLongLines={true}
-                            customStyle={{
-                                margin: 0,
-                                padding: "1rem",
-                                fontSize: "14px",
-                                lineHeight: "1.5",
-                                width: "100%",
-                                maxWidth: "100%",
-                                boxSizing: "border-box",
-                                overflow: "auto",
-                                scrollbarWidth: "none",
-                                msOverflowStyle: "none",
-                            }}
-                        >
-                            {demoSource}
-                        </SyntaxHighlighter>
-                    </div>
-                }
-                installationSource={componentSource}
-                props={[
-                    {
-                        name: "className",
-                        type: "string",
-                        default: "-",
-                        description: "Additional CSS classes to style the button",
-                        required: false,
-                    },
-                    {
-                        name: "onClick",
-                        type: "() => void",
-                        default: "-",
-                        description: "Click handler function",
-                        required: false,
-                    },
-                ]}
-            />
-        </div>
-    );
+  return (
+    <div className="">
+      <GlowingBorderButtonPreviewWrapper
+        title="Glowing Border Button"
+        description="A stylish glowing border button with a gradient border and glowing effects."
+        code={
+          <div className="relative">
+            <div className="absolute top-4 right-4">
+              <CopyButton text={demoSource} />
+            </div>
+            <SyntaxHighlighter
+              language="tsx"
+              style={oneDark}
+              wrapLongLines={true}
+              customStyle={{
+                margin: 0,
+                padding: "1rem",
+                fontSize: "14px",
+                lineHeight: "1.5",
+                width: "100%",
+                maxWidth: "100%",
+                boxSizing: "border-box",
+                overflow: "auto",
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+              }}
+            >
+              {demoSource}
+            </SyntaxHighlighter>
+          </div>
+        }
+        installationSource={componentSource}
+        props={[
+          {
+            name: "className",
+            type: "string",
+            default: "-",
+            description: "Additional CSS classes to style the button",
+            required: false,
+          },
+          {
+            name: "onClick",
+            type: "() => void",
+            default: "-",
+            description: "Click handler function",
+            required: false,
+          },
+        ]}
+      />
+    </div>
+  );
 }

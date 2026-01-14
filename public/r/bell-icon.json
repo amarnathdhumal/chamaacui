@@ -3,9 +3,7 @@
   "name": "bell-icon",
   "title": "Bell Icon",
   "description": "An animated bell icon that rings.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/bell-icon.tsx",

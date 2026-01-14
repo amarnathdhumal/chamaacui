@@ -3,9 +3,7 @@
   "name": "battery-icon",
   "title": "Battery Icon",
   "description": "An animated battery icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/battery-icon.tsx",

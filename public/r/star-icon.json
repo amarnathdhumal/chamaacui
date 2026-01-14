@@ -3,9 +3,7 @@
   "name": "star-icon",
   "title": "Star Icon",
   "description": "An animated star icon that twinkles and rotates.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/star-icon.tsx",

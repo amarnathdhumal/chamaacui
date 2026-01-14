@@ -65,21 +65,24 @@ export default function TiltCardPage() {
             name: "features",
             type: "Feature[]",
             default: "-",
-            description: "Array of feature objects with icon, title, and description. Each feature should have an icon (Icon component), title (string), and description (string)",
+            description:
+              "Array of feature objects with icon, title, and description. Each feature should have an icon (Icon component), title (string), and description (string)",
             required: true,
           },
           {
             name: "initialRotate",
             type: "number",
             default: "7.1",
-            description: "Initial rotation angle in degrees. The card starts at this angle and rotates to hoverRotate on hover",
+            description:
+              "Initial rotation angle in degrees. The card starts at this angle and rotates to hoverRotate on hover",
             required: false,
           },
           {
             name: "hoverRotate",
             type: "number",
             default: "0",
-            description: "Rotation angle in degrees when hovering over the card",
+            description:
+              "Rotation angle in degrees when hovering over the card",
             required: false,
           },
           {
@@ -93,14 +96,16 @@ export default function TiltCardPage() {
             name: "stiffness",
             type: "number",
             default: "100",
-            description: "Spring stiffness value. Higher values create a stiffer spring",
+            description:
+              "Spring stiffness value. Higher values create a stiffer spring",
             required: false,
           },
           {
             name: "damping",
             type: "number",
             default: "5",
-            description: "Spring damping value. Higher values reduce oscillation",
+            description:
+              "Spring damping value. Higher values reduce oscillation",
             required: false,
           },
           {
@@ -115,4 +120,3 @@ export default function TiltCardPage() {
     </div>
   );
 }
-

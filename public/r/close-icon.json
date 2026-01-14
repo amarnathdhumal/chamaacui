@@ -3,9 +3,7 @@
   "name": "close-icon",
   "title": "Close Icon",
   "description": "An animated close icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/close-icon.tsx",

@@ -3,9 +3,7 @@
   "name": "zap-icon",
   "title": "Zap Icon",
   "description": "An animated zap icon with electric flash effect.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/zap-icon.tsx",

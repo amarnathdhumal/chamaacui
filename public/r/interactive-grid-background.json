@@ -3,11 +3,7 @@
   "name": "interactive-grid-background",
   "title": "Interactive Grid Background",
   "description": "A highly interactive, mouse-sensitive grid background.",
-  "dependencies": [
-    "motion",
-    "clsx",
-    "tailwind-merge"
-  ],
+  "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {
       "path": "registry/chamaac/backgrounds/interactive-grid-background.tsx",

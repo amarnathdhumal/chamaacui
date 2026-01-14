@@ -3,9 +3,7 @@
   "name": "arrow-right-icon",
   "title": "Arrow Right Icon",
   "description": "An animated arrow right icon that moves horizontally.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/arrow-right-icon.tsx",

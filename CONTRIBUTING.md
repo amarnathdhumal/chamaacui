@@ -13,6 +13,7 @@ By participating in this project, you are expected to uphold a professional and 
 ### Reporting Bugs
 
 If you find a bug, please create a distinct issue in the repository. content should include:
+
 1. A clear, descriptive title.
 2. A detailed description of the issue.
 3. Steps to reproduce the behavior.
@@ -23,6 +24,7 @@ If you find a bug, please create a distinct issue in the repository. content sho
 ### Suggesting Enhancements
 
 We welcome new component ideas and improvements to existing ones. When proposing an enhancement:
+
 1. Check existing issues and pull requests to avoid duplicates.
 2. Create a new issue describing the feature or improvement.
 3. Explain why this enhancement would be useful to others.

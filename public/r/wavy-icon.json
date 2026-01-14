@@ -3,9 +3,7 @@
   "name": "wavy-icon",
   "title": "Wavy Icon",
   "description": "An animated wavy icon with smooth motion effects.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/wavy-icon.tsx",

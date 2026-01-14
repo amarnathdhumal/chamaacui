@@ -3,9 +3,7 @@
   "name": "scan-icon",
   "title": "Scan Icon",
   "description": "An animated scan icon with a moving scan line.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/scan-icon.tsx",

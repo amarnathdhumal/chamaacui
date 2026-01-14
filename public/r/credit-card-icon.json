@@ -3,9 +3,7 @@
   "name": "credit-card-icon",
   "title": "Credit Card Icon",
   "description": "An animated credit card icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/credit-card-icon.tsx",

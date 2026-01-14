@@ -3,9 +3,7 @@
   "name": "location-icon",
   "title": "Location Icon",
   "description": "An animated location icon that rotates like a compass.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/location-icon.tsx",

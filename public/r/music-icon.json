@@ -3,9 +3,7 @@
   "name": "music-icon",
   "title": "Music Icon",
   "description": "An animated music icon with dancing notes.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/music-icon.tsx",

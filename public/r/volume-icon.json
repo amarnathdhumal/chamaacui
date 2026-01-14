@@ -3,9 +3,7 @@
   "name": "volume-icon",
   "title": "Volume Icon",
   "description": "An animated volume icon with pulsing sound waves.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/volume-icon.tsx",

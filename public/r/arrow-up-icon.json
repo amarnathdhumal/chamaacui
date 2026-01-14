@@ -3,9 +3,7 @@
   "name": "arrow-up-icon",
   "title": "Arrow Up Icon",
   "description": "An animated arrow up icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/arrow-up-icon.tsx",

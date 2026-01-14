@@ -3,9 +3,7 @@
   "name": "refresh-icon",
   "title": "Refresh Icon",
   "description": "An animated refresh icon that rotates.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/refresh-icon.tsx",

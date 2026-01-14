@@ -3,9 +3,7 @@
   "name": "sparkle-icon",
   "title": "Sparkle Icon",
   "description": "An animated sparkle icon with twinkling stars.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/sparkle-icon.tsx",

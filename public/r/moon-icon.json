@@ -3,9 +3,7 @@
   "name": "moon-icon",
   "title": "Moon Icon",
   "description": "An animated moon icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/moon-icon.tsx",

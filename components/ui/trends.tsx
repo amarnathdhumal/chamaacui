@@ -57,7 +57,6 @@ export default function TechTrendsSection() {
   // const activeTrend = techTrends.find(trend => trend.id === active) || techTrends[0]
 
   return (
-
     <div className="bg-black h-[600px] flex items-center justify-center">
       {/* Header */}
 
@@ -355,6 +354,5 @@ export default function TechTrendsSection() {
         </motion.div>
       </div>
     </div>
-
   );
 }

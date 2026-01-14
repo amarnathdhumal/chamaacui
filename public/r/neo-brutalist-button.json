@@ -3,10 +3,7 @@
   "name": "neo-brutalist-button",
   "title": "Neo Brutalist Button",
   "description": "A bold, retro-styled button with skewed design, offset shadow, and shimmer effect.",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
   "files": [
     {
       "path": "registry/chamaac/neo-brutalist-button/neo-brutalist-button.tsx",

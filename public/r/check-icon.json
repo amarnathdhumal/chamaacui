@@ -3,9 +3,7 @@
   "name": "check-icon",
   "title": "Check Icon",
   "description": "An animated check icon with drawing circle and checkmark.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/check-icon.tsx",

@@ -3,9 +3,7 @@
   "name": "trash-icon",
   "title": "Trash Icon",
   "description": "An animated trash icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/trash-icon.tsx",

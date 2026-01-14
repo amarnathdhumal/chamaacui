@@ -3,9 +3,7 @@
   "name": "cart-icon",
   "title": "Cart Icon",
   "description": "An animated cart icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/cart-icon.tsx",

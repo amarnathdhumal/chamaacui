@@ -3,9 +3,7 @@
   "name": "layers-icon",
   "title": "Layers Icon",
   "description": "An animated layers icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/layers-icon.tsx",

@@ -3,9 +3,7 @@
   "name": "gift-icon",
   "title": "Gift Icon",
   "description": "An animated gift icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/gift-icon.tsx",

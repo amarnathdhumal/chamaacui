@@ -3,9 +3,7 @@
   "name": "crown-icon",
   "title": "Crown Icon",
   "description": "An animated crown icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/crown-icon.tsx",

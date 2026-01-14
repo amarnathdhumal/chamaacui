@@ -3,11 +3,7 @@
   "name": "slideup-button",
   "title": "Slide Up Button",
   "description": "A button with a smooth slide-up text animation on hover.",
-  "dependencies": [
-    "motion",
-    "clsx",
-    "tailwind-merge"
-  ],
+  "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {
       "path": "registry/chamaac/slideup-button/slideup-button.tsx",

@@ -3,9 +3,7 @@
   "name": "mail-icon",
   "title": "Mail Icon",
   "description": "An animated mail icon with a moving envelope flap.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/mail-icon.tsx",

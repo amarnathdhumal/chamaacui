@@ -7,44 +7,44 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 
 interface GlowingBorderButtonPreviewWrapperProps {
-    title: string;
-    description: string | React.ReactNode;
-    code: React.ReactNode;
-    installationSource: string;
-    props: Array<{
-        name: string;
-        type: string;
-        default: string;
-        description: string;
-        required: boolean;
-    }>;
+  title: string;
+  description: string | React.ReactNode;
+  code: React.ReactNode;
+  installationSource: string;
+  props: Array<{
+    name: string;
+    type: string;
+    default: string;
+    description: string;
+    required: boolean;
+  }>;
 }
 
 export default function GlowingBorderButtonPreviewWrapper({
-    title,
-    description,
-    code,
-    installationSource,
-    props,
+  title,
+  description,
+  code,
+  installationSource,
+  props,
 }: GlowingBorderButtonPreviewWrapperProps) {
-    return (
-        <>
-            <ViewArea
-                title={title}
-                description={description}
-                preview={
+  return (
+    <>
+      <ViewArea
+        title={title}
+        description={description}
+        preview={<GlowingBorderButtonDemo />}
+        code={code}
+      />
 
-                    <GlowingBorderButtonDemo />
+      {/* Installation Section */}
+      <InstallationSection
+        componentSource={installationSource}
+        dependencies={["clsx", "tailwind-merge"]}
+        componentName="glowing-border-button"
+      />
 
-                }
-                code={code}
-            />
-
-            {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["clsx", "tailwind-merge"]} componentName="glowing-border-button" />
-
-            {/* Main Props Section */}
-            <PropsTable props={props} />
-        </>
-    );
+      {/* Main Props Section */}
+      <PropsTable props={props} />
+    </>
+  );
 }

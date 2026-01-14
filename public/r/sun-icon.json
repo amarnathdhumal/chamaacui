@@ -3,9 +3,7 @@
   "name": "sun-icon",
   "title": "Sun Icon",
   "description": "An animated sun icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/sun-icon.tsx",

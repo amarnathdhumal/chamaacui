@@ -3,11 +3,7 @@
   "name": "text-loop",
   "title": "Text Loop",
   "description": "An animated text loop with typewriter and gradient effect.",
-  "dependencies": [
-    "motion",
-    "clsx",
-    "tailwind-merge"
-  ],
+  "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {
       "path": "registry/chamaac/text-loop/text-loop.tsx",

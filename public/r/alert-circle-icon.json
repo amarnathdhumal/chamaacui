@@ -3,9 +3,7 @@
   "name": "alert-circle-icon",
   "title": "Alert Icon",
   "description": "An animated alert icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/alert-circle-icon.tsx",

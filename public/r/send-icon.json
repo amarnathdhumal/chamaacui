@@ -3,9 +3,7 @@
   "name": "send-icon",
   "title": "Send Icon",
   "description": "An animated send icon with paper airplane flying motion.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/send-icon.tsx",

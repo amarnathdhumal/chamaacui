@@ -3,9 +3,7 @@
   "name": "activity-icon",
   "title": "Activity Icon",
   "description": "An animated activity icon with a heartbeat line.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/activity-icon.tsx",

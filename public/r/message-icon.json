@@ -3,9 +3,7 @@
   "name": "message-icon",
   "title": "Message Icon",
   "description": "An animated message icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/message-icon.tsx",

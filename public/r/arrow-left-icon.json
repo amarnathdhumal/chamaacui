@@ -3,9 +3,7 @@
   "name": "arrow-left-icon",
   "title": "Arrow Left Icon",
   "description": "An animated arrow left icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/arrow-left-icon.tsx",

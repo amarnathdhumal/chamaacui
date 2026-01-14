@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import { cn } from "@/lib/utils";
 
@@ -19,36 +17,36 @@ import { cn } from "@/lib/utils";
  */
 
 interface DottedBackgroundProps {
-    children: React.ReactNode;
-    dotColor?: string;
-    gap?: number;
-    dotRadius?: number;
-    bg?: string;
-    className?: string;
+  children: React.ReactNode;
+  dotColor?: string;
+  gap?: number;
+  dotRadius?: number;
+  bg?: string;
+  className?: string;
 }
 
 export default function DottedBackground({
-    children,
-    dotColor = "#f5f5f5",
-    gap = 13,
-    dotRadius = 1,
-    bg = "#ffffff",
-    className,
+  children,
+  dotColor = "#f5f5f5",
+  gap = 13,
+  dotRadius = 1,
+  bg = "#ffffff",
+  className,
 }: DottedBackgroundProps) {
-    const size = `${gap}px ${gap}px`;
-    // radial gradient where the dot occupies `dotRadius` pixels, rest is transparent
-    const dot = `radial-gradient(circle, ${dotColor} ${dotRadius}px, transparent ${dotRadius}px)`;
+  const size = `${gap}px ${gap}px`;
+  // radial gradient where the dot occupies `dotRadius` pixels, rest is transparent
+  const dot = `radial-gradient(circle, ${dotColor} ${dotRadius}px, transparent ${dotRadius}px)`;
 
-    const style = {
-        backgroundColor: bg,
-        backgroundImage: dot,
-        backgroundSize: size,
-        backgroundPosition: `${gap / 2}px ${gap / 2}px`,
-    };
+  const style = {
+    backgroundColor: bg,
+    backgroundImage: dot,
+    backgroundSize: size,
+    backgroundPosition: `${gap / 2}px ${gap / 2}px`,
+  };
 
-    return (
-        <div style={style} className={cn("relative overflow-hidden", className)}>
-            {children}
-        </div>
-    );
+  return (
+    <div style={style} className={cn("relative overflow-hidden", className)}>
+      {children}
+    </div>
+  );
 }

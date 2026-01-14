@@ -3,9 +3,7 @@
   "name": "download-icon",
   "title": "Download Icon",
   "description": "An animated download icon with a bouncing arrow.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/download-icon.tsx",

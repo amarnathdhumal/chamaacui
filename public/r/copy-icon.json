@@ -3,9 +3,7 @@
   "name": "copy-icon",
   "title": "Copy Icon",
   "description": "An animated copy icon with smooth motion effects.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/copy-icon.tsx",

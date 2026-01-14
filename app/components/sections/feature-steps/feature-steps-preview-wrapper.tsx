@@ -7,44 +7,48 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 
 interface FeatureStepsPreviewWrapperProps {
-    title: string;
-    description: string | React.ReactNode;
-    code: React.ReactNode;
-    installationSource: string;
-    props: Array<{
-        name: string;
-        type: string;
-        default: string;
-        description: string;
-        required: boolean;
-    }>;
+  title: string;
+  description: string | React.ReactNode;
+  code: React.ReactNode;
+  installationSource: string;
+  props: Array<{
+    name: string;
+    type: string;
+    default: string;
+    description: string;
+    required: boolean;
+  }>;
 }
 
 export default function FeatureStepsPreviewWrapper({
-    title,
-    description,
-    code,
-    installationSource,
-    props,
+  title,
+  description,
+  code,
+  installationSource,
+  props,
 }: FeatureStepsPreviewWrapperProps) {
-    return (
-        <>
-            <ViewArea
-                title={title}
-                description={description}
-                preview={
-                    <div className="w-full flex justify-center items-center  overflow-hidden h-full md:h-[550px] px-4 md:px-12 py-4">
-                        <FeatureStepsDemo />
-                    </div>
-                }
-                code={code}
-            />
+  return (
+    <>
+      <ViewArea
+        title={title}
+        description={description}
+        preview={
+          <div className="w-full flex justify-center items-center  overflow-hidden h-full md:h-[550px] px-4 md:px-12 py-4">
+            <FeatureStepsDemo />
+          </div>
+        }
+        code={code}
+      />
 
-            {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["motion", "clsx", "tailwind-merge"]} componentName="feature-steps" />
+      {/* Installation Section */}
+      <InstallationSection
+        componentSource={installationSource}
+        dependencies={["motion", "clsx", "tailwind-merge"]}
+        componentName="feature-steps"
+      />
 
-            {/* Main Props Section */}
-            <PropsTable props={props} />
-        </>
-    );
+      {/* Main Props Section */}
+      <PropsTable props={props} />
+    </>
+  );
 }

@@ -7,52 +7,51 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 
 interface InvoiceCardPreviewWrapperProps {
-    title: string;
+  title: string;
+  description: string;
+  code: React.ReactNode;
+  installationSource: string;
+  props: Array<{
+    name: string;
+    type: string;
+    default: string;
     description: string;
-    code: React.ReactNode;
-    installationSource: string;
-    props: Array<{
-        name: string;
-        type: string;
-        default: string;
-        description: string;
-        required: boolean;
-    }>;
+    required: boolean;
+  }>;
 }
 
 export default function InvoiceCardPreviewWrapper({
-    title,
-    description,
-    code,
-    installationSource,
-    props,
+  title,
+  description,
+  code,
+  installationSource,
+  props,
 }: InvoiceCardPreviewWrapperProps) {
-    const [refreshKey, setRefreshKey] = useState(0);
+  const [refreshKey, setRefreshKey] = useState(0);
 
-    const handleRefresh = () => {
-        setRefreshKey((prev) => prev + 1);
-    };
+  const handleRefresh = () => {
+    setRefreshKey((prev) => prev + 1);
+  };
 
-    return (
-        <>
-            <ViewArea
-                title={title}
-                description={description}
-                preview={
-                    <div className="w-full h-[600px] flex justify-center items-center">
-                        <InvoiceCardDemo key={refreshKey} />
-                    </div>
-                }
-                onRefresh={handleRefresh}
-                code={code}
-            />
+  return (
+    <>
+      <ViewArea
+        title={title}
+        description={description}
+        preview={
+          <div className="w-full h-[600px] flex justify-center items-center">
+            <InvoiceCardDemo key={refreshKey} />
+          </div>
+        }
+        onRefresh={handleRefresh}
+        code={code}
+      />
 
-            {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} />
+      {/* Installation Section */}
+      <InstallationSection componentSource={installationSource} />
 
-            {/* Props Section */}
-            <PropsTable props={props} />
-        </>
-    );
+      {/* Props Section */}
+      <PropsTable props={props} />
+    </>
+  );
 }
-

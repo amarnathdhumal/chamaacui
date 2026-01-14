@@ -3,9 +3,7 @@
   "name": "settings-icon",
   "title": "Settings Icon",
   "description": "An animated settings icon that rotates.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/settings-icon.tsx",

@@ -3,9 +3,7 @@
   "name": "calendar-icon",
   "title": "Calendar Icon",
   "description": "An animated calendar icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/calendar-icon.tsx",

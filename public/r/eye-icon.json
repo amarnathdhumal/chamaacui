@@ -3,9 +3,7 @@
   "name": "eye-icon",
   "title": "Eye Icon",
   "description": "An animated eye icon with blinking and looking animation.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/eye-icon.tsx",

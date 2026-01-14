@@ -3,9 +3,7 @@
   "name": "wifi-icon",
   "title": "Wifi Icon",
   "description": "An animated wifi icon with pulsing signal bars.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/wifi-icon.tsx",

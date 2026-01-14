@@ -92,6 +92,12 @@ export const sidebarData: SidebarDataTypes[] = [
 
   // sections
   {
+    componentName: "Stats Cards",
+    link: "/sections/stats-cards",
+    category: "Sections",
+    isNew: true,
+  },
+  {
     componentName: "Feature Steps",
     link: "/sections/feature-steps",
     category: "Sections",
@@ -100,12 +106,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Gauge",
     link: "/sections/gauge",
     category: "Sections",
-  },
-  {
-    componentName: "Stats Cards",
-    link: "/sections/stats-cards",
-    category: "Sections",
-    isNew: true,
   },
 
   // carousels
@@ -129,7 +129,8 @@ export interface ComponentCardType {
 export const componentCards: ComponentCardType[] = [
   {
     title: "Animated Icons",
-    description: "A collection of smooth, micro-interaction animations for your icons.",
+    description:
+      "A collection of smooth, micro-interaction animations for your icons.",
     imagePath: "/components/animated-icons.png",
     videoSrc: "https://assets.amarn.me/animated-iconsv2.mp4",
     link: "/components/animated-icons",
@@ -147,7 +148,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Interactive Grid",
-    description: "A highly interactive, mouse-sensitive grid background rendered.",
+    description:
+      "A highly interactive, mouse-sensitive grid background rendered.",
     imagePath: "/components/backgrounds/interactive-grid.png",
     videoSrc: "https://assets.amarn.me/interactive-grid.mp4",
     link: "/components/backgrounds/interactive-grid",
@@ -165,7 +167,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Gauge",
-    description: "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
+    description:
+      "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
     imagePath: "/components/sections/gauge.png",
     videoSrc: "https://assets.amarn.me/gauge.mp4",
     link: "/components/sections/gauge",
@@ -183,7 +186,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Premium Button",
-    description: "A collection of interactive and animated buttons for your applications.",
+    description:
+      "A collection of interactive and animated buttons for your applications.",
     imagePath: "/components/buttons/premium-button.png",
     videoSrc: "https://assets.amarn.me/premium_button.mp4",
     link: "/components/buttons/premium-button",
@@ -192,7 +196,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Neo Brutalist Button",
-    description: "A bold, retro-styled button with skewed design, offset shadow, and shimmer effect.",
+    description:
+      "A bold, retro-styled button with skewed design, offset shadow, and shimmer effect.",
     imagePath: "/components/buttons/ne0-brutalist.png",
     videoSrc: "https://assets.amarn.me/neo-brutalist-buttonv2.mp4",
     link: "/components/buttons/neo-brutalist-button",
@@ -210,7 +215,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Shimmer Button",
-    description: "A collection of interactive and animated buttons for your applications.",
+    description:
+      "A collection of interactive and animated buttons for your applications.",
     imagePath: "/components/buttons/shimmer.png",
     videoSrc: "https://assets.amarn.me/shimmer-button.mp4",
     link: "/components/buttons/shimmer-button",
@@ -219,7 +225,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "AI Input",
-    description: "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
+    description:
+      "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
     imagePath: "/components/inputs/ai-input.png",
     videoSrc: "https://assets.amarn.me/ai-input.mp4",
     link: "/components/inputs/ai-input",
@@ -228,7 +235,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Dancing Letters",
-    description: "A sleek, interactive text animation component with physics-based effects.",
+    description:
+      "A sleek, interactive text animation component with physics-based effects.",
     imagePath: "/components/text-animations/dancing-letters.png",
     videoSrc: "https://assets.amarn.me/dancing-lettersv3.mp4",
     link: "/components/text-animations/dancing-letters",
@@ -237,7 +245,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Slide Up Button",
-    description: "A collection of interactive and animated buttons for your applications.",
+    description:
+      "A collection of interactive and animated buttons for your applications.",
     imagePath: "/components/slide-up-button.png",
     videoSrc: "https://assets.amarn.me/slide-up-button.mp4",
     link: "/components/buttons/slideup-button",
@@ -246,7 +255,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Focus Button",
-    description: "A collection of interactive and animated buttons for your applications.",
+    description:
+      "A collection of interactive and animated buttons for your applications.",
     imagePath: "/components/buttons/focus-button.png",
     videoSrc: "https://assets.amarn.me/focus-button.mp4",
     link: "/components/buttons/focus-button",
@@ -255,7 +265,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Carousel",
-    description: "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
+    description:
+      "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
     imagePath: "/components/carousel.png",
     videoSrc: "https://assets.amarn.me/carousel.mp4",
     link: "/components/carousels/carousel",
@@ -264,7 +275,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Dock",
-    description: "A navigation dock component with smooth animations and hover effects, perfect for desktop interfaces.",
+    description:
+      "A navigation dock component with smooth animations and hover effects, perfect for desktop interfaces.",
     imagePath: "/components/navigation/dock.png",
     videoSrc: "https://assets.amarn.me/dock.mp4",
     link: "/components/navigation/dock",
@@ -273,7 +285,8 @@ export const componentCards: ComponentCardType[] = [
   },
   {
     title: "Feature Steps",
-    description: "A dynamic feature showcase with auto-playing steps and synchronized image transitions.",
+    description:
+      "A dynamic feature showcase with auto-playing steps and synchronized image transitions.",
     imagePath: "/components/features-step.png",
     videoSrc: "https://assets.amarn.me/features-section.mp4",
     link: "/components/sections/feature-steps",

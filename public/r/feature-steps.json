@@ -3,11 +3,7 @@
   "name": "feature-steps",
   "title": "Feature Steps",
   "description": "A dynamic feature showcase with auto-playing steps and synchronized image transitions.",
-  "dependencies": [
-    "motion",
-    "clsx",
-    "tailwind-merge"
-  ],
+  "dependencies": ["motion", "clsx", "tailwind-merge"],
   "files": [
     {
       "path": "registry/chamaac/feature-steps/feature-steps.tsx",

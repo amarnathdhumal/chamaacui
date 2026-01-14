@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Command as CommandPrimitive } from "cmdk"
-import { SearchIcon } from "lucide-react"
+import * as React from "react";
+import { Command as CommandPrimitive } from "cmdk";
+import { SearchIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 
 function Command({
   className,
@@ -26,7 +26,7 @@ function Command({
       )}
       {...props}
     />
-  )
+  );
 }
 
 function CommandDialog({
@@ -37,10 +37,10 @@ function CommandDialog({
   showCloseButton = true,
   ...props
 }: React.ComponentProps<typeof Dialog> & {
-  title?: string
-  description?: string
-  className?: string
-  showCloseButton?: boolean
+  title?: string;
+  description?: string;
+  className?: string;
+  showCloseButton?: boolean;
 }) {
   return (
     <Dialog {...props}>
@@ -57,10 +57,14 @@ function CommandDialog({
         </Command>
         <div className="flex items-center justify-between border-t border-border px-4 py-2 text-xs  bg-white dark:bg-black">
           <div className="flex items-center justify-between gap-1">
-            <span className="text-base/7 text-black dark:text-white ">Chamaac</span>
+            <span className="text-base/7 text-black dark:text-white ">
+              Chamaac
+            </span>
           </div>
           <div className="flex gap-2 items-center ">
-            <span className="text-sm/5 text-gray-500 dark:text-gray-400">Exit</span>
+            <span className="text-sm/5 text-gray-500 dark:text-gray-400">
+              Exit
+            </span>
             <kbd className="text-[12px] dark:bg-neutral-800 bg-gray-200 text-black dark:text-white px-2 py-2 rounded-[8px] leading-none ">
               Esc
             </kbd>
@@ -68,7 +72,7 @@ function CommandDialog({
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
 
 function CommandInput({
@@ -89,8 +93,8 @@ function CommandInput({
         )}
         {...props}
       />
-    </div >
-  )
+    </div>
+  );
 }
 
 function CommandList({
@@ -106,7 +110,7 @@ function CommandList({
       )}
       {...props}
     />
-  )
+  );
 }
 
 function CommandEmpty({
@@ -118,7 +122,7 @@ function CommandEmpty({
       className="py-6 text-center text-sm"
       {...props}
     />
-  )
+  );
 }
 
 function CommandGroup({
@@ -134,7 +138,7 @@ function CommandGroup({
       )}
       {...props}
     />
-  )
+  );
 }
 
 function CommandSeparator({
@@ -147,7 +151,7 @@ function CommandSeparator({
       className={cn("bg-border -mx-1 h-px", className)}
       {...props}
     />
-  )
+  );
 }
 
 function CommandItem({
@@ -163,7 +167,7 @@ function CommandItem({
       )}
       {...props}
     />
-  )
+  );
 }
 
 function CommandShortcut({
@@ -179,7 +183,7 @@ function CommandShortcut({
       )}
       {...props}
     />
-  )
+  );
 }
 
 export {
@@ -192,4 +196,4 @@ export {
   CommandItem,
   CommandShortcut,
   CommandSeparator,
-}
+};

@@ -3,9 +3,7 @@
   "name": "chevron-left-icon",
   "title": "Chevron Left Icon",
   "description": "An animated chevron left icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/chevron-left-icon.tsx",

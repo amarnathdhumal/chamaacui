@@ -2,7 +2,13 @@ import { TabButtonTypes } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 
-const TabButton = ({ name, onClick, isActive, icon, layoutId = "activeTab" }: TabButtonTypes) => {
+const TabButton = ({
+  name,
+  onClick,
+  isActive,
+  icon,
+  layoutId = "activeTab",
+}: TabButtonTypes) => {
   return (
     <button
       onClick={onClick}

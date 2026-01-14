@@ -3,9 +3,7 @@
   "name": "shield-icon",
   "title": "Shield Icon",
   "description": "An animated shield icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/shield-icon.tsx",

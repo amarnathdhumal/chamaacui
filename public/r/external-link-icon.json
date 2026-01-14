@@ -3,9 +3,7 @@
   "name": "external-link-icon",
   "title": "External Link Icon",
   "description": "An animated external link icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/external-link-icon.tsx",

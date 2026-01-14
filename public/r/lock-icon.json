@@ -3,9 +3,7 @@
   "name": "lock-icon",
   "title": "Lock Icon",
   "description": "An animated lock icon that locks and unlocks.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/lock-icon.tsx",

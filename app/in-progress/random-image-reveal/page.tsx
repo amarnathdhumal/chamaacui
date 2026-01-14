@@ -29,7 +29,13 @@ export default function RandomImageRevealPage() {
         preview={
           <div className="w-full h-[600px] flex justify-center items-center">
             <RandomImageReveal
-              images={["/images/1.jpg", "/images/2.jpg", "/images/3.jpg", "/images/5.jpg"]} />
+              images={[
+                "/images/1.jpg",
+                "/images/2.jpg",
+                "/images/3.jpg",
+                "/images/5.jpg",
+              ]}
+            />
           </div>
         }
         code={

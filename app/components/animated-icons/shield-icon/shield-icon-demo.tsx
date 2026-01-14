@@ -3,12 +3,12 @@
 import ShieldIcon from "@/registry/chamaac/animated-icons/shield-icon";
 
 export default function ShieldIconDemo() {
-    return (
-        <ShieldIcon
-            className="text-black dark:text-white"
-            size={40}
-            duration={2.5}
-            strokeWidth={2}
-        />
-    );
+  return (
+    <ShieldIcon
+      className="text-black dark:text-white"
+      size={40}
+      duration={2.5}
+      strokeWidth={2}
+    />
+  );
 }

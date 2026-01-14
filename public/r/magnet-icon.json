@@ -3,9 +3,7 @@
   "name": "magnet-icon",
   "title": "Magnet Icon",
   "description": "An animated magnet icon with attraction effect.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/magnet-icon.tsx",

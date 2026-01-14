@@ -3,9 +3,7 @@
   "name": "chevrons-right-icon",
   "title": "Chevrons Right Icon",
   "description": "An animated chevrons right icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/chevrons-right-icon.tsx",

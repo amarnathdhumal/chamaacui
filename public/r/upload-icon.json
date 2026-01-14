@@ -3,9 +3,7 @@
   "name": "upload-icon",
   "title": "Upload Icon",
   "description": "An animated upload icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/upload-icon.tsx",

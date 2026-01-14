@@ -3,9 +3,7 @@
   "name": "clock-icon",
   "title": "Clock Icon",
   "description": "An animated clock icon.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/clock-icon.tsx",

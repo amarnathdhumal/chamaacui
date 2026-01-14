@@ -7,44 +7,48 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 
 interface NeoBrutalistButtonPreviewWrapperProps {
-    title: string;
-    description: string | React.ReactNode;
-    code: React.ReactNode;
-    installationSource: string;
-    props: Array<{
-        name: string;
-        type: string;
-        default: string;
-        description: string;
-        required: boolean;
-    }>;
+  title: string;
+  description: string | React.ReactNode;
+  code: React.ReactNode;
+  installationSource: string;
+  props: Array<{
+    name: string;
+    type: string;
+    default: string;
+    description: string;
+    required: boolean;
+  }>;
 }
 
 export default function NeoBrutalistButtonPreviewWrapper({
-    title,
-    description,
-    code,
-    installationSource,
-    props,
+  title,
+  description,
+  code,
+  installationSource,
+  props,
 }: NeoBrutalistButtonPreviewWrapperProps) {
-    return (
-        <>
-            <ViewArea
-                title={title}
-                description={description}
-                preview={
-                    <div className="w-full h-[300px] flex justify-center items-center bg-white">
-                        <NeoBrutalistButtonDemo />
-                    </div>
-                }
-                code={code}
-            />
+  return (
+    <>
+      <ViewArea
+        title={title}
+        description={description}
+        preview={
+          <div className="w-full h-[300px] flex justify-center items-center bg-white">
+            <NeoBrutalistButtonDemo />
+          </div>
+        }
+        code={code}
+      />
 
-            {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} dependencies={["clsx", "tailwind-merge"]} componentName="neo-brutalist-button" />
+      {/* Installation Section */}
+      <InstallationSection
+        componentSource={installationSource}
+        dependencies={["clsx", "tailwind-merge"]}
+        componentName="neo-brutalist-button"
+      />
 
-            {/* Main Props Section */}
-            <PropsTable props={props} />
-        </>
-    );
+      {/* Main Props Section */}
+      <PropsTable props={props} />
+    </>
+  );
 }

@@ -7,44 +7,47 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 
 interface ExternalLinkIconPreviewWrapperProps {
-    title: string;
-    description: string | React.ReactNode;
-    code: React.ReactNode;
-    installationSource: string;
-    props: Array<{
-        name: string;
-        type: string;
-        default: string;
-        description: string;
-        required: boolean;
-    }>;
+  title: string;
+  description: string | React.ReactNode;
+  code: React.ReactNode;
+  installationSource: string;
+  props: Array<{
+    name: string;
+    type: string;
+    default: string;
+    description: string;
+    required: boolean;
+  }>;
 }
 
 export default function ExternalLinkIconPreviewWrapper({
-    title,
-    description,
-    code,
-    installationSource,
-    props,
+  title,
+  description,
+  code,
+  installationSource,
+  props,
 }: ExternalLinkIconPreviewWrapperProps) {
-    return (
-        <>
-            <ViewArea
-                title={title}
-                description={description}
-                preview={
-                    <div className="w-full h-[300px] flex justify-center items-center">
-                        <ExternalLinkIconDemo />
-                    </div>
-                }
-                code={code}
-            />
+  return (
+    <>
+      <ViewArea
+        title={title}
+        description={description}
+        preview={
+          <div className="w-full h-[300px] flex justify-center items-center">
+            <ExternalLinkIconDemo />
+          </div>
+        }
+        code={code}
+      />
 
-            {/* Installation Section */}
-            <InstallationSection componentSource={installationSource} componentName="external-link-icon" />
+      {/* Installation Section */}
+      <InstallationSection
+        componentSource={installationSource}
+        componentName="external-link-icon"
+      />
 
-            {/* Main Props Section */}
-            <PropsTable props={props} />
-        </>
-    );
+      {/* Main Props Section */}
+      <PropsTable props={props} />
+    </>
+  );
 }

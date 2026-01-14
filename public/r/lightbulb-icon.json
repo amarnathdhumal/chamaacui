@@ -3,9 +3,7 @@
   "name": "lightbulb-icon",
   "title": "Lightbulb Icon",
   "description": "An animated lightbulb icon with pulsing rays.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/lightbulb-icon.tsx",

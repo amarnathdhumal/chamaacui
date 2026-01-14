@@ -3,9 +3,7 @@
   "name": "adjustments-icon",
   "title": "Adjustments Icon",
   "description": "An animated adjustments/settings icon with smooth motion effects.",
-  "dependencies": [
-    "motion"
-  ],
+  "dependencies": ["motion"],
   "files": [
     {
       "path": "registry/chamaac/animated-icons/adjustments-icon.tsx",
