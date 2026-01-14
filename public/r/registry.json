@@ -4,6 +4,23 @@
   "homepage": "https://chamaac.com",
   "items": [
     {
+      "name": "stats-cards",
+      "type": "registry:component",
+      "title": "Stats Cards",
+      "description": "A set of animated statistic cards with hover effects.",
+      "dependencies": [
+        "motion",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/stats-cards/stats-cards.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "interactive-grid-background",
       "type": "registry:component",
       "title": "Interactive Grid Background",
