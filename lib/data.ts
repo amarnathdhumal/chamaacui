@@ -73,7 +73,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Gif Text",
     link: "/text-animations/gif-text",
     category: "Text Animations",
-    isNew: true,
   },
 
   // inputs
@@ -101,6 +100,12 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Gauge",
     link: "/sections/gauge",
     category: "Sections",
+  },
+  {
+    componentName: "Stats Cards",
+    link: "/sections/stats-cards",
+    category: "Sections",
+    isNew: true,
   },
 
   // carousels
@@ -150,9 +155,18 @@ export const componentCards: ComponentCardType[] = [
     bgColor: "bg-black dark:bg-black",
   },
   {
+    title: "Stats Cards",
+    description: "A set of animated statistic cards with hover effects.",
+    imagePath: "/components/stats-cards.png",
+    videoSrc: " https://assets.amarn.me/stats-card.mp4",
+    link: "/components/sections/stats-cards",
+    category: "Sections",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
     title: "Gauge",
     description: "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
-    imagePath: "/components/gauge.png",
+    imagePath: "/components/sections/gauge.png",
     videoSrc: "https://assets.amarn.me/gauge.mp4",
     link: "/components/sections/gauge",
     category: "Sections",
