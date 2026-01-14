@@ -3,7 +3,11 @@ import GifText from "./gif-text";
 function GifTextDemo() {
   return (
     <div className="w-full h-[300px] md:h-[500px] relative ">
-      <GifText text="OCEAN" containerClassName="h-full" />
+      <GifText
+        text="OCEAN"
+        gif="https://assets.amarn.me/gif-text.gif"
+        containerClassName="h-full"
+      />
     </div>
   );
 }

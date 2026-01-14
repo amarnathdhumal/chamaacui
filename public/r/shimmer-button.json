@@ -3,11 +3,14 @@
   "name": "shimmer-button",
   "title": "Shimmer Button",
   "description": "A button with a shimmer animation effect.",
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
   "files": [
     {
       "path": "registry/chamaac/shimmer-button/shimmer-button.tsx",
-      "content": "\"use client\";\n\nimport { motion } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface ShimmerButtonProps {\n    text?: string;\n    className?: string;\n    duration?: number;\n    onClick?: () => void;\n}\n\nconst ShimmerButton = ({\n    text = \"Book a Free Call\",\n    className,\n    duration = 1.2,\n    onClick,\n}: ShimmerButtonProps) => {\n    return (\n        <button onClick={onClick} className={cn(\"group relative  bg-neutral-950 px-8 py-3 rounded-full cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98]\", className)}>\n\n            <motion.span\n                className=\"relative block bg-clip-text text-transparent bg-[linear-gradient(110deg,#a1a1aa_0%,#a1a1aa_40%,#ffffff_50%,#a1a1aa_60%,#a1a1aa_100%)] bg-[length:200%_100%] font-medium text-base tracking-tight\"\n                animate={{\n                    backgroundPosition: [\"0% 0%\", \"-200% 0%\"],\n                }}\n                transition={{\n                    repeat: Infinity,\n                    duration: duration,\n                    ease: \"linear\",\n                }}\n            >\n                {text}\n            </motion.span>\n        </button>\n    );\n};\n\nexport default ShimmerButton;\n",
+      "content": "\"use client\";\n\nimport { motion } from \"motion/react\";\nimport { cn } from \"@/lib/utils\";\n\ninterface ShimmerButtonProps {\n  text?: string;\n  className?: string;\n  duration?: number;\n  onClick?: () => void;\n}\n\nconst ShimmerButton = ({\n  text = \"Book a Free Call\",\n  className,\n  duration = 1.2,\n  onClick,\n}: ShimmerButtonProps) => {\n  return (\n    <button\n      onClick={onClick}\n      className={cn(\n        \"group relative  bg-neutral-950 px-8 py-3 rounded-full cursor-pointer transition-all hover:scale-[1.02] active:scale-[0.98]\",\n        className\n      )}\n    >\n      <motion.span\n        className=\"relative block bg-clip-text text-transparent bg-[linear-gradient(110deg,#a1a1aa_0%,#a1a1aa_40%,#ffffff_50%,#a1a1aa_60%,#a1a1aa_100%)] bg-[length:200%_100%] font-medium text-base tracking-tight\"\n        animate={{\n          backgroundPosition: [\"0% 0%\", \"-200% 0%\"],\n        }}\n        transition={{\n          repeat: Infinity,\n          duration: duration,\n          ease: \"linear\",\n        }}\n      >\n        {text}\n      </motion.span>\n    </button>\n  );\n};\n\nexport default ShimmerButton;\n",
       "type": "registry:component"
     }
   ],

@@ -1,4 +1,7 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 interface GifTextProps {
   /**
@@ -21,10 +24,25 @@ interface GifTextProps {
 
 const GifText = ({
   text = "CHAMAAC",
-  gif = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2JlbXczemI2YnByaXhrN3ZmbmppdGthMjczdHVlaDVucWxpMzcwNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hTBdZxUHG2r0XwLFSL/giphy.gif",
+  gif = "https://assets.amarn.me/gif-text.gif",
   className,
   containerClassName,
 }: GifTextProps) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!gif) return;
+
+    setLoading(true);
+    const img = new Image();
+    img.src = gif;
+    img.onload = () => setLoading(false);
+
+    return () => {
+      img.onload = null;
+    };
+  }, [gif]);
+
   return (
     <div
       className={cn(
@@ -34,13 +52,16 @@ const GifText = ({
     >
       <h2
         className={cn(
-          "text-[clamp(80px,12vw,150px)] font-extrabold text-transparent bg-clip-text bg-cover bg-center bg-no-repeat select-none text-center leading-tight uppercase",
+          "text-[clamp(80px,12vw,150px)] font-extrabold select-none text-center leading-tight uppercase transition-colors duration-300",
+          loading
+            ? "text-neutral-400 animate-pulse duration-100"
+            : "text-transparent bg-clip-text bg-cover bg-center bg-no-repeat",
           className
         )}
         style={{
-          backgroundImage: `url(${gif})`,
-          WebkitBackgroundClip: "text",
-          backgroundClip: "text",
+          backgroundImage: loading ? "none" : `url(${gif})`,
+          WebkitBackgroundClip: loading ? "none" : "text",
+          backgroundClip: loading ? "none" : "text",
         }}
       >
         {text}
