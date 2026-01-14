@@ -36,8 +36,8 @@ export default function StatsCardsPreviewWrapper({
                 preview={
                     <div className="w-full flex justify-center items-center overflow-hidden h-full min-h-[500px] bg-orange-50 py-4">
                         <StatsCards
-                            width="w-64"
-                            height="h-78"
+                            width="w-58"
+                            height="h-70"
                         />
                     </div>
                 }
