@@ -7,6 +7,7 @@ export default function StatsCardsDemo() {
             <StatsCards
                 width="w-70"
                 height="h-84"
+                images={["/images/models/1.png", "/images/models/2.png"]}
             />
         </div>
     );

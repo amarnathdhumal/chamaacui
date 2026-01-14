@@ -12,9 +12,15 @@ interface StatsCardsProps {
     className?: string;
     width?: string;
     height?: string;
+    images?: string[];
 }
 
-export function StatsCards({ className, width = "w-70", height = "h-84" }: StatsCardsProps) {
+export function StatsCards({
+    className,
+    width = "w-70",
+    height = "h-84",
+    images = ["/images/models/1.png", "/images/models/2.png"]
+}: StatsCardsProps) {
     return (
         <div className={cn("flex flex-wrap items-center justify-center gap-6 sm:gap-4 md:gap-0 px-4 py-4 bg-orange-50", inter.className, className)}>
             {/* Card 1: Revenue */}
@@ -47,7 +53,7 @@ export function StatsCards({ className, width = "w-70", height = "h-84" }: Stats
                 whileHover={{ rotate: 0, scale: 1.05, transition: { duration: 0.3, ease: "easeInOut" } }}
             >
                 <Image
-                    src="/images/models/2.png"
+                    src={images[0]}
                     alt="Model"
                     fill
                     className="object-cover"
@@ -87,7 +93,7 @@ export function StatsCards({ className, width = "w-70", height = "h-84" }: Stats
                 whileHover={{ rotate: 0, scale: 1.05, transition: { duration: 0.3, ease: "easeInOut" } }}
             >
                 <Image
-                    src="/images/models/1.png"
+                    src={images[1]}
                     alt="Campaign"
                     fill
                     className="object-cover"
