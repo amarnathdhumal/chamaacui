@@ -13,77 +13,52 @@ const bentoItems: BentoItem[] = [
   {
     title: "Interactive Grid",
     videoSrc: "https://assets.amarn.me/interactive-grid.mp4",
-    className: "md:col-span-6 md:row-span-2",
+    className: "md:col-span-5 md:row-span-2",
   },
 
-  {
-    title: "Stats Cards",
-    videoSrc: " https://assets.amarn.me/stats-card.mp4",
-    className: "md:col-span-4",
-  },
-
-  {
-    title: "Gauge",
-    videoSrc: "https://assets.amarn.me/gauge.mp4",
-    className: "md:col-span-6 row-span-2",
-  },
-
-  {
-    title: "Animated Icons",
-    videoSrc: "https://assets.amarn.me/animated-iconsv2.mp4",
-    className: "md:col-span-1 md:row-span-2",
-  },
-
-  {
-    title: "Dock",
-    videoSrc: "https://assets.amarn.me/dock.mp4",
-    className: "md:col-span-4",
-  },
-  {
-    title: "Carousel",
-    videoSrc: "https://assets.amarn.me/carousel.mp4",
-    className: "md:col-span-4",
-  },
-  {
-    title: "Dancing Letters",
-    videoSrc: "https://assets.amarn.me/dancing-letters.mp4",
-    className: "md:col-span-4",
-  },
-
-  {
-    title: "Gif Text",
-    videoSrc: "https://assets.amarn.me/gif-text.mp4",
-    className: "md:col-span-4",
-  },
-  {
-    title: "Shimmer Button",
-    videoSrc: "https://assets.amarn.me/shimmer-button.mp4",
-    className: "md:col-span-4",
-  },
-  {
-    title: "Slide Up Button",
-    videoSrc: "https://assets.amarn.me/slideup-button.mp4",
-    className: "md:col-span-4",
-  },
-  {
-    title: "Focus Button",
-    videoSrc: "https://assets.amarn.me/focus-button.mp4",
-    className: "md:col-span-4",
-  },
-  {
-    title: "Neo Brutalist Button",
-    videoSrc: "https://assets.amarn.me/neo-brutalist-button.mp4",
-    className: "md:col-span-4",
-  },
   {
     title: "Premium Button",
     videoSrc: "https://assets.amarn.me/premium_button.mp4",
     className: "md:col-span-3 md:row-span-1",
   },
+
+  {
+    title: "Stats Cards",
+    videoSrc: " https://assets.amarn.me/stats-card.mp4",
+    className: "md:col-span-4 ",
+  },
+  {
+    title: "Carousel",
+    videoSrc: "https://assets.amarn.me/carousel.mp4",
+
+    className: "md:col-span-4 md:row-span-1",
+  },
   {
     title: "Glowing Border Button",
     videoSrc: "https://assets.amarn.me/glowing-border-button.mp4",
     className: "md:col-span-3",
+  },
+
+  {
+    title: "Dancing Letters",
+    videoSrc: "https://assets.amarn.me/dancing-letters.mp4",
+    className: "md:col-span-3",
+  },
+  {
+    title: "Dock",
+
+    videoSrc: "https://assets.amarn.me/dock.mp4",
+    className: "md:col-span-4",
+  },
+  {
+    title: "Gauge",
+    videoSrc: "https://assets.amarn.me/gauge.mp4",
+    className: "md:col-span-5 row-span-2 ",
+  },
+  {
+    title: "Animated Icons",
+    videoSrc: "https://assets.amarn.me/animated-iconsv2.mp4",
+    className: "md:col-span-7 row-span-1",
   },
 ];
 
@@ -93,7 +68,7 @@ function BentoCard({ item }: { item: BentoItem }) {
   return (
     <div
       className={cn(
-        "group relative overflow-hidden rounded-[15px] shadow-sm shadow-black/10 dark:shadow-white/10 ring-1 ring-black/10 dark:ring-white/10",
+        "group relative overflow-hidden rounded-[15px] border dark:border-white/15 border-black/15 ",
         "transition-all duration-300",
         item.className
       )}
@@ -135,7 +110,7 @@ function BentoCard({ item }: { item: BentoItem }) {
 
 export default function VideoBentoGrid() {
   return (
-    <section className="w-full py-12 md:py-20">
+    <section className="w-full py-10 ">
       <div className="max-w-[1440px] mx-auto">
         <div className="grid  grid-cols-12 auto-rows-[180px] md:auto-rows-[200px] gap-4">
           {bentoItems.map((item, index) => (
