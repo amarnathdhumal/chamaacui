@@ -52,7 +52,7 @@ export default function HoverArrowButton({
             hover: { x: 0, opacity: 1 },
           }}
           transition={{
-            duration: 0.4,
+            duration: duration,
             ease: [0.165, 0.84, 0.44, 1],
           }}
         >
@@ -83,7 +83,7 @@ export default function HoverArrowButton({
             hover: { x: "200%", opacity: 0 },
           }}
           transition={{
-            duration: duration - 0.1, // Faster exit
+            duration: duration, // Faster exit
             ease: [0.165, 0.84, 0.44, 1],
           }}
         >
