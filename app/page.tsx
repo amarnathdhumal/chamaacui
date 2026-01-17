@@ -2,7 +2,7 @@ import { Header } from "./components/header";
 import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import Link from "next/link";
 import TextLoop from "./components/text-animations/text-loop/text-loop";
-import VideoBentoGrid from "./components/video-bento-grid";
+import VideoBentoGrid from "../components/ui/video-bento-grid";
 
 export default function Home() {
   return (

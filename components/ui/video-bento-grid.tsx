@@ -90,7 +90,7 @@ function BentoCard({ item }: { item: BentoItem }) {
     <Link
       href={item.href}
       className={cn(
-        "group relative overflow-hidden rounded-[15px] border dark:border-white/10 border-black/10 ",
+        "group relative overflow-hidden rounded-[15px] border border-border ",
         "transition-all duration-300",
         item.className
       )}
@@ -150,7 +150,7 @@ export default function VideoBentoGrid() {
                 px-4 py-2 md:px-6 md:py-3
                 bg-black dark:bg-white text-white dark:text-black text-sm md:text-base  "
           >
-            Explore Components
+            View all components
           </SlideUpButton>
         </Link>
       </div>

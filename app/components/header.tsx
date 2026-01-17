@@ -135,19 +135,12 @@ export const Header = () => {
               Components
             </Link>
 
-            {/* search input */}
-            <button
-              onClick={() => setOpen(true)}
-              className="flex items-center gap-2 px-2 md:px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[16px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-500 dark:text-gray-400"
+            <Link
+              href="/components"
+              className="text-sm/5 md:text-base/7 text-black dark:text-white"
             >
-              <IconSearch size={16} />
-              <span className="hidden lg:inline-block text-sm/5 ">
-                Search Components
-              </span>
-              <kbd className="pointer-events-none lg:inline-flex h-5 select-none items-center gap-1 rounded-[8px] border bg-gray-50 dark:bg-[#111111] px-2 py-2 text-[12px] text-neutral-500 dark:text-gray-400 opacity-100 hidden">
-                <span className="">⌘</span>K
-              </kbd>
-            </button>
+              Sponsor
+            </Link>
 
             <IconBrandGithub
               onClick={() =>
@@ -168,6 +161,20 @@ export const Header = () => {
               onClick={toggleTheme}
               className="text-neutral-500 dark:text-gray-400 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
             />
+
+            {/* search input */}
+            <button
+              onClick={() => setOpen(true)}
+              className="flex items-center gap-2 px-2 md:px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[16px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-500 dark:text-gray-400"
+            >
+              <IconSearch size={16} />
+              <span className="hidden lg:inline-block text-sm/5 ">
+                Search Components
+              </span>
+              <kbd className="pointer-events-none lg:inline-flex h-5 select-none items-center gap-1 rounded-[8px] border bg-gray-50 dark:bg-[#111111] px-2 py-2 text-[12px] text-neutral-500 dark:text-gray-400 opacity-100 hidden">
+                <span className="">⌘</span>K
+              </kbd>
+            </button>
           </div>
 
           {/* Mobile Navigation - Only search, GitHub, and menu */}
