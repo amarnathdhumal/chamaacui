@@ -63,13 +63,13 @@ const bentoItems: BentoItem[] = [
     title: "Gauge",
     videoSrc: "https://assets.amarn.me/gauge.mp4",
     href: "/components/sections/gauge",
-    className: "md:col-span-5 row-span-2 ",
+    className: "md:col-span-5 md:row-span-2 ",
   },
   {
     title: "Animated Icons",
     videoSrc: "https://assets.amarn.me/animated-icons2.mp4",
     href: "/components/animated-icons",
-    className: "md:col-span-7 row-span-1",
+    className: "md:col-span-7 rmd:ow-span-1",
   },
 ];
 
@@ -134,14 +134,17 @@ function BentoCard({ item }: { item: BentoItem }) {
 
 export default function VideoBentoGrid() {
   return (
-    <section className="w-full py-10 ">
+    <section className="w-full py-0 md:py-10 ">
       <div className="max-w-[1440px] mx-auto">
-        <div className="grid  grid-cols-12 auto-rows-[180px] md:auto-rows-[200px] gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-12 h-full auto-rows-[180px] md:auto-rows-[200px] gap-4">
           {bentoItems.map((item, index) => (
             <BentoCard key={index} item={item} />
           ))}
         </div>
-        <Link href="/components" className="flex justify-center mt-10">
+        <Link
+          href="/components"
+          className="flex justify-center mt-5 md:mt-10 mb-10 md:mb-0 w-fit items-center mx-auto"
+        >
           <SlideUpButton
             className="
                 px-4 py-2 md:px-6 md:py-3
