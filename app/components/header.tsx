@@ -136,7 +136,9 @@ export const Header = () => {
             </Link>
 
             <Link
-              href="/components"
+              href="https://github.com/sponsors/amarnathdhumal"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm/5 md:text-base/7 text-black dark:text-white"
             >
               Sponsor
