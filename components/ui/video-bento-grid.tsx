@@ -150,7 +150,7 @@ export default function VideoBentoGrid() {
                 px-4 py-2 md:px-6 md:py-3
                 bg-black dark:bg-white text-white dark:text-black text-sm md:text-base  "
           >
-            View all components
+            View All Components
           </SlideUpButton>
         </Link>
       </div>
