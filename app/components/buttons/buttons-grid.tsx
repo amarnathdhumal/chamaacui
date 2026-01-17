@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import ShimmerButton from "@/registry/chamaac/shimmer-button/shimmer-button";
+import HoverArrowButton from "@/registry/chamaac/hover-arrow-button/hover-arrow-button";
 import FocusButton from "./focus-button/focus-button";
 import NeoBrutalistButton from "@/registry/chamaac/neo-brutalist-button/neo-brutalist-button";
 import PremiumButton from "@/registry/chamaac/premium-button/premium-button";
@@ -70,6 +71,14 @@ const buttons: ButtonTypes[] = [
       children: "Contact us",
     },
   },
+  {
+    name: "Hover Arrow Button",
+    component: HoverArrowButton,
+    href: "/components/buttons/hover-arrow-button",
+    props: {
+      text: "Get Started",
+    },
+  },
 ];
 
 export default function ButtonsGrid() {
@@ -85,7 +94,7 @@ export default function ButtonsGrid() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
         {buttons.map((button) => (
           <motion.div
             key={button.name}

@@ -56,7 +56,12 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "/buttons/neo-brutalist-button",
     category: "Buttons",
   },
-
+  {
+    componentName: "Hover Arrow",
+    link: "/buttons/hover-arrow-button",
+    category: "Buttons",
+    isNew: true,
+  },
   // text animations
   {
     componentName: "Text Loop",
@@ -132,7 +137,7 @@ export const componentCards: ComponentCardType[] = [
     description:
       "A collection of smooth, micro-interaction animations for your icons.",
     imagePath: "/components/animated-icons.png",
-    videoSrc: "https://assets.amarn.me/animated-iconsv2.mp4",
+    videoSrc: "https://assets.amarn.me/animated-icons2.mp4",
     link: "/components/animated-icons",
     category: "Animated Icons",
     bgColor: "bg-black dark:bg-black",
@@ -244,12 +249,42 @@ export const componentCards: ComponentCardType[] = [
     bgColor: "bg-black dark:bg-black",
   },
   {
+    title: "Carousel",
+    description:
+      "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
+    imagePath: "/components/carousel.png",
+    videoSrc: "https://assets.amarn.me/carousel2.mp4",
+    link: "/components/carousels/carousel",
+    category: "Carousels",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "Dock",
+    description:
+      "A navigation dock component with smooth animations and hover effects, perfect for desktop interfaces.",
+    imagePath: "/components/navigation/dock.png",
+    videoSrc: "https://assets.amarn.me/dock2.mp4",
+    link: "/components/navigation/dock",
+    category: "Navigation",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
     title: "Slide Up Button",
     description:
       "A collection of interactive and animated buttons for your applications.",
     imagePath: "/components/slide-up-button.png",
     videoSrc: "https://assets.amarn.me/slide-up-button.mp4",
     link: "/components/buttons/slideup-button",
+    category: "Buttons",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "Hover Arrow Button",
+    description:
+      "A button with a smooth hover swap animation where the arrow slides from left to right.",
+    imagePath: "/components/buttons/hover-arrow-button.png",
+    videoSrc: "https://assets.amarn.me/hover-arrow-button.mp4",
+    link: "/components/buttons/hover-arrow-button",
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
   },
@@ -263,26 +298,7 @@ export const componentCards: ComponentCardType[] = [
     category: "Buttons",
     bgColor: "bg-black dark:bg-black",
   },
-  {
-    title: "Carousel",
-    description:
-      "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
-    imagePath: "/components/carousel.png",
-    videoSrc: "https://assets.amarn.me/carousel.mp4",
-    link: "/components/carousels/carousel",
-    category: "Carousels",
-    bgColor: "bg-black dark:bg-black",
-  },
-  {
-    title: "Dock",
-    description:
-      "A navigation dock component with smooth animations and hover effects, perfect for desktop interfaces.",
-    imagePath: "/components/navigation/dock.png",
-    videoSrc: "https://assets.amarn.me/dock.mp4",
-    link: "/components/navigation/dock",
-    category: "Navigation",
-    bgColor: "bg-black dark:bg-black",
-  },
+
   {
     title: "Feature Steps",
     description:

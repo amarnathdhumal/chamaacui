@@ -1,17 +1,9 @@
-import { constructMetadata } from "@/lib/utils";
-import AnimatedIconsGrid from "../components/animated-icons/animated-icons-grid";
+import HoverArrowButton from "@/registry/chamaac/hover-arrow-button/hover-arrow-button";
 
-export const metadata = constructMetadata({
-  title: "Animated Icons",
-  description:
-    "A collection of smooth, micro-interaction animations for your icons.",
-  image: "/components/animated-icons.png",
-});
-
-export default function AnimatedIconsPage() {
+export default function Test() {
   return (
-    <div className="px-30">
-      <AnimatedIconsGrid />
+    <div className="flex justify-center items-center h-screen">
+      <HoverArrowButton />
     </div>
   );
 }
