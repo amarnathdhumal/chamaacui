@@ -23,7 +23,7 @@ const ViewArea = ({
       <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">
         {title}
       </h1>
-      <p className="text-base/5 md:text-lg/7 text-neutral-500 dark:text-gray-400 tracking-tight mt-2 md:mt-4 mb-5 md:mb-10  max-w-[750px]">
+      <p className="text-base/5 md:text-lg/7 text-neutral-600 dark:text-gray-300 tracking-tight mt-2 md:mt-4 mb-5 md:mb-10  max-w-[750px]">
         {description}
       </p>
       <div className="flex flex-row gap-4 mb-4">
@@ -42,7 +42,7 @@ const ViewArea = ({
           layoutId="viewAreaTab"
         />
       </div>
-      <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden w-full ">
+      <div className="border border-border rounded-[16px] overflow-hidden w-full ">
         {activeTab === "preview" ? (
           <div
             ref={scrollContainerRef}

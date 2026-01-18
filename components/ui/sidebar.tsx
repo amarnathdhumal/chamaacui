@@ -89,7 +89,7 @@ const Sidebar = () => {
                         href={href}
                         className={cn(
                           "cursor-pointer font-normal text-sm/5 flex flex-row items-center hover:text-black dark:hover:text-white hover:font-medium",
-                          `${isActive ? "text-black dark:text-white font-medium" : "text-gray-600 dark:text-gray-400"}`
+                          `${isActive ? "text-black dark:text-white font-medium" : "text-neutral-600 dark:text-gray-300"}`
                         )}
                       >
                         {item.componentName}

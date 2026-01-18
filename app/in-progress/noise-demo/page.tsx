@@ -7,7 +7,7 @@ export default function NoiseDemoPage() {
           <h1 className="text-5xl font-bold text-white">
             Figma Noise Effect in Code
           </h1>
-          <p className="text-xl text-gray-400">
+          <p className="text-xl text-neutral-600 dark:text-gray-300">
             Using SVG filters to create that signature grainy texture
           </p>
         </div>

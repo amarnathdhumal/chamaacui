@@ -1,0 +1,449 @@
+"use client";
+
+import { useState } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CopyButton from "@/components/ui/copy-button";
+import Link from "next/link";
+import { IconArrowRight, IconBrandGithub } from "@tabler/icons-react";
+import AnimatedTabs from "@/components/ui/animated-tabs";
+import PackageManagerSelector, {
+  PackageManager,
+} from "@/components/ui/package-manager-selector";
+
+type InstallMethod = "cli" | "manual" | "mcp";
+
+const mcpRegistryCode = `{
+  "registries": {
+    "@chamaac": "https://chamaac.com/r/{name}.json"
+  }
+}`;
+
+const utilsCode = `import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}`;
+
+const usageCode = `import SlideUpButton from "@/components/ui/slideup-button";
+
+export default function MyPage() {
+  return (
+    <SlideUpButton className="px-6 py-3 bg-black text-white">
+      Click Me
+    </SlideUpButton>
+  );
+}`;
+
+export default function GetStartedPage() {
+  const [installMethod, setInstallMethod] = useState<InstallMethod>("cli");
+  const [activePm, setActivePm] = useState<PackageManager>("npm");
+
+  const getCliCommand = (pm: PackageManager) => {
+    switch (pm) {
+      case "npm":
+        return `npx shadcn@latest init`;
+      case "bun":
+        return `bunx shadcn@latest init`;
+      case "pnpm":
+        return `pnpm dlx shadcn@latest init`;
+      case "yarn":
+        return `npx shadcn@latest init`;
+    }
+  };
+
+  const getInstallCommand = (pm: PackageManager) => {
+    const deps = "motion clsx tailwind-merge";
+    switch (pm) {
+      case "npm":
+        return `npm install ${deps}`;
+      case "bun":
+        return `bun add ${deps}`;
+      case "pnpm":
+        return `pnpm add ${deps}`;
+      case "yarn":
+        return `yarn add ${deps}`;
+    }
+  };
+
+  const cliCommand = getCliCommand(activePm);
+  const manualCommand = getInstallCommand(activePm);
+
+  return (
+    <div className="relative min-h-screen w-full dark:bg-black bg-white overflow-x-hidden flex flex-col ">
+      <main className="flex-1">
+        <div className="max-w-3xl">
+          {/* Hero */}
+          <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">
+            Get Started
+          </h1>
+          <p className="text-base/5 md:text-lg/7 text-neutral-600 dark:text-gray-300 tracking-tight mt-2 md:mt-4 mb-10 max-w-[750px]">
+            Welcome to Chamaac UI! This guide will help you set up and start
+            using our beautiful, animated components in your project.
+          </p>
+
+          {/* Installation Section */}
+          <section className="mb-10 md:mb-15">
+            <h2 className="text-2xl/7 md:text-3xl/7 tracking-tight text-black dark:text-white mb-4 font-semibold">
+              Installation
+            </h2>
+
+            {/* CLI/Manual Tabs */}
+            <div className="mb-5 md:mb-10 mt-6">
+              <AnimatedTabs
+                layoutId="getStartedInstallMethod"
+                activeTab={installMethod}
+                onTabChange={(val) => setInstallMethod(val as InstallMethod)}
+                tabs={[
+                  { label: "CLI", value: "cli" },
+                  { label: "Manual", value: "manual" },
+                  { label: "MCP", value: "mcp" },
+                ]}
+              />
+
+              <div className="mt-4">
+                {installMethod === "cli" && (
+                  <div className="flex flex-col gap-6">
+                    {/* Step 1: Init shadcn */}
+                    <div>
+                      <h4 className="text-lg font-medium text-black dark:text-white mb-4">
+                        Step 1: Initialize shadcn/ui (if not already done)
+                      </h4>
+                      <div className="border border-border rounded-[16px] overflow-hidden">
+                        <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-border">
+                          <PackageManagerSelector
+                            activePm={activePm}
+                            onPmChange={setActivePm}
+                            layoutId="getStartedCliPm"
+                          />
+                        </div>
+                        <div className="relative bg-white dark:bg-neutral-950">
+                          <div className="absolute top-4 right-4">
+                            <CopyButton text={cliCommand} />
+                          </div>
+                          <div className="p-4">
+                            <code className="text-sm font-mono text-neutral-500 dark:text-neutral-200">
+                              {cliCommand}
+                            </code>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Step 2: Add components */}
+                    <div>
+                      <h4 className="text-lg font-medium text-black dark:text-white mb-4">
+                        Step 2: Add components from Chamaac UI
+                      </h4>
+                      <p className="text-base/6 text-neutral-600 dark:text-gray-300 mb-4">
+                        Browse our components and use the CLI command shown on
+                        each component page to add it to your project.
+                      </p>
+                      <div className="border border-border rounded-[16px] overflow-hidden">
+                        <div className="relative bg-white dark:bg-neutral-950">
+                          <div className="absolute top-4 right-4">
+                            <CopyButton
+                              text={`${activePm === "npm" ? "npx" : activePm === "bun" ? "bunx" : activePm === "pnpm" ? "pnpm dlx" : "npx"} shadcn@latest add https://chamaac.com/r/<Component>.json`}
+                            />
+                          </div>
+                          <div className="p-4">
+                            <code className="text-sm font-mono text-neutral-500 dark:text-neutral-200">
+                              {activePm === "npm"
+                                ? "npx"
+                                : activePm === "bun"
+                                  ? "bunx"
+                                  : activePm === "pnpm"
+                                    ? "pnpm dlx"
+                                    : "npx"}{" "}
+                              shadcn@latest add https://chamaac.com/r/
+                              {"<Component>"}.json
+                            </code>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {installMethod === "manual" && (
+                  <div className="flex flex-col gap-6">
+                    {/* Step 1: Install Dependencies */}
+                    <div>
+                      <h4 className="text-lg font-medium text-black dark:text-white mb-4">
+                        Step 1: Install Dependencies
+                      </h4>
+                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
+                        Most Chamaac UI components use{" "}
+                        <code className="px-1.5 py-0.5 rounded-md bg-neutral-200 dark:bg-neutral-800 text-sm font-mono">
+                          motion/react
+                        </code>{" "}
+                        for animations.
+                      </p>
+                      <div className="border border-border rounded-[16px] overflow-hidden">
+                        <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-border">
+                          <PackageManagerSelector
+                            activePm={activePm}
+                            onPmChange={setActivePm}
+                            layoutId="getStartedManualPm"
+                          />
+                        </div>
+                        <div className="relative bg-white dark:bg-neutral-950">
+                          <div className="absolute top-4 right-4">
+                            <CopyButton text={manualCommand} />
+                          </div>
+                          <div className="p-4">
+                            <code className="text-sm font-mono text-neutral-500 dark:text-neutral-200">
+                              {manualCommand}
+                            </code>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Step 2: Add cn utility */}
+                    <div>
+                      <h4 className="text-lg font-medium text-black dark:text-white mb-4">
+                        Step 2: Add the cn utility
+                      </h4>
+                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
+                        Create a{" "}
+                        <code className="px-1.5 py-0.5 rounded-md bg-neutral-200 dark:bg-neutral-800 text-sm font-mono">
+                          lib/utils.ts
+                        </code>{" "}
+                        file with the following helper function:
+                      </p>
+                      <div className="bg-white dark:bg-neutral-950 max-h-[250px] overflow-auto hide-scrollbar border border-border rounded-[16px]">
+                        <div className="relative">
+                          <div className="absolute top-4 right-4">
+                            <CopyButton text={utilsCode} />
+                          </div>
+                          <SyntaxHighlighter
+                            language="tsx"
+                            style={oneDark}
+                            wrapLongLines={true}
+                            customStyle={{
+                              margin: 0,
+                              padding: "1rem",
+                              fontSize: "14px",
+                              lineHeight: "1.5",
+                              width: "100%",
+                              maxWidth: "100%",
+                              boxSizing: "border-box",
+                              overflow: "auto",
+                              scrollbarWidth: "none",
+                              msOverflowStyle: "none",
+                            }}
+                          >
+                            {utilsCode}
+                          </SyntaxHighlighter>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Step 3: Copy component */}
+                    <div>
+                      <h4 className="text-lg font-medium text-black dark:text-white mb-4">
+                        Step 3: Copy the component
+                      </h4>
+                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
+                        Browse our components, find one you like, and copy the
+                        source code into{" "}
+                        <code className="px-1.5 py-0.5 rounded-md bg-neutral-200 dark:bg-neutral-800 text-sm font-mono">
+                          components/ui
+                        </code>
+                        .
+                      </p>
+                    </div>
+
+                    {/* Step 4: Import and use */}
+                    <div>
+                      <h4 className="text-lg font-medium text-black dark:text-white mb-4">
+                        Step 4: Import and use
+                      </h4>
+                      <div className="bg-white dark:bg-neutral-950 max-h-[250px] overflow-auto hide-scrollbar border border-border rounded-[16px]">
+                        <div className="relative">
+                          <div className="absolute top-4 right-4">
+                            <CopyButton text={usageCode} />
+                          </div>
+                          <SyntaxHighlighter
+                            language="tsx"
+                            style={oneDark}
+                            wrapLongLines={true}
+                            customStyle={{
+                              margin: 0,
+                              padding: "1rem",
+                              fontSize: "14px",
+                              lineHeight: "1.5",
+                              width: "100%",
+                              maxWidth: "100%",
+                              boxSizing: "border-box",
+                              overflow: "auto",
+                              scrollbarWidth: "none",
+                              msOverflowStyle: "none",
+                            }}
+                          >
+                            {usageCode}
+                          </SyntaxHighlighter>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {installMethod === "mcp" && (
+                  <div className="flex flex-col gap-6">
+                    {/* What is MCP */}
+                    <div>
+                      <p className="text-base/6 text-neutral-600 dark:text-gray-300 mb-4">
+                        MCP (Model Context Protocol) allows AI assistants to
+                        understand and work with Chamaac UI components directly
+                        in your IDE. Set it up once and use natural language to
+                        add components to your project.
+                      </p>
+                    </div>
+
+                    {/* Step 1: Initialize MCP */}
+                    <div>
+                      <h4 className="text-lg font-medium text-black dark:text-white mb-4">
+                        Step 1: Initialize MCP
+                      </h4>
+                      <p className="text-base/5 ttext-neutral-600 dark:text-gray-300 mb-4">
+                        Run this command to set up the shadcn MCP server for
+                        your AI client (Cursor, Claude Code, etc.):
+                      </p>
+                      <div className="border border-border rounded-[16px] overflow-hidden">
+                        <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-border">
+                          <PackageManagerSelector
+                            activePm={activePm}
+                            onPmChange={setActivePm}
+                            layoutId="getStartedMcpPm"
+                          />
+                        </div>
+                        <div className="relative bg-white dark:bg-neutral-950">
+                          <div className="absolute top-4 right-4">
+                            <CopyButton
+                              text={`${activePm === "npm" ? "npx" : activePm === "bun" ? "bunx" : activePm === "pnpm" ? "pnpm dlx" : "npx"} shadcn@latest mcp init`}
+                            />
+                          </div>
+                          <div className="p-4">
+                            <code className="text-sm font-mono text-neutral-500 dark:text-neutral-200">
+                              {activePm === "npm"
+                                ? "npx"
+                                : activePm === "bun"
+                                  ? "bunx"
+                                  : activePm === "pnpm"
+                                    ? "pnpm dlx"
+                                    : "npx"}{" "}
+                              shadcn@latest mcp init
+                            </code>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Step 2: Add Chamaac UI Registry */}
+                    <div>
+                      <h4 className="text-lg font-medium text-black dark:text-white mb-4">
+                        Step 2: Add Chamaac UI Registry
+                      </h4>
+                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
+                        Add the Chamaac UI registry to your{" "}
+                        <code className="px-1.5 py-0.5 rounded-md bg-neutral-200 dark:bg-neutral-800 text-sm font-mono">
+                          components.json
+                        </code>{" "}
+                        file so the AI can access all components:
+                      </p>
+                      <div className="bg-white dark:bg-neutral-950 max-h-[250px] overflow-auto hide-scrollbar border border-border rounded-[16px]">
+                        <div className="relative">
+                          <div className="absolute top-4 right-4">
+                            <CopyButton text={mcpRegistryCode} />
+                          </div>
+                          <SyntaxHighlighter
+                            language="json"
+                            style={oneDark}
+                            wrapLongLines={true}
+                            customStyle={{
+                              margin: 0,
+                              padding: "1rem",
+                              fontSize: "14px",
+                              lineHeight: "1.5",
+                              width: "100%",
+                              maxWidth: "100%",
+                              boxSizing: "border-box",
+                              overflow: "auto",
+                              scrollbarWidth: "none",
+                              msOverflowStyle: "none",
+                            }}
+                          >
+                            {mcpRegistryCode}
+                          </SyntaxHighlighter>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Step 3: Use with AI */}
+                    <div>
+                      <h4 className="text-lg font-medium text-black dark:text-white mb-4">
+                        Step 3: Use with your AI assistant
+                      </h4>
+                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
+                        Now you can ask your AI assistant to add components
+                        using natural language:
+                      </p>
+                      <div className="p-4 rounded-[16px] border border-border bg-neutral-50 dark:bg-neutral-900/50">
+                        <p className="text-neutral-700 dark:text-neutral-300 ">
+                          &quot;Add the SlideUpButton component from Chamaac
+                          UI&quot;
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </section>
+
+          {/* Next Steps */}
+          <section className="mb-10 md:mb-20">
+            <h2 className="text-[1.5rem]/8 md:text-[2rem]/10 font-semibold tracking-tight text-black dark:text-white">
+              Next Steps
+            </h2>
+            <p className="text-base/6 md:text-lg/7 text-neutral-600 dark:text-gray-300 tracking-tight mt-2  mb-4  max-w-[750px]">
+              You&apos;re all set! Here&apos;s what you can do next.
+            </p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Link
+                href="/components"
+                className="group p-4 rounded-[15px] border border-border transition-colors"
+              >
+                <h3 className="text-lg font-medium text-black dark:text-white mb-2 group-hover:underline flex gap-2 items-center">
+                  Browse Components
+                  <IconArrowRight className="size-5" />
+                </h3>
+                <p className="text-neutral-600 dark:text-gray-300 text-sm">
+                  Explore our collection of animated UI components.
+                </p>
+              </Link>
+              <a
+                href="https://github.com/amarnathdhumal/chamaacui"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-4 rounded-[15px] border border-border transition-colors"
+              >
+                <h3 className="text-lg font-medium text-black dark:text-white mb-2 group-hover:underline flex gap-2 items-center">
+                  <IconBrandGithub size={20} />
+                  GitHub Repository
+                  <IconArrowRight className="size-5" />
+                </h3>
+                <p className="text-neutral-600 dark:text-gray-300 text-sm">
+                  Star the repo, report issues, or contribute.
+                </p>
+              </a>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  );
+}

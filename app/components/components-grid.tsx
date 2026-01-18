@@ -33,11 +33,10 @@ const ComponentCard = ({
       <Link href={component.link}>
         <motion.div
           className={cn(
-            "group relative h-full rounded-[16px] border border-gray-200 dark:border-neutral-800 p-2",
+            "group relative h-full rounded-[16px] border border-border p-2",
             "bg-gray-50 dark:bg-neutral-900",
             "overflow-hidden cursor-pointer",
-            "transition-all duration-300",
-            " hover:border-gray-300 dark:hover:border-neutral-700"
+            "transition-all duration-300"
           )}
         >
           {/* Image Container */}
@@ -74,7 +73,7 @@ const ComponentCard = ({
             <h3 className="text-xl leading-none  font-medium text-black dark:text-white mb-2 md:mb-4  group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors tracking-[-0.01em]">
               {component.title}
             </h3>
-            <p className="text-sm/5 text-gray-600 dark:text-gray-400 tracking-wide ">
+            <p className="text-sm/5 text-neutral-600 dark:text-gray-300 tracking-wide ">
               {component.description}
             </p>
           </div>

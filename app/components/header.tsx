@@ -28,6 +28,16 @@ import {
 } from "@/components/ui/command";
 import { sidebarData } from "@/lib/data";
 
+const navLinks = [
+  { href: "/components/get-started", label: "Docs" },
+  { href: "/components", label: "Components" },
+  {
+    href: "https://github.com/sponsors/amarnathdhumal",
+    label: "Sponsor",
+    external: true,
+  },
+];
+
 const Logo = () => {
   return (
     <svg
@@ -110,7 +120,7 @@ export const Header = () => {
         }`}
       >
         <div className="flex justify-between items-center max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 py-4">
-          <div className="flex items-center gap-4 md:gap-15 flex-row relative z-10">
+          <div className="flex items-center gap-4 md:gap-8 flex-row relative z-10">
             <Link
               href="/"
               className="flex flex-row items-center gap-[8px] focus:outline-none focus-visible:outline-none"
@@ -124,25 +134,38 @@ export const Header = () => {
                 </p>
               </div>
             </Link>
+
+            {/* Desktop Nav Links */}
+            <div className="hidden sm:flex items-center gap-4 md:gap-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                  className="text-sm/5 md:text-base/7 text-black dark:text-white"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Right Icons */}
           <div className="hidden sm:flex items-center gap-2 md:gap-4 flex-row relative z-10">
-            <Link
-              href="/components"
-              className="text-sm/5 md:text-base/7 text-black dark:text-white"
+            {/* search input */}
+            <button
+              onClick={() => setOpen(true)}
+              className="flex items-center gap-2 px-2 md:px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[16px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-600 dark:text-gray-300"
             >
-              Components
-            </Link>
-
-            <Link
-              href="https://github.com/sponsors/amarnathdhumal"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm/5 md:text-base/7 text-black dark:text-white"
-            >
-              Sponsor
-            </Link>
+              <IconSearch size={16} />
+              <span className="hidden lg:inline-block text-sm/5 ">
+                Search Components
+              </span>
+              <kbd className="pointer-events-none lg:inline-flex h-5 select-none items-center gap-1 rounded-[8px] border bg-gray-50 dark:bg-[#111111] px-2 py-2 text-[12px] text-neutral-600 dark:text-gray-300 opacity-100 hidden">
+                <span className="">⌘</span>K
+              </kbd>
+            </button>
 
             <IconBrandGithub
               onClick={() =>
@@ -151,32 +174,18 @@ export const Header = () => {
                   "_blank"
                 )
               }
-              className="text-neutral-500 dark:text-gray-400 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
+              className="text-neutral-600 dark:text-gray-300 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
             />
             <IconBrandX
               onClick={() =>
                 window.open("https://x.com/AmarnathDhumal", "_blank")
               }
-              className="text-neutral-500 dark:text-gray-400 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
+              className="text-neutral-600 dark:text-gray-300 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
             />
             <IconBrightness
               onClick={toggleTheme}
-              className="text-neutral-500 dark:text-gray-400 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
+              className="text-neutral-600 dark:text-gray-300 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
             />
-
-            {/* search input */}
-            <button
-              onClick={() => setOpen(true)}
-              className="flex items-center gap-2 px-2 md:px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[16px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-500 dark:text-gray-400"
-            >
-              <IconSearch size={16} />
-              <span className="hidden lg:inline-block text-sm/5 ">
-                Search Components
-              </span>
-              <kbd className="pointer-events-none lg:inline-flex h-5 select-none items-center gap-1 rounded-[8px] border bg-gray-50 dark:bg-[#111111] px-2 py-2 text-[12px] text-neutral-500 dark:text-gray-400 opacity-100 hidden">
-                <span className="">⌘</span>K
-              </kbd>
-            </button>
           </div>
 
           {/* Mobile Navigation - Only search, GitHub, and menu */}
@@ -184,7 +193,7 @@ export const Header = () => {
             {/* Search button */}
             <button
               onClick={() => setOpen(true)}
-              className="flex items-center justify-center p-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[12px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-500 dark:text-gray-400"
+              className="flex items-center justify-center p-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[12px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-600 dark:text-gray-300"
             >
               <IconSearch size={18} />
             </button>
@@ -197,7 +206,7 @@ export const Header = () => {
                   "_blank"
                 )
               }
-              className="flex items-center justify-center p-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[12px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-500 dark:text-gray-400"
+              className="flex items-center justify-center p-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[12px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-600 dark:text-gray-300"
             >
               <IconBrandGithub size={18} />
             </button>
@@ -244,7 +253,7 @@ export const Header = () => {
                 </Link>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center gap-1 text-neutral-500 dark:text-gray-400 cursor-pointer"
+                  className="flex items-center gap-1 text-neutral-600 dark:text-gray-300 cursor-pointer"
                 >
                   <span className="text-sm">Close</span>
                   <IconX size={20} />
@@ -254,15 +263,22 @@ export const Header = () => {
               {/* Navigation Menu */}
               <div className="flex flex-col flex-1 mt-12">
                 <ul>
-                  <li className="border-b border-gray-200 dark:border-neutral-800 -mx-4">
-                    <Link
-                      href="/components"
-                      className="block font-medium px-4 py-4 text-black dark:text-white text-[24px] leading-none tracking-tight transition-colors hover:bg-gray-50 dark:hover:bg-neutral-900"
-                      onClick={() => setIsMobileMenuOpen(false)}
+                  {navLinks.map((link) => (
+                    <li
+                      key={link.href}
+                      className="border-b border-gray-200 dark:border-neutral-800 -mx-4"
                     >
-                      Components
-                    </Link>
-                  </li>
+                      <Link
+                        href={link.href}
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noopener noreferrer" : undefined}
+                        className="block font-medium px-4 py-4 text-black dark:text-white text-[24px] leading-none tracking-tight transition-colors hover:bg-gray-50 dark:hover:bg-neutral-900"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
                   <li className="border-b border-gray-200 dark:border-neutral-800 -mx-4">
                     <button
                       onClick={() => {
@@ -285,7 +301,7 @@ export const Header = () => {
                       <span>Toggle Theme</span>
                       <IconBrightness
                         size={24}
-                        className="text-neutral-500 dark:text-gray-400"
+                        className="text-neutral-600 dark:text-gray-300"
                       />
                     </button>
                   </li>
@@ -302,7 +318,7 @@ export const Header = () => {
         className="bg-white dark:bg-black rounded-[16px] border-gray-200 dark:border-neutral-800 "
       >
         <CommandInput
-          className=" py-2 text-sm/5 text-neutral-500 dark:text-gray-400 "
+          className=" py-2 text-sm/5 text-neutral-600 dark:text-gray-300 "
           placeholder="Type a command or search..."
         />
         <CommandList className="bg-white dark:bg-black ">

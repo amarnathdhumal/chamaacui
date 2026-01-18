@@ -88,7 +88,7 @@ export default function ButtonsGrid() {
         <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">
           Buttons
         </h1>
-        <p className=" text-base/5 md:text-lg/7 text-neutral-500 dark:text-gray-400 tracking-tight mt-2 md:mt-4   max-w-[750px]">
+        <p className=" text-base/5 md:text-lg/7 ttext-neutral-600 dark:text-gray-300 tracking-tight mt-2 md:mt-4   max-w-[750px]">
           A collection of interactive and animated buttons for your
           applications.
         </p>
@@ -98,7 +98,7 @@ export default function ButtonsGrid() {
         {buttons.map((button) => (
           <motion.div
             key={button.name}
-            className={`relative flex flex-col items-center justify-center p-8 rounded-xl border border-neutral-200 dark:border-[#3B3B3B] bg-white dark:bg-neutral-800   transition-colors h-[200px] `}
+            className={`relative flex flex-col items-center justify-center p-8 rounded-xl border border-border bg-white dark:bg-neutral-800   transition-colors h-[200px] `}
           >
             <div className="mb-4 scale-90 transition-transform duration-300">
               <button.component {...button.props} />
@@ -106,7 +106,7 @@ export default function ButtonsGrid() {
 
             <Link
               href={button.href}
-              className="absolute bottom-4 right-4 p-2 rounded-full bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-neutral-400 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors"
+              className="absolute bottom-4 right-4 p-2 rounded-full bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-gray-300 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors"
             >
               <ArrowRight className="w-4 h-4" />
             </Link>

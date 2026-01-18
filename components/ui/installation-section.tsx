@@ -84,9 +84,9 @@ export default function InstallationSection({
         <div className="mt-4">
           {/* Tab Content */}
           {installMethod === "cli" ? (
-            <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden ">
+            <div className="border border-border rounded-[16px] overflow-hidden ">
               {/* Package Manager Selector */}
-              <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-gray-200 dark:border-neutral-800 ">
+              <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-border ">
                 <PackageManagerSelector
                   activePm={activePm}
                   onPmChange={setActivePm}
@@ -115,7 +115,7 @@ export default function InstallationSection({
                     Step 1: Install Dependencies
                   </h4>
 
-                  <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden ">
+                  <div className="border border-border rounded-[16px] overflow-hidden ">
                     <div className="bg-gray-50 dark:bg-neutral-900 p-2 ">
                       <PackageManagerSelector
                         activePm={activePm}
@@ -123,7 +123,7 @@ export default function InstallationSection({
                         layoutId="manualPmBackground"
                       />
                     </div>
-                    <div className="relative bg-white dark:bg-neutral-950 border-b border-gray-200 dark:border-neutral-800">
+                    <div className="relative bg-white dark:bg-neutral-950 border-b border-border">
                       <div className="absolute top-4 right-4">
                         <CopyButton text={manualCommand} />
                       </div>
@@ -145,7 +145,7 @@ export default function InstallationSection({
                     component code into your project.
                   </h4>
                 </div>
-                <div className="bg-white dark:bg-neutral-950 max-h-[350px] overflow-auto hide-scrollbar border border-gray-200 dark:border-neutral-800 rounded-[16px]">
+                <div className="bg-white dark:bg-neutral-950 max-h-[350px] overflow-auto hide-scrollbar border border-border rounded-[16px]">
                   <div className="relative">
                     <div className="absolute top-4 right-4">
                       <CopyButton text={componentSource} />

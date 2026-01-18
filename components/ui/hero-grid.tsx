@@ -9,7 +9,7 @@ const HeroGrid = () => {
         <h3 className="text-xl/10 md:text-xl/7 font-semibold text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
           Copy components
         </h3>
-        <p className="text-sm/5 text-neutral-500 dark:text-gray-400  ">
+        <p className="text-sm/5 text-neutral-600 dark:text-gray-300  ">
           Simply copy the source code and paste it into your project. Complete
           control, zero lock-in.
         </p>
@@ -20,7 +20,7 @@ const HeroGrid = () => {
         <h3 className="text-xl/10 md:text-xl/7 font-medium text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
           Smooth animations
         </h3>
-        <p className="text-sm/5 text-neutral-500 dark:text-gray-400  ">
+        <p className="text-sm/5 text-neutral-600 dark:text-gray-300  ">
           Beautiful, smooth animations that enhance user experience and
           engagement.
         </p>
@@ -31,7 +31,7 @@ const HeroGrid = () => {
         <h3 className="text-xl/10 md:text-xl/7 font-semibold text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
           Fully customizable
         </h3>
-        <p className="text-sm/5 text-neutral-500 dark:text-gray-400  ">
+        <p className="text-sm/5 text-neutral-600 dark:text-gray-300  ">
           Battle-tested components ready to use in your projects. No
           configuration needed.
         </p>

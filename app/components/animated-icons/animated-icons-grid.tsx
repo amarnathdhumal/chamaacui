@@ -26,7 +26,7 @@ export default function AnimatedIconsGrid() {
             <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">
               Animated Icons
             </h1>
-            <p className="text-base/5 md:text-lg/7 text-neutral-500 dark:text-gray-400 tracking-tight mt-4 max-w-[750px]">
+            <p className="text-base/5 md:text-lg/7 text-neutral-600 dark:text-gray-300 tracking-tight mt-4 max-w-[750px]">
               A collection of smooth, micro-interaction animations for your
               icons.
             </p>
@@ -36,16 +36,16 @@ export default function AnimatedIconsGrid() {
 
       <div className=" mb-6 flex items-center justify-between gap-4">
         <div className="w-full max-w-[50%] relative">
-          <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 dark:text-gray-400 size-4" />
+          <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-600 dark:text-gray-300 size-4" />
           <input
             type="text"
             placeholder="Search icons..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 rounded-[16px] border border-gray-200 dark:border-neutral-800 bg-white dark:bg-black text-black dark:text-white transition-all placeholder:text-neutral-500 focus:outline-none "
+            className="w-full pl-10 pr-4 py-3 rounded-[16px] border border-border bg-white dark:bg-black text-black dark:text-white transition-all placeholder:text-neutral-500 focus:outline-none "
           />
         </div>
-        <div className="flex h-12 items-center justify-center rounded-[12px] bg-neutral-100 p-1 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+        <div className="flex h-12 items-center justify-center rounded-[12px] bg-neutral-100 p-1 dark:bg-neutral-900 border border-border">
           <TabButton
             name="Infinite"
             onClick={() => setIsHoveredMode(false)}
@@ -71,7 +71,7 @@ export default function AnimatedIconsGrid() {
           <h3 className="text-xl font-medium text-neutral-900 dark:text-neutral-100 mb-2">
             No icons found
           </h3>
-          <p className="text-neutral-500 dark:text-neutral-400 max-w-[300px]">
+          <p className="text-neutral-600 dark:text-gray-300 max-w-[300px]">
             We couldn&apos;t find any icons matching &quot;{searchQuery}&quot;.
             Try searching for something else.
           </p>

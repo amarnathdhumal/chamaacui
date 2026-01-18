@@ -2,7 +2,12 @@ import { SidebarDataTypes } from "./types";
 
 export const sidebarData: SidebarDataTypes[] = [
   {
-    componentName: "Introduction",
+    componentName: "Get Started",
+    link: "/get-started",
+    category: "Overview",
+  },
+  {
+    componentName: "Components",
     link: "",
     category: "Overview",
   },

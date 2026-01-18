@@ -14,7 +14,7 @@ const TabButton = ({
       onClick={onClick}
       className={cn(
         "flex flex-row gap-2 relative text-white px-4 py-2 rounded-[8px] text-base font-medium items-center cursor-pointer",
-        `${isActive ? "text-neutral-700 dark:text-white" : "text-neutral-500 dark:text-gray-400 "}`
+        `${isActive ? "text-neutral-700 dark:text-white" : "text-neutral-600 dark:text-gray-300 "}`
       )}
     >
       {isActive && (

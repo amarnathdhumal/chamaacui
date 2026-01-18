@@ -21,7 +21,7 @@ export default function Home() {
             rotatingTexts={["Shine.", "Flow.", "Convert."]}
           />
 
-          <p className="text-base/5 md:text-lg/7 text-center text-neutral-500 dark:text-gray-400 my-5">
+          <p className="text-base/5 md:text-lg/7 text-center text-neutral-600 dark:text-gray-300 my-5">
             A collection of beautiful, animated components to elevate your web
             projects instantly.
           </p>

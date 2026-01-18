@@ -115,7 +115,7 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
         <div className="mb-4 text-black dark:text-white  transition-transform duration-300">
           <icon.component size={40} isHovered={isHoveredMode} />
         </div>
-        <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-white transition-colors">
+        <span className="text-sm font-medium text-neutral-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">
           {icon.name}
         </span>
       </motion.div>

@@ -28,7 +28,7 @@ export default function PackageManagerSelector({
             "px-4 py-2 rounded-[8px] text-sm/5 transition-colors leading-none relative z-10 cursor-pointer",
             activePm === pm
               ? "text-neutral-700 dark:text-white"
-              : "text-neutral-500 dark:text-gray-400 hover:text-neutral-700 dark:hover:text-gray-300"
+              : "text-neutral-600 dark:text-gray-300 hover:text-neutral-700 dark:hover:text-gray-300"
           )}
         >
           {activePm === pm && (
