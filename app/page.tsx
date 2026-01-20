@@ -41,6 +41,19 @@ export default function Home() {
 
       {/* Video Bento Grid */}
       <VideoBentoGrid />
+
+      <div className=" flex justify-center mb-10">
+        <p className="text-base/5 tracking-[-0.01em]">
+          Build with ❤️ by{" "}
+          <Link
+            href={"https://x.com/amarnathdhumal"}
+            target="_blank"
+            className="underline"
+          >
+            Amarnath Dhumal
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }
