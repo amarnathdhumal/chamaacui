@@ -18,7 +18,7 @@ export default function Home() {
             cursorClassName="h-[2.5rem] sm:h-[3rem] lg:h-[3.75rem] xl:h-[5.7rem] bg-black dark:bg-white"
             backgroundClassName="bg-gradient-to-r from-transparent via-neutral-300/50 to-neutral-400/80 dark:from-transparent dark:via-neutral-700/50 dark:to-neutral-600/80"
             staticText="Make your UI"
-            rotatingTexts={["Shine.", "Flow.", "Convert."]}
+            rotatingTexts={["Shine.", "Pop.", "Convert."]}
           />
 
           <p className="text-base/5 md:text-lg/7 text-center text-neutral-600 dark:text-gray-300 my-5">
