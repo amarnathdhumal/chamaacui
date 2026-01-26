@@ -73,11 +73,10 @@ export default function RootLayout({
           <PostHogPageView />
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
-            enableSystem={false}
+            defaultTheme="system"
+            enableSystem
             disableTransitionOnChange
           >
-            {/* <Header /> */}
             {children}
             <Analytics />
           </ThemeProvider>

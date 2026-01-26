@@ -1234,6 +1234,19 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "how-it-works",
+      "type": "registry:component",
+      "title": "How It Works",
+      "description": "A dynamic visual flow component showing a step-by-step process with connected cards. Supports custom steps, themes, and dark mode.",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/chamaac/how-it-works/how-it-works.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

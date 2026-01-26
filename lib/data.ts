@@ -24,6 +24,29 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Backgrounds",
     isNew: true,
   },
+  // sections
+  {
+    componentName: "How It Works",
+    link: "/sections/how-it-works",
+    category: "Sections",
+    isNew: true,
+  },
+  {
+    componentName: "Stats Cards",
+    link: "/sections/stats-cards",
+    category: "Sections",
+  },
+  {
+    componentName: "Feature Steps",
+    link: "/sections/feature-steps",
+    category: "Sections",
+  },
+  {
+    componentName: "Gauge",
+    link: "/sections/gauge",
+    category: "Sections",
+  },
+
   // buttons
   {
     componentName: "Buttons Overview",
@@ -90,7 +113,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "AI Input",
     link: "/inputs/ai-input",
     category: "Inputs",
-    isNew: true,
   },
 
   // navigation
@@ -99,25 +121,6 @@ export const sidebarData: SidebarDataTypes[] = [
     link: "/navigation/dock",
     category: "Navigation",
   },
-
-  // sections
-  {
-    componentName: "Stats Cards",
-    link: "/sections/stats-cards",
-    category: "Sections",
-    isNew: true,
-  },
-  {
-    componentName: "Feature Steps",
-    link: "/sections/feature-steps",
-    category: "Sections",
-  },
-  {
-    componentName: "Gauge",
-    link: "/sections/gauge",
-    category: "Sections",
-  },
-
   // carousels
   {
     componentName: "Carousel",
@@ -145,6 +148,16 @@ export const componentCards: ComponentCardType[] = [
     videoSrc: "https://assets.amarn.me/animated-icons2.mp4",
     link: "/components/animated-icons",
     category: "Animated Icons",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "How It Works",
+    description:
+      "A dynamic visual flow component showing a step-by-step process with connected cards.",
+    imagePath: "/components/sections/how-it-works.png",
+    videoSrc: "https://assets.amarn.me/how-it-works.mp4",
+    link: "/components/sections/how-it-works",
+    category: "Sections",
     bgColor: "bg-black dark:bg-black",
   },
   {

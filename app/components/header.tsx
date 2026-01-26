@@ -156,7 +156,7 @@ export const Header = () => {
             {/* search input */}
             <button
               onClick={() => setOpen(true)}
-              className="flex items-center gap-2 px-2 md:px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[16px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-600 dark:text-gray-300"
+              className="flex items-center gap-2 px-2 md:px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[16px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-600 dark:text-gray-300 "
             >
               <IconSearch size={16} />
               <span className="hidden lg:inline-block text-sm/5 ">
