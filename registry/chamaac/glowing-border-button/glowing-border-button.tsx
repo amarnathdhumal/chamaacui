@@ -3,17 +3,24 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
-interface GlowingBorderButtonProps {
-  className?: string;
+interface GlowingBorderButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string; // Explicitly kept if needed, though extended types usually cover it
+  children: React.ReactNode;
 }
 
-const GlowingBorderButton = ({ className }: GlowingBorderButtonProps) => {
+const GlowingBorderButton = ({
+  className,
+  children = "Book a Call",
+  ...props
+}: GlowingBorderButtonProps) => {
   return (
     <button
       className={cn(
-        "glowing-border-button group relative h-[60px] w-[200px] cursor-pointer border-0 bg-transparent p-0 text-[20px] font-bold outline-none",
+        "glowing-border-button group relative h-[60px] px-4 cursor-pointer border-0 bg-transparent p-0 text-[20px] font-bold outline-none",
         className
       )}
+      {...props}
     >
       <div
         className={cn(
@@ -35,12 +42,11 @@ const GlowingBorderButton = ({ className }: GlowingBorderButtonProps) => {
         {/* Inner Content */}
         <div
           className={cn(
-            "content relative z-10 flex h-full items-center justify-center gap-2 rounded-[16px] transition-all duration-300 ease-in-out",
-            "bg-white dark:bg-black" // Deep dark background
+            "content relative z-10 flex h-full w-full items-center justify-center gap-2 rounded-[16px] transition-all duration-300 ease-in-out bg-white dark:bg-black px-11"
           )}
         >
-          <span className="dark:text-white text-black  transition-colors duration-300">
-            Book a Call
+          <span className="dark:text-white text-black transition-colors duration-300">
+            {children}
           </span>
         </div>
       </div>

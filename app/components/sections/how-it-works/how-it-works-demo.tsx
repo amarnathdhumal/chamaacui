@@ -56,9 +56,29 @@ export default function HowItWorksDemo() {
     },
   ];
 
+  const stepPositions = [
+    { className: "md:absolute md:top-0 md:left-[15%]", rotate: "rotate-6" },
+    {
+      className: "md:absolute md:top-[120px] md:right-[15%]",
+      rotate: "-rotate-6",
+    },
+    {
+      className: "md:absolute md:top-[450px] md:left-[15%]",
+      rotate: "rotate-6",
+    },
+    {
+      className: "md:absolute md:top-[570px] md:right-[10%]",
+      rotate: "-rotate-6",
+    },
+    {
+      className: "md:absolute md:top-[850px] md:left-[15%]",
+      rotate: "rotate-6",
+    },
+  ];
+
   return (
     <div className="w-full">
-      <HowItWorks features={features} />
+      <HowItWorks features={features} stepPositions={stepPositions} />
     </div>
   );
 }

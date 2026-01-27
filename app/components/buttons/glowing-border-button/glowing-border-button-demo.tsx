@@ -4,7 +4,12 @@ import GlowingBorderButton from "@/registry/chamaac/glowing-border-button/glowin
 const GlowingBorderButtonDemo = () => {
   return (
     <div className="w-full h-[300px] flex justify-center items-center bg-white dark:bg-black">
-      <GlowingBorderButton />
+      <GlowingBorderButton
+        onClick={() => console.log("Button clicked")}
+        className=""
+      >
+        Book a Call
+      </GlowingBorderButton>
     </div>
   );
 };

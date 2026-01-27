@@ -129,7 +129,7 @@ export const Header = () => {
                 <Logo />
               </div>
               <div>
-                <p className="font-bold text-[20px] leading-none tracking-tight hidden md:block ">
+                <p className="font-bold text-[20px] leading-none tracking-normal hidden md:block ">
                   Chamaac UI
                 </p>
               </div>
