@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "motion/react";
 
 interface CardProps {
   number: string;
@@ -16,7 +17,7 @@ interface CardProps {
   };
 }
 
-const NorthStar = ({ className }: { className?: string }) => (
+const Pin = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -64,7 +65,7 @@ const Card = ({
       className={`relative w-full md:w-[280px] transition-transform duration-300 hover:z-30 hover:scale-105 ${rotate} ${className}`}
     >
       <div className="bg-white dark:bg-neutral-900 p-2 rounded-[25px] shadow-[0px_10px_20px_0px_#D3D3D3] dark:shadow-none border border-neutral-100 dark:border-neutral-800">
-        <NorthStar className={`w-8 h-8 ${textColor} z-20 mb-6 mx-auto`} />
+        <Pin className={`w-8 h-8 ${textColor} z-20 mb-6 mx-auto`} />
         <div
           className={`${bgColor} border ${borderColor} rounded-[15px] p-[15px] h-full flex flex-col relative overflow-hidden`}
         >
@@ -206,8 +207,8 @@ export default function HowItWorks({
               viewBox={`0 0 1000 ${height}`}
               preserveAspectRatio="none"
             >
-              <path
-                d={data.reduce((acc, _, index) => {
+              {(() => {
+                const pathD = data.reduce((acc, _, index) => {
                   if (index >= data.length - 1) return acc;
                   if (index === 0)
                     return "M 290 150 C 500 150, 550 270, 710 270"; // 1 -> 2
@@ -215,19 +216,33 @@ export default function HowItWorks({
                   if (index === 2) return acc + " C 290 600, 550 720, 750 720"; // 3 -> 4
                   if (index === 3) return acc + " C 950 720, 500 800, 290 850"; // 4 -> 5
                   return acc;
-                }, "")}
-                stroke="currentColor"
-                className="text-neutral-300 dark:text-neutral-700"
-                strokeWidth="1"
-                strokeDasharray="8 6"
-                fill="none"
-                strokeLinecap="round"
-              />
+                }, "");
+                return (
+                  <motion.path
+                    d={pathD}
+                    stroke="currentColor"
+                    className="text-neutral-300 dark:text-neutral-700"
+                    strokeWidth="2"
+                    strokeDasharray="8 6"
+                    fill="none"
+                    strokeLinecap="round"
+                    vectorEffect="non-scaling-stroke"
+                    initial={{ strokeDashoffset: 0 }}
+                    animate={{
+                      strokeDashoffset: -140, // Multiple of 14 (8+6) for seamless loop
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  />
+                );
+              })()}
             </svg>
           )}
 
           {data.map((step, index) => {
-            // Cycle through positions if more than 5 (fallback, though path wont work well)
             const position = positions[index % positions.length];
 
             return (

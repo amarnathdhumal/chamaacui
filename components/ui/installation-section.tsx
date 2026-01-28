@@ -145,7 +145,7 @@ export default function InstallationSection({
                     component code into your project.
                   </h4>
                 </div>
-                <div className="bg-white dark:bg-neutral-950 max-h-[350px] overflow-auto hide-scrollbar border border-border rounded-[16px]">
+                <div className="bg-white dark:bg-neutral-950 max-h-[450px] overflow-auto hide-scrollbar border border-border rounded-[16px]">
                   <div className="relative">
                     <div className="absolute top-4 right-4">
                       <CopyButton text={componentSource} />

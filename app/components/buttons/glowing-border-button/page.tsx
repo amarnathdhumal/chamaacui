@@ -65,25 +65,17 @@ export default function GlowingBorderButtonPage() {
         installationSource={componentSource}
         props={[
           {
-            name: "children",
-            type: "React.ReactNode",
-            default: '"Book a Call"',
-            description: "The content to display inside the button.",
-            required: true,
-          },
-          {
             name: "className",
             type: "string",
             default: "-",
-            description: "Additional CSS classes to style the button.",
+            description: "Additional CSS classes to style the button",
             required: false,
           },
           {
-            name: "...props",
-            type: "React.ButtonHTMLAttributes",
+            name: "onClick",
+            type: "() => void",
             default: "-",
-            description:
-              "Standard HTML button attributes (onClick, type, etc).",
+            description: "Click handler function",
             required: false,
           },
         ]}

@@ -1239,7 +1239,7 @@
       "name": "how-it-works",
       "type": "registry:component",
       "title": "How It Works",
-      "description": "A dynamic visual flow component showing a step-by-step process with connected cards. Supports custom steps, themes, and dark mode.",
+      "description": "A visual flow component showing a step-by-step process with connected cards.",
       "dependencies": [],
       "files": [
         {
