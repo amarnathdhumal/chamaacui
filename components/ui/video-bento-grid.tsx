@@ -39,6 +39,14 @@ const bentoItems: BentoItem[] = [
     href: "/components/carousels/carousel",
     className: "md:col-span-4 md:row-span-1",
   },
+  // {
+  //   title: "How It Works",
+
+  //   videoSrc: "https://assets.amarn.me/how-it-works.mp4",
+  //   href: "/components/sections/how-it-works",
+
+  //   className: "md:col-span-3",
+  // },
   {
     title: "Glowing Border Button",
     videoSrc: "https://assets.amarn.me/glowing-border-button.mp4",
@@ -48,7 +56,7 @@ const bentoItems: BentoItem[] = [
 
   {
     title: "Dancing Letters",
-    videoSrc: "https://assets.amarn.me/dancing-letters.mp4",
+    videoSrc: "https://assets.amarn.me/dancing-lettersv3.mp4",
     href: "/components/text-animations/dancing-letters",
     className: "md:col-span-3",
   },
