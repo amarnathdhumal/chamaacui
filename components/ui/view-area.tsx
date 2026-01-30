@@ -32,14 +32,14 @@ const ViewArea = ({
           onClick={() => setActiveTab("preview")}
           isActive={activeTab === "preview"}
           icon={<IconEye className="size-5" />}
-          layoutId="viewAreaTab"
+          layoutId={`viewAreaTab-${title}`}
         />
         <TabButton
           name="Code"
           onClick={() => setActiveTab("code")}
           isActive={activeTab === "code"}
           icon={<IconCode className="size-5" />}
-          layoutId="viewAreaTab"
+          layoutId={`viewAreaTab-${title}`}
         />
       </div>
       <div className="border border-border rounded-[16px] overflow-hidden w-full ">
