@@ -98,7 +98,7 @@ export default function ButtonsGrid() {
         {buttons.map((button) => (
           <motion.div
             key={button.name}
-            className={`relative flex flex-col items-center justify-center p-4 rounded-xl border border-border bg-white dark:bg-neutral-800   transition-colors h-[180px] `}
+            className={`relative flex flex-col items-center justify-center p-4 rounded-xl border border-border bg-white dark:bg-neutral-800   transition-colors h-[200px] `}
           >
             <div className="mb-4 scale-90 transition-transform duration-300">
               <button.component {...button.props} />
