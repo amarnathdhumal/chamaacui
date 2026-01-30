@@ -16,7 +16,7 @@ export default function PropsTable({
   title = "Props",
 }: PropsTableProps) {
   return (
-    <div className="mb-8">
+    <div className="mb-4 md:mb-12">
       <h3 className="text-base md:text-xl  text-black dark:text-white mb-4 font-medium">
         {title}
       </h3>

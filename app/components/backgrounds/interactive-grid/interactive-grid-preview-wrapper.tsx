@@ -43,10 +43,10 @@ export default function InteractiveGridPreviewWrapper({
                   transition={{ duration: 1, ease: "easeOut" }}
                   className="flex flex-col items-center"
                 >
-                  <div className="bg-white/10 backdrop-blur-lg border border-white/20 px-4 py-1.5 rounded-full text-sm text-white font-medium mb-8">
+                  <div className="bg-white/10 backdrop-blur-lg border border-white/20 px-4 py-1.5 rounded-full text-sm text-white font-medium mb-4">
                     New Release
                   </div>
-                  <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+                  <h1 className="text-4xl md:text-6xl font-semibold text-white tracking-tight text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
                     Interactive Grid.
                   </h1>
                   <p className="mt-6 text-sm md:text-lg text-white/70 max-w-xl text-center leading-relaxed">

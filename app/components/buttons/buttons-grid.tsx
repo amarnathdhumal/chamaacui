@@ -83,7 +83,7 @@ const buttons: ButtonTypes[] = [
 
 export default function ButtonsGrid() {
   return (
-    <div className="w-full mx-auto">
+    <div className="w-full mx-auto mb-12">
       <div className="mb-5 md:mb-10">
         <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">
           Buttons
@@ -98,7 +98,7 @@ export default function ButtonsGrid() {
         {buttons.map((button) => (
           <motion.div
             key={button.name}
-            className={`relative flex flex-col items-center justify-center p-8 rounded-xl border border-border bg-white dark:bg-neutral-800   transition-colors h-[200px] `}
+            className={`relative flex flex-col items-center justify-center p-4 rounded-xl border border-border bg-white dark:bg-neutral-800   transition-colors h-[180px] `}
           >
             <div className="mb-4 scale-90 transition-transform duration-300">
               <button.component {...button.props} />
