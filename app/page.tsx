@@ -13,9 +13,9 @@ export default function Home() {
         {/* Content Section */}
         <div className="flex flex-col items-center">
           <TextLoop
-            staticTextClassName="text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-semibold text-left text-black dark:text-white leading-[0.95] tracking-tighter"
-            rotatingTextClassName="text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-semibold text-left leading-[0.95] tracking-tighter bg-gradient-to-r from-neutral-600 to-black dark:from-neutral-400 dark:to-white text-black dark:text-white"
-            cursorClassName="h-[2.5rem] sm:h-[3rem] lg:h-[3.75rem] xl:h-[5.7rem] bg-black dark:bg-white"
+            staticTextClassName="text-6xl lg:text-7xl xl:text-8xl font-semibold text-left text-black dark:text-white leading-[0.95] tracking-tighter"
+            rotatingTextClassName="text-6xl lg:text-7xl xl:text-8xl font-semibold text-left leading-[0.95] tracking-tighter bg-gradient-to-r from-neutral-600 to-black dark:from-neutral-400 dark:to-white text-black dark:text-white"
+            cursorClassName="h-[3.5rem] lg:h-[4.5rem]  xl:h-[5.7rem] bg-black dark:bg-white"
             backgroundClassName="bg-gradient-to-r from-transparent via-neutral-300/50 to-neutral-400/80 dark:from-transparent dark:via-neutral-700/50 dark:to-neutral-600/80"
             staticText="Make your UI"
             rotatingTexts={["Shine.", "Pop.", "Mesmerize."]}

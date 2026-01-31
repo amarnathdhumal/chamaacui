@@ -39,11 +39,11 @@ export default function TextLoop({
   return (
     <div
       className={cn(
-        "flex flex-row items-center justify-start w-fit text-4xl md:text-7xl font-medium tracking-tight",
+        "flex flex-wrap items-center justify-start w-fit gap-x-2 md:gap-x-3 gap-y-1 text-3xl md:text-7xl font-medium tracking-tight",
         className
       )}
     >
-      <span className={cn("mr-3 whitespace-nowrap", staticTextClassName)}>
+      <span className={cn("whitespace-nowrap", staticTextClassName)}>
         {staticText}
       </span>
       <div className="relative flex items-center">
