@@ -57,6 +57,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.png",
   },
+  metadataBase: new URL("https://www.chamaac.com"),
 };
 
 export default function RootLayout({
@@ -81,6 +82,27 @@ export default function RootLayout({
             <Analytics />
           </ThemeProvider>
         </CSPostHogProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Chamaac",
+              url: "https://www.chamaac.com",
+              description:
+                "Explore a collection of stunning and interactive UI components crafted with Next.js and Motion.",
+              publisher: {
+                "@type": "Organization",
+                name: "Chamaac",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://www.chamaac.com/favicon.png",
+                },
+              },
+            }),
+          }}
+        />
       </body>
     </html>
   );
