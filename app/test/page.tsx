@@ -1,9 +1,9 @@
-import HowItWorksDemo from "../components/sections/how-it-works/how-it-works-demo";
+import ShaderPractice from "../components/shader-practice";
 
 export default function TestPage() {
   return (
-    <div>
-      <HowItWorksDemo />
+    <div className="min-h-screen w-full">
+      <ShaderPractice />
     </div>
   );
 }
