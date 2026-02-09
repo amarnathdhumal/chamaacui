@@ -2,7 +2,7 @@
 
 import { componentCards } from "@/lib/data";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { cn } from "@/lib/utils";
 import { useState, useRef, useEffect } from "react";
 
@@ -15,6 +15,8 @@ const ComponentCard = ({
     () => !!(component.videoSrc || component.imagePath)
   );
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { amount: 0.5 });
 
   useEffect(() => {
     if (
@@ -26,12 +28,24 @@ const ComponentCard = ({
     }
   }, [component.videoSrc]);
 
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isInView) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isInView]);
+
   const handleLoad = () => setIsLoading(false);
 
   return (
     <motion.div whileHover={{ y: -4 }}>
       <Link href={component.link}>
         <motion.div
+          ref={containerRef}
           className={cn(
             "group relative h-full rounded-[16px] border border-border p-2",
             "bg-gray-50 dark:bg-neutral-900",
@@ -55,7 +69,6 @@ const ComponentCard = ({
               <video
                 ref={videoRef}
                 src={component.videoSrc}
-                autoPlay
                 loop
                 muted
                 playsInline

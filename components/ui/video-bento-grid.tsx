@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { useInView } from "motion/react";
 
 interface BentoItem {
   title: string;
@@ -84,6 +85,8 @@ const bentoItems: BentoItem[] = [
 function BentoCard({ item }: { item: BentoItem }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { amount: 0.5 });
 
   // Check if video is already loaded (e.g., from browser cache) on mount
   useEffect(() => {
@@ -93,6 +96,19 @@ function BentoCard({ item }: { item: BentoItem }) {
       setIsLoaded(true);
     }
   }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isInView) {
+      video.play().catch(() => {
+        // Handle play error (e.g., user gesture required if not muted, but it is muted)
+      });
+    } else {
+      video.pause();
+    }
+  }, [isInView]);
 
   return (
     <Link
@@ -104,13 +120,12 @@ function BentoCard({ item }: { item: BentoItem }) {
       )}
     >
       {/* Video */}
-      <div className="relative w-full h-full">
+      <div ref={containerRef} className="relative w-full h-full">
         <video
           ref={videoRef}
           src={item.videoSrc}
           muted
           loop
-          autoPlay
           playsInline
           preload="auto"
           onLoadedData={() => setIsLoaded(true)}
