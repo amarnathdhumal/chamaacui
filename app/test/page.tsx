@@ -1,4 +1,4 @@
-import WavesDemo from "../components/waves/waves-demo";
+import WavesDemo from "../components/backgrounds/waves/waves-demo";
 
 export default function TestPage() {
   return (

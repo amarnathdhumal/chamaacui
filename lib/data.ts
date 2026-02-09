@@ -20,7 +20,7 @@ export const sidebarData: SidebarDataTypes[] = [
   // backgrounds
   {
     componentName: "Waves",
-    link: "/waves",
+    link: "/backgrounds/waves",
     category: "Backgrounds",
     isNew: true,
   },
@@ -151,7 +151,7 @@ export const componentCards: ComponentCardType[] = [
       "A mesmerizing, shader-driven wave animation ideal for modern landing pages.",
     videoSrc: "https://assets.amarn.me/waves.mp4",
     imagePath: "/components/backgrounds/waves.png",
-    link: "/components/waves",
+    link: "/components/backgrounds/waves",
     category: "Backgrounds",
     bgColor: "bg-black dark:bg-black",
   },

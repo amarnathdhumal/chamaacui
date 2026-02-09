@@ -21,7 +21,7 @@ export default function WavesPage() {
 
   const demoPath = path.join(
     process.cwd(),
-    "app/components/waves/waves-demo.tsx"
+    "app/components/backgrounds/waves/waves-demo.tsx"
   );
   const demoSource = fs
     .readFileSync(demoPath, "utf8")
