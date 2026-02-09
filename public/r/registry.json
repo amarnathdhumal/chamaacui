@@ -4,6 +4,25 @@
   "homepage": "https://chamaac.com",
   "items": [
     {
+      "name": "waves",
+      "type": "registry:component",
+      "title": "Waves",
+      "description": "A smooth, shader-based wave animation component.",
+      "dependencies": [
+        "three",
+        "@react-three/fiber",
+        "@react-three/drei",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/waves/waves.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "stats-cards",
       "type": "registry:component",
       "title": "Stats Cards",
