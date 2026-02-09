@@ -129,7 +129,7 @@ export const Header = () => {
                 <Logo />
               </div>
               <div>
-                <p className="font-bold text-[20px] leading-none tracking-normal hidden md:block ">
+                <p className="font-bold text-[20px] leading-none tracking-normal hidden lg:block ">
                   Chamaac UI
                 </p>
               </div>
@@ -156,13 +156,13 @@ export const Header = () => {
             {/* search input */}
             <button
               onClick={() => setOpen(true)}
-              className="flex items-center gap-2 px-2 md:px-4 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[16px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-600 dark:text-gray-300 "
+              className="flex justify-between items-center gap-2 px-2 md:px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-800 rounded-[16px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-600 dark:text-gray-300 lg:min-w-[250px]"
             >
-              <IconSearch size={16} />
-              <span className="hidden lg:inline-block text-sm/5 ">
-                Search Components
-              </span>
-              <kbd className="pointer-events-none lg:inline-flex h-5 select-none items-center gap-1 rounded-[8px] border bg-gray-50 dark:bg-[#111111] px-2 py-2 text-[12px] text-neutral-600 dark:text-gray-300 opacity-100 hidden">
+              <div className="flex items-center gap-[10px]">
+                <IconSearch size={16} />
+                <span className="text-sm/5">Search Components</span>
+              </div>
+              <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded-[8px] border bg-gray-50 dark:bg-[#111111] px-2 py-2 text-[12px] text-neutral-600 dark:text-gray-300 opacity-100">
                 <span className="">⌘</span>K
               </kbd>
             </button>

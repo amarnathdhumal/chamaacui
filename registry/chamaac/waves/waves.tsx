@@ -11,7 +11,8 @@ import {
 import { shaderMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
-// --- Shared GLSL Noise Functions ---
+import { cn } from "@/lib/utils";
+
 const NOISE_GLSL = `
   vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
   vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
@@ -57,12 +58,16 @@ const NOISE_GLSL = `
   }
 `;
 
-const PracticeMaterial = shaderMaterial(
+const WavesMaterial = shaderMaterial(
   {
     u_time: 0,
-    u_color_1: new THREE.Color("#071697"), // Teal
-    u_color_2: new THREE.Color("#00d4ff"), // Cyan
-    u_color_3: new THREE.Color("#000000"), // Pure Black
+    u_color_1: new THREE.Color("#071697"),
+    u_color_2: new THREE.Color("#00d4ff"),
+    u_color_3: new THREE.Color("#000000"),
+    u_speed_x: 0.1,
+    u_speed_y: 0.1,
+    u_amp: 1.5,
+    u_noise_freq: 0.2,
   },
   // Vertex Shader
   NOISE_GLSL +
@@ -70,19 +75,22 @@ const PracticeMaterial = shaderMaterial(
   varying float vNoise;
   varying vec2 vUv;
   uniform float u_time;
+  uniform float u_speed_x;
+  uniform float u_speed_y;
+  uniform float u_amp;
+  uniform float u_noise_freq;
 
   void main() {
     vUv = uv;
     
     // Directional flow
-    // Left to Right
-    vec3 noisePos = vec3(position.xy * 0.25 - vec2(u_time * 0.1, 0.0), u_time * 0.1);
+    vec3 noisePos = vec3(position.xy * u_noise_freq - vec2(u_time * u_speed_x, 0.0), u_time * u_speed_y);
     
     float noise = snoise(noisePos);
     vNoise = noise;
     
     vec3 pos = position;
-    pos.z += noise * 1.5; 
+    pos.z += noise * u_amp; 
     
     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
   }
@@ -100,41 +108,70 @@ const PracticeMaterial = shaderMaterial(
     
     vec3 color;
     
-    // Vibrant Gradient
-    // Deep Blue -> Purple -> Cyan
+    // Low (Valley) -> Mid -> High (Peak)
     if (n < 0.5) {
       color = mix(u_color_3, u_color_1, smoothstep(0.0, 0.5, n));
     } else {
       color = mix(u_color_1, u_color_2, smoothstep(0.6, 1.0, n));
     }
     
-    // Removed white sharp highlights entirely
-    // The animation will rely solely on the smooth color gradient shift
-    
     gl_FragColor = vec4(color, 1.0);
   }
   `
 );
 
-extend({ PracticeMaterial });
+extend({ WavesMaterial });
 
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    practiceMaterial: ThreeElement<typeof PracticeMaterial>;
+    wavesMaterial: ThreeElement<typeof WavesMaterial>;
   }
 }
 
-function Scene() {
-  const matRef = useRef<THREE.ShaderMaterial & { u_time: number }>(null);
+function Scene({
+  waveColor1,
+  waveColor2,
+  waveColor3,
+  waveSpeedX,
+  waveSpeedY,
+  waveAmpX,
+}: {
+  waveColor1: string;
+  waveColor2: string;
+  waveColor3: string;
+  waveSpeedX: number;
+  waveSpeedY: number;
+  waveAmpX: number;
+}) {
+  const matRef = useRef<
+    THREE.ShaderMaterial & {
+      u_time: number;
+      u_color_1: THREE.Color;
+      u_color_2: THREE.Color;
+      u_color_3: THREE.Color;
+      u_speed_x: number;
+      u_speed_y: number;
+      u_amp: number;
+      u_noise_freq: number;
+    }
+  >(null);
+
   const { viewport } = useThree();
 
   useFrame((state) => {
     if (matRef.current) {
       matRef.current.u_time = state.clock.getElapsedTime();
+      matRef.current.u_color_1.set(waveColor1);
+      matRef.current.u_color_2.set(waveColor2);
+      matRef.current.u_color_3.set(waveColor3);
+      matRef.current.u_speed_x = waveSpeedX;
+      matRef.current.u_speed_y = waveSpeedY;
+      matRef.current.u_amp = (waveAmpX / 32.0) * 1.5;
+      // Hardcoded freq for now as xGap is removed
+      matRef.current.u_noise_freq = 0.25;
     }
   });
 
-  // Increased segments back to 128x128 for smooth liquid animation
   const planeArgs = useMemo<[number, number, number, number]>(
     () => [viewport.width * 1.5, viewport.height * 1.5, 128, 128],
     [viewport.width, viewport.height]
@@ -143,27 +180,47 @@ function Scene() {
   return (
     <mesh rotation={[-0.2, 0, 0]}>
       <planeGeometry args={planeArgs} />
-      <practiceMaterial
-        ref={matRef}
-        key={PracticeMaterial.key}
-        transparent={false}
-      />
+      <wavesMaterial ref={matRef} key={WavesMaterial.key} transparent={false} />
     </mesh>
   );
 }
 
-export default function Waves() {
-  return (
-    <div className="w-full h-screen bg-neutral-950">
-      <Canvas camera={{ position: [0, 0, 4] }}>
-        <color attach="background" args={["#000000"]} />
-        <Scene />
-      </Canvas>
+interface WavesProps {
+  className?: string;
+  backgroundColor?: string;
+  waveColor1?: string;
+  waveColor2?: string;
+  waveColor3?: string;
+  waveSpeedX?: number;
+  waveSpeedY?: number;
+  waveAmpX?: number;
+}
 
-      <div className="absolute top-10 left-10 text-white/40 font-mono text-xs pointer-events-none uppercase tracking-widest">
-        <p>Status: Neural Wave Active</p>
-        <p>Flow: Directional</p>
-      </div>
+export function Waves({
+  className,
+  backgroundColor = "#000000",
+  waveColor1 = "#071697",
+  waveColor2 = "#00d4ff",
+  waveColor3 = "#000000",
+  waveSpeedX = 0.0125,
+  waveSpeedY = 0.005,
+  waveAmpX = 32,
+}: WavesProps) {
+  return (
+    <div className={cn("w-full h-full absolute top-0 left-0 z-0", className)}>
+      <Canvas camera={{ position: [0, 0, 4] }}>
+        <color attach="background" args={[backgroundColor]} />
+        <Scene
+          waveColor1={waveColor1}
+          waveColor2={waveColor2}
+          waveColor3={waveColor3}
+          waveSpeedX={waveSpeedX * 10.0}
+          waveSpeedY={waveSpeedY * 10.0}
+          waveAmpX={waveAmpX}
+        />
+      </Canvas>
     </div>
   );
 }
+
+export default Waves;

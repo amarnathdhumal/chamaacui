@@ -19,10 +19,15 @@ export const sidebarData: SidebarDataTypes[] = [
   },
   // backgrounds
   {
+    componentName: "Waves",
+    link: "/waves",
+    category: "Backgrounds",
+    isNew: true,
+  },
+  {
     componentName: "Interactive Grid",
     link: "/backgrounds/interactive-grid",
     category: "Backgrounds",
-    isNew: true,
   },
   // sections
   {
@@ -140,6 +145,16 @@ export interface ComponentCardType {
 }
 
 export const componentCards: ComponentCardType[] = [
+  {
+    title: "Waves",
+    description:
+      "A mesmerizing, shader-driven wave animation ideal for modern landing pages.",
+    videoSrc: "https://assets.amarn.me/waves.mp4",
+    imagePath: "/components/backgrounds/waves.png",
+    link: "/components/waves",
+    category: "Backgrounds",
+    bgColor: "bg-black dark:bg-black",
+  },
   {
     title: "Animated Icons",
     description:

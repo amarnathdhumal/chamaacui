@@ -1,9 +1,9 @@
-import ShaderPractice from "../components/shader-practice";
+import WavesDemo from "../components/waves/waves-demo";
 
 export default function TestPage() {
   return (
     <div className="min-h-screen w-full">
-      <ShaderPractice />
+      <WavesDemo />
     </div>
   );
 }
