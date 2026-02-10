@@ -28,7 +28,7 @@ export default function WavesPage() {
     .replace("@/registry/chamaac/waves/waves", "@/components/ui/waves");
 
   return (
-    <div className="pb-20">
+    <div>
       <WavesPreviewWrapper
         title="Waves"
         description="A mesmerizing, shader-driven wave animation ideal for modern landing pages."

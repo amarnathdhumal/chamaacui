@@ -69,7 +69,7 @@ export default function InstallationSection({
       </h2>
 
       {/* CLI/Manual Tabs */}
-      <div className="mb-5 md:mb-10 mt-6">
+      <div className="mb-5 md:mb-15 mt-6">
         {/* Tab Headers */}
         <AnimatedTabs
           layoutId="activeInstallMethod"

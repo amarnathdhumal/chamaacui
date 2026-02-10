@@ -50,7 +50,7 @@ export default function Home() {
       <VideoBentoGrid />
 
       <div className=" flex justify-center mb-10">
-        <p className="text-base/5 tracking-[-0.01em]">
+        <p className="text-sm/5 tracking-[-0.01em]">
           Build with ❤️ by{" "}
           <Link
             href={"https://x.com/amarnathdhumal"}

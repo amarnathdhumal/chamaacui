@@ -27,7 +27,6 @@ const bentoItems: BentoItem[] = [
     href: "/components/buttons/premium-button",
     className: "md:col-span-3 md:row-span-1",
   },
-
   {
     title: "Stats Cards",
     videoSrc: " https://assets.amarn.me/stats-card.mp4",

@@ -31,7 +31,7 @@ export default function InteractiveGridPage() {
     );
 
   return (
-    <div className="pb-20">
+    <div>
       <InteractiveGridPreviewWrapper
         title="Interactive Grid Background"
         description="A highly interactive, mouse-sensitive grid background."

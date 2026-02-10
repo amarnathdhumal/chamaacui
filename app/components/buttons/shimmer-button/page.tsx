@@ -32,7 +32,7 @@ export default function ShimmerButtonPage() {
     );
 
   return (
-    <div className="pb-20">
+    <div>
       <ShimmerButtonPreviewWrapper
         title="Shimmer Button"
         description="A button with a shimmering text animation effect."

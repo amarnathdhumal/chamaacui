@@ -16,10 +16,10 @@ export default function PropsTable({
   title = "Props",
 }: PropsTableProps) {
   return (
-    <div className="mb-4 md:mb-12">
-      <h3 className="text-base md:text-xl  text-black dark:text-white mb-4 font-medium">
+    <div className="mb-4 md:mb-20">
+      <h2 className="text-2xl/7 md:text-3xl/7 tracking-tight text-black dark:text-white mb-4 font-semibold">
         {title}
-      </h3>
+      </h2>
       <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden ">
         <div className="overflow-x-auto">
           <table className="w-full border-collapse md:table-fixed min-w-[900px]">
