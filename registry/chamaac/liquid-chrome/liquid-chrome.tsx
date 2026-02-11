@@ -162,7 +162,7 @@ export default function LiquidChrome({
   color2 = "#4A4A4A",
 }: LiquidChromeProps) {
   return (
-    <div className={cn("relative w-full h-full min-h-[400px]", className)}>
+    <div className={cn("relative w-full h-full min-h-[600px]", className)}>
       <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 2]}>
         <LiquidEffect speed={speed} color={color} color2={color2} />
       </Canvas>

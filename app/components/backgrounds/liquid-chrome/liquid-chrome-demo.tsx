@@ -13,7 +13,7 @@ export default function LiquidChromeDemo({
   color2?: string;
 }) {
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-[600px] overflow-hidden">
       <LiquidChrome speed={speed} color={color} color2={color2} />
 
       <div
