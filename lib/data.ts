@@ -19,6 +19,12 @@ export const sidebarData: SidebarDataTypes[] = [
   },
   // backgrounds
   {
+    componentName: "Liquid Chrome",
+    link: "/backgrounds/liquid-chrome",
+    category: "Backgrounds",
+    isNew: true,
+  },
+  {
     componentName: "Waves",
     link: "/backgrounds/waves",
     category: "Backgrounds",
@@ -145,6 +151,15 @@ export interface ComponentCardType {
 }
 
 export const componentCards: ComponentCardType[] = [
+  {
+    title: "Liquid Chrome",
+    description: "A smooth, mesmerizing liquid metal shader effect.",
+    videoSrc: "https://assets.amarn.me/liquid-chrome.mp4",
+    imagePath: "/components/backgrounds/liquid-chrome.png",
+    link: "/components/backgrounds/liquid-chrome",
+    category: "Backgrounds",
+    bgColor: "bg-black dark:bg-black",
+  },
   {
     title: "Waves",
     description:

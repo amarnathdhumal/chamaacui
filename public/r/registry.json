@@ -23,6 +23,24 @@
       ]
     },
     {
+      "name": "liquid-chrome",
+      "type": "registry:component",
+      "title": "Liquid Chrome",
+      "description": "A smooth, mesmerizing liquid metal shader effect.",
+      "dependencies": [
+        "three",
+        "@react-three/fiber",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/liquid-chrome/liquid-chrome.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "stats-cards",
       "type": "registry:component",
       "title": "Stats Cards",

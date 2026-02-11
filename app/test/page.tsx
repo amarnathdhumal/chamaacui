@@ -1,9 +1,11 @@
-import WavesDemo from "../components/backgrounds/waves/waves-demo";
+"use client";
+
+import LiquidChromeDemo from "../components/backgrounds/liquid-chrome/liquid-chrome-demo";
 
 export default function TestPage() {
   return (
-    <div className="min-h-screen w-full">
-      <WavesDemo />
+    <div className="w-full h-screen">
+      <LiquidChromeDemo />
     </div>
   );
 }
