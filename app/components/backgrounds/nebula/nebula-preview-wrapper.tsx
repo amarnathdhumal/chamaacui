@@ -1,0 +1,145 @@
+"use client";
+
+import React, { useState } from "react";
+import ViewArea from "@/components/ui/view-area";
+import InstallationSection from "@/components/ui/installation-section";
+import PropsTable from "@/components/ui/props-table";
+import NebulaDemo from "./nebula-demo";
+import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CopyButton from "@/components/ui/copy-button";
+
+interface NebulaPreviewWrapperProps {
+  title: string;
+  description: string | React.ReactNode;
+  code: React.ReactNode;
+  installationSource: string;
+  props: Array<{
+    name: string;
+    type: string;
+    default: string;
+    description: string;
+    required: boolean;
+  }>;
+}
+
+export default function NebulaPreviewWrapper({
+  title,
+  description,
+  installationSource,
+  props,
+}: NebulaPreviewWrapperProps) {
+  const [speed, setSpeed] = useState(2.0);
+  const [color1, setColor1] = useState("#5efff4"); // Highlight
+  const [color2, setColor2] = useState("#763b65"); // Nebula
+  const [color3, setColor3] = useState("#1a0b2e"); // Deep Space
+
+  const controls: ControlItem[] = [
+    {
+      id: "color1",
+      label: "Highlight Color",
+      type: "color",
+      value: color1,
+      onChange: (v) => setColor1(v as string),
+    },
+    {
+      id: "color2",
+      label: "Nebula Color",
+      type: "color",
+      value: color2,
+      onChange: (v) => setColor2(v as string),
+    },
+    {
+      id: "color3",
+      label: "Deep Space Color",
+      type: "color",
+      value: color3,
+      onChange: (v) => setColor3(v as string),
+    },
+    {
+      id: "speed",
+      label: "Animation Speed",
+      type: "number",
+      min: 0,
+      max: 5.0,
+      step: 0.1,
+      value: speed,
+      onChange: (v) => setSpeed(v as number),
+    },
+  ];
+
+  const codeString = `import Nebula from "@/components/backgrounds/nebula";
+
+export function NebulaDemo() {
+  return (
+    <div className="relative w-full h-[600px] overflow-hidden">
+      <Nebula
+        color1="${color1}"
+        color2="${color2}"
+        color3="${color3}"
+        speed={${speed}}
+      />
+    </div>
+  );
+}`;
+
+  return (
+    <>
+      <ViewArea
+        title={title}
+        description={description}
+        preview={
+          <div className="w-full h-[600px] flex justify-center items-center bg-transparent">
+            <NebulaDemo
+              speed={speed}
+              color1={color1}
+              color2={color2}
+              color3={color3}
+            />
+          </div>
+        }
+        code={
+          <div className="relative">
+            <div className="absolute top-4 right-4">
+              <CopyButton text={codeString} />
+            </div>
+            <SyntaxHighlighter
+              language="tsx"
+              style={oneDark}
+              wrapLongLines={true}
+              customStyle={{
+                margin: 0,
+                padding: "1rem",
+                fontSize: "14px",
+                lineHeight: "1.5",
+                width: "100%",
+                maxWidth: "100%",
+                boxSizing: "border-box",
+                overflow: "auto",
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+              }}
+            >
+              {codeString}
+            </SyntaxHighlighter>
+          </div>
+        }
+      />
+
+      <div className=" ">
+        <ShaderControls controls={controls} />
+      </div>
+
+      {/* Installation Section */}
+      <InstallationSection
+        componentSource={installationSource}
+        dependencies={["three", "@react-three/fiber", "clsx", "tailwind-merge"]}
+        componentName="nebula"
+      />
+
+      {/* Main Props Section */}
+      <PropsTable props={props} />
+    </>
+  );
+}

@@ -25,6 +25,12 @@ export const sidebarData: SidebarDataTypes[] = [
     isNew: true,
   },
   {
+    componentName: "Nebula",
+    link: "/backgrounds/nebula",
+    category: "Backgrounds",
+    isNew: true,
+  },
+  {
     componentName: "Waves",
     link: "/backgrounds/waves",
     category: "Backgrounds",
@@ -157,6 +163,15 @@ export const componentCards: ComponentCardType[] = [
     videoSrc: "https://assets.amarn.me/liquid-chrome.mp4",
     imagePath: "/components/backgrounds/liquid-chrome.png",
     link: "/components/backgrounds/liquid-chrome",
+    category: "Backgrounds",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "Nebula",
+    description: "A deep space nebula effect with fractional distortion.",
+    videoSrc: "https://assets.amarn.me/nebula.mp4",
+    imagePath: "/components/backgrounds/nebula.png",
+    link: "/components/backgrounds/nebula",
     category: "Backgrounds",
     bgColor: "bg-black dark:bg-black",
   },

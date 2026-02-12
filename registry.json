@@ -41,6 +41,24 @@
       ]
     },
     {
+      "name": "nebula",
+      "type": "registry:component",
+      "title": "Nebula",
+      "description": "A deep space nebula effect with fractional distortion.",
+      "dependencies": [
+        "three",
+        "@react-three/fiber",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/nebula/nebula.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "stats-cards",
       "type": "registry:component",
       "title": "Stats Cards",
