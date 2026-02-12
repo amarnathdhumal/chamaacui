@@ -30,7 +30,8 @@ export default function LiquidChromePreviewWrapper({
   installationSource,
   props,
 }: LiquidChromePreviewWrapperProps) {
-  const [speed, setSpeed] = useState(0.2);
+  const [speed, setSpeed] = useState(0.5);
+  const [timeScale, setTimeScale] = useState(0.1);
   const [color, setColor] = useState("#C0C0C0");
   const [color2, setColor2] = useState("#4A4A4A");
 
@@ -54,10 +55,20 @@ export default function LiquidChromePreviewWrapper({
       label: "Flow Speed",
       type: "number",
       min: 0,
-      max: 1.0,
+      max: 2.0,
       step: 0.01,
       value: speed,
       onChange: (v) => setSpeed(v as number),
+    },
+    {
+      id: "timeScale",
+      label: "Time Scale",
+      type: "number",
+      min: 0,
+      max: 1,
+      step: 0.001,
+      value: timeScale,
+      onChange: (v) => setTimeScale(v as number),
     },
   ];
 
@@ -70,6 +81,7 @@ export function LiquidChromeDemo() {
         color="${color}"
         color2="${color2}"
         speed={${speed}}
+        timeScale={${timeScale}}
       />
     </div>
   );
@@ -82,7 +94,12 @@ export function LiquidChromeDemo() {
         description={description}
         preview={
           <div className="w-full h-[600px] flex justify-center items-center bg-transparent">
-            <LiquidChromeDemo speed={speed} color={color} color2={color2} />
+            <LiquidChromeDemo
+              speed={speed}
+              timeScale={timeScale}
+              color={color}
+              color2={color2}
+            />
           </div>
         }
         code={

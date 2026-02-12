@@ -23,12 +23,7 @@ export default function LiquidChromePage() {
     process.cwd(),
     "app/components/backgrounds/liquid-chrome/liquid-chrome-demo.tsx"
   );
-  const demoSource = fs
-    .readFileSync(demoPath, "utf8")
-    .replace(
-      "@/registry/chamaac/liquid-chrome/liquid-chrome",
-      "@/components/backgrounds/liquid-chrome"
-    );
+  const demoSource = fs.readFileSync(demoPath, "utf8");
 
   return (
     <div>
@@ -73,8 +68,15 @@ export default function LiquidChromePage() {
           {
             name: "speed",
             type: "number",
-            default: "0.2",
-            description: "Animation speed multiplier",
+            default: "0.5",
+            description: "Overall animation speed multiplier",
+            required: false,
+          },
+          {
+            name: "timeScale",
+            type: "number",
+            default: "0.1",
+            description: "Intensity of the liquid warping",
             required: false,
           },
           {

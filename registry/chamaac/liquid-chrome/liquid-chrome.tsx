@@ -15,6 +15,7 @@ const vertexShader = `
 
 const fragmentShader = `
   uniform float uTime;
+  uniform float uTimeScale;
   uniform vec3 uColor;
   uniform vec3 uColor2;
   varying vec2 vUv;
@@ -55,14 +56,14 @@ const fragmentShader = `
     // Domain Warping for "Silk/Liquid Metal" look
     // Layer 1: Base Flow
     vec2 q = vec2(0.0);
-    q.x = snoise(uv * 1.5 + uTime * 0.2);
-    q.y = snoise(uv * 1.5 + uTime * 0.12);
+    q.x = snoise(uv * 1.5 + uTime * uTimeScale);
+    q.y = snoise(uv * 1.5 + uTime * (uTimeScale * 1.2));
     
     // Layer 2: Distortion
     vec2 r = vec2(0.0);
     
-    r.x = snoise(uv * 2.0 + 1.0 * q + vec2(1.7, 9.2) + 0.15 * uTime);
-    r.y = snoise(uv * 2.0 + 1.0 * q + vec2(8.3, 2.8) + 0.126 * uTime);
+    r.x = snoise(uv * 2.0 + 1.0 * q + vec2(1.7, 9.2) + uTime * (uTimeScale * 1.5));
+    r.y = snoise(uv * 2.0 + 1.0 * q + vec2(8.3, 2.8) + uTime * (uTimeScale * 1.3));
     
     // Final Noise Value (The height/pattern)
     float f = snoise(uv * 3.0 + r);
@@ -106,11 +107,13 @@ const fragmentShader = `
 `;
 
 const LiquidEffect = ({
-  speed = 0.2,
+  speed = 0.5,
+  timeScale = 0.1,
   color = "#C0C0C0",
   color2 = "#4A4A4A",
 }: {
   speed?: number;
+  timeScale?: number;
   color?: string;
   color2?: string;
 }) => {
@@ -119,6 +122,7 @@ const LiquidEffect = ({
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0 },
+      uTimeScale: { value: timeScale },
       uColor: { value: new THREE.Color(color) },
       uColor2: { value: new THREE.Color(color2) },
     }),
@@ -130,6 +134,7 @@ const LiquidEffect = ({
     if (material.current) {
       material.current.uniforms.uTime.value =
         state.clock.getElapsedTime() * speed;
+      material.current.uniforms.uTimeScale.value = timeScale;
       material.current.uniforms.uColor.value.set(color);
       material.current.uniforms.uColor2.value.set(color2);
     }
@@ -150,21 +155,28 @@ const LiquidEffect = ({
 
 interface LiquidChromeProps {
   className?: string;
-  speed?: number;
+  speed?: number; // Overall speed of the animation
+  timeScale?: number; // Scale of the time-based noise movement
   color?: string;
   color2?: string;
 }
 
 export default function LiquidChrome({
   className,
-  speed = 0.2,
+  speed = 0.5,
+  timeScale = 0.1,
   color = "#C0C0C0",
   color2 = "#4A4A4A",
 }: LiquidChromeProps) {
   return (
     <div className={cn("relative w-full h-full min-h-[600px]", className)}>
       <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 2]}>
-        <LiquidEffect speed={speed} color={color} color2={color2} />
+        <LiquidEffect
+          speed={speed}
+          timeScale={timeScale}
+          color={color}
+          color2={color2}
+        />
       </Canvas>
     </div>
   );
