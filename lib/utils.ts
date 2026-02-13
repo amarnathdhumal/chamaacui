@@ -23,12 +23,12 @@ export function constructMetadata({
     title: title ? `${title} | Chamaac` : "Chamaac | Premium UI Components",
     description:
       description ||
-      "Explore a collection of stunning and interactive UI components crafted with Next.js and Motion.",
+      "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
     openGraph: {
       title: title ? `${title} | Chamaac` : "Chamaac | Premium UI Components",
       description:
         description ||
-        "Explore a collection of stunning and interactive UI components crafted with Next.js and Motion.",
+        "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
       url: "https://www.chamaac.com",
       siteName: "Chamaac",
       images: [
@@ -47,7 +47,7 @@ export function constructMetadata({
       title: title ? `${title} | Chamaac` : "Chamaac | Premium UI Components",
       description:
         description ||
-        "Explore a collection of stunning and interactive UI components crafted with Next.js and Motion.",
+        "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
       images: [image],
       creator: "@amarnath",
     },

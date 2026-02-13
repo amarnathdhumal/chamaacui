@@ -2,12 +2,12 @@
 
 ![Chamaac UI Banner](./public/readme.png)
 
-A premium collection of modern, animated, and interactive UI components for Next.js applications. Built with Tailwind CSS and Motion, Chamaac UI is designed to help you build stunning, high-performance web interfaces with ease.
+A premium collection of modern, animated, and interactive UI components for React applications. Built with Tailwind CSS and Motion, Chamaac UI is designed to help you build stunning, high-performance web interfaces with ease.
 
 ## Features
 
 - **Premium Design**: Carefully crafted components with a focus on aesthetics and user experience.
-- **Modern Stack**: Built on top of Next.js, Tailwind CSS, and Motion.
+- **Modern Stack**: Built on top of React, Tailwind CSS, and Motion.
 - **Copy & Paste**: Designed to be easily integrated into your existing projects.
 - **Fully Customizable**: Flexible components that adapt to your design system.
 

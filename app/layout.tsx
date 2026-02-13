@@ -29,11 +29,11 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Chamaac | Premium UI Components",
   description:
-    "Explore a collection of stunning and interactive UI components crafted with Next.js and Motion.",
+    "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
   openGraph: {
     title: "Chamaac | Premium UI Components",
     description:
-      "Explore a collection of stunning and interactive UI components crafted with Next.js and Motion.",
+      "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
     url: "https://www.chamaac.com",
     siteName: "Chamaac",
     images: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Chamaac | Premium UI Components",
     description:
-      "Explore a collection of stunning and interactive UI components crafted with Next.js and Motion.",
+      "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
     images: ["/images/og-image.png"],
   },
   icons: {
@@ -91,7 +91,7 @@ export default function RootLayout({
               name: "Chamaac",
               url: "https://www.chamaac.com",
               description:
-                "Explore a collection of stunning and interactive UI components crafted with Next.js and Motion.",
+                "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
               publisher: {
                 "@type": "Organization",
                 name: "Chamaac",

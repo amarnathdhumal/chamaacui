@@ -28,9 +28,9 @@ const bentoItems: BentoItem[] = [
     className: "md:col-span-3 md:row-span-1",
   },
   {
-    title: "Stats Cards",
-    videoSrc: " https://assets.amarn.me/stats-card.mp4",
-    href: "/components/sections/stats-cards",
+    title: "Liquid Chrome",
+    videoSrc: " https://assets.amarn.me/liquid-chrome.mp4",
+    href: "/components/backgrounds/liquid-chrome",
     className: "md:col-span-4 ",
   },
   {
