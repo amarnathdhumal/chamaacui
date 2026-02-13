@@ -14,7 +14,6 @@ import { useState } from "react";
 interface WavesPreviewWrapperProps {
   title: string;
   description: string | React.ReactNode;
-  code: React.ReactNode;
   installationSource: string;
   props: Array<{
     name: string;
@@ -101,6 +100,7 @@ export default function WavesPreviewWrapper({
   ];
 
   const codeString = `import { Waves } from "@/components/ui/waves";
+import { GeistPixelSquare } from "geist/font/pixel";
 
 export function WavesDemo() {
   return (
@@ -114,6 +114,11 @@ export function WavesDemo() {
         waveAmpX={${waveAmpX}}
         backgroundColor="${backgroundColor}"
       />
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 \${GeistPixelSquare.className}">
+        <h1 className="text-4xl md:text-8xl font-bold text-white opacity-80 mix-blend-overlay uppercase text-center drop-shadow-lg">
+          Chamaac Waves
+        </h1>
+      </div>
     </div>
   );
 }`;
@@ -124,7 +129,7 @@ export function WavesDemo() {
         title={title}
         description={description}
         preview={
-          <div className="w-full h-[600px] flex justify-center items-center bg-transparent">
+          <div className="w-full h-[600px] flex justify-center items-center bg-transparent relative">
             <WavesDemo
               waveColor1={waveColor1}
               waveColor2={waveColor2}

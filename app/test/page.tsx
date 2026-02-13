@@ -1,11 +1,11 @@
 "use client";
 
-import Nebula from "@/registry/chamaac/nebula/nebula";
+import NebulaDemo from "../components/backgrounds/nebula/nebula-demo";
 
 export default function TestPage() {
   return (
     <div className="w-full h-screen bg-black">
-      <Nebula speed={2} />
+      <NebulaDemo speed={2} />
     </div>
   );
 }

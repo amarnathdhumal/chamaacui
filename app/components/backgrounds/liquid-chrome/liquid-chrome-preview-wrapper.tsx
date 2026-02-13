@@ -13,7 +13,6 @@ import CopyButton from "@/components/ui/copy-button";
 interface LiquidChromePreviewWrapperProps {
   title: string;
   description: string | React.ReactNode;
-  code: React.ReactNode;
   installationSource: string;
   props: Array<{
     name: string;
@@ -41,14 +40,14 @@ export default function LiquidChromePreviewWrapper({
       label: "Color 1",
       type: "color",
       value: color,
-      onChange: (v) => setColor(v as string),
+      onChange: (v: string | number | boolean) => setColor(v as string),
     },
     {
       id: "color2",
       label: "Color 2",
       type: "color",
       value: color2,
-      onChange: (v) => setColor2(v as string),
+      onChange: (v: string | number | boolean) => setColor2(v as string),
     },
     {
       id: "speed",
@@ -58,7 +57,7 @@ export default function LiquidChromePreviewWrapper({
       max: 2.0,
       step: 0.01,
       value: speed,
-      onChange: (v) => setSpeed(v as number),
+      onChange: (v: string | number | boolean) => setSpeed(v as number),
     },
     {
       id: "timeScale",
@@ -68,11 +67,12 @@ export default function LiquidChromePreviewWrapper({
       max: 1,
       step: 0.001,
       value: timeScale,
-      onChange: (v) => setTimeScale(v as number),
+      onChange: (v: string | number | boolean) => setTimeScale(v as number),
     },
   ];
 
-  const codeString = `import LiquidChrome from "@/components/backgrounds/liquid-chrome";
+  const codeString = `import LiquidChrome from "@/registry/chamaac/liquid-chrome/liquid-chrome";
+import { GeistPixelSquare } from "geist/font/pixel";
 
 export function LiquidChromeDemo() {
   return (
@@ -83,6 +83,11 @@ export function LiquidChromeDemo() {
         speed={${speed}}
         timeScale={${timeScale}}
       />
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 \${GeistPixelSquare.className}">
+        <h1 className="text-4xl md:text-8xl font-bold text-white opacity-80 mix-blend-overlay uppercase text-center drop-shadow-lg">
+          Liquid Chrome
+        </h1>
+      </div>
     </div>
   );
 }`;
