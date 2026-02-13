@@ -69,6 +69,7 @@ export default function NebulaPreviewWrapper({
   ];
 
   const codeString = `import Nebula from "@/registry/chamaac/nebula/nebula";
+import { GeistPixelSquare } from "geist/font/pixel";
 
 export function NebulaDemo() {
   return (
