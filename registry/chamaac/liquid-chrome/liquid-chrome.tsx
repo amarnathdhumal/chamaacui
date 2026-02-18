@@ -107,7 +107,7 @@ const fragmentShader = `
 `;
 
 const LiquidEffect = ({
-  speed = 0.8,
+  speed = 0.35,
   timeScale = 0.2,
   color = "#C0C0C0",
   color2 = "#4A4A4A",
@@ -163,7 +163,7 @@ interface LiquidChromeProps {
 
 export default function LiquidChrome({
   className,
-  speed = 0.8,
+  speed = 0.35,
   timeScale = 0.2,
   color = "#C0C0C0",
   color2 = "#4A4A4A",

@@ -33,7 +33,7 @@ export default function LiquidChromePage() {
           {
             name: "speed",
             type: "number",
-            default: "0.8",
+            default: "0.35",
             description: "Overall animation speed multiplier",
             required: false,
           },

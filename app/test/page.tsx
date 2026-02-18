@@ -1,11 +1,11 @@
 "use client";
 
-import RaysBackground from "@/registry/chamaac/backgrounds/rays-background";
+import SynthesisVisual from "@/registry/chamaac/backgrounds/synthesis-visual";
 
 export default function TestPage() {
   return (
     <div className="w-full h-screen bg-black">
-      <RaysBackground />
+      <SynthesisVisual />
     </div>
   );
 }
