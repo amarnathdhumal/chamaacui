@@ -27,15 +27,15 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Chamaac | Premium UI Components",
+  title: "Chamaac UI | Premium UI Components",
   description:
     "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
   openGraph: {
-    title: "Chamaac | Premium UI Components",
+    title: "Chamaac UI | Premium UI Components",
     description:
       "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
     url: "https://www.chamaac.com",
-    siteName: "Chamaac",
+    siteName: "Chamaac UI",
     images: [
       {
         url: "/images/og-image.png",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chamaac | Premium UI Components",
+    title: "Chamaac UI | Premium UI Components",
     description:
       "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
     images: ["/images/og-image.png"],
@@ -88,13 +88,13 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Chamaac",
+              name: "Chamaac UI",
               url: "https://www.chamaac.com",
               description:
                 "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
               publisher: {
                 "@type": "Organization",
-                name: "Chamaac",
+                name: "Chamaac UI",
                 logo: {
                   "@type": "ImageObject",
                   url: "https://www.chamaac.com/favicon.png",

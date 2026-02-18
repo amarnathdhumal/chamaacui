@@ -20,23 +20,29 @@ export function constructMetadata({
   noIndex?: boolean;
 } = {}): Metadata {
   return {
-    title: title ? `${title} | Chamaac` : "Chamaac | Premium UI Components",
+    title: title
+      ? `${title} | Chamaac UI`
+      : "Chamaac UI | Premium UI Components",
     description:
       description ||
       "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
     openGraph: {
-      title: title ? `${title} | Chamaac` : "Chamaac | Premium UI Components",
+      title: title
+        ? `${title} | Chamaac UI`
+        : "Chamaac UI | Premium UI Components",
       description:
         description ||
         "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
       url: "https://www.chamaac.com",
-      siteName: "Chamaac",
+      siteName: "Chamaac UI",
       images: [
         {
           url: image,
           width: 1200,
           height: 630,
-          alt: title ? `${title} | Chamaac` : "Chamaac | Premium UI Components",
+          alt: title
+            ? `${title} | Chamaac UI`
+            : "Chamaac UI | Premium UI Components",
         },
       ],
       locale: "en_US",
@@ -44,7 +50,9 @@ export function constructMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: title ? `${title} | Chamaac` : "Chamaac | Premium UI Components",
+      title: title
+        ? `${title} | Chamaac UI`
+        : "Chamaac UI | Premium UI Components",
       description:
         description ||
         "Explore a collection of stunning and interactive UI components crafted with React and Motion.",

@@ -49,16 +49,16 @@ function CommandDialog({
         <DialogDescription>{description}</DialogDescription>
       </DialogHeader>
       <DialogContent
-        className={cn("overflow-hidden p-0 gap-0 ", className)}
+        className={cn("overflow-hidden p-0 gap-0 backdrop-blur-lg", className)}
         showCloseButton={showCloseButton}
       >
         <Command className="[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[30%] after:content-[''] after:bg-gradient-to-t after:from-background after:to-transparent after:pointer-events-none after:z-10">
           {children}
         </Command>
-        <div className="flex items-center justify-between border-t border-border px-4 py-2 text-xs  bg-white dark:bg-black">
+        <div className="flex items-center justify-between border-t border-border px-4 py-2 text-xs bg-transparent">
           <div className="flex items-center justify-between gap-1">
             <span className="text-base/7 text-black dark:text-white ">
-              Chamaac
+              Chamaac UI
             </span>
           </div>
           <div className="flex gap-2 items-center ">
@@ -82,7 +82,7 @@ function CommandInput({
   return (
     <div
       data-slot="command-input-wrapper "
-      className="flex h-13 items-center gap-2 border-b px-3 bg-white dark:bg-black"
+      className="flex h-13 items-center gap-2 border-b px-3 bg-transparent"
     >
       <SearchIcon className="size-4 shrink-0 opacity-50" />
       <CommandPrimitive.Input

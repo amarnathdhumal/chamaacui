@@ -33,14 +33,14 @@ export default function LiquidChromePage() {
           {
             name: "speed",
             type: "number",
-            default: "0.5",
+            default: "0.8",
             description: "Overall animation speed multiplier",
             required: false,
           },
           {
             name: "timeScale",
             type: "number",
-            default: "0.1",
+            default: "0.2",
             description: "Intensity of the liquid warping",
             required: false,
           },

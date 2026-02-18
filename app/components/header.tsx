@@ -26,6 +26,11 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { sidebarData } from "@/lib/data";
 
 const navLinks = [
@@ -167,25 +172,42 @@ export const Header = () => {
               </kbd>
             </button>
 
-            <IconBrandGithub
-              onClick={() =>
-                window.open(
-                  "https://github.com/amarnathdhumal/chamaacui",
-                  "_blank"
-                )
-              }
-              className="text-neutral-600 dark:text-gray-300 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
-            />
-            <IconBrandX
-              onClick={() =>
-                window.open("https://x.com/AmarnathDhumal", "_blank")
-              }
-              className="text-neutral-600 dark:text-gray-300 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
-            />
-            <IconBrightness
-              onClick={toggleTheme}
-              className="text-neutral-600 dark:text-gray-300 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
-            />
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <IconBrandGithub
+                  onClick={() =>
+                    window.open(
+                      "https://github.com/amarnathdhumal/chamaacui",
+                      "_blank"
+                    )
+                  }
+                  className="text-neutral-600 dark:text-gray-300 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
+                />
+              </TooltipTrigger>
+              <TooltipContent sideOffset={8}>GitHub</TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <IconBrandX
+                  onClick={() =>
+                    window.open("https://x.com/AmarnathDhumal", "_blank")
+                  }
+                  className="text-neutral-600 dark:text-gray-300 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
+                />
+              </TooltipTrigger>
+              <TooltipContent sideOffset={8}>Twitter / X</TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <IconBrightness
+                  onClick={toggleTheme}
+                  className="text-neutral-600 dark:text-gray-300 leading-tight cursor-pointer size-8 p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-full "
+                />
+              </TooltipTrigger>
+              <TooltipContent sideOffset={8}>Toggle Theme</TooltipContent>
+            </Tooltip>
           </div>
 
           {/* Mobile Navigation - Only search, GitHub, and menu */}
@@ -315,13 +337,13 @@ export const Header = () => {
       <CommandDialog
         open={open}
         onOpenChange={setOpen}
-        className="bg-white dark:bg-black rounded-[16px] border-gray-200 dark:border-neutral-800 "
+        className="bg-white/80 dark:bg-black/80 backdrop-blur-lg rounded-[16px] border-gray-200 dark:border-neutral-800"
       >
         <CommandInput
           className=" py-2 text-sm/5 text-neutral-600 dark:text-gray-300 "
           placeholder="Type a command or search..."
         />
-        <CommandList className="bg-white dark:bg-black ">
+        <CommandList className="bg-transparent ">
           <CommandEmpty>No results found.</CommandEmpty>
           {Object.entries(
             sidebarData.reduce(
