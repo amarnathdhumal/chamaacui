@@ -40,7 +40,7 @@ export default function LiquidChromePage() {
           {
             name: "timeScale",
             type: "number",
-            default: "0.2",
+            default: "0.225",
             description: "Intensity of the liquid warping",
             required: false,
           },

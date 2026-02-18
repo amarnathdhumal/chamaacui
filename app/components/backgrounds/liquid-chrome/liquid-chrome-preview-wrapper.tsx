@@ -30,7 +30,7 @@ export default function LiquidChromePreviewWrapper({
   props,
 }: LiquidChromePreviewWrapperProps) {
   const [speed, setSpeed] = useState(0.35);
-  const [timeScale, setTimeScale] = useState(0.2);
+  const [timeScale, setTimeScale] = useState(0.225);
   const [color, setColor] = useState("#C0C0C0");
   const [color2, setColor2] = useState("#4A4A4A");
 
