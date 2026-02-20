@@ -243,7 +243,7 @@ export const componentCards: ComponentCardType[] = [
   {
     title: "Stats Cards",
     description: "A set of animated statistic cards with hover effects.",
-    imagePath: "/components/stats-cards.png",
+    imagePath: "/components/sections/stats-cards-new.png",
     videoSrc: " https://assets.amarn.me/stats-card.mp4",
     link: "/components/sections/stats-cards",
     category: "Sections",
