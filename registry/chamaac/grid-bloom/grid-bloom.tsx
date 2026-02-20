@@ -169,7 +169,7 @@ export default function GridBloom({
   return (
     <div
       className={cn(
-        "w-full h-full absolute inset-0 pointer-events-none",
+        "w-full h-full absolute inset-0 pointer-events-none bg-purple-100",
         className
       )}
     >
