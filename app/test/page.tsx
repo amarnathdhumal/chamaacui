@@ -1,11 +1,16 @@
 "use client";
 
-import SynthesisVisual from "@/registry/chamaac/backgrounds/synthesis-visual";
+import GridBloom from "@/registry/chamaac/grid-bloom/grid-bloom";
 
-export default function TestPage() {
+export default function GridBloomDemo() {
   return (
-    <div className="w-full h-screen bg-black">
-      <SynthesisVisual />
+    <div className="relative w-full h-screen overflow-hidden bg-purple-100">
+      <GridBloom
+        color="#e040fb"
+        speed={1}
+        gridScale={12}
+        rotationSpeed={0.08}
+      />
     </div>
   );
 }

@@ -1302,6 +1302,42 @@
           "type": "registry:component"
         }
       ]
+    },
+    {
+      "name": "water-caustic",
+      "type": "registry:component",
+      "title": "Water Caustic",
+      "description": "A stunning, tileable water caustic lighting shader using wave interference.",
+      "dependencies": [
+        "three",
+        "@react-three/fiber",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/water-caustic/water-caustic.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "grid-bloom",
+      "type": "registry:component",
+      "title": "Grid Bloom",
+      "description": "A mesmerizing grid pattern with pulsing wave interference.",
+      "dependencies": [
+        "three",
+        "@react-three/fiber",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/grid-bloom/grid-bloom.tsx",
+          "type": "registry:component"
+        }
+      ]
     }
   ]
 }

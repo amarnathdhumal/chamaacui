@@ -25,23 +25,28 @@ export const sidebarData: SidebarDataTypes[] = [
     isNew: true,
   },
   {
+    componentName: "Grid Bloom",
+    link: "/backgrounds/grid-bloom",
+    category: "Backgrounds",
+    isNew: true,
+  },
+  {
     componentName: "Liquid Chrome",
     link: "/backgrounds/liquid-chrome",
     category: "Backgrounds",
-    isNew: true,
   },
 
   {
     componentName: "Waves",
     link: "/backgrounds/waves",
     category: "Backgrounds",
-    isNew: true,
   },
   {
     componentName: "Interactive Grid",
     link: "/backgrounds/interactive-grid",
     category: "Backgrounds",
   },
+
   // sections
   {
     componentName: "How It Works",
@@ -168,6 +173,15 @@ export const componentCards: ComponentCardType[] = [
     bgColor: "bg-black dark:bg-black",
   },
   {
+    title: "Grid Bloom",
+    description: "A mesmerizing grid pattern with pulsing wave interference.",
+    imagePath: "/components/backgrounds/grid-bloom.png",
+    videoSrc: "https://assets.amarn.me/grid-bloom.mp4",
+    link: "/components/backgrounds/grid-bloom",
+    category: "Backgrounds",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
     title: "Liquid Chrome",
     description: "A smooth, mesmerizing liquid metal shader effect.",
     videoSrc: "https://assets.amarn.me/liquid-chrome.mp4",
@@ -225,6 +239,7 @@ export const componentCards: ComponentCardType[] = [
     category: "Backgrounds",
     bgColor: "bg-black dark:bg-black",
   },
+
   {
     title: "Stats Cards",
     description: "A set of animated statistic cards with hover effects.",
