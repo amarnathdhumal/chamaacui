@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps, Easing } from "motion/react";
+import {
+  m,
+  LazyMotion,
+  domAnimation,
+  SVGMotionProps,
+  Easing,
+} from "motion/react";
 
 interface MailIconProps extends SVGMotionProps<SVGSVGElement> {
   size?: number;
@@ -50,29 +56,31 @@ const MailIcon = (props: MailIconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      overflow="visible"
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.path
-        d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
-        {...envelopeProps}
-      />
-      <motion.path d="M3 7l9 6l9 -6" {...flapProps} />
-    </motion.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        overflow="visible"
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <m.path
+          d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+          {...envelopeProps}
+        />
+        <m.path d="M3 7l9 6l9 -6" {...flapProps} />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

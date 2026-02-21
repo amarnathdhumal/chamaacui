@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export type PackageManager = "npm" | "bun" | "pnpm" | "yarn";
@@ -32,7 +32,7 @@ export default function PackageManagerSelector({
           )}
         >
           {activePm === pm && (
-            <motion.div
+            <m.div
               layoutId={layoutId}
               className="absolute inset-0 bg-gray-200 dark:bg-neutral-800 rounded-[8px]"
               transition={{

@@ -2,7 +2,7 @@
 
 import { type Icon } from "@tabler/icons-react";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
@@ -36,7 +36,7 @@ const TiltCard = ({
       className={cn("flex md:h-[500px] justify-center items-center", className)}
     >
       <div className="max-w-[280px] md:max-w-[325px] w-full  h-full max-h-[285px]  md:max-h-[325px]  border border-[#E8E8E8] dark:border-white/10 relative rounded-[20px] p-5 bg-white dark:bg-neutral-800">
-        <motion.div
+        <m.div
           initial={{ rotate: initialRotate }}
           whileHover={{ rotate: hoverRotate }}
           transition={{
@@ -47,9 +47,9 @@ const TiltCard = ({
           }}
           className="absolute inset-0 flex flex-col items- justify-center rounded-[15px] md:rounded-[20px] md:p-8 p-4 border border-[#E8E8E8] dark:border-white/10 bg-white dark:bg-neutral-800 md:gap-8 gap-6"
         >
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <div
-              key={index}
+              key={feature.title}
               className="flex flex-row items-start gap-2 md:gap-3"
             >
               <div>
@@ -65,7 +65,7 @@ const TiltCard = ({
               </div>
             </div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </div>
   );

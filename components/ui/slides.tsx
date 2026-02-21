@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 interface SlideData {
   title: string;
@@ -46,8 +47,13 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
   return (
     <div className="[perspective: 1200px] [transform-style: preserve-3d">
       <li
+        role="button"
+        tabIndex={0}
         className="flex flex-1 flex-col items-center justify-center relative text-center text-whie opacity-0 transition-all duration-300 ease-in-out w-[70vmin] h-[70vmin] mx-[4vmin] z-10"
         onClick={() => handleSlideClick(index)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") handleSlideClick(index);
+        }}
         style={{
           transform:
             current !== index
@@ -66,15 +72,15 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
                 : "none",
           }}
         >
-          <img
+          <Image
             className="w-[120%] h-[120%] object-cover opacity-100 transition-opacity duration-600 ease-in-out"
             style={{
               opacity: current === index ? 1 : 0.5,
             }}
             alt={title}
             src={src}
-            loading="eager"
-            decoding="sync"
+            fill
+            sizes="70vmin"
           />
         </div>
       </li>

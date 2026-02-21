@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import RandomImageReveal from "./reveal-card";
+
+export const metadata: Metadata = {
+  title: "Random Image Reveal | Chamaac UI",
+  description:
+    "A card that reveals a random image on hover with smooth rotation and lift animations.",
+};
 import fs from "fs";
 import path from "path";
 import ViewArea from "@/components/ui/view-area";

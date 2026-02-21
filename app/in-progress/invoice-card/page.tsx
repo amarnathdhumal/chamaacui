@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import InvoiceCardPreviewWrapper from "./invoice-card-preview-wrapper";
+
+export const metadata: Metadata = {
+  title: "Invoice Card | Chamaac UI",
+  description:
+    "An animated invoice card with slide-up animation and staggered content reveal.",
+};
 import fs from "fs";
 import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";

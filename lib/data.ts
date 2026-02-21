@@ -152,7 +152,7 @@ export const sidebarData: SidebarDataTypes[] = [
   },
 ];
 
-export interface ComponentCardType {
+interface ComponentCardType {
   title: string;
   description: string;
   imagePath: string;

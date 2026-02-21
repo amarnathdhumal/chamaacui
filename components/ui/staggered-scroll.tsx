@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionTemplate,
-} from "motion/react";
+import { m, useScroll, useTransform, useMotionTemplate } from "motion/react";
 import { useRef } from "react";
 
 interface GridItemProps {
@@ -131,23 +126,23 @@ const GridItem = ({ src, isLeftSide, container }: GridItemProps) => {
   const filter = useMotionTemplate`blur(${blur}px) brightness(${brightness}%) contrast(${contrast}%)`;
 
   return (
-    <motion.figure ref={ref} className="relative m-0 [perspective:1200px] ">
-      <motion.div
+    <m.figure ref={ref} className="relative m-0 [perspective:1200px] ">
+      <m.div
         style={{
           transform: wrapperTransform,
           filter,
         }}
         className="relative w-full aspect-[1/1.2] rounded-[4px] overflow-hidden [transform-style:preserve-3d] "
       >
-        <motion.div
+        <m.div
           style={{
             scaleY,
             backgroundImage: `url(${src})`,
           }}
           className="absolute -top-0 -left-0 w-full h-full bg-cover bg-[center_20%] [backface-visibility:hidden] "
         />
-      </motion.div>
-    </motion.figure>
+      </m.div>
+    </m.figure>
   );
 };
 
@@ -158,7 +153,7 @@ const StaggeredScroll = ({ container, images }: StaggeredScrollProps) => {
         <div className="w-full max-w-[300px] grid grid-cols-2 relative gap-x-8">
           {images.map((src, index) => (
             <GridItem
-              key={index}
+              key={src}
               src={src}
               isLeftSide={index % 2 === 0}
               container={container}

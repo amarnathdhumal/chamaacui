@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Noise Button | Chamaac UI",
+  description:
+    "A button with a grainy noise texture overlay created using SVG fractal filters.",
+};
+
 const NoiseButton = () => {
   return (
     <div className="flex h-[500px] items-center justify-center ">

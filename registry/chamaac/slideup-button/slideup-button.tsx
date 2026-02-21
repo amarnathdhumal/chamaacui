@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
+import { LazyMotion, domAnimation, m } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface SlideUpButtonProps {
@@ -41,44 +41,46 @@ const SlideUpButton = ({
   };
 
   return (
-    <motion.button
-      onClick={onClick}
-      variants={buttonVariants}
-      initial="initial"
-      whileHover="hover"
-      className={cn(
-        "relative overflow-hidden px-6 py-3 rounded-[12px] text-[16px] leading-[1.5] cursor-pointer",
-        className
-      )}
-    >
-      {/* container for stacked text */}
-      <motion.div className="relative overflow-hidden">
-        {/* ORIGINAL TEXT */}
-        <motion.span
-          variants={textVariants}
-          transition={{
-            duration: textDuration,
-            ease: [0.55, 0.085, 0.68, 0.53],
-          }}
-          className="block"
-        >
-          {children}
-        </motion.span>
+    <LazyMotion features={domAnimation}>
+      <m.button
+        onClick={onClick}
+        variants={buttonVariants}
+        initial="initial"
+        whileHover="hover"
+        className={cn(
+          "relative overflow-hidden px-6 py-3 rounded-[12px] text-[16px] leading-[1.5] cursor-pointer",
+          className
+        )}
+      >
+        {/* container for stacked text */}
+        <m.div className="relative overflow-hidden">
+          {/* ORIGINAL TEXT */}
+          <m.span
+            variants={textVariants}
+            transition={{
+              duration: textDuration,
+              ease: [0.55, 0.085, 0.68, 0.53],
+            }}
+            className="block"
+          >
+            {children}
+          </m.span>
 
-        {/* CLONE TEXT */}
-        <motion.span
-          variants={cloneVariants}
-          transition={{
-            duration: cloneDuration,
-            ease: [0.165, 0.84, 0.44, 1],
-            delay: cloneDelay,
-          }}
-          className="block absolute top-0 left-0"
-        >
-          {children}
-        </motion.span>
-      </motion.div>
-    </motion.button>
+          {/* CLONE TEXT */}
+          <m.span
+            variants={cloneVariants}
+            transition={{
+              duration: cloneDuration,
+              ease: [0.165, 0.84, 0.44, 1],
+              delay: cloneDelay,
+            }}
+            className="block absolute top-0 left-0"
+          >
+            {children}
+          </m.span>
+        </m.div>
+      </m.button>
+    </LazyMotion>
   );
 };
 

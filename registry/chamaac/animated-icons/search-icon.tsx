@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps, Easing } from "motion/react";
+import {
+  m,
+  LazyMotion,
+  domAnimation,
+  SVGMotionProps,
+  Easing,
+} from "motion/react";
 
 interface SearchIconProps
   extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -40,31 +46,33 @@ const SearchIcon = (props: SearchIconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      overflow="visible"
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.g
-        {...groupAnimationProps}
-        style={{ originX: "21px", originY: "21px" }}
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        overflow="visible"
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
       >
-        <motion.circle cx="10" cy="10" r="7" />
-        <motion.path d="M21 21l-6 -6" />
-      </motion.g>
-    </motion.svg>
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <m.g
+          {...groupAnimationProps}
+          style={{ originX: "21px", originY: "21px" }}
+        >
+          <m.circle cx="10" cy="10" r="7" />
+          <m.path d="M21 21l-6 -6" />
+        </m.g>
+      </m.svg>
+    </LazyMotion>
   );
 };
 

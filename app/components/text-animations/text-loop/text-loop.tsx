@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence, Transition } from "motion/react";
+import { m, AnimatePresence, Transition } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface TextLoopProps {
@@ -48,7 +48,7 @@ export default function TextLoop({
       </span>
       <div className="relative flex items-center">
         <AnimatePresence mode="wait">
-          <motion.div
+          <m.div
             key={rotatingTexts[index]}
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "auto", opacity: 1 }}
@@ -76,11 +76,11 @@ export default function TextLoop({
             >
               {rotatingTexts[index]}
             </span>
-          </motion.div>
+          </m.div>
         </AnimatePresence>
 
         {/* Cursor Line */}
-        <motion.div
+        <m.div
           className={cn(
             "w-[3px] md:w-[4px] bg-violet-500 h-[1.10em] sm:h-[1em]",
             cursorClassName

@@ -1,7 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useTransform, animate } from "motion/react";
+import {
+  LazyMotion,
+  domAnimation,
+  m,
+  useMotionValue,
+  useTransform,
+  animate,
+} from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface GaugeProps {
@@ -38,8 +45,7 @@ const Gauge = ({
   const count = useMotionValue(0);
   const rounded = useTransform(count, (latest) => Math.round(latest));
 
-  const [currentSize, setCurrentSize] = useState(size);
-  const [currentThickness, setCurrentThickness] = useState(thickness);
+  const [dims, setDims] = useState({ size, thickness });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -48,6 +54,7 @@ const Gauge = ({
     return () => clearTimeout(timer);
   }, []);
 
+  const { size: currentSize, thickness: currentThickness } = dims;
   const radius = currentSize / 2;
   // Calculate percentage for display
   const percentage = Math.round(((value - min) / (max - min)) * 100);
@@ -66,67 +73,68 @@ const Gauge = ({
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
-        setCurrentSize(280);
-        setCurrentThickness(6);
+        setDims({ size: 280, thickness: 6 });
       } else {
-        setCurrentSize(size);
-        setCurrentThickness(thickness);
+        setDims({ size, thickness });
       }
     };
 
-    handleResize(); // Initial check
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [size, thickness]);
 
   return (
-    <div
-      className={cn("relative flex justify-center items-center", className)}
-      style={{ width: currentSize, height: currentSize / 2 }}
-    >
-      <motion.div className="absolute bottom-0 left-1/2">
-        {Array.from({ length: totalBars }).map((_, index) => {
-          const barRotation = index * gap - 90;
-          const isActive = isMounted && index < (percentage / 100) * totalBars;
+    <LazyMotion features={domAnimation}>
+      <div
+        className={cn("relative flex justify-center items-center", className)}
+        style={{ width: currentSize, height: currentSize / 2 }}
+      >
+        <m.div className="absolute bottom-0 left-1/2">
+          {Array.from({ length: totalBars }).map((_, index) => {
+            const barRotation = index * gap - 90;
+            const isActive =
+              isMounted && index < (percentage / 100) * totalBars;
 
-          return (
+            return (
+              <div
+                key={index}
+                className={cn(
+                  "absolute rounded-full transition-colors duration-300",
+                  isActive ? `${activeColor} ` : inactiveColor
+                )}
+                style={{
+                  width: currentThickness,
+                  height: currentSize / 8, // Proportional height
+                  left: "50%",
+                  top: "50%",
+                  transform: `translate(-50%, -50%) rotate(${barRotation}deg) translateY(-${radius}px)`,
+                  transitionDelay: `${index * delay}ms`,
+                }}
+              />
+            );
+          })}
+
+          {showValue && (
             <div
-              key={index}
-              className={cn(
-                "absolute rounded-full transition-colors duration-300",
-                isActive ? `${activeColor} ` : inactiveColor
-              )}
+              className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
               style={{
-                width: currentThickness,
-                height: currentSize / 8, // Proportional height
-                left: "50%",
-                top: "50%",
-                transform: `translate(-50%, -50%) rotate(${barRotation}deg) translateY(-${radius}px)`,
-                transitionDelay: `${index * delay}ms`,
+                bottom: 0, // Align to bottom of the container
               }}
-            />
-          );
-        })}
-
-        {showValue && (
-          <div
-            className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
-            style={{
-              bottom: 0, // Align to bottom of the container
-            }}
-          >
-            <h2 className="flex text-black dark:text-white font-bold leading-none text-[32px] md:text-[48px]">
-              <motion.span>{rounded}</motion.span>%
-            </h2>
-            {label && (
-              <p className="text-black dark:text-white font-medium font-sm md:font-base">
-                {label}
-              </p>
-            )}
-          </div>
-        )}
-      </motion.div>
-    </div>
+            >
+              <h2 className="flex text-black dark:text-white font-bold leading-none text-[32px] md:text-[48px]">
+                <m.span>{rounded}</m.span>%
+              </h2>
+              {label && (
+                <p className="text-black dark:text-white font-medium font-sm md:font-base">
+                  {label}
+                </p>
+              )}
+            </div>
+          )}
+        </m.div>
+      </div>
+    </LazyMotion>
   );
 };
 

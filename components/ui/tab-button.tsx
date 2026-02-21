@@ -1,6 +1,6 @@
 import { TabButtonTypes } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 
 const TabButton = ({
   name,
@@ -18,7 +18,7 @@ const TabButton = ({
       )}
     >
       {isActive && (
-        <motion.div
+        <m.div
           layoutId={layoutId}
           className="absolute inset-0 dark:bg-neutral-800 bg-gray-200 rounded-[8px]"
           transition={{ duration: 0.3 }}

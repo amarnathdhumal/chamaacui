@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps, Easing } from "motion/react";
+import {
+  m,
+  LazyMotion,
+  domAnimation,
+  SVGMotionProps,
+  Easing,
+} from "motion/react";
 
 interface ChevronRightIconProps extends SVGMotionProps<SVGSVGElement> {
   size?: number;
@@ -39,25 +45,27 @@ const ChevronRightIcon = (props: ChevronRightIconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      overflow="visible"
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.path d="M9 6l6 6l-6 6" {...pathAnimationProps} />
-    </motion.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        overflow="visible"
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <m.path d="M9 6l6 6l-6 6" {...pathAnimationProps} />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import { Header } from "./components/header";
+
+export const metadata: Metadata = {
+  title: "Chamaac UI | Premium UI Components",
+  description:
+    "A premium collection of motion-rich, interactive UI components for React.",
+};
 import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import Link from "next/link";
 import TextLoop from "./components/text-animations/text-loop/text-loop";

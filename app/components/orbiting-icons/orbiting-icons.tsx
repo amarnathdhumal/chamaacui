@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import Image from "next/image";
 
 interface IconProps {
@@ -92,7 +92,7 @@ const OrbitingIcons = ({
   return (
     <div className="bg-neutral-100 dark:bg-neutral-800 rounded-[32px] w-[300px] h-[300px] md:w-[375px] md:h-[350px] overflow-hidden relative flex flex-col items-center shadow-2xl">
       {/* Rotating Icons Centered */}
-      <motion.div
+      <m.div
         className="absolute"
         style={{
           width: radius * 2,
@@ -120,7 +120,7 @@ const OrbitingIcons = ({
 
           return (
             <div
-              key={index}
+              key={angle.toFixed(6)}
               style={{
                 position: "absolute",
                 left: `${x}px`,
@@ -132,7 +132,7 @@ const OrbitingIcons = ({
             </div>
           );
         })}
-      </motion.div>
+      </m.div>
 
       {/* Text Content Aligned to Bottom */}
       <div className="absolute bottom-6 md:bottom-12 z-20 flex flex-col items-center text-center gap-[5px] px-5">
@@ -149,9 +149,15 @@ const OrbitingIcons = ({
 
 const IconCard = ({ img }: IconProps) => {
   return (
-    <motion.div className="size-[50px] md:size-[65px] flex items-center justify-center relative rounded-full bg-white dark:bg-neutral-700 ">
-      <Image alt="image" src={img} fill className="object-contain p-3 md:p-5" />
-    </motion.div>
+    <m.div className="size-[50px] md:size-[65px] flex items-center justify-center relative rounded-full bg-white dark:bg-neutral-700 ">
+      <Image
+        alt="image"
+        src={img}
+        fill
+        sizes="65px"
+        className="object-contain p-3 md:p-5"
+      />
+    </m.div>
   );
 };
 

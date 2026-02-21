@@ -2,7 +2,7 @@
 
 import { componentCards } from "@/lib/data";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { cn } from "@/lib/utils";
 import { useState, useRef, useCallback } from "react";
 import Image from "next/image";
@@ -34,9 +34,9 @@ const ComponentCard = ({
   }, []);
 
   return (
-    <motion.div>
+    <m.div>
       <Link href={component.link}>
-        <motion.div
+        <m.div
           className={cn(
             "group relative h-full rounded-[16px] border border-border p-2",
             "bg-gray-50 dark:bg-neutral-900",
@@ -90,9 +90,9 @@ const ComponentCard = ({
               {component.description}
             </p>
           </div>
-        </motion.div>
+        </m.div>
       </Link>
-    </motion.div>
+    </m.div>
   );
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -25,17 +25,21 @@ export default function FeatureSteps({
   autoPlayInterval = 3000,
   imageClassName = "h-[400px]",
 }: FeatureStepsProps) {
-  const [currentFeature, setCurrentFeature] = useState(0);
-  const [progressKey, setProgressKey] = useState(0);
+  const [state, setState] = useState({ feature: 0, tick: 0 });
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentFeature((prev) => (prev + 1) % features.length);
-      setProgressKey((prev) => prev + 1);
+      setState((prev) => ({
+        feature: (prev.feature + 1) % features.length,
+        tick: prev.tick + 1,
+      }));
     }, autoPlayInterval);
 
     return () => clearInterval(timer);
-  }, [autoPlayInterval, currentFeature, features.length]); // Reset timer when currentFeature changes
+  }, [autoPlayInterval, state.feature, features.length]);
+
+  const currentFeature = state.feature;
+  const progressKey = state.tick;
 
   return (
     <div
@@ -47,12 +51,11 @@ export default function FeatureSteps({
       {/* Left Column: Feature List */}
       <div className="flex flex-col w-full md:w-1/2 border border-black/10 dark:border-white/10 divide-y divide-black/10 dark:divide-white/10">
         {features.map((feature, index) => (
-          <motion.div
-            key={index}
+          <m.div
+            key={feature.title}
             layoutId={feature.title}
             onClick={() => {
-              setCurrentFeature(index);
-              setProgressKey((prev) => prev + 1);
+              setState((prev) => ({ feature: index, tick: prev.tick + 1 }));
             }}
             className="p-4 md:p-10 relative cursor-pointer"
           >
@@ -61,7 +64,7 @@ export default function FeatureSteps({
             </h3>
             <p className="mt-2 text-sm  text-neutral-500">{feature.content}</p>
             {index === currentFeature && (
-              <motion.div
+              <m.div
                 key={progressKey}
                 className="absolute h-[1px] bottom-0 left-0 bg-black dark:bg-white"
                 initial={{ width: "0%" }}
@@ -72,7 +75,7 @@ export default function FeatureSteps({
                 }}
               />
             )}
-          </motion.div>
+          </m.div>
         ))}
       </div>
 
@@ -83,7 +86,7 @@ export default function FeatureSteps({
           imageClassName
         )}
       >
-        <motion.div
+        <m.div
           key={currentFeature}
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
@@ -94,9 +97,10 @@ export default function FeatureSteps({
             src={features[currentFeature].image}
             alt={features[currentFeature].title}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="rounded object-cover"
           />
-        </motion.div>
+        </m.div>
       </div>
     </div>
   );

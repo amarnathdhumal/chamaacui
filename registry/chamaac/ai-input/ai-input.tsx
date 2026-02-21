@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, AnimatePresence } from "motion/react";
+import { m, LazyMotion, domMax, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import React, {
   useState,
@@ -64,6 +64,7 @@ interface Attachment {
 }
 
 interface Message {
+  id: string;
   role: "user" | "ai";
   content: string;
   attachments?: Attachment[];
@@ -149,10 +150,16 @@ export function AIInputDropdown<T extends DropdownItem>({
       {isOpen && (
         <>
           <div
+            role="button"
+            tabIndex={-1}
+            aria-label="Dismiss"
             className="fixed inset-0 z-40 bg-transparent"
             onClick={onClose}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") onClose();
+            }}
           />
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 10 }}
@@ -165,12 +172,12 @@ export function AIInputDropdown<T extends DropdownItem>({
             <div className="flex flex-col gap-0.5">
               {items.map((item, index) =>
                 renderItem ? (
-                  <div key={index} onClick={onClose}>
+                  <div key={item.label} role="presentation" onClick={onClose}>
                     {renderItem(item, index)}
                   </div>
                 ) : (
                   <button
-                    key={index}
+                    key={item.label}
                     onClick={() => {
                       item.onClick?.();
                       onClose();
@@ -185,7 +192,7 @@ export function AIInputDropdown<T extends DropdownItem>({
                 )
               )}
             </div>
-          </motion.div>
+          </m.div>
         </>
       )}
     </AnimatePresence>
@@ -246,7 +253,7 @@ export function AIInputPillButton({
 
   if (showClose) {
     return (
-      <motion.div
+      <m.div
         layoutId={layoutId}
         layout
         transition={{ duration: 0.3 }}
@@ -271,12 +278,12 @@ export function AIInputPillButton({
         >
           <X className="w-3 h-3" />
         </button>
-      </motion.div>
+      </m.div>
     );
   }
 
   return (
-    <motion.button
+    <m.button
       layoutId={layoutId}
       layout
       onClick={onClick}
@@ -288,7 +295,7 @@ export function AIInputPillButton({
       )}
     >
       {pillContent}
-    </motion.button>
+    </m.button>
   );
 }
 AIInputPillButton.displayName = "AIInputPillButton";
@@ -309,7 +316,7 @@ export function AIInputMessages({
   messagesEndRef,
 }: AIInputMessagesProps) {
   return (
-    <motion.div
+    <m.div
       layout
       className={cn(
         "w-full max-w-2xl mx-auto flex flex-col gap-6 overflow-y-auto px-4 hide-scrollbar",
@@ -318,11 +325,11 @@ export function AIInputMessages({
     >
       {hasSubmitted && (
         <>
-          {messages.map((msg, idx) => (
-            <motion.div
+          {messages.map((msg) => (
+            <m.div
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              key={idx}
+              key={msg.id}
               className={cn(
                 "flex flex-col gap-2 max-w-[85%]",
                 msg.role === "user" ? "ml-auto items-end" : "items-start"
@@ -338,6 +345,7 @@ export function AIInputMessages({
                             src={attachment.preview}
                             alt="Attachment"
                             fill
+                            sizes="80px"
                             className="object-cover"
                           />
                         </div>
@@ -375,13 +383,13 @@ export function AIInputMessages({
                   {msg.content}
                 </div>
               )}
-            </motion.div>
+            </m.div>
           ))}
           <div className="h-24 flex-shrink-0" />
           <div ref={messagesEndRef} />
         </>
       )}
-    </motion.div>
+    </m.div>
   );
 }
 AIInputMessages.displayName = "AIInputMessages";
@@ -402,7 +410,7 @@ export function AIInputFilePreview({
   return (
     <AnimatePresence>
       {files.length > 0 && (
-        <motion.div
+        <m.div
           layout
           initial={{ opacity: 0, height: 0 }}
           animate={{
@@ -419,7 +427,7 @@ export function AIInputFilePreview({
         >
           <div className="px-4 pt-4 pb-2 flex flex-wrap gap-2">
             {files.map((file) => (
-              <motion.div
+              <m.div
                 key={file.id}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -433,6 +441,7 @@ export function AIInputFilePreview({
                       src={file.preview}
                       alt={file.file.name}
                       fill
+                      sizes="64px"
                       className="object-cover"
                     />
                   </div>
@@ -457,10 +466,10 @@ export function AIInputFilePreview({
                 >
                   <X className="w-3 h-3" />
                 </button>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );
@@ -556,6 +565,7 @@ export function AIInput({
     setMessages((prev) => [
       ...prev,
       {
+        id: `msg-${Date.now()}`,
         role: "user",
         content: value,
         attachments: attachments.length > 0 ? attachments : undefined,
@@ -573,7 +583,11 @@ export function AIInput({
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
-        { role: "ai", content: `Your response content here...` },
+        {
+          id: `msg-${Date.now()}-ai`,
+          role: "ai",
+          content: `Your response content here...`,
+        },
       ]);
     }, 500);
   };
@@ -586,301 +600,309 @@ export function AIInput({
   };
 
   return (
-    <AIInputContext.Provider value={{ activeDropdown, setActiveDropdown }}>
-      <div
-        className={cn(
-          "w-full h-[100dvh] flex flex-col relative overflow-hidden",
-          className
-        )}
-      >
-        <AIInputMessages
-          messages={messages}
-          hasSubmitted={hasSubmitted}
-          messagesEndRef={messagesEndRef}
-        />
-
-        <motion.div
-          layout
-          transition={{ type: "spring", damping: 25, stiffness: 200 }}
+    <LazyMotion features={domMax}>
+      <AIInputContext.Provider value={{ activeDropdown, setActiveDropdown }}>
+        <div
           className={cn(
-            "w-full px-4 flex flex-col z-20",
-            hasSubmitted ? "pb-8" : "flex-1 justify-center items-center"
+            "w-full h-[100dvh] flex flex-col relative overflow-hidden",
+            className
           )}
         >
-          <div className="w-full max-w-2xl mx-auto relative group">
-            <motion.div
-              layoutId="input-container"
-              layout
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="relative bg-white dark:bg-[#09090b] rounded-[32px] border border-black/5 dark:border-white/5"
-            >
-              <input
-                ref={fileInputRef}
-                type="file"
-                multiple
-                accept="image/*,.pdf,.doc,.docx,.txt,.md"
-                className="hidden"
-                onChange={handleFileSelect}
-              />
-              <input
-                ref={videoInputRef}
-                type="file"
-                multiple
-                accept="video/*"
-                className="hidden"
-                onChange={handleFileSelect}
-              />
+          <AIInputMessages
+            messages={messages}
+            hasSubmitted={hasSubmitted}
+            messagesEndRef={messagesEndRef}
+          />
 
-              <AIInputFilePreview files={uploadedFiles} onRemove={removeFile} />
-
-              <div className="p-4 pb-14">
-                <motion.textarea
-                  layout
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
-                  onKeyDown={handleKeyDown}
-                  disabled={isListening}
-                  placeholder={isListening ? "Listening..." : placeholder}
-                  className="w-full bg-transparent text-lg text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 resize-none outline-none min-h-[40px] max-h-[200px]"
-                  rows={1}
-                  style={{ minHeight: "44px", height: "auto" }}
-                  onInput={(e) => {
-                    const target = e.target as HTMLTextAreaElement;
-                    target.style.height = "auto";
-                    target.style.height = `${target.scrollHeight}px`;
-                  }}
+          <m.div
+            layout
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className={cn(
+              "w-full px-4 flex flex-col z-20",
+              hasSubmitted ? "pb-8" : "flex-1 justify-center items-center"
+            )}
+          >
+            <div className="w-full max-w-2xl mx-auto relative group">
+              <m.div
+                layoutId="input-container"
+                layout
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="relative bg-white dark:bg-[#09090b] rounded-[32px] border border-black/5 dark:border-white/5"
+              >
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  accept="image/*,.pdf,.doc,.docx,.txt,.md"
+                  className="hidden"
+                  onChange={handleFileSelect}
                 />
-              </div>
+                <input
+                  ref={videoInputRef}
+                  type="file"
+                  multiple
+                  accept="video/*"
+                  className="hidden"
+                  onChange={handleFileSelect}
+                />
 
-              {/* Bottom Controls */}
-              <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center z-10">
-                {/* Left Side */}
-                <div className="flex items-center gap-2">
-                  <div className="relative">
-                    <button
-                      onClick={() =>
-                        setActiveDropdown(
-                          activeDropdown === "plus" ? null : "plus"
-                        )
-                      }
-                      className={cn(
-                        "p-2.5 rounded-full transition-colors border",
-                        activeDropdown === "plus"
-                          ? "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border-black/10 dark:border-white/10"
-                          : "bg-zinc-50 dark:bg-zinc-900 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 border-black/5 dark:border-white/5"
-                      )}
-                    >
-                      <Plus
+                <AIInputFilePreview
+                  files={uploadedFiles}
+                  onRemove={removeFile}
+                />
+
+                <div className="p-4 pb-14">
+                  <m.textarea
+                    layout
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    disabled={isListening}
+                    placeholder={isListening ? "Listening..." : placeholder}
+                    className="w-full bg-transparent text-lg text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 resize-none outline-none min-h-[40px] max-h-[200px]"
+                    rows={1}
+                    style={{ minHeight: "44px", height: "auto" }}
+                    onInput={(e) => {
+                      const target = e.target as HTMLTextAreaElement;
+                      target.style.height = "auto";
+                      target.style.height = `${target.scrollHeight}px`;
+                    }}
+                  />
+                </div>
+
+                {/* Bottom Controls */}
+                <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center z-10">
+                  {/* Left Side */}
+                  <div className="flex items-center gap-2">
+                    <div className="relative">
+                      <button
+                        onClick={() =>
+                          setActiveDropdown(
+                            activeDropdown === "plus" ? null : "plus"
+                          )
+                        }
                         className={cn(
-                          "w-5 h-5 transition-transform",
-                          activeDropdown === "plus" && "rotate-45"
+                          "p-2.5 rounded-full transition-colors border",
+                          activeDropdown === "plus"
+                            ? "bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 border-black/10 dark:border-white/10"
+                            : "bg-zinc-50 dark:bg-zinc-900 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 border-black/5 dark:border-white/5"
+                        )}
+                      >
+                        <Plus
+                          className={cn(
+                            "w-5 h-5 transition-transform",
+                            activeDropdown === "plus" && "rotate-45"
+                          )}
+                        />
+                      </button>
+                      <AIInputDropdown
+                        isOpen={activeDropdown === "plus"}
+                        onClose={() => setActiveDropdown(null)}
+                        items={plusMenuItems}
+                        className="w-56 bottom-full left-0 mb-2"
+                        renderItem={(item) => (
+                          <button
+                            onClick={() => handlePlusMenuClick(item.id)}
+                            className="flex items-center gap-2 px-4 py-3 w-full text-left text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 rounded-2xl transition-colors group"
+                          >
+                            <item.icon className="w-4 h-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors" />
+                            <span className="text-sm font-medium">
+                              {item.label}
+                            </span>
+                          </button>
                         )}
                       />
-                    </button>
-                    <AIInputDropdown
-                      isOpen={activeDropdown === "plus"}
-                      onClose={() => setActiveDropdown(null)}
-                      items={plusMenuItems}
-                      className="w-56 bottom-full left-0 mb-2"
-                      renderItem={(item) => (
-                        <button
-                          onClick={() => handlePlusMenuClick(item.id)}
-                          className="flex items-center gap-2 px-4 py-3 w-full text-left text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 rounded-2xl transition-colors group"
+                    </div>
+
+                    <div className="relative hidden sm:block">
+                      {selectedTool ? (
+                        <AIInputPillButton
+                          layoutId="tools-pill"
+                          icon={selectedTool.icon}
+                          isActive={activeDropdown === "tools"}
+                          showChevron
+                          chevronRotated={activeDropdown === "tools"}
+                          showClose
+                          onClick={() =>
+                            setActiveDropdown(
+                              activeDropdown === "tools" ? null : "tools"
+                            )
+                          }
+                          onClose={() => {
+                            setSelectedTool(null);
+                            setActiveDropdown(null);
+                          }}
                         >
-                          <item.icon className="w-4 h-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors" />
                           <span className="text-sm font-medium">
-                            {item.label}
+                            {selectedTool.label}
                           </span>
-                        </button>
+                        </AIInputPillButton>
+                      ) : (
+                        <AIInputPillButton
+                          layoutId="tools-pill"
+                          icon={Sparkles}
+                          isActive={activeDropdown === "tools"}
+                          showChevron
+                          chevronRotated={activeDropdown === "tools"}
+                          onClick={() =>
+                            setActiveDropdown(
+                              activeDropdown === "tools" ? null : "tools"
+                            )
+                          }
+                        >
+                          <span className="text-sm font-medium">Tools</span>
+                        </AIInputPillButton>
                       )}
-                    />
+
+                      <AIInputDropdown
+                        isOpen={activeDropdown === "tools"}
+                        onClose={() => setActiveDropdown(null)}
+                        items={tools}
+                        className="w-64 bottom-full left-0 mb-2"
+                        renderItem={(item) => (
+                          <button
+                            onClick={() => {
+                              setSelectedTool(item);
+                              setActiveDropdown(null);
+                            }}
+                            className={cn(
+                              "flex items-center gap-3 px-4 py-3 w-full text-left text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 rounded-2xl transition-colors group",
+                              selectedTool?.label === item.label &&
+                                "bg-zinc-100 dark:bg-zinc-800"
+                            )}
+                          >
+                            <item.icon className="w-4 h-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors" />
+                            <span className="text-sm font-medium">
+                              {item.label}
+                            </span>
+                          </button>
+                        )}
+                      />
+                    </div>
                   </div>
 
-                  <div className="relative hidden sm:block">
-                    {selectedTool ? (
+                  {/* Right Side */}
+                  <div className="flex items-center gap-2">
+                    <div className="relative">
                       <AIInputPillButton
-                        layoutId="tools-pill"
-                        icon={selectedTool.icon}
-                        isActive={activeDropdown === "tools"}
+                        layoutId="model-pill"
+                        icon={selectedModel.icon}
+                        isActive={activeDropdown === "model"}
                         showChevron
-                        chevronRotated={activeDropdown === "tools"}
-                        showClose
+                        chevronRotated={activeDropdown === "model"}
                         onClick={() =>
                           setActiveDropdown(
-                            activeDropdown === "tools" ? null : "tools"
+                            activeDropdown === "model" ? null : "model"
                           )
                         }
-                        onClose={() => {
-                          setSelectedTool(null);
-                          setActiveDropdown(null);
-                        }}
                       >
                         <span className="text-sm font-medium">
-                          {selectedTool.label}
+                          {selectedModel.name}
                         </span>
                       </AIInputPillButton>
-                    ) : (
-                      <AIInputPillButton
-                        layoutId="tools-pill"
-                        icon={Sparkles}
-                        isActive={activeDropdown === "tools"}
-                        showChevron
-                        chevronRotated={activeDropdown === "tools"}
-                        onClick={() =>
-                          setActiveDropdown(
-                            activeDropdown === "tools" ? null : "tools"
-                          )
-                        }
-                      >
-                        <span className="text-sm font-medium">Tools</span>
-                      </AIInputPillButton>
-                    )}
 
-                    <AIInputDropdown
-                      isOpen={activeDropdown === "tools"}
-                      onClose={() => setActiveDropdown(null)}
-                      items={tools}
-                      className="w-64 bottom-full left-0 mb-2"
-                      renderItem={(item) => (
-                        <button
-                          onClick={() => {
-                            setSelectedTool(item);
-                            setActiveDropdown(null);
-                          }}
-                          className={cn(
-                            "flex items-center gap-3 px-4 py-3 w-full text-left text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 rounded-2xl transition-colors group",
-                            selectedTool?.label === item.label &&
-                              "bg-zinc-100 dark:bg-zinc-800"
-                          )}
-                        >
-                          <item.icon className="w-4 h-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors" />
-                          <span className="text-sm font-medium">
-                            {item.label}
-                          </span>
-                        </button>
-                      )}
-                    />
-                  </div>
-                </div>
-
-                {/* Right Side */}
-                <div className="flex items-center gap-2">
-                  <div className="relative">
-                    <AIInputPillButton
-                      layoutId="model-pill"
-                      icon={selectedModel.icon}
-                      isActive={activeDropdown === "model"}
-                      showChevron
-                      chevronRotated={activeDropdown === "model"}
-                      onClick={() =>
-                        setActiveDropdown(
-                          activeDropdown === "model" ? null : "model"
-                        )
-                      }
-                    >
-                      <span className="text-sm font-medium">
-                        {selectedModel.name}
-                      </span>
-                    </AIInputPillButton>
-
-                    <AIInputDropdown
-                      isOpen={activeDropdown === "model"}
-                      onClose={() => setActiveDropdown(null)}
-                      items={models}
-                      className="w-48 bottom-full right-0 mb-2 p-1"
-                      renderItem={(model) => (
-                        <button
-                          onClick={() => {
-                            setSelectedModel(model);
-                            setActiveDropdown(null);
-                          }}
-                          className={cn(
-                            "flex items-center gap-3 px-4 py-3 w-full text-left text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 rounded-2xl transition-colors group",
-                            selectedModel.id === model.id &&
-                              "bg-zinc-100 dark:bg-zinc-800"
-                          )}
-                        >
-                          <model.icon className="w-4 h-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors" />
-                          <span className="text-sm font-medium">
-                            {model.name}
-                          </span>
-                          {selectedModel.id === model.id && (
-                            <Check className="w-4 h-4 ml-auto text-zinc-500" />
-                          )}
-                        </button>
-                      )}
-                    />
-                  </div>
-
-                  <div className="flex justify-end">
-                    <AnimatePresence mode="wait" initial={false}>
-                      {hasText ? (
-                        <motion.div
-                          key="active-controls"
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          transition={{ duration: 0.15 }}
-                          className="flex items-center gap-2"
-                        >
+                      <AIInputDropdown
+                        isOpen={activeDropdown === "model"}
+                        onClose={() => setActiveDropdown(null)}
+                        items={models}
+                        className="w-48 bottom-full right-0 mb-2 p-1"
+                        renderItem={(model) => (
                           <button
-                            onClick={() => setValue("")}
-                            className="p-2 text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300 transition-colors"
-                          >
-                            <X className="w-4 h-4" />
-                          </button>
-                          <button
-                            onClick={handleSubmit}
-                            className="p-2.5 rounded-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 hover:opacity-90 transition-opacity"
-                          >
-                            <ArrowUp className="w-5 h-5" />
-                          </button>
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          key="inactive-controls"
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          transition={{ duration: 0.15 }}
-                          className="flex items-center gap-2"
-                        >
-                          <button
-                            onClick={() => setIsListening(!isListening)}
+                            onClick={() => {
+                              setSelectedModel(model);
+                              setActiveDropdown(null);
+                            }}
                             className={cn(
-                              "p-2 transition-all duration-300 relative cursor-pointer",
-                              isListening
-                                ? "text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-full"
-                                : "text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300"
+                              "flex items-center gap-3 px-4 py-3 w-full text-left text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/10 rounded-2xl transition-colors group",
+                              selectedModel.id === model.id &&
+                                "bg-zinc-100 dark:bg-zinc-800"
                             )}
                           >
-                            {isListening ? (
-                              <Square className="w-4 h-4" fill="currentColor" />
-                            ) : (
-                              <Mic className="w-4 h-4" />
-                            )}
-                            {isListening && (
-                              <span className="absolute inset-0 rounded-full animate-ping bg-red-500/20" />
+                            <model.icon className="w-4 h-4 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-200 transition-colors" />
+                            <span className="text-sm font-medium">
+                              {model.name}
+                            </span>
+                            {selectedModel.id === model.id && (
+                              <Check className="w-4 h-4 ml-auto text-zinc-500" />
                             )}
                           </button>
-                          <button
-                            disabled
-                            className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-300 dark:text-zinc-600"
+                        )}
+                      />
+                    </div>
+
+                    <div className="flex justify-end">
+                      <AnimatePresence mode="wait" initial={false}>
+                        {hasText ? (
+                          <m.div
+                            key="active-controls"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            transition={{ duration: 0.15 }}
+                            className="flex items-center gap-2"
                           >
-                            <ArrowUp className="w-4 h-4" />
-                          </button>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                            <button
+                              onClick={() => setValue("")}
+                              className="p-2 text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300 transition-colors"
+                            >
+                              <X className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={handleSubmit}
+                              className="p-2.5 rounded-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 hover:opacity-90 transition-opacity"
+                            >
+                              <ArrowUp className="w-5 h-5" />
+                            </button>
+                          </m.div>
+                        ) : (
+                          <m.div
+                            key="inactive-controls"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            transition={{ duration: 0.15 }}
+                            className="flex items-center gap-2"
+                          >
+                            <button
+                              onClick={() => setIsListening(!isListening)}
+                              className={cn(
+                                "p-2 transition-all duration-300 relative cursor-pointer",
+                                isListening
+                                  ? "text-red-500 dark:text-red-400 bg-red-50 dark:bg-red-900/20 rounded-full"
+                                  : "text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300"
+                              )}
+                            >
+                              {isListening ? (
+                                <Square
+                                  className="w-4 h-4"
+                                  fill="currentColor"
+                                />
+                              ) : (
+                                <Mic className="w-4 h-4" />
+                              )}
+                              {isListening && (
+                                <span className="absolute inset-0 rounded-full animate-ping bg-red-500/20" />
+                              )}
+                            </button>
+                            <button
+                              disabled
+                              className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-300 dark:text-zinc-600"
+                            >
+                              <ArrowUp className="w-4 h-4" />
+                            </button>
+                          </m.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
-    </AIInputContext.Provider>
+              </m.div>
+            </div>
+          </m.div>
+        </div>
+      </AIInputContext.Provider>
+    </LazyMotion>
   );
 }
 AIInput.displayName = "AIInput";

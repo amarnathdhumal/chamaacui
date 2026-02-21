@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps, Easing } from "motion/react";
+import {
+  m,
+  LazyMotion,
+  domAnimation,
+  SVGMotionProps,
+  Easing,
+} from "motion/react";
 
 interface CloseIconProps
   extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -44,26 +50,28 @@ const CloseIcon = (props: CloseIconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-      {...rotateProps}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M18 6l-12 12" />
-      <path d="M6 6l12 12" />
-    </motion.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+        {...rotateProps}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M18 6l-12 12" />
+        <path d="M6 6l12 12" />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

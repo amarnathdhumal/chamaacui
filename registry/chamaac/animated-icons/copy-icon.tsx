@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps } from "motion/react";
+import { m, LazyMotion, domAnimation, SVGMotionProps } from "motion/react";
 
 interface CopyIconProps extends SVGMotionProps<SVGSVGElement> {
   size?: number;
@@ -38,44 +38,46 @@ const CopyIcon = (props: CopyIconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-
-      <motion.rect
-        width="12"
-        height="12"
-        rx="2"
-        stroke="currentColor"
-        strokeWidth={strokeWidth}
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
         fill="none"
-        {...rectAnimationProps}
-      />
-
-      <rect
-        x="8"
-        y="8"
-        width="12"
-        height="12"
-        rx="2"
-        className="fill-gray-100 dark:fill-[#111111]"
         stroke="currentColor"
         strokeWidth={strokeWidth}
-      />
-    </motion.svg>
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+
+        <m.rect
+          width="12"
+          height="12"
+          rx="2"
+          stroke="currentColor"
+          strokeWidth={strokeWidth}
+          fill="none"
+          {...rectAnimationProps}
+        />
+
+        <rect
+          x="8"
+          y="8"
+          width="12"
+          height="12"
+          rx="2"
+          className="fill-gray-100 dark:fill-[#111111]"
+          stroke="currentColor"
+          strokeWidth={strokeWidth}
+        />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

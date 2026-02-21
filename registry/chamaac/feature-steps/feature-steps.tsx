@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "motion/react";
+import { LazyMotion, domAnimation, m } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -25,79 +25,87 @@ export default function FeatureSteps({
   autoPlayInterval = 3000,
   imageClassName = "h-[400px]",
 }: FeatureStepsProps) {
-  const [currentFeature, setCurrentFeature] = useState(0);
-  const [progressKey, setProgressKey] = useState(0);
+  const [state, setState] = useState({ feature: 0, tick: 0 });
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentFeature((prev) => (prev + 1) % features.length);
-      setProgressKey((prev) => prev + 1);
+      setState((prev) => ({
+        feature: (prev.feature + 1) % features.length,
+        tick: prev.tick + 1,
+      }));
     }, autoPlayInterval);
 
     return () => clearInterval(timer);
-  }, [autoPlayInterval, currentFeature, features.length]); // Reset timer when currentFeature changes
+  }, [autoPlayInterval, state.feature, features.length]);
+
+  const currentFeature = state.feature;
+  const progressKey = state.tick;
 
   return (
-    <div
-      className={cn(
-        "flex flex-col md:flex-row w-full md:items-stretch max-w-[1440px] mx-auto",
-        className
-      )}
-    >
-      {/* Left Column: Feature List */}
-      <div className="flex flex-col w-full md:w-1/2 border border-black/10 dark:border-white/10 divide-y divide-black/10 dark:divide-white/10">
-        {features.map((feature, index) => (
-          <motion.div
-            key={index}
-            layoutId={feature.title}
-            onClick={() => {
-              setCurrentFeature(index);
-              setProgressKey((prev) => prev + 1);
-            }}
-            className="p-4 md:p-10 relative cursor-pointer"
-          >
-            <h3 className="text-base md:text-lg leading-none text-black dark:text-white">
-              {feature.title}
-            </h3>
-            <p className="mt-2 text-sm  text-neutral-500">{feature.content}</p>
-            {index === currentFeature && (
-              <motion.div
-                key={progressKey}
-                className="absolute h-[1px] bottom-0 left-0 bg-black dark:bg-white"
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{
-                  duration: autoPlayInterval / 1000,
-                  ease: "easeIn",
-                }}
-              />
-            )}
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Right Column: Image Display */}
+    <LazyMotion features={domAnimation}>
       <div
         className={cn(
-          "w-full md:w-1/2 border border-black/10 dark:border-white/10 md:border-l-0 border-t-0 md:border-t relative p-4 md:p-5 overflow-hidden",
-          imageClassName
+          "flex flex-col md:flex-row w-full md:items-stretch max-w-[1440px] mx-auto",
+          className
         )}
       >
-        <motion.div
-          key={currentFeature}
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="relative w-full h-full"
+        {/* Left Column: Feature List */}
+        <div className="flex flex-col w-full md:w-1/2 border border-black/10 dark:border-white/10 divide-y divide-black/10 dark:divide-white/10">
+          {features.map((feature, index) => (
+            <m.div
+              key={feature.title}
+              layoutId={feature.title}
+              onClick={() => {
+                setState((prev) => ({ feature: index, tick: prev.tick + 1 }));
+              }}
+              className="p-4 md:p-10 relative cursor-pointer"
+            >
+              <h3 className="text-base md:text-lg leading-none text-black dark:text-white">
+                {feature.title}
+              </h3>
+              <p className="mt-2 text-sm  text-neutral-500">
+                {feature.content}
+              </p>
+              {index === currentFeature && (
+                <m.div
+                  key={progressKey}
+                  className="absolute h-[1px] bottom-0 left-0 bg-black dark:bg-white"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{
+                    duration: autoPlayInterval / 1000,
+                    ease: "easeIn",
+                  }}
+                />
+              )}
+            </m.div>
+          ))}
+        </div>
+
+        {/* Right Column: Image Display */}
+        <div
+          className={cn(
+            "w-full md:w-1/2 border border-black/10 dark:border-white/10 md:border-l-0 border-t-0 md:border-t relative p-4 md:p-5 overflow-hidden",
+            imageClassName
+          )}
         >
-          <Image
-            src={features[currentFeature].image}
-            alt={features[currentFeature].title}
-            fill
-            className="rounded object-cover"
-          />
-        </motion.div>
+          <m.div
+            key={currentFeature}
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="relative w-full h-full"
+          >
+            <Image
+              src={features[currentFeature].image}
+              alt={features[currentFeature].title}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="rounded object-cover"
+            />
+          </m.div>
+        </div>
       </div>
-    </div>
+    </LazyMotion>
   );
 }

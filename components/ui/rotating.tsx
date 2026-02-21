@@ -203,7 +203,9 @@ function ImagePlane({
 
   return (
     <mesh ref={meshRef} scale={[scaleX, scaleY, 1]}>
+      {}
       <planeGeometry args={[1, 1, 100, 1]} />
+      {}
       <primitive object={shaderMaterial} ref={materialRef} attach="material" />
     </mesh>
   );
@@ -259,9 +261,13 @@ function Scene({ images }: SceneProps) {
     window.addEventListener("mousedown", handleDown as EventListener);
     window.addEventListener("mousemove", handleMove as EventListener);
     window.addEventListener("mouseup", handleUp);
-    window.addEventListener("touchstart", handleDown as EventListener);
-    window.addEventListener("touchmove", handleMove as EventListener);
-    window.addEventListener("touchend", handleUp);
+    window.addEventListener("touchstart", handleDown as EventListener, {
+      passive: true,
+    });
+    window.addEventListener("touchmove", handleMove as EventListener, {
+      passive: true,
+    });
+    window.addEventListener("touchend", handleUp, { passive: true });
 
     return () => {
       window.removeEventListener("mousedown", handleDown as EventListener);
@@ -295,7 +301,7 @@ function Scene({ images }: SceneProps) {
     <>
       {images.map((image, index) => (
         <ImagePlane
-          key={index}
+          key={image}
           image={image}
           index={index}
           length={images.length}
@@ -322,16 +328,6 @@ function RotatingImageGallery() {
     "https://images.unsplash.com/photo-1618556450994-a6a128ef0d9d?w=800&q=80",
     "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&q=80",
   ];
-
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
 
   return (
     <div className="fixed inset-0 w-full h-full bg-black overflow-hidden">

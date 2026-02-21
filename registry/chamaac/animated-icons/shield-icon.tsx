@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps } from "motion/react";
+import { m, LazyMotion, domAnimation, SVGMotionProps } from "motion/react";
 
 interface ShieldIconProps
   extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -46,30 +46,32 @@ const ShieldIcon = (props: ShieldIconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      overflow="visible"
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.path
-        d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"
-        style={{ transformOrigin: "12px 12px" }}
-        {...shieldProps}
-      />
-      <motion.path d="M9 12l2 2l4 -4" {...checkProps} />
-    </motion.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        overflow="visible"
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <m.path
+          d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3"
+          style={{ transformOrigin: "12px 12px" }}
+          {...shieldProps}
+        />
+        <m.path d="M9 12l2 2l4 -4" {...checkProps} />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

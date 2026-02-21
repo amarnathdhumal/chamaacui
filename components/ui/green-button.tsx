@@ -8,7 +8,8 @@ const GreenButton = ({
   onClick: () => void;
 }) => {
   return (
-    <div
+    <button
+      type="button"
       className={cn(
         "inline-flex h-10 sm:h-12 cursor-pointer touch-manipulation items-center justify-center overflow-hidden whitespace-nowrap rounded-[10px] border-0 bg-[#ADD030] px-4 font-mono leading-none text-slate-800 no-underline ",
         "text-[14px] sm:text-[16px]",
@@ -19,7 +20,7 @@ const GreenButton = ({
     >
       {name}
       <ChevronRight className="w-4 h-4 ml-1" />
-    </div>
+    </button>
   );
 };
 

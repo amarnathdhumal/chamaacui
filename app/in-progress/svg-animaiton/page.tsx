@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import SvgAnimationPreviewWrapper from "./svg-animation-preview-wrapper";
+
+export const metadata: Metadata = {
+  title: "SVG Animation | Chamaac UI",
+  description:
+    "An animated SVG component with gradient animations flowing along curved paths.",
+};
 import fs from "fs";
 import path from "path";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";

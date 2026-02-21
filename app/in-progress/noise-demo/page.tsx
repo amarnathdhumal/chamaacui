@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Noise Demo | Chamaac UI",
+  description:
+    "Demonstration of Figma-style grainy noise effects using SVG fractal filters in CSS.",
+};
+
 export default function NoiseDemoPage() {
   return (
     <div className="min-h-screen bg-[#1e1e1e] flex items-center justify-center p-8">

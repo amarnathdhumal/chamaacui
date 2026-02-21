@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
+import { LazyMotion, domAnimation, m } from "motion/react";
 
 interface CardProps {
   number: string;
@@ -174,92 +174,97 @@ export default function HowItWorks({
   else height = 1130;
 
   return (
-    <div
-      className={`min-h-screen bg-white dark:bg-black py-20 px-6 relative overflow-hidden ${className}`}
-    >
+    <LazyMotion features={domAnimation}>
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.08] dark:opacity-[0.15]"
-        style={{
-          backgroundImage: "linear-gradient(#000 1px, transparent 1px)",
-          backgroundSize: "100% 32px",
-          marginTop: "4px",
-        }}
-      ></div>
-      <div
-        className="absolute inset-0 pointer-events-none opacity-0 dark:opacity-[0.1]"
-        style={{
-          backgroundImage: "linear-gradient(#fff 1px, transparent 1px)",
-          backgroundSize: "100% 32px",
-          marginTop: "4px",
-        }}
-      ></div>
-      <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r"></div>
-      <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l"></div>
-
-      <div className="max-w-6xl mx-auto relative z-10">
+        className={`min-h-screen bg-white dark:bg-black py-20 px-6 relative overflow-hidden ${className}`}
+      >
         <div
-          className="relative w-full max-w-[1000px] mx-auto flex flex-col md:block"
-          style={{ height: `${height}px` }}
-        >
-          {data.length > 1 && (
-            <svg
-              className="absolute top-0 left-0 w-full h-full pointer-events-none hidden md:block z-0"
-              viewBox={`0 0 1000 ${height}`}
-              preserveAspectRatio="none"
-            >
-              {(() => {
-                const pathD = data.reduce((acc, _, index) => {
-                  if (index >= data.length - 1) return acc;
-                  if (index === 0)
-                    return "M 290 150 C 500 150, 550 270, 710 270"; // 1 -> 2
-                  if (index === 1) return acc + " C 850 270, 500 350, 290 450"; // 2 -> 3
-                  if (index === 2) return acc + " C 290 600, 550 720, 750 720"; // 3 -> 4
-                  if (index === 3) return acc + " C 950 720, 500 800, 290 850"; // 4 -> 5
-                  return acc;
-                }, "");
-                return (
-                  <motion.path
-                    d={pathD}
-                    stroke="currentColor"
-                    className="text-neutral-300 dark:text-neutral-700"
-                    strokeWidth="2"
-                    strokeDasharray="8 6"
-                    fill="none"
-                    strokeLinecap="round"
-                    vectorEffect="non-scaling-stroke"
-                    initial={{ strokeDashoffset: 0 }}
-                    animate={{
-                      strokeDashoffset: -140, // Multiple of 14 (8+6) for seamless loop
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
-                );
-              })()}
-            </svg>
-          )}
+          className="absolute inset-0 pointer-events-none opacity-[0.08] dark:opacity-[0.15]"
+          style={{
+            backgroundImage: "linear-gradient(#000 1px, transparent 1px)",
+            backgroundSize: "100% 32px",
+            marginTop: "4px",
+          }}
+        ></div>
+        <div
+          className="absolute inset-0 pointer-events-none opacity-0 dark:opacity-[0.1]"
+          style={{
+            backgroundImage: "linear-gradient(#fff 1px, transparent 1px)",
+            backgroundSize: "100% 32px",
+            marginTop: "4px",
+          }}
+        ></div>
+        <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r"></div>
+        <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l"></div>
 
-          {data.map((step, index) => {
-            const position = positions[index % positions.length];
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div
+            className="relative w-full max-w-[1000px] mx-auto flex flex-col md:block"
+            style={{ height: `${height}px` }}
+          >
+            {data.length > 1 && (
+              <svg
+                className="absolute top-0 left-0 w-full h-full pointer-events-none hidden md:block z-0"
+                viewBox={`0 0 1000 ${height}`}
+                preserveAspectRatio="none"
+              >
+                {(() => {
+                  const pathD = data.reduce((acc, _, index) => {
+                    if (index >= data.length - 1) return acc;
+                    if (index === 0)
+                      return "M 290 150 C 500 150, 550 270, 710 270"; // 1 -> 2
+                    if (index === 1)
+                      return acc + " C 850 270, 500 350, 290 450"; // 2 -> 3
+                    if (index === 2)
+                      return acc + " C 290 600, 550 720, 750 720"; // 3 -> 4
+                    if (index === 3)
+                      return acc + " C 950 720, 500 800, 290 850"; // 4 -> 5
+                    return acc;
+                  }, "");
+                  return (
+                    <m.path
+                      d={pathD}
+                      stroke="currentColor"
+                      className="text-neutral-300 dark:text-neutral-700"
+                      strokeWidth="2"
+                      strokeDasharray="8 6"
+                      fill="none"
+                      strokeLinecap="round"
+                      vectorEffect="non-scaling-stroke"
+                      initial={{ strokeDashoffset: 0 }}
+                      animate={{
+                        strokeDashoffset: -140, // Multiple of 14 (8+6) for seamless loop
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    />
+                  );
+                })()}
+              </svg>
+            )}
 
-            return (
-              <Card
-                key={index}
-                number={`0${index + 1}`}
-                title={step.title}
-                description={step.description}
-                colorTheme={step.colorTheme || "blue"}
-                colors={step.colors}
-                rotate={position.rotate}
-                className={position.className}
-              />
-            );
-          })}
+            {data.map((step, index) => {
+              const position = positions[index % positions.length];
+
+              return (
+                <Card
+                  key={step.title}
+                  number={`0${index + 1}`}
+                  title={step.title}
+                  description={step.description}
+                  colorTheme={step.colorTheme || "blue"}
+                  colors={step.colors}
+                  rotate={position.rotate}
+                  className={position.className}
+                />
+              );
+            })}
+          </div>
         </div>
       </div>
-    </div>
+    </LazyMotion>
   );
 }

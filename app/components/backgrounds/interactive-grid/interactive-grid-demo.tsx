@@ -1,13 +1,13 @@
 "use client";
 
 import { InteractiveGridBackground } from "@/registry/chamaac/backgrounds/interactive-grid-background";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 
 export default function InteractiveGridDemo() {
   return (
     <InteractiveGridBackground className="h-screen w-full">
       <div className="flex flex-col items-center justify-center h-full pointer-events-none px-4">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -29,7 +29,7 @@ export default function InteractiveGridDemo() {
               Get Started
             </button>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </InteractiveGridBackground>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, SVGMotionProps } from "motion/react";
+import { m, SVGMotionProps } from "motion/react";
 
 interface FingerprintIconProps extends SVGMotionProps<SVGSVGElement> {
   size?: number;
@@ -10,7 +10,7 @@ const FingerprintIcon = (props: FingerprintIconProps) => {
   const { size = 24, className, ...restProps } = props;
 
   return (
-    <motion.svg
+    <m.svg
       {...restProps}
       xmlns="http://www.w3.org/2000/svg"
       width={size}
@@ -24,7 +24,7 @@ const FingerprintIcon = (props: FingerprintIconProps) => {
       className={className}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.path
+      <m.path
         d="M18.9 7a8 8 0 0 1 1.1 5v1a6 6 0 0 0 .8 3"
         initial={{ pathLength: 0, opacity: 0.5 }}
         animate={{ pathLength: 1, opacity: 1 }}
@@ -36,7 +36,7 @@ const FingerprintIcon = (props: FingerprintIconProps) => {
           delay: 0.1,
         }}
       />
-      <motion.path
+      <m.path
         d="M8 11a4 4 0 0 1 8 0v1a10 10 0 0 0 2 6"
         initial={{ pathLength: 0, opacity: 0.5 }}
         animate={{ pathLength: 1, opacity: 1 }}
@@ -48,7 +48,7 @@ const FingerprintIcon = (props: FingerprintIconProps) => {
           delay: 0.3,
         }}
       />
-      <motion.path
+      <m.path
         d="M12 11v2a14 14 0 0 0 2.5 8"
         initial={{ pathLength: 0, opacity: 0.5 }}
         animate={{ pathLength: 1, opacity: 1 }}
@@ -60,7 +60,7 @@ const FingerprintIcon = (props: FingerprintIconProps) => {
           delay: 0.2,
         }}
       />
-      <motion.path
+      <m.path
         d="M8 15a18 18 0 0 0 1.8 6"
         initial={{ pathLength: 0, opacity: 0.5 }}
         animate={{ pathLength: 1, opacity: 1 }}
@@ -72,7 +72,7 @@ const FingerprintIcon = (props: FingerprintIconProps) => {
           delay: 0.4,
         }}
       />
-      <motion.path
+      <m.path
         d="M4.9 19a22 22 0 0 1 -.9 -7v-1a8 8 0 0 1 12 -6.95"
         initial={{ pathLength: 0, opacity: 0.5 }}
         animate={{ pathLength: 1, opacity: 1 }}
@@ -83,7 +83,7 @@ const FingerprintIcon = (props: FingerprintIconProps) => {
           repeatType: "reverse",
         }}
       />
-    </motion.svg>
+    </m.svg>
   );
 };
 

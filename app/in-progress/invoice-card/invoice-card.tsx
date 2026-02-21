@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
@@ -40,8 +40,8 @@ const InvoiceCard = ({
         className
       )}
     >
-      <motion.div className="border border-[#E8E8E8] dark:border-neutral-700 px-5 py-6 rounded-[20px] bg-[#fafafa] dark:bg-neutral-800 h-auto flex flex-col min-w-[350px]  overflow-hidden">
-        <motion.p
+      <m.div className="border border-[#E8E8E8] dark:border-neutral-700 px-5 py-6 rounded-[20px] bg-[#fafafa] dark:bg-neutral-800 h-auto flex flex-col min-w-[350px]  overflow-hidden">
+        <m.p
           initial={{ x: -150, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{
@@ -51,9 +51,9 @@ const InvoiceCard = ({
           className="font-medium text-[16px] leading-[15px] text-neutral-600 dark:text-neutral-400 tracking-tight"
         >
           {title}
-        </motion.p>
+        </m.p>
         <div className="flex flex-row items-center gap-2 pt-8 tracking-tighter">
-          <motion.h1
+          <m.h1
             initial={{ x: -150, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{
@@ -63,9 +63,9 @@ const InvoiceCard = ({
             className="font-medium text-[28px] leading-[15px] tracking-[0em] text-black dark:text-white "
           >
             ${total.toLocaleString()}
-          </motion.h1>
+          </m.h1>
           {originalAmount && (
-            <motion.p
+            <m.p
               initial={{ x: -150, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{
@@ -75,7 +75,7 @@ const InvoiceCard = ({
               className="text-[18px] leading-[15px]  text-neutral-600 dark:text-neutral-400 line-through"
             >
               ${originalAmount.toLocaleString()}
-            </motion.p>
+            </m.p>
           )}
         </div>
 
@@ -84,8 +84,8 @@ const InvoiceCard = ({
           {/* Items */}
           <div className="space-y-3">
             {items.map((item, index) => (
-              <motion.div
-                key={index}
+              <m.div
+                key={item.name}
                 initial={{ x: -150, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{
@@ -105,12 +105,12 @@ const InvoiceCard = ({
                 <p className="text-sm font-medium text-black dark:text-white">
                   ${item.price.toLocaleString()}
                 </p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* Divider */}
-          <motion.div
+          <m.div
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{
@@ -118,11 +118,11 @@ const InvoiceCard = ({
               duration: 0.3,
             }}
             className="border-t border-neutral-200 dark:border-neutral-700 my-4"
-          ></motion.div>
+          ></m.div>
 
           {/* Summary */}
           <div className="space-y-2">
-            <motion.div
+            <m.div
               initial={{ x: -150, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{
@@ -137,9 +137,9 @@ const InvoiceCard = ({
               <p className="text-sm font-medium text-black dark:text-white">
                 ${subtotal.toLocaleString()}
               </p>
-            </motion.div>
+            </m.div>
             {taxRate > 0 && (
-              <motion.div
+              <m.div
                 initial={{ x: -150, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{
@@ -154,9 +154,9 @@ const InvoiceCard = ({
                 <p className="text-sm font-medium text-black dark:text-white">
                   ${tax.toLocaleString()}
                 </p>
-              </motion.div>
+              </m.div>
             )}
-            <motion.div
+            <m.div
               initial={{ x: -150, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{
@@ -171,10 +171,10 @@ const InvoiceCard = ({
               <p className="text-base font-semibold text-black dark:text-white">
                 ${total.toLocaleString()}
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </div>
-      </motion.div>
+      </m.div>
     </div>
   );
 };

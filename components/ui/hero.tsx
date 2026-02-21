@@ -4,7 +4,7 @@ import GreenButton from "./green-button";
 import { Header } from "@/app/components/header";
 import Image from "next/image";
 import IconBox from "./icon-box";
-import { motion } from "framer-motion";
+import { m } from "motion/react";
 import { cn } from "@/lib/utils";
 
 const Hero = () => {
@@ -26,20 +26,20 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black z-0" />
 
       {/* Header */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0 }}
         className="absolute inset-0 w-full"
       >
         <Header />
-      </motion.div>
+      </m.div>
 
       {/* Hero Content */}
       <div className="h-full flex justify-between items-end max-w-[1440px] mx-auto w-full px-[25px] overflow-hidden">
         {/* Top left icon */}
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
           transition={{ duration: 0.5, delay: 0.5 }}
@@ -50,10 +50,10 @@ const Hero = () => {
           )}
         >
           <IconBox img="/images/icon1.svg" rotate="-42deg" />
-        </motion.div>
+        </m.div>
 
         {/* Top right icon */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
           transition={{ duration: 0.5, delay: 1 }}
@@ -64,10 +64,10 @@ const Hero = () => {
           )}
         >
           <IconBox img="/images/icon2.svg" rotate="42deg" />
-        </motion.div>
+        </m.div>
 
         {/* Bottom left icon */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
           transition={{ duration: 0.4, delay: 1.5 }}
@@ -78,10 +78,10 @@ const Hero = () => {
           )}
         >
           <IconBox img="/images/icon3.svg" rotate="-60deg" />
-        </motion.div>
+        </m.div>
 
         {/* Bottom right icon */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 1, x: 0, rotate: 360 }}
           transition={{ duration: 0.4, delay: 1.9 }}
@@ -92,10 +92,10 @@ const Hero = () => {
           )}
         >
           <IconBox img="/images/icon4.svg" rotate="60deg" />
-        </motion.div>
+        </m.div>
 
         {/* Hero Content */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 2.3 }}
@@ -120,7 +120,7 @@ const Hero = () => {
               onClick={() => console.log("Get Started")}
             />
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </main>
   );

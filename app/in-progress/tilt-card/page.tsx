@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import TiltCardDemo from "./tilt-card-demo";
+
+export const metadata: Metadata = {
+  title: "Tilt Card | Chamaac UI",
+  description:
+    "A card component that smoothly rotates from a tilted angle to straight on hover.",
+};
 import fs from "fs";
 import path from "path";
 import ViewArea from "@/components/ui/view-area";

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps } from "motion/react";
+import { m, LazyMotion, domAnimation, SVGMotionProps } from "motion/react";
 
 interface ScanIconProps extends SVGMotionProps<SVGSVGElement> {
   size?: number;
@@ -33,28 +33,30 @@ const ScanIcon = (props: ScanIconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M4 7v-1a2 2 0 0 1 2 -2h2" />
-      <path d="M4 17v1a2 2 0 0 0 2 2h2" />
-      <path d="M16 4h2a2 2 0 0 1 2 2v1" />
-      <path d="M16 20h2a2 2 0 0 0 2 -2v-1" />
-      <motion.line x1="5" y1="12" x2="19" y2="12" {...lineAnimationProps} />
-    </motion.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M4 7v-1a2 2 0 0 1 2 -2h2" />
+        <path d="M4 17v1a2 2 0 0 0 2 2h2" />
+        <path d="M16 4h2a2 2 0 0 1 2 2v1" />
+        <path d="M16 20h2a2 2 0 0 0 2 -2v-1" />
+        <m.line x1="5" y1="12" x2="19" y2="12" {...lineAnimationProps} />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

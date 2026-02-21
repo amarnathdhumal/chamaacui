@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps, Easing } from "motion/react";
+import {
+  m,
+  LazyMotion,
+  domAnimation,
+  SVGMotionProps,
+  Easing,
+} from "motion/react";
 
 interface IconProps extends SVGMotionProps<SVGSVGElement> {
   size?: number;
@@ -35,34 +41,36 @@ const CreditCardIcon = (props: IconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      overflow="visible"
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.g
-        animate={shouldAnimate ? { rotateY: [0, 180, 360] } : { rotateY: 0 }}
-        transition={{ ...transition, duration: duration * 2 }}
-        style={{ originX: "50%", originY: "50%" }}
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        overflow="visible"
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
       >
-        <rect x="3" y="5" width="18" height="14" rx="3" />
-        <line x1="3" y1="10" x2="21" y2="10" />
-        <line x1="7" y1="15" x2="7.01" y2="15" />
-        <line x1="11" y1="15" x2="13" y2="15" />
-      </motion.g>
-    </motion.svg>
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <m.g
+          animate={shouldAnimate ? { rotateY: [0, 180, 360] } : { rotateY: 0 }}
+          transition={{ ...transition, duration: duration * 2 }}
+          style={{ originX: "50%", originY: "50%" }}
+        >
+          <rect x="3" y="5" width="18" height="14" rx="3" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+          <line x1="7" y1="15" x2="7.01" y2="15" />
+          <line x1="11" y1="15" x2="13" y2="15" />
+        </m.g>
+      </m.svg>
+    </LazyMotion>
   );
 };
 

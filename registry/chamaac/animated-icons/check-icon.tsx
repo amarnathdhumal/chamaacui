@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps } from "motion/react";
+import { m, LazyMotion, domAnimation, SVGMotionProps } from "motion/react";
 
 interface CheckIconProps
   extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -37,25 +37,27 @@ const CheckIcon = (props: CheckIconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <circle cx="12" cy="12" r="9" fill="none" />
-      <motion.path d="M9 12l2 2l4 -4" {...pathAnimationProps} />
-    </motion.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <circle cx="12" cy="12" r="9" fill="none" />
+        <m.path d="M9 12l2 2l4 -4" {...pathAnimationProps} />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

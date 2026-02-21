@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps } from "motion/react";
+import { m, LazyMotion, domAnimation, SVGMotionProps } from "motion/react";
 
 interface LayersIconProps
   extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -44,27 +44,29 @@ const LayersIcon = (props: LayersIconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      overflow="visible"
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.path d="M12 4l-8 4l8 4l8 -4l-8 -4" {...layer1Props} />
-      <motion.path d="M4 12l8 4l8 -4" {...layer2Props} />
-      <path d="M4 16l8 4l8 -4" />
-    </motion.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        overflow="visible"
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <m.path d="M12 4l-8 4l8 4l8 -4l-8 -4" {...layer1Props} />
+        <m.path d="M4 12l8 4l8 -4" {...layer2Props} />
+        <path d="M4 16l8 4l8 -4" />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

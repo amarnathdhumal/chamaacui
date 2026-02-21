@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { LazyMotion, domMax, m } from "motion/react";
 import { cn } from "@/lib/utils";
 
 interface CourselProps {
@@ -54,65 +54,70 @@ const Coursel = ({
   }
 
   return (
-    <div
-      className={cn("flex ", className)}
-      style={{
-        perspective: "1200px",
-        transformStyle: "preserve-3d",
-      }}
-    >
-      {items.map((item) => (
-        <motion.div
-          key={item.item}
-          layoutId={item.item}
-          initial={{
-            scale: 0.8,
-            rotateY:
-              item.position === 0
-                ? rotationAngle
-                : item.position === 2
-                  ? -rotationAngle
-                  : 0,
-          }}
-          animate={{
-            scale: item.isCenter ? 1 : 0.9,
-            opacity: 1,
-            rotateY:
-              item.position === 0
-                ? rotationAngle
-                : item.position === 2
-                  ? -rotationAngle
-                  : 0,
-          }}
-          exit={{
-            scale: 0.8,
-            opacity: 0,
-            rotateY:
-              item.position === 0
-                ? rotationAngle
-                : item.position === 2
-                  ? -rotationAngle
-                  : 0,
-          }}
-          transition={{
-            duration: duration,
-          }}
-          style={{
-            width: cardWidth,
-            height: cardHeight,
-          }}
-          className={cn(item.isCenter ? "z-10" : "", "relative flex-shrink-0")}
-        >
-          <Image
-            src={item.item}
-            alt={`image-${item.index}`}
-            fill
-            priority={true}
-            className="object-cover rounded-[16px]"
-          />
-        </motion.div>
-      ))}
-    </div>
+    <LazyMotion features={domMax}>
+      <div
+        className={cn("flex ", className)}
+        style={{
+          perspective: "1200px",
+          transformStyle: "preserve-3d",
+        }}
+      >
+        {items.map((item) => (
+          <m.div
+            key={item.item}
+            layoutId={item.item}
+            initial={{
+              scale: 0.8,
+              rotateY:
+                item.position === 0
+                  ? rotationAngle
+                  : item.position === 2
+                    ? -rotationAngle
+                    : 0,
+            }}
+            animate={{
+              scale: item.isCenter ? 1 : 0.9,
+              opacity: 1,
+              rotateY:
+                item.position === 0
+                  ? rotationAngle
+                  : item.position === 2
+                    ? -rotationAngle
+                    : 0,
+            }}
+            exit={{
+              scale: 0.8,
+              opacity: 0,
+              rotateY:
+                item.position === 0
+                  ? rotationAngle
+                  : item.position === 2
+                    ? -rotationAngle
+                    : 0,
+            }}
+            transition={{
+              duration: duration,
+            }}
+            style={{
+              width: cardWidth,
+              height: cardHeight,
+            }}
+            className={cn(
+              item.isCenter ? "z-10" : "",
+              "relative flex-shrink-0"
+            )}
+          >
+            <Image
+              src={item.item}
+              alt={`image-${item.index}`}
+              fill
+              priority={true}
+              className="object-cover rounded-[16px]"
+            />
+          </m.div>
+        ))}
+      </div>
+    </LazyMotion>
   );
 };
 

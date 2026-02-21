@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps } from "motion/react";
+import { m, LazyMotion, domAnimation, SVGMotionProps } from "motion/react";
 
 interface WifiIconProps extends SVGMotionProps<SVGSVGElement> {
   size?: number;
@@ -60,30 +60,32 @@ const WifiIcon = (props: WifiIconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.path d="M12 18l.01 0" {...path1Props} />
-      <motion.path d="M9.172 15.172a4 4 0 0 1 5.656 0" {...path2Props} />
-      <motion.path d="M6.343 12.343a8 8 0 0 1 11.314 0" {...path3Props} />
-      <motion.path
-        d="M3.515 9.515c4.686 -4.687 12.284 -4.687 17 0"
-        {...path4Props}
-      />
-    </motion.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <m.path d="M12 18l.01 0" {...path1Props} />
+        <m.path d="M9.172 15.172a4 4 0 0 1 5.656 0" {...path2Props} />
+        <m.path d="M6.343 12.343a8 8 0 0 1 11.314 0" {...path3Props} />
+        <m.path
+          d="M3.515 9.515c4.686 -4.687 12.284 -4.687 17 0"
+          {...path4Props}
+        />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

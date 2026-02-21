@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import ShimmerButton from "@/registry/chamaac/shimmer-button/shimmer-button";
 import HoverArrowButton from "@/registry/chamaac/hover-arrow-button/hover-arrow-button";
@@ -96,7 +96,7 @@ export default function ButtonsGrid() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {buttons.map((button) => (
-          <motion.div
+          <m.div
             key={button.name}
             className={`relative flex flex-col items-center justify-center p-4 rounded-xl border border-border bg-white dark:bg-neutral-800   transition-colors h-[200px] `}
           >
@@ -110,7 +110,7 @@ export default function ButtonsGrid() {
             >
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </div>

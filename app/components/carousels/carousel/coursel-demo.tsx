@@ -1,6 +1,6 @@
 "use client";
 
-import Coursel from "./coursel";
+import Coursel from "@/registry/chamaac/carousel/carousel";
 
 export default function CourselDemo() {
   const images = [

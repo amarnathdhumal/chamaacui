@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import ViewArea from "@/components/ui/view-area";
+
+export const metadata: Metadata = {
+  title: "Stack Scroll | Chamaac UI",
+  description:
+    "Interactive stacked card layout with smooth scroll-driven scale animations.",
+};
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CopyButton from "@/components/ui/copy-button";

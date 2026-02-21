@@ -16,7 +16,7 @@ export const metadata = constructMetadata({
 // file paths
 const filePath = path.join(
   process.cwd(),
-  "app/components/carousels/carousel/coursel.tsx"
+  "registry/chamaac/carousel/carousel.tsx"
 );
 const demoFilePath = path.join(
   process.cwd(),

@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps, Easing } from "motion/react";
+import {
+  m,
+  LazyMotion,
+  domAnimation,
+  SVGMotionProps,
+  Easing,
+} from "motion/react";
 
 interface IconProps extends SVGMotionProps<SVGSVGElement> {
   size?: number;
@@ -35,46 +41,48 @@ const EditIcon = (props: IconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.path
-        d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"
-        animate={
-          shouldAnimate
-            ? { rotate: [0, -5, 5, 0], x: [0, 1, 0] }
-            : { rotate: 0, x: 0 }
-        }
-        transition={transition}
-        style={{ originX: "50%", originY: "50%" }}
-      />
-      <motion.line
-        x1="13.5"
-        y1="6.5"
-        x2="17.5"
-        y2="10.5"
-        animate={
-          shouldAnimate
-            ? { rotate: [0, -5, 5, 0], x: [0, 1, 0] }
-            : { rotate: 0, x: 0 }
-        }
-        transition={transition}
-        style={{ originX: "50%", originY: "50%" }}
-      />
-    </motion.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <m.path
+          d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"
+          animate={
+            shouldAnimate
+              ? { rotate: [0, -5, 5, 0], x: [0, 1, 0] }
+              : { rotate: 0, x: 0 }
+          }
+          transition={transition}
+          style={{ originX: "50%", originY: "50%" }}
+        />
+        <m.line
+          x1="13.5"
+          y1="6.5"
+          x2="17.5"
+          y2="10.5"
+          animate={
+            shouldAnimate
+              ? { rotate: [0, -5, 5, 0], x: [0, 1, 0] }
+              : { rotate: 0, x: 0 }
+          }
+          transition={transition}
+          style={{ originX: "50%", originY: "50%" }}
+        />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

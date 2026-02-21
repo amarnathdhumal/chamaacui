@@ -1,5 +1,5 @@
 "use client";
-import { motion, SVGMotionProps } from "motion/react";
+import { m, SVGMotionProps } from "motion/react";
 
 const HeroGrid = () => {
   return (
@@ -71,7 +71,7 @@ const CopyIcon = (
 ) => {
   const { className, ...restProps } = props;
   return (
-    <motion.svg
+    <m.svg
       {...restProps}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -84,7 +84,7 @@ const CopyIcon = (
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
 
-      <motion.rect
+      <m.rect
         width="12"
         height="12"
         rx="2"
@@ -110,7 +110,7 @@ const CopyIcon = (
         className="fill-gray-100 dark:fill-[#111111]"
         stroke="currentColor"
       />
-    </motion.svg>
+    </m.svg>
   );
 };
 
@@ -119,7 +119,7 @@ const WavyIcon = (
 ) => {
   const { className, ...restProps } = props;
   return (
-    <motion.svg
+    <m.svg
       {...restProps}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -131,7 +131,7 @@ const WavyIcon = (
       className={className}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.path
+      <m.path
         d="M3 7c3 -2 6 -2 9 0s6 2 9 0"
         stroke="currentColor"
         fill="none"
@@ -151,7 +151,7 @@ const WavyIcon = (
         }}
       />
 
-      <motion.path
+      <m.path
         d="M3 12c3 -2 6 -2 9 0s6 2 9 0"
         stroke="currentColor"
         fill="none"
@@ -170,7 +170,7 @@ const WavyIcon = (
           repeat: Infinity,
         }}
       />
-      <motion.path
+      <m.path
         d="M3 17c3 -2 6 -2 9 0s6 2 9 0"
         stroke="currentColor"
         fill="none"
@@ -189,7 +189,7 @@ const WavyIcon = (
           repeat: Infinity,
         }}
       />
-    </motion.svg>
+    </m.svg>
   );
 };
 
@@ -198,7 +198,7 @@ const AdjustmentsHorizontalIcon = (
 ) => {
   const { className, ...restProps } = props;
   return (
-    <motion.svg
+    <m.svg
       {...restProps}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
@@ -210,7 +210,7 @@ const AdjustmentsHorizontalIcon = (
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
       <path d="M4 6l15 0" />
-      <motion.path
+      <m.path
         animate={{ x: [0, -10, 0] }}
         transition={{
           duration: 1.2,
@@ -226,7 +226,7 @@ const AdjustmentsHorizontalIcon = (
 
       <path d="M4 12l15 0" />
 
-      <motion.path
+      <m.path
         animate={{ x: [0, 10, 0] }}
         transition={{
           duration: 1.2,
@@ -241,7 +241,7 @@ const AdjustmentsHorizontalIcon = (
       />
 
       <path d="M4 18l15 0" />
-      <motion.path
+      <m.path
         animate={{ x: [0, -10, 0] }}
         transition={{
           duration: 1.2,
@@ -254,7 +254,7 @@ const AdjustmentsHorizontalIcon = (
         strokeWidth={2}
         d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
       />
-    </motion.svg>
+    </m.svg>
   );
 };
 

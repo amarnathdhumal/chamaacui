@@ -23,6 +23,9 @@ const eslintConfig = [
   {
     rules: {
       "@next/next/no-img-element": "off",
+      "react/no-unknown-property": ["warn", {
+        ignore: ["args", "attach", "object", "rotation", "transparent", "jsx", "global"],
+      }],
     },
   },
 ];

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { m, AnimatePresence } from "motion/react";
 import { IconCopy, IconCheck, IconTerminal2 } from "@tabler/icons-react";
 import { Loader2 } from "lucide-react";
 import {
@@ -54,7 +54,7 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
 
   return (
     <Link href={icon.href} className="group block">
-      <motion.div
+      <m.div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         className="relative flex flex-col items-center justify-center  rounded-[16px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black transition-colors h-[180px]"
@@ -62,7 +62,7 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
         {/* Hover action buttons */}
         <AnimatePresence>
           {isHovered && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: -4 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
@@ -108,7 +108,7 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
                   <p>{cliCopied ? "Copied!" : "Copy CLI Command"}</p>
                 </TooltipContent>
               </Tooltip>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
 
@@ -118,7 +118,7 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
         <span className="text-sm font-medium text-neutral-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">
           {icon.name}
         </span>
-      </motion.div>
+      </m.div>
     </Link>
   );
 }

@@ -2,8 +2,16 @@
 
 import { cn } from "@/lib/utils";
 
-import { easeIn, easeOut, motion, AnimatePresence } from "motion/react";
+import {
+  easeIn,
+  easeOut,
+  LazyMotion,
+  domAnimation,
+  m,
+  AnimatePresence,
+} from "motion/react";
 import Link from "next/link";
+import Image from "next/image";
 import React, {
   useState,
   useRef,
@@ -88,165 +96,169 @@ export const Dock = ({
   }, [isMobileMenuOpen]);
 
   return (
-    <DockContext.Provider
-      value={{
-        openDropdowns,
-        hoveredLink,
-        setHoveredLink,
-        handleDropdownEnter,
-        handleDropdownLeave,
-        activePage,
-        isDark,
-      }}
-    >
-      <div className="w-full">
-        {/* Desktop Dock */}
-        <motion.nav
-          className="fixed bottom-[60px] left-0 w-full z-50 hidden md:block"
-          style={{ bottom: bottomOffset }}
-        >
-          <div className="px-4 flex justify-center">
-            <motion.div
-              className={cn(
-                "relative flex flex-col items-center justify-center overflow-hidden backdrop-blur-md bg-white dark:bg-black/50 border border-[#E0E0E0] dark:border-neutral-700 p-[3px] rounded-[25px]",
-                className
-              )}
-              transition={{ duration: 0.2 }}
-            >
-              {/* Dropdown Contents */}
-              {React.Children.map(children, (child) => {
-                if (
-                  React.isValidElement(child) &&
-                  (child.type as { displayName?: string }).displayName ===
-                    "DockItem"
-                ) {
-                  return React.cloneElement(
-                    child as React.ReactElement<DockItemProps>,
-                    { renderType: "content" }
-                  );
-                }
-                return null;
-              })}
-
-              {/* Navigation Items */}
-              <div className="flex items-center gap-[3px] relative z-10">
+    <LazyMotion features={domAnimation}>
+      <DockContext.Provider
+        value={{
+          openDropdowns,
+          hoveredLink,
+          setHoveredLink,
+          handleDropdownEnter,
+          handleDropdownLeave,
+          activePage,
+          isDark,
+        }}
+      >
+        <div className="w-full">
+          {/* Desktop Dock */}
+          <m.nav
+            className="fixed bottom-[60px] left-0 w-full z-50 hidden md:block"
+            style={{ bottom: bottomOffset }}
+          >
+            <div className="px-4 flex justify-center">
+              <m.div
+                className={cn(
+                  "relative flex flex-col items-center justify-center overflow-hidden backdrop-blur-md bg-white dark:bg-black/50 border border-[#E0E0E0] dark:border-neutral-700 p-[3px] rounded-[25px]",
+                  className
+                )}
+                transition={{ duration: 0.2 }}
+              >
+                {/* Dropdown Contents */}
                 {React.Children.map(children, (child) => {
-                  if (React.isValidElement(child)) {
+                  if (
+                    React.isValidElement(child) &&
+                    (child.type as { displayName?: string }).displayName ===
+                      "DockItem"
+                  ) {
                     return React.cloneElement(
-                      child as React.ReactElement<
-                        DockItemProps | DockIconProps | DockLinkProps
-                      >,
-                      { renderType: "trigger" }
+                      child as React.ReactElement<DockItemProps>,
+                      { renderType: "content" }
                     );
                   }
                   return null;
                 })}
-              </div>
-            </motion.div>
-          </div>
-        </motion.nav>
 
-        {/* Mobile Dock */}
-        <div className="md:hidden fixed bottom-8 left-0 w-full z-50 flex justify-center pointer-events-none">
-          <div className="pointer-events-auto">
-            <AnimatePresence>
-              {isMobileMenuOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.2 }}
-                  className="fixed inset-0 bg-white dark:bg-black z-40 flex flex-col pt-20 px-6 pb-32 overflow-y-auto"
-                >
-                  <div className="flex flex-col gap-6">
-                    {React.Children.map(children, (child) => {
-                      if (!React.isValidElement(child)) return null;
+                {/* Navigation Items */}
+                <div className="flex items-center gap-[3px] relative z-10">
+                  {React.Children.map(children, (child) => {
+                    if (React.isValidElement(child)) {
+                      return React.cloneElement(
+                        child as React.ReactElement<
+                          DockItemProps | DockIconProps | DockLinkProps
+                        >,
+                        { renderType: "trigger" }
+                      );
+                    }
+                    return null;
+                  })}
+                </div>
+              </m.div>
+            </div>
+          </m.nav>
 
-                      // Handle DockLink (Top level links)
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      if ((child.type as any).displayName === "DockLink") {
-                        const props = child.props as DockLinkProps;
-                        return (
-                          <Link
-                            href={props.href}
-                            className="text-black dark:text-white text-2xl font-medium"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {props.label}
-                          </Link>
-                        );
-                      }
+          {/* Mobile Dock */}
+          <div className="md:hidden fixed bottom-8 left-0 w-full z-50 flex justify-center pointer-events-none">
+            <div className="pointer-events-auto">
+              <AnimatePresence>
+                {isMobileMenuOpen && (
+                  <m.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ duration: 0.2 }}
+                    className="fixed inset-0 bg-white dark:bg-black z-40 flex flex-col pt-20 px-6 pb-32 overflow-y-auto"
+                  >
+                    <div className="flex flex-col gap-6">
+                      {React.Children.map(children, (child) => {
+                        if (!React.isValidElement(child)) return null;
 
-                      // Handle DockItem (Sections with dropdowns)
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      if ((child.type as any).displayName === "DockItem") {
-                        const props = child.props as DockItemProps;
-                        return (
-                          <div className="flex flex-col gap-4">
-                            <span className="text-neutral-500 dark:text-neutral-400 text-lg">
+                        // Handle DockLink (Top level links)
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        if ((child.type as any).displayName === "DockLink") {
+                          const props = child.props as DockLinkProps;
+                          return (
+                            <Link
+                              href={props.href}
+                              className="text-black dark:text-white text-2xl font-medium"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
                               {props.label}
-                            </span>
-                            <div className="flex flex-col gap-4 pl-4 border-l border-neutral-200 dark:border-neutral-800">
-                              {React.Children.map(
-                                props.children,
-                                (subChild) => {
-                                  if (
-                                    React.isValidElement(subChild) &&
-                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                    (subChild.type as any).displayName ===
-                                      "DockDropdownItem"
-                                  ) {
-                                    const subProps =
-                                      subChild.props as DockDropdownItemProps;
-                                    return (
-                                      <Link
-                                        href={subProps.href}
-                                        className="text-black dark:text-white text-xl font-medium flex items-center gap-3"
-                                        onClick={() =>
-                                          setIsMobileMenuOpen(false)
-                                        }
-                                      >
-                                        {subProps.image && (
-                                          <img
-                                            src={subProps.image}
-                                            alt=""
-                                            className="w-8 h-8 rounded-lg object-cover"
-                                          />
-                                        )}
-                                        {subProps.label}
-                                      </Link>
-                                    );
-                                  }
-                                  return null;
-                                }
-                              )}
-                            </div>
-                          </div>
-                        );
-                      }
-                      return null;
-                    })}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                            </Link>
+                          );
+                        }
 
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={cn(
-                "flex items-center gap-2 px-6 py-3 rounded-full shadow-lg transition-all duration-300 relative z-50",
-                isMobileMenuOpen
-                  ? "bg-transparent border border-black dark:border-white text-black dark:text-white"
-                  : "bg-white dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800"
-              )}
-            >
-              <span className="font-medium text-lg">Menu</span>
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+                        // Handle DockItem (Sections with dropdowns)
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        if ((child.type as any).displayName === "DockItem") {
+                          const props = child.props as DockItemProps;
+                          return (
+                            <div className="flex flex-col gap-4">
+                              <span className="text-neutral-500 dark:text-neutral-400 text-lg">
+                                {props.label}
+                              </span>
+                              <div className="flex flex-col gap-4 pl-4 border-l border-neutral-200 dark:border-neutral-800">
+                                {React.Children.map(
+                                  props.children,
+                                  (subChild) => {
+                                    if (
+                                      React.isValidElement(subChild) &&
+                                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                      (subChild.type as any).displayName ===
+                                        "DockDropdownItem"
+                                    ) {
+                                      const subProps =
+                                        subChild.props as DockDropdownItemProps;
+                                      return (
+                                        <Link
+                                          href={subProps.href}
+                                          className="text-black dark:text-white text-xl font-medium flex items-center gap-3"
+                                          onClick={() =>
+                                            setIsMobileMenuOpen(false)
+                                          }
+                                        >
+                                          {subProps.image && (
+                                            <Image
+                                              src={subProps.image}
+                                              alt=""
+                                              width={32}
+                                              height={32}
+                                              className="rounded-lg object-cover"
+                                            />
+                                          )}
+                                          {subProps.label}
+                                        </Link>
+                                      );
+                                    }
+                                    return null;
+                                  }
+                                )}
+                              </div>
+                            </div>
+                          );
+                        }
+                        return null;
+                      })}
+                    </div>
+                  </m.div>
+                )}
+              </AnimatePresence>
+
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={cn(
+                  "flex items-center gap-2 px-6 py-3 rounded-full shadow-lg transition-all duration-300 relative z-50",
+                  isMobileMenuOpen
+                    ? "bg-transparent border border-black dark:border-white text-black dark:text-white"
+                    : "bg-white dark:bg-neutral-900 text-black dark:text-white border border-neutral-200 dark:border-neutral-800"
+                )}
+              >
+                <span className="font-medium text-lg">Menu</span>
+                {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </DockContext.Provider>
+      </DockContext.Provider>
+    </LazyMotion>
   );
 };
 
@@ -292,7 +304,7 @@ export const DockItem = ({
 
   if (renderType === "content") {
     return (
-      <motion.div
+      <m.div
         initial={{ opacity: 0, height: 0 }}
         animate={{
           opacity: isOpen ? 1 : 0,
@@ -313,12 +325,12 @@ export const DockItem = ({
           <div className="gap-[12.5px] flex flex-col">{children}</div>
           <DockItemImagePreview>{children}</DockItemImagePreview>
         </div>
-      </motion.div>
+      </m.div>
     );
   }
 
   return (
-    <motion.div
+    <m.div
       className={cn(
         "transition-colors duration-200 text-[14px] leading-[10px] flex items-center gap-1 h-[42px] rounded-full cursor-pointer px-[18px]",
         isAnyChildActive
@@ -349,7 +361,7 @@ export const DockItem = ({
       transition={{ duration: 0.2 }}
     >
       {label}
-      <motion.svg
+      <m.svg
         width="16"
         height="16"
         viewBox="0 0 16 16"
@@ -364,8 +376,8 @@ export const DockItem = ({
           d="M8 8.93934L4.53033 5.46967L3.46967 6.53033L6.58578 9.64645C7.36683 10.4275 8.63316 10.4275 9.41421 9.64645L12.5303 6.53033L11.4697 5.46967L8 8.93934Z"
           fill="currentColor"
         ></path>
-      </motion.svg>
-    </motion.div>
+      </m.svg>
+    </m.div>
   );
 };
 DockItem.displayName = "DockItem";
@@ -403,7 +415,7 @@ const DockItemImagePreview = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="flex flex-col items-end gap-2">
-      <motion.img
+      <m.img
         key={displayImage}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{
@@ -442,7 +454,7 @@ export const DockDropdownItem = ({
   const isHovered = hoveredLink === href;
 
   return (
-    <motion.a
+    <m.a
       href={href}
       whileHover={{ x: 5 }}
       transition={{ duration: 0.1 }}
@@ -456,7 +468,7 @@ export const DockDropdownItem = ({
       )}
     >
       {label}
-    </motion.a>
+    </m.a>
   );
 };
 DockDropdownItem.displayName = "DockDropdownItem";
@@ -484,7 +496,7 @@ export const DockIcon = ({
 
   return (
     <Link href={href}>
-      <motion.div
+      <m.div
         className={cn(
           "flex items-center justify-center w-[56px] h-[42px] rounded-full cursor-pointer",
           className
@@ -502,7 +514,7 @@ export const DockIcon = ({
         transition={{ duration: 0.2 }}
       >
         {icon}
-      </motion.div>
+      </m.div>
     </Link>
   );
 };
@@ -539,7 +551,7 @@ export const DockLink = ({
     <>
       {label}
       {icon && (
-        <motion.div
+        <m.div
           initial={{ x: 0, y: 0 }}
           animate={{
             x: isHovered ? 2 : 0,
@@ -548,7 +560,7 @@ export const DockLink = ({
           transition={{ duration: 0.2 }}
         >
           {icon}
-        </motion.div>
+        </m.div>
       )}
     </>
   );
@@ -563,7 +575,7 @@ export const DockLink = ({
 
   if (external) {
     return (
-      <motion.a
+      <m.a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
@@ -582,12 +594,12 @@ export const DockLink = ({
         transition={{ duration: 0.2 }}
       >
         {linkContent}
-      </motion.a>
+      </m.a>
     );
   }
 
   return (
-    <motion.div
+    <m.div
       className="inline-block rounded-full"
       animate={{
         backgroundColor: isActive
@@ -606,7 +618,7 @@ export const DockLink = ({
       <Link href={href} className={baseClassName}>
         {linkContent}
       </Link>
-    </motion.div>
+    </m.div>
   );
 };
 DockLink.displayName = "DockLink";

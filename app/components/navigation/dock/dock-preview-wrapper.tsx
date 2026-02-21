@@ -73,8 +73,8 @@ export default function DockPreviewWrapper({
 
       {/* Sub-components Props Sections */}
       {subComponents &&
-        subComponents.map((subComponent, index) => (
-          <div key={index} className="mt-8">
+        subComponents.map((subComponent) => (
+          <div key={subComponent.name} className="mt-8">
             <h3 className="text-xl font-semibold mb-2 text-black dark:text-white">
               {subComponent.name}
             </h3>

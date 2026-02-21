@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -36,7 +36,7 @@ const RandomImageReveal = ({
   };
 
   return (
-    <motion.div
+    <m.div
       onHoverStart={() => {
         setIsHovered(true);
         getRandomImage();
@@ -50,7 +50,7 @@ const RandomImageReveal = ({
     >
       <div className="absolute top-30/100 bottom-0 left-0 right-0 backdrop-blur-sm rounded-4xl z-10 border border-neutral-200 dark:border-neutral-800" />
 
-      <motion.div
+      <m.div
         animate={{
           rotate: isHovered ? -15 : 15,
           y: isHovered ? -200 : 0,
@@ -71,8 +71,8 @@ const RandomImageReveal = ({
           sizes="300px"
           priority={true}
         />
-      </motion.div>
-    </motion.div>
+      </m.div>
+    </m.div>
   );
 };
 

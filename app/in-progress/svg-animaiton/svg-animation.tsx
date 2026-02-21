@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { type Icon } from "@tabler/icons-react";
@@ -37,7 +37,7 @@ const SvgAnimation = ({
         {/* Left Side - Tech Trends List */}
         <div className="space-y-[10px]">
           {trends.map((trend, index) => (
-            <motion.div
+            <m.div
               key={trend.id}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -55,43 +55,40 @@ const SvgAnimation = ({
                   {trend.name}
                 </h3>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
-        <motion.svg
+        <m.svg
           width="309"
           height="422"
           viewBox="0 0 309 422"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <motion.path
+          <m.path
             d="M0 84.5C155 84.5 155 208.5 308.5 208.5"
             stroke="url(#paint0)"
           />
-          <motion.path
+          <m.path
             d="M0.5 0.5C154.5 0.5 155.5 206.5 308.5 206.5"
             stroke="url(#paint1)"
           />
-          <motion.path
+          <m.path
             d="M0.5 168.5C155 168.5 155 210.5 308.5 210.5"
             stroke="url(#paint2)"
           />
-          <motion.path
-            d="M0 337C155 337 155 213 308.5 213"
-            stroke="url(#paint4)"
-          />
-          <motion.path
+          <m.path d="M0 337C155 337 155 213 308.5 213" stroke="url(#paint4)" />
+          <m.path
             d="M0.5 421C154.5 421 155.5 215 308.5 215"
             stroke="url(#paint3)"
           />
-          <motion.path
+          <m.path
             d="M0.5 253C155 253 155 211 308.5 211"
             stroke="url(#paint5)"
           />
           <defs>
             {/* 1st Gradient */}
-            <motion.linearGradient
+            <m.linearGradient
               id="paint0"
               gradientUnits="userSpaceOnUse"
               animate={{
@@ -112,10 +109,10 @@ const SvgAnimation = ({
               <stop offset="0.5" stopColor="#FFEA00" />
               <stop offset="0.7" stopColor="#0096FF" />
               <stop offset="1" stopColor="#313131" />
-            </motion.linearGradient>
+            </m.linearGradient>
 
             {/* 2nd Gradient */}
-            <motion.linearGradient
+            <m.linearGradient
               id="paint1"
               gradientUnits="userSpaceOnUse"
               animate={{
@@ -136,10 +133,10 @@ const SvgAnimation = ({
               <stop offset="0.5" stopColor="#FFEA00" />
               <stop offset="0.75" stopColor="#00FF8D" />
               <stop offset="1" stopColor="#313131" />
-            </motion.linearGradient>
+            </m.linearGradient>
 
             {/* 3rd Gradient */}
-            <motion.linearGradient
+            <m.linearGradient
               id="paint2"
               gradientUnits="userSpaceOnUse"
               animate={{
@@ -160,10 +157,10 @@ const SvgAnimation = ({
               <stop offset="0.5" stopColor="#BF40BF" />
               <stop offset="0.75" stopColor="#FFEA00" />
               <stop offset="1" stopColor="#313131" />
-            </motion.linearGradient>
+            </m.linearGradient>
 
             {/* 4th Gradient */}
-            <motion.linearGradient
+            <m.linearGradient
               id="paint3"
               gradientUnits="userSpaceOnUse"
               animate={{
@@ -184,10 +181,10 @@ const SvgAnimation = ({
               <stop offset="0.5" stopColor="#EE4B2B" />
               <stop offset="0.75" stopColor="#FFEA00" />
               <stop offset="1" stopColor="#313131" />
-            </motion.linearGradient>
+            </m.linearGradient>
 
             {/* 5th Gradient */}
-            <motion.linearGradient
+            <m.linearGradient
               id="paint4"
               gradientUnits="userSpaceOnUse"
               animate={{
@@ -208,10 +205,10 @@ const SvgAnimation = ({
               <stop offset="0.5" stopColor="#465491" />
               <stop offset="0.75" stopColor="#FFB8FF" />
               <stop offset="1" stopColor="#313131" />
-            </motion.linearGradient>
+            </m.linearGradient>
 
             {/* 6th Gradient */}
-            <motion.linearGradient
+            <m.linearGradient
               id="paint5"
               gradientUnits="userSpaceOnUse"
               animate={{
@@ -232,12 +229,12 @@ const SvgAnimation = ({
               <stop offset="0.5" stopColor="#FAD5A5" />
               <stop offset="0.75" stopColor="#FFEA00" />
               <stop offset="1" stopColor="#313131" />
-            </motion.linearGradient>
+            </m.linearGradient>
           </defs>
-        </motion.svg>
+        </m.svg>
 
         {/* Right Side - Detail Panel */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -251,7 +248,7 @@ const SvgAnimation = ({
             height={100}
             className="rounded-full"
           />
-        </motion.div>
+        </m.div>
       </div>
     </div>
   );

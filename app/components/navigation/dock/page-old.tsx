@@ -1,6 +1,6 @@
 "use client";
 
-import { easeIn, easeOut, motion } from "motion/react";
+import { easeIn, easeOut, m } from "motion/react";
 import Link from "next/link";
 
 import { useState, useRef } from "react";
@@ -70,9 +70,9 @@ const Dock = () => {
       className="bg-white dark:bg-white min-h-screen w-full"
       style={{ backgroundColor: "white" }}
     >
-      <motion.nav className="fixed bottom-[60px] left-0 w-full   z-50 hidden md:block  ">
+      <m.nav className="fixed bottom-[60px] left-0 w-full   z-50 hidden md:block  ">
         <div className="px-4  flex justify-center">
-          <motion.div
+          <m.div
             className="relative  p-[3px] flex flex-col items-center justify-center overflow-hidden backdrop-blur-md border border-[#E0E0E0]"
             initial={{ borderRadius: "25px" }}
             animate={{
@@ -81,7 +81,7 @@ const Dock = () => {
             transition={{ duration: 0.2 }}
           >
             {/* Personal Dropdown Content */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, height: 0 }}
               animate={{
                 opacity: isPersonalOpen ? 1 : 0,
@@ -94,7 +94,7 @@ const Dock = () => {
             >
               <div className="bg-white px-[15px] pt-[15px]  pb-[30px] flex justify-between items-start">
                 <div className=" gap-[12.5px] flex flex-col">
-                  <motion.a
+                  <m.a
                     whileHover={{
                       x: 5,
                     }}
@@ -108,9 +108,9 @@ const Dock = () => {
                     }`}
                   >
                     Jeton Card
-                  </motion.a>
+                  </m.a>
 
-                  <motion.a
+                  <m.a
                     whileHover={{
                       x: 5,
                     }}
@@ -124,12 +124,12 @@ const Dock = () => {
                     }`}
                   >
                     Fees
-                  </motion.a>
+                  </m.a>
                 </div>
 
                 {currentImage && (
                   <div>
-                    <motion.img
+                    <m.img
                       key={currentImage}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{
@@ -146,10 +146,10 @@ const Dock = () => {
                   </div>
                 )}
               </div>
-            </motion.div>
+            </m.div>
 
             {/* Company Dropdown Content - Above nav items */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, height: 0 }}
               animate={{
                 opacity: isCompanyOpen ? 1 : 0,
@@ -162,7 +162,7 @@ const Dock = () => {
             >
               <div className="bg-white px-[15px] pt-[15px] pb-[30px] flex justify-between items-start">
                 <div className=" gap-[12.5px] flex flex-col">
-                  <motion.a
+                  <m.a
                     whileHover={{
                       x: 5,
                     }}
@@ -176,9 +176,9 @@ const Dock = () => {
                     }`}
                   >
                     About
-                  </motion.a>
+                  </m.a>
 
-                  <motion.a
+                  <m.a
                     whileHover={{
                       x: 5,
                     }}
@@ -192,9 +192,9 @@ const Dock = () => {
                     }`}
                   >
                     Newsroom
-                  </motion.a>
+                  </m.a>
 
-                  <motion.a
+                  <m.a
                     whileHover={{
                       x: 5,
                     }}
@@ -208,9 +208,9 @@ const Dock = () => {
                     }`}
                   >
                     Partnerships
-                  </motion.a>
+                  </m.a>
 
-                  <motion.a
+                  <m.a
                     whileHover={{
                       x: 5,
                     }}
@@ -224,9 +224,9 @@ const Dock = () => {
                     }`}
                   >
                     Media Assets
-                  </motion.a>
+                  </m.a>
 
-                  <motion.a
+                  <m.a
                     whileHover={{
                       x: 5,
                     }}
@@ -240,12 +240,12 @@ const Dock = () => {
                     }`}
                   >
                     Release Notes
-                  </motion.a>
+                  </m.a>
                 </div>
 
                 {currentImage && (
                   <div>
-                    <motion.img
+                    <m.img
                       key={currentImage}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{
@@ -262,12 +262,12 @@ const Dock = () => {
                   </div>
                 )}
               </div>
-            </motion.div>
+            </m.div>
 
             {/* Desktop Navigation - White pill with items */}
             <div className="flex items-center gap-[3px] relative z-10">
               {/* Home Icon Button */}
-              <motion.button
+              <m.button
                 onClick={() => router.push("/")}
                 className="flex items-center justify-center w-[56px] h-[42px] rounded-full bg-[#F0F0F0]  transition-colors cursor-pointer "
               >
@@ -291,10 +291,10 @@ const Dock = () => {
                     fill="#000000"
                   ></path>
                 </svg>
-              </motion.button>
+              </m.button>
 
               {/* Personal Link */}
-              <motion.div
+              <m.div
                 className={`text-black transition-colors duration-200 text-[14px] leading-[10px] flex items-center gap-1  h-[42px] rounded-full cursor-pointer  px-[18px] `}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
@@ -311,7 +311,7 @@ const Dock = () => {
                 transition={{ duration: 0.2 }}
               >
                 Personal
-                <motion.svg
+                <m.svg
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -328,8 +328,8 @@ const Dock = () => {
                     d="M8 8.93934L4.53033 5.46967L3.46967 6.53033L6.58578 9.64645C7.36683 10.4275 8.63316 10.4275 9.41421 9.64645L12.5303 6.53033L11.4697 5.46967L8 8.93934Z"
                     data-mode="fill"
                   ></path>
-                </motion.svg>
-              </motion.div>
+                </m.svg>
+              </m.div>
 
               {/* Company Link with External Icon */}
               <Link
@@ -341,7 +341,7 @@ const Dock = () => {
                 onMouseLeave={() => setIsCompanyHovered(false)}
               >
                 Business
-                <motion.svg
+                <m.svg
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -360,10 +360,10 @@ const Dock = () => {
                     d="M10.166 9.88297V10.55H11.5V9.88297V5.16701C11.5 4.79862 11.2014 4.49999 10.833 4.49999H6.11703H5.45002V5.83402H6.11703H9.22266L4.97165 10.085L4.5 10.5567L5.4433 11.5L5.91496 11.0283L10.166 6.77731V9.88297Z"
                     data-mode="fill"
                   ></path>
-                </motion.svg>
+                </m.svg>
               </Link>
 
-              <motion.div
+              <m.div
                 className={`text-black transition-colors duration-200 text-[14px] leading-[10px] flex items-center gap-1  h-[42px] rounded-full cursor-pointer  px-[18px] `}
                 onMouseEnter={handleCompanyMouseEnter}
                 onMouseLeave={handleCompanyMouseLeave}
@@ -382,7 +382,7 @@ const Dock = () => {
                 transition={{ duration: 0.2 }}
               >
                 Company
-                <motion.svg
+                <m.svg
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -399,12 +399,12 @@ const Dock = () => {
                     d="M8 8.93934L4.53033 5.46967L3.46967 6.53033L6.58578 9.64645C7.36683 10.4275 8.63316 10.4275 9.41421 9.64645L12.5303 6.53033L11.4697 5.46967L8 8.93934Z"
                     data-mode="fill"
                   ></path>
-                </motion.svg>
-              </motion.div>
+                </m.svg>
+              </m.div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.nav>
+      </m.nav>
     </div>
   );
 };

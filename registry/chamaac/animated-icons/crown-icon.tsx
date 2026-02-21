@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps, Easing } from "motion/react";
+import {
+  m,
+  LazyMotion,
+  domAnimation,
+  SVGMotionProps,
+  Easing,
+} from "motion/react";
 
 interface CrownIconProps
   extends Omit<SVGMotionProps<SVGSVGElement>, "strokeWidth"> {
@@ -45,28 +51,30 @@ const CrownIcon = (props: CrownIconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      overflow="visible"
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-      {...sparkle1Props}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.g style={{ transformOrigin: "center" }}>
-        <path d="M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z" />
-      </motion.g>
-    </motion.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        overflow="visible"
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+        {...sparkle1Props}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <m.g style={{ transformOrigin: "center" }}>
+          <path d="M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z" />
+        </m.g>
+      </m.svg>
+    </LazyMotion>
   );
 };
 

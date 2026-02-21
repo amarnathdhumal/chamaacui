@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { LazyMotion, domAnimation, m } from "motion/react";
 import { useState, useCallback, useEffect } from "react";
 import { Outfit } from "next/font/google";
 import { cn } from "@/lib/utils";
@@ -146,79 +146,81 @@ const DancingLetters = ({
   }, []);
 
   return (
-    <motion.div
-      className={cn(
-        "flex items-center justify-center select-none",
-        dancingFont.variable,
-        className
-      )}
-      style={{ perspective: "1000px" }}
-      initial="hidden"
-      animate="visible"
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            staggerChildren: 0.05,
+    <LazyMotion features={domAnimation}>
+      <m.div
+        className={cn(
+          "flex items-center justify-center select-none",
+          dancingFont.variable,
+          className
+        )}
+        style={{ perspective: "1000px" }}
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0, y: 20 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+              staggerChildren: 0.05,
+            },
           },
-        },
-      }}
-    >
-      {letters.map((letter, idx) => {
-        const animIndex = idx % letterAnimations.length;
-        const anim = letterAnimations[animIndex];
-        const isActive = activeIndices.has(idx);
+        }}
+      >
+        {letters.map((letter, idx) => {
+          const animIndex = idx % letterAnimations.length;
+          const anim = letterAnimations[animIndex];
+          const isActive = activeIndices.has(idx);
 
-        return (
-          <motion.span
-            key={`${letter}-${idx}`}
-            variants={{
-              hidden: { opacity: 0, y: 20, scale: 0.8 },
-              visible: {
-                opacity: 1,
-                scale: 1,
-                x: 0,
-                y: 0,
-                rotate: 0,
-                rotateX: 0,
-                rotateY: 0,
-                scaleX: 1,
-                scaleY: 1,
-                textShadow: "0px 0px 0px rgba(0,0,0,0)",
-                transition: { type: "spring", stiffness: 300, damping: 20 },
-              },
-              active: {
-                ...anim.active,
-                opacity: 1,
-                // @ts-expect-error transition type mismatch
-                transition: anim.transition,
-              },
-            }}
-            animate={isActive ? "active" : isLoaded ? "visible" : undefined}
-            onHoverStart={() => {
-              if (!isActive) handleClick(idx);
-            }}
-            onClick={() => handleClick(idx)}
-            onAnimationComplete={(definition) => {
-              if (definition === "active") handleAnimationComplete(idx);
-            }}
-            className={cn(
-              "relative inline-block text-5xl md:text-7xl lg:text-8xl font-bold text-neutral-900 dark:text-neutral-100 cursor-pointer",
-              letterClassName,
-              isActive ? "z-10" : "z-0"
-            )}
-            style={{
-              transformOrigin: anim.transformOrigin,
-              transformStyle: "preserve-3d",
-            }}
-          >
-            {letter}
-          </motion.span>
-        );
-      })}
-    </motion.div>
+          return (
+            <m.span
+              key={`${letter}-${idx}`}
+              variants={{
+                hidden: { opacity: 0, y: 20, scale: 0.8 },
+                visible: {
+                  opacity: 1,
+                  scale: 1,
+                  x: 0,
+                  y: 0,
+                  rotate: 0,
+                  rotateX: 0,
+                  rotateY: 0,
+                  scaleX: 1,
+                  scaleY: 1,
+                  textShadow: "0px 0px 0px rgba(0,0,0,0)",
+                  transition: { type: "spring", stiffness: 300, damping: 20 },
+                },
+                active: {
+                  ...anim.active,
+                  opacity: 1,
+                  // @ts-expect-error transition type mismatch
+                  transition: anim.transition,
+                },
+              }}
+              animate={isActive ? "active" : isLoaded ? "visible" : undefined}
+              onHoverStart={() => {
+                if (!isActive) handleClick(idx);
+              }}
+              onClick={() => handleClick(idx)}
+              onAnimationComplete={(definition) => {
+                if (definition === "active") handleAnimationComplete(idx);
+              }}
+              className={cn(
+                "relative inline-block text-5xl md:text-7xl lg:text-8xl font-bold text-neutral-900 dark:text-neutral-100 cursor-pointer",
+                letterClassName,
+                isActive ? "z-10" : "z-0"
+              )}
+              style={{
+                transformOrigin: anim.transformOrigin,
+                transformStyle: "preserve-3d",
+              }}
+            >
+              {letter}
+            </m.span>
+          );
+        })}
+      </m.div>
+    </LazyMotion>
   );
 };
 

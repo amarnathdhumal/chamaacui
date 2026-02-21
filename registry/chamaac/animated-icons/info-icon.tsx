@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps, Easing } from "motion/react";
+import {
+  m,
+  LazyMotion,
+  domAnimation,
+  SVGMotionProps,
+  Easing,
+} from "motion/react";
 
 interface IconProps extends SVGMotionProps<SVGSVGElement> {
   size?: number;
@@ -35,34 +41,36 @@ const InfoIcon = (props: IconProps) => {
   };
 
   return (
-    <motion.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.circle cx="12" cy="12" r="9" />
-      <motion.line
-        x1="12"
-        y1="8"
-        x2="12.01"
-        y2="8"
-        animate={shouldAnimate ? { y: [0, -2, 0] } : { y: 0 }}
-        transition={transition}
-        strokeWidth={Math.max(3, strokeWidth)}
-      />
-      <motion.path d="M11 12h1v4h1" />
-    </motion.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <m.circle cx="12" cy="12" r="9" />
+        <m.line
+          x1="12"
+          y1="8"
+          x2="12.01"
+          y2="8"
+          animate={shouldAnimate ? { y: [0, -2, 0] } : { y: 0 }}
+          transition={transition}
+          strokeWidth={Math.max(3, strokeWidth)}
+        />
+        <m.path d="M11 12h1v4h1" />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

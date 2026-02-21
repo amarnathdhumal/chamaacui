@@ -13,7 +13,7 @@ import Link from "next/link";
 import {
   useScroll,
   useMotionValueEvent,
-  motion,
+  m,
   AnimatePresence,
 } from "motion/react";
 import { useState, useEffect } from "react";
@@ -247,12 +247,12 @@ export const Header = () => {
       {/* Mobile Full Screen Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
+          <m.div
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[9999] flex sm:hidden"
           >
             {/* Sidebar Menu */}
-            <motion.div
+            <m.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -329,8 +329,8 @@ export const Header = () => {
                   </li>
                 </ul>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
 

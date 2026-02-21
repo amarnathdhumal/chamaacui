@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useState, useRef } from "react";
 
 interface ConfettiPiece {
@@ -63,13 +63,13 @@ const GiftCard = () => {
   };
 
   return (
-    <motion.div
+    <m.div
       onHoverStart={handleHoverStart}
       onHoverEnd={handleHoverEnd}
       className="relative w-[280px] h-[330px] [perspective:1000px] cursor-pointer"
     >
       {/* Front card */}
-      <motion.div
+      <m.div
         transition={{ duration: 0.4 }}
         animate={{ rotateY: isHovered ? -80 : 0 }}
         className="absolute inset-0 bg-neutral-900 flex items-center justify-center z-10 origin-left "
@@ -77,17 +77,17 @@ const GiftCard = () => {
         <p className="text-[24px] text-white font-medium text-center p-4 font-serif">
           Tap to reveal your surprise
         </p>
-      </motion.div>
+      </m.div>
 
       {/* Back card */}
-      <motion.div className="absolute inset-0 bg-gray-200 flex items-center justify-center ">
+      <m.div className="absolute inset-0 bg-gray-200 flex items-center justify-center ">
         {/* Confetti container */}
         <div className="absolute inset-0 overflow-hidden">
           {pieces.map((p) => {
             const x = Math.cos((p.angle * Math.PI) / 180) * p.distance;
             const y = Math.sin((p.angle * Math.PI) / 180) * p.distance;
             return (
-              <motion.div
+              <m.div
                 key={p.id}
                 className={`${p.color} w-[2px] h-[6px]  absolute top-1/2 left-1/2`}
                 initial={{
@@ -122,8 +122,8 @@ const GiftCard = () => {
             </span>
           </p>
         </div>
-      </motion.div>
-    </motion.div>
+      </m.div>
+    </m.div>
   );
 };
 

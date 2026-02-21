@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { cn } from "@/lib/utils";
 
 type Tab = {
@@ -31,7 +31,7 @@ export default function AnimatedTabs({
       )}
     >
       {tabs.map((tab) => (
-        <motion.button
+        <m.button
           key={tab.value}
           onClick={() => onTabChange(tab.value)}
           className={cn(
@@ -44,13 +44,13 @@ export default function AnimatedTabs({
         >
           {tab.label}
           {activeTab === tab.value && (
-            <motion.div
+            <m.div
               layoutId={layoutId}
               className="absolute bottom-0 left-0 right-0 h-[2px] bg-black dark:bg-white"
               transition={{ duration: 0.2 }}
             />
           )}
-        </motion.button>
+        </m.button>
       ))}
     </div>
   );

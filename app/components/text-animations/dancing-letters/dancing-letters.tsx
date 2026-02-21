@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useState, useCallback, useEffect } from "react";
 import { Outfit } from "next/font/google";
 import { cn } from "@/lib/utils";
@@ -146,7 +146,7 @@ const DancingLetters = ({
   }, []);
 
   return (
-    <motion.div
+    <m.div
       className={cn(
         "flex items-center justify-center select-none",
         dancingFont.variable,
@@ -172,7 +172,7 @@ const DancingLetters = ({
         const isActive = activeIndices.has(idx);
 
         return (
-          <motion.span
+          <m.span
             key={`${letter}-${idx}`}
             variants={{
               hidden: { opacity: 0, y: 20, scale: 0.8 },
@@ -215,10 +215,10 @@ const DancingLetters = ({
             }}
           >
             {letter}
-          </motion.span>
+          </m.span>
         );
       })}
-    </motion.div>
+    </m.div>
   );
 };
 

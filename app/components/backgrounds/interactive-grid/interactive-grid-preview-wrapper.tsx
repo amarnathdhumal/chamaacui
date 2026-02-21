@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import ViewArea from "@/components/ui/view-area";
 import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
@@ -37,7 +37,7 @@ export default function InteractiveGridPreviewWrapper({
           <div className="w-full h-[600px] relative">
             <InteractiveGridBackground className="h-full w-full">
               <div className="flex flex-col items-center justify-center h-full pointer-events-none px-4">
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, ease: "easeOut" }}
@@ -59,7 +59,7 @@ export default function InteractiveGridPreviewWrapper({
                       Get Started
                     </button>
                   </div>
-                </motion.div>
+                </m.div>
               </div>
             </InteractiveGridBackground>
           </div>

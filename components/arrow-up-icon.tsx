@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, SVGMotionProps, Easing } from "motion/react";
+import { m, SVGMotionProps, Easing } from "motion/react";
 
 interface IconProps extends SVGMotionProps<SVGSVGElement> {
   size?: number;
@@ -38,7 +38,7 @@ const ArrowUpIcon = (props: IconProps) => {
   };
 
   return (
-    <motion.svg
+    <m.svg
       {...restProps}
       xmlns="http://www.w3.org/2000/svg"
       width={size}
@@ -55,10 +55,10 @@ const ArrowUpIcon = (props: IconProps) => {
       onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <motion.path d="M12 5l0 14" {...animation} />
-      <motion.path d="M18 11l-6 -6" {...animation} />
-      <motion.path d="M6 11l6 -6" {...animation} />
-    </motion.svg>
+      <m.path d="M12 5l0 14" {...animation} />
+      <m.path d="M18 11l-6 -6" {...animation} />
+      <m.path d="M6 11l6 -6" {...animation} />
+    </m.svg>
   );
 };
 

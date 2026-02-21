@@ -1,7 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useScroll, motion, useTransform } from "motion/react";
+import {
+  useScroll,
+  LazyMotion,
+  domAnimation,
+  m,
+  useTransform,
+} from "motion/react";
 import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 
@@ -52,15 +58,17 @@ const data: StackScrollTypes[] = [
 
 const StackScroll = () => {
   return (
-    <div className="bg-white dark:bg-black ">
-      <div className="relative w-full  flex justify-center">
-        <div className="relative w-full max-w-[500px] ">
-          {data.map((item, i) => (
-            <StackScrollCard key={i} {...item} index={i} />
-          ))}
+    <LazyMotion features={domAnimation}>
+      <div className="bg-white dark:bg-black ">
+        <div className="relative w-full  flex justify-center">
+          <div className="relative w-full max-w-[500px] ">
+            {data.map((item, i) => (
+              <StackScrollCard key={item.title} {...item} index={i} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </LazyMotion>
   );
 };
 
@@ -84,7 +92,7 @@ const StackScrollCard = ({ image, title, index }: StackScrollCardProps) => {
   );
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       style={{
         scale,
@@ -117,7 +125,7 @@ const StackScrollCard = ({ image, title, index }: StackScrollCardProps) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 

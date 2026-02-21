@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useState } from "react";
 
 const Sidebar = () => {
@@ -64,7 +64,7 @@ const Sidebar = () => {
                       onMouseLeave={() => setHoveredItem(null)}
                     >
                       {isActive && (
-                        <motion.div
+                        <m.div
                           layoutId="active-sidebar-line"
                           className="absolute -left-[1px] top-0 bottom-0 w-[2px] bg-black dark:bg-white"
                           transition={{
@@ -75,7 +75,7 @@ const Sidebar = () => {
                         />
                       )}
                       {isHovered && !isActive && (
-                        <motion.div
+                        <m.div
                           layoutId="hover-sidebar-line"
                           className="absolute -left-[1px] top-0 bottom-0 w-[2px] bg-neutral-300 dark:bg-neutral-700"
                           transition={{
