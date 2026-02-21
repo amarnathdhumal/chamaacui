@@ -38,6 +38,17 @@ export interface Prop {
   required?: boolean;
 }
 
+export interface PropsTableProps {
+  props: Prop[];
+  title?: string;
+}
+
+export interface InstallationSectionProps {
+  componentSource: string;
+  dependencies?: string[];
+  componentName?: string;
+}
+
 export interface BasePreviewWrapperProps {
   title: string;
   description: string | React.ReactNode;

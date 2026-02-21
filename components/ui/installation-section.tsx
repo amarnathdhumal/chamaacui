@@ -8,17 +8,7 @@ import PackageManagerSelector, {
   PackageManager,
 } from "@/components/ui/package-manager-selector";
 
-interface InstallationSectionProps {
-  componentSource: string;
-  dependencies?: string[];
-  componentName?: string;
-}
-
-interface InstallationSectionProps {
-  componentSource: string;
-  dependencies?: string[];
-  componentName?: string;
-}
+import { InstallationSectionProps } from "@/lib/types";
 
 type InstallMethod = "cli" | "manual";
 
@@ -85,7 +75,7 @@ export default function InstallationSection({
           {installMethod === "cli" ? (
             <div className="border border-white/15 rounded-[16px] overflow-hidden ">
               {/* Package Manager Selector */}
-              <div className="bg-[#171717] p-2 border-b border-white/10">
+              <div className="bg-[#171717] p-2 border-b border-white/15">
                 <PackageManagerSelector
                   activePm={activePm}
                   onPmChange={setActivePm}
@@ -122,7 +112,7 @@ export default function InstallationSection({
                         layoutId="manualPmBackground"
                       />
                     </div>
-                    <div className="relative bg-[#0d0d0d] border-t border-white/10">
+                    <div className="relative bg-[#0d0d0d] border-t border-white/15">
                       <div className="absolute top-4 right-4">
                         <CopyButton text={manualCommand} />
                       </div>

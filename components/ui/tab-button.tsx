@@ -13,14 +13,16 @@ const TabButton = ({
     <button
       onClick={onClick}
       className={cn(
-        "flex flex-row gap-2 relative text-white px-4 py-2 rounded-[8px] text-base font-medium items-center cursor-pointer",
-        isActive ? "text-white" : "text-gray-300 hover:text-white"
+        "flex flex-row gap-2 relative dark:text-white text-black px-4 py-2 rounded-[8px] text-base font-medium items-center cursor-pointer",
+        isActive
+          ? "dark:text-white text-black"
+          : "text-black hover:text-black dark:hover:text-white"
       )}
     >
       {isActive && (
         <m.div
           layoutId={layoutId}
-          className="absolute inset-0 bg-neutral-800 rounded-[8px]"
+          className="absolute inset-0 dark:bg-neutral-800 bg-gray-200 rounded-[8px]"
           transition={{ duration: 0.3 }}
         />
       )}

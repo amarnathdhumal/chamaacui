@@ -111,7 +111,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Hover Arrow",
     link: "/buttons/hover-arrow-button",
     category: "Buttons",
-    isNew: true,
   },
   // text animations
   {

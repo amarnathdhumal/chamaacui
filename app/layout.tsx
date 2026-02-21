@@ -6,7 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { CSPostHogProvider } from "./providers/posthog-provider";
 import PostHogPageView from "./providers/posthog-pageview";
-import { LazyMotion, domAnimation } from "motion/react";
+import { MotionProvider } from "./providers/motion-provider";
 // import { Header } from "./components/header";
 
 const geistSans = Geist({
@@ -74,7 +74,7 @@ export default function RootLayout({
       >
         <CSPostHogProvider>
           <PostHogPageView />
-          <LazyMotion features={domAnimation}>
+          <MotionProvider>
             <ThemeProvider
               attribute="class"
               defaultTheme="system"
@@ -85,7 +85,7 @@ export default function RootLayout({
               <Analytics />
               <SpeedInsights />
             </ThemeProvider>
-          </LazyMotion>
+          </MotionProvider>
         </CSPostHogProvider>
         <script
           type="application/ld+json"

@@ -1,15 +1,4 @@
-interface Prop {
-  name: string;
-  type: string;
-  default: string;
-  description: string;
-  required?: boolean;
-}
-
-interface PropsTableProps {
-  props: Prop[];
-  title?: string;
-}
+import { PropsTableProps } from "@/lib/types";
 
 export default function PropsTable({
   props,
