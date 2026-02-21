@@ -1,8 +1,5 @@
 import fs from "fs";
 import path from "path";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import CopyButton from "@/components/ui/copy-button";
 import GlowingBorderButtonPreviewWrapper from "./glowing-border-button-preview-wrapper";
 import { constructMetadata } from "@/lib/utils";
 
@@ -36,32 +33,8 @@ export default function GlowingBorderButtonPage() {
       <GlowingBorderButtonPreviewWrapper
         title="Glowing Border Button"
         description="A stylish glowing border button with a gradient border and glowing effects."
-        code={
-          <div className="relative">
-            <div className="absolute top-4 right-4">
-              <CopyButton text={demoSource} />
-            </div>
-            <SyntaxHighlighter
-              language="tsx"
-              style={oneDark}
-              wrapLongLines={true}
-              customStyle={{
-                margin: 0,
-                padding: "1rem",
-                fontSize: "14px",
-                lineHeight: "1.5",
-                width: "100%",
-                maxWidth: "100%",
-                boxSizing: "border-box",
-                overflow: "auto",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {demoSource}
-            </SyntaxHighlighter>
-          </div>
-        }
+        code={demoSource}
+        codeFilename="demo.tsx"
         installationSource={componentSource}
         props={[
           {

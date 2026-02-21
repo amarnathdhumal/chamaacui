@@ -26,15 +26,13 @@ export default function PackageManagerSelector({
           onClick={() => onPmChange(pm)}
           className={cn(
             "px-4 py-2 rounded-[8px] text-sm/5 transition-colors leading-none relative z-10 cursor-pointer",
-            activePm === pm
-              ? "text-neutral-700 dark:text-white"
-              : "text-neutral-600 dark:text-gray-300 hover:text-neutral-700 dark:hover:text-gray-300"
+            activePm === pm ? "text-white" : "text-gray-400 hover:text-white"
           )}
         >
           {activePm === pm && (
             <m.div
               layoutId={layoutId}
-              className="absolute inset-0 bg-gray-200 dark:bg-neutral-800 rounded-[8px]"
+              className="absolute inset-0 bg-neutral-800 rounded-[8px]"
               transition={{
                 duration: 0.2,
               }}

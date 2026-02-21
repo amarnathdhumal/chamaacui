@@ -6,9 +6,6 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 import LiquidChromeDemo from "./liquid-chrome-demo";
 import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import CopyButton from "@/components/ui/copy-button";
 
 interface LiquidChromePreviewWrapperProps {
   title: string;
@@ -21,6 +18,7 @@ interface LiquidChromePreviewWrapperProps {
     description: string;
     required: boolean;
   }>;
+  codeFilename?: string;
 }
 
 export default function LiquidChromePreviewWrapper({
@@ -28,6 +26,7 @@ export default function LiquidChromePreviewWrapper({
   description,
   installationSource,
   props,
+  codeFilename,
 }: LiquidChromePreviewWrapperProps) {
   const [speed, setSpeed] = useState(0.35);
   const [timeScale, setTimeScale] = useState(0.225);
@@ -107,32 +106,8 @@ export function LiquidChromeDemo() {
             />
           </div>
         }
-        code={
-          <div className="relative">
-            <div className="absolute top-4 right-4">
-              <CopyButton text={codeString} />
-            </div>
-            <SyntaxHighlighter
-              language="tsx"
-              style={oneDark}
-              wrapLongLines={true}
-              customStyle={{
-                margin: 0,
-                padding: "1rem",
-                fontSize: "14px",
-                lineHeight: "1.5",
-                width: "100%",
-                maxWidth: "100%",
-                boxSizing: "border-box",
-                overflow: "auto",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {codeString}
-            </SyntaxHighlighter>
-          </div>
-        }
+        code={codeString}
+        codeFilename={codeFilename || "demo.tsx"}
       />
 
       <div className=" ">

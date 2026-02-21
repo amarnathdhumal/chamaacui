@@ -9,7 +9,8 @@ import PropsTable from "@/components/ui/props-table";
 interface GlobeIconPreviewWrapperProps {
   title: string;
   description: string | React.ReactNode;
-  code: React.ReactNode;
+  code: React.ReactNode | string;
+  codeFilename?: string;
   installationSource: string;
   props: Array<{
     name: string;
@@ -24,6 +25,7 @@ export default function GlobeIconPreviewWrapper({
   title,
   description,
   code,
+  codeFilename,
   installationSource,
   props,
 }: GlobeIconPreviewWrapperProps) {
@@ -38,6 +40,7 @@ export default function GlobeIconPreviewWrapper({
           </div>
         }
         code={code}
+        codeFilename={codeFilename}
       />
       <InstallationSection
         componentSource={installationSource}

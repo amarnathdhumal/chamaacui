@@ -22,19 +22,16 @@ const CopyButton = ({ text }: CopyProps) => {
   };
 
   return (
-    <div className="bg-gray-200 dark:bg-neutral-900 cursor-pointer rounded-sm transition">
+    <div className="bg-neutral-900 hover:bg-neutral-800 cursor-pointer rounded-md transition shadow-sm border border-white/15">
       {copy ? (
-        <IconCheck className="text-black dark:text-white size-8 p-2" />
+        <IconCheck className="text-white size-8 p-2" />
       ) : (
         <Tooltip>
           <TooltipTrigger asChild>
-            <IconCopy
-              onClick={handleCopy}
-              className="text-black dark:text-white size-8 p-2"
-            />
+            <IconCopy onClick={handleCopy} className="text-white size-8 p-2" />
           </TooltipTrigger>
-          <TooltipContent>
-            <p>Copy</p>
+          <TooltipContent side="top">
+            <p className="text-xs">Copy</p>
           </TooltipContent>
         </Tooltip>
       )}

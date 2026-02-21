@@ -9,7 +9,8 @@ import PropsTable from "@/components/ui/props-table";
 interface GlowingBorderButtonPreviewWrapperProps {
   title: string;
   description: string | React.ReactNode;
-  code: React.ReactNode;
+  code: React.ReactNode | string;
+  codeFilename?: string;
   installationSource: string;
   props: Array<{
     name: string;
@@ -24,6 +25,7 @@ export default function GlowingBorderButtonPreviewWrapper({
   title,
   description,
   code,
+  codeFilename,
   installationSource,
   props,
 }: GlowingBorderButtonPreviewWrapperProps) {
@@ -34,6 +36,7 @@ export default function GlowingBorderButtonPreviewWrapper({
         description={description}
         preview={<GlowingBorderButtonDemo />}
         code={code}
+        codeFilename={codeFilename}
       />
 
       {/* Installation Section */}

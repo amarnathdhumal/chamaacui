@@ -9,7 +9,8 @@ import PropsTable from "@/components/ui/props-table";
 interface GaugePreviewWrapperProps {
   title: string;
   description: string | React.ReactNode;
-  code: React.ReactNode;
+  code: React.ReactNode | string;
+  codeFilename?: string;
   installationSource: string;
   props: Array<{
     name: string;
@@ -24,6 +25,7 @@ export default function GaugePreviewWrapper({
   title,
   description,
   code,
+  codeFilename,
   installationSource,
   props,
 }: GaugePreviewWrapperProps) {
@@ -40,6 +42,7 @@ export default function GaugePreviewWrapper({
           </div>
         }
         code={code}
+        codeFilename={codeFilename}
         onRefresh={() => setKey((prev) => prev + 1)}
       />
 

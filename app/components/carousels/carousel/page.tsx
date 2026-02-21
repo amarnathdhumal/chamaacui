@@ -1,9 +1,6 @@
 import CourselPreviewWrapper from "./coursel-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import CopyButton from "@/components/ui/copy-button";
 import { constructMetadata } from "@/lib/utils";
 
 export const metadata = constructMetadata({
@@ -33,32 +30,8 @@ export default function CourselPage() {
       <CourselPreviewWrapper
         title="Carousel"
         description="A smooth, auto-playing 3D carousel component with layout animations using Framer Motion."
-        code={
-          <div className="relative">
-            <div className="absolute top-4 right-4">
-              <CopyButton text={CourselDemoSource} />
-            </div>
-            <SyntaxHighlighter
-              language="tsx"
-              style={oneDark}
-              wrapLongLines={true}
-              customStyle={{
-                margin: 0,
-                padding: "1rem",
-                fontSize: "14px",
-                lineHeight: "1.5",
-                width: "100%",
-                maxWidth: "100%",
-                boxSizing: "border-box",
-                overflow: "auto",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {CourselDemoSource}
-            </SyntaxHighlighter>
-          </div>
-        }
+        code={CourselDemoSource}
+        codeFilename="coursel-demo.tsx"
         installationSource={CourselSource}
         props={[
           {

@@ -10,7 +10,8 @@ import { IconArrowUpRight } from "@tabler/icons-react";
 interface AIInputPreviewWrapperProps {
   title: string;
   description: string | React.ReactNode;
-  code: React.ReactNode;
+  code: React.ReactNode | string;
+  codeFilename?: string;
   installationSource: string;
   props: Array<{
     name: string;
@@ -36,6 +37,7 @@ export default function AIInputPreviewWrapper({
   title,
   description,
   code,
+  codeFilename,
   installationSource,
   props,
   subComponents,
@@ -70,6 +72,7 @@ export default function AIInputPreviewWrapper({
           </div>
         }
         code={code}
+        codeFilename={codeFilename}
       />
 
       {/* Installation Section */}

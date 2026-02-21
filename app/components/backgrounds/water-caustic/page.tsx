@@ -23,6 +23,7 @@ export default function WaterCausticPage() {
         title="Water Caustics"
         description="A beautiful, procedurally generated water caustic animation that simulates the play of light on a surface underwater. Perfect for immersive backgrounds and premium UI sections."
         installationSource={componentSource}
+        codeFilename="water-caustic-demo.tsx"
         props={[
           {
             name: "className",

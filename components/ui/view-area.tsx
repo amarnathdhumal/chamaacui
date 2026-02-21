@@ -6,12 +6,14 @@ import TabButton from "./tab-button";
 import { IconEye, IconCode } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import RefreshButton from "./refresh-button";
+import CodeBlock from "./code-block";
 
 const ViewArea = ({
   title,
   description,
   preview,
   code,
+  codeFilename,
   scrollContainerRef,
   className,
   onRefresh,
@@ -42,14 +44,16 @@ const ViewArea = ({
           layoutId={`viewAreaTab-${title}`}
         />
       </div>
-      <div className="border border-border rounded-[16px] overflow-hidden w-full ">
+      <div
+        className={cn(
+          "w-full overflow-hidden",
+          activeTab === "preview" ? "border border-border rounded-[16px]" : ""
+        )}
+      >
         {activeTab === "preview" ? (
           <div
             ref={scrollContainerRef}
-            className={cn(
-              "overflow-y-auto hide-scrollbar  relative",
-              className
-            )}
+            className={cn("overflow-y-auto hide-scrollbar relative", className)}
           >
             {onRefresh && (
               <div className="absolute top-4 right-4 z-10">
@@ -59,8 +63,12 @@ const ViewArea = ({
             {preview}
           </div>
         ) : (
-          <div className="overflow-x-auto w-full max-h-[450px] hide-scrollbar relative">
-            <div className="min-w-0">{code}</div>
+          <div className="w-full">
+            {typeof code === "string" ? (
+              <CodeBlock code={code} filename={codeFilename} />
+            ) : (
+              code
+            )}
           </div>
         )}
       </div>

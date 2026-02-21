@@ -1,15 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import CopyButton from "@/components/ui/copy-button";
 import Link from "next/link";
 import { IconArrowRight, IconBrandGithub } from "@tabler/icons-react";
 import AnimatedTabs from "@/components/ui/animated-tabs";
 import PackageManagerSelector, {
   PackageManager,
 } from "@/components/ui/package-manager-selector";
+import CopyButton from "@/components/ui/copy-button";
+import CodeBlock from "@/components/ui/code-block";
 
 type InstallMethod = "cli" | "manual" | "mcp";
 
@@ -110,20 +109,20 @@ export default function GetStartedPage() {
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 1: Initialize shadcn/ui (if not already done)
                       </h4>
-                      <div className="border border-border rounded-[16px] overflow-hidden">
-                        <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-border">
+                      <div className="border border-white/15 rounded-[16px] overflow-hidden">
+                        <div className="bg-[#171717] p-2 ">
                           <PackageManagerSelector
                             activePm={activePm}
                             onPmChange={setActivePm}
                             layoutId="getStartedCliPm"
                           />
                         </div>
-                        <div className="relative bg-white dark:bg-neutral-950">
+                        <div className="relative bg-[#0d0d0d]">
                           <div className="absolute top-4 right-4">
                             <CopyButton text={cliCommand} />
                           </div>
                           <div className="p-4">
-                            <code className="text-sm font-mono text-neutral-500 dark:text-neutral-200">
+                            <code className="text-sm font-mono text-neutral-200">
                               {cliCommand}
                             </code>
                           </div>
@@ -140,15 +139,15 @@ export default function GetStartedPage() {
                         Browse our components and use the CLI command shown on
                         each component page to add it to your project.
                       </p>
-                      <div className="border border-border rounded-[16px] overflow-hidden">
-                        <div className="relative bg-white dark:bg-neutral-950">
+                      <div className="border border-white/15 rounded-[16px] overflow-hidden">
+                        <div className="relative bg-[#0d0d0d]">
                           <div className="absolute top-4 right-4">
                             <CopyButton
                               text={`${activePm === "npm" ? "npx" : activePm === "bun" ? "bunx" : activePm === "pnpm" ? "pnpm dlx" : "npx"} shadcn@latest add https://chamaac.com/r/<Component>.json`}
                             />
                           </div>
                           <div className="p-4">
-                            <code className="text-sm font-mono text-neutral-500 dark:text-neutral-200">
+                            <code className="text-sm font-mono text-neutral-200">
                               {activePm === "npm"
                                 ? "npx"
                                 : activePm === "bun"
@@ -180,20 +179,20 @@ export default function GetStartedPage() {
                         </code>{" "}
                         for animations.
                       </p>
-                      <div className="border border-border rounded-[16px] overflow-hidden">
-                        <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-border">
+                      <div className="border border-white/15 rounded-[16px] overflow-hidden">
+                        <div className="bg-[#171717] p-2">
                           <PackageManagerSelector
                             activePm={activePm}
                             onPmChange={setActivePm}
                             layoutId="getStartedManualPm"
                           />
                         </div>
-                        <div className="relative bg-white dark:bg-neutral-950">
+                        <div className="relative bg-[#0d0d0d]">
                           <div className="absolute top-4 right-4">
                             <CopyButton text={manualCommand} />
                           </div>
                           <div className="p-4">
-                            <code className="text-sm font-mono text-neutral-500 dark:text-neutral-200">
+                            <code className="text-sm font-mono text-neutral-200">
                               {manualCommand}
                             </code>
                           </div>
@@ -213,32 +212,11 @@ export default function GetStartedPage() {
                         </code>{" "}
                         file with the following helper function:
                       </p>
-                      <div className="bg-white dark:bg-neutral-950 max-h-[250px] overflow-auto hide-scrollbar border border-border rounded-[16px]">
-                        <div className="relative">
-                          <div className="absolute top-4 right-4">
-                            <CopyButton text={utilsCode} />
-                          </div>
-                          <SyntaxHighlighter
-                            language="tsx"
-                            style={oneDark}
-                            wrapLongLines={true}
-                            customStyle={{
-                              margin: 0,
-                              padding: "1rem",
-                              fontSize: "14px",
-                              lineHeight: "1.5",
-                              width: "100%",
-                              maxWidth: "100%",
-                              boxSizing: "border-box",
-                              overflow: "auto",
-                              scrollbarWidth: "none",
-                              msOverflowStyle: "none",
-                            }}
-                          >
-                            {utilsCode}
-                          </SyntaxHighlighter>
-                        </div>
-                      </div>
+                      <CodeBlock
+                        code={utilsCode}
+                        filename="lib/utils.ts"
+                        language="tsx"
+                      />
                     </div>
 
                     {/* Step 3: Copy component */}
@@ -261,32 +239,11 @@ export default function GetStartedPage() {
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 4: Import and use
                       </h4>
-                      <div className="bg-white dark:bg-neutral-950 max-h-[250px] overflow-auto hide-scrollbar border border-border rounded-[16px]">
-                        <div className="relative">
-                          <div className="absolute top-4 right-4">
-                            <CopyButton text={usageCode} />
-                          </div>
-                          <SyntaxHighlighter
-                            language="tsx"
-                            style={oneDark}
-                            wrapLongLines={true}
-                            customStyle={{
-                              margin: 0,
-                              padding: "1rem",
-                              fontSize: "14px",
-                              lineHeight: "1.5",
-                              width: "100%",
-                              maxWidth: "100%",
-                              boxSizing: "border-box",
-                              overflow: "auto",
-                              scrollbarWidth: "none",
-                              msOverflowStyle: "none",
-                            }}
-                          >
-                            {usageCode}
-                          </SyntaxHighlighter>
-                        </div>
-                      </div>
+                      <CodeBlock
+                        code={usageCode}
+                        filename="app/page.tsx"
+                        language="tsx"
+                      />
                     </div>
                   </div>
                 )}
@@ -312,22 +269,22 @@ export default function GetStartedPage() {
                         Run this command to set up the shadcn MCP server for
                         your AI client (Cursor, Claude Code, etc.):
                       </p>
-                      <div className="border border-border rounded-[16px] overflow-hidden">
-                        <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-border">
+                      <div className="border border-white/15 rounded-[16px] overflow-hidden">
+                        <div className="bg-[#171717] p-2">
                           <PackageManagerSelector
                             activePm={activePm}
                             onPmChange={setActivePm}
                             layoutId="getStartedMcpPm"
                           />
                         </div>
-                        <div className="relative bg-white dark:bg-neutral-950">
+                        <div className="relative bg-[#0d0d0d]">
                           <div className="absolute top-4 right-4">
                             <CopyButton
                               text={`${activePm === "npm" ? "npx" : activePm === "bun" ? "bunx" : activePm === "pnpm" ? "pnpm dlx" : "npx"} shadcn@latest mcp init`}
                             />
                           </div>
                           <div className="p-4">
-                            <code className="text-sm font-mono text-neutral-500 dark:text-neutral-200">
+                            <code className="text-sm font-mono text-neutral-200">
                               {activePm === "npm"
                                 ? "npx"
                                 : activePm === "bun"
@@ -354,32 +311,11 @@ export default function GetStartedPage() {
                         </code>{" "}
                         file so the AI can access all components:
                       </p>
-                      <div className="bg-white dark:bg-neutral-950 max-h-[250px] overflow-auto hide-scrollbar border border-border rounded-[16px]">
-                        <div className="relative">
-                          <div className="absolute top-4 right-4">
-                            <CopyButton text={mcpRegistryCode} />
-                          </div>
-                          <SyntaxHighlighter
-                            language="json"
-                            style={oneDark}
-                            wrapLongLines={true}
-                            customStyle={{
-                              margin: 0,
-                              padding: "1rem",
-                              fontSize: "14px",
-                              lineHeight: "1.5",
-                              width: "100%",
-                              maxWidth: "100%",
-                              boxSizing: "border-box",
-                              overflow: "auto",
-                              scrollbarWidth: "none",
-                              msOverflowStyle: "none",
-                            }}
-                          >
-                            {mcpRegistryCode}
-                          </SyntaxHighlighter>
-                        </div>
-                      </div>
+                      <CodeBlock
+                        code={mcpRegistryCode}
+                        filename="components.json"
+                        language="json"
+                      />
                     </div>
 
                     {/* Step 3: Use with AI */}
@@ -391,7 +327,7 @@ export default function GetStartedPage() {
                         Now you can ask your AI assistant to add components
                         using natural language:
                       </p>
-                      <div className="p-4 rounded-[16px] border border-border bg-neutral-50 dark:bg-neutral-900/50">
+                      <div className="p-4 rounded-[16px] border border-white/15 bg-[#0d0d0d]">
                         <p className="text-neutral-700 dark:text-neutral-300 ">
                           &quot;Add the SlideUpButton component from Chamaac
                           UI&quot;
@@ -415,7 +351,7 @@ export default function GetStartedPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               <Link
                 href="/components"
-                className="group p-4 rounded-[15px] border border-border transition-colors"
+                className="group p-4 rounded-[15px] border border-white/15 transition-colors bg-[#0d0d0d] shadow-sm hover:bg-[#171717]"
               >
                 <h3 className="text-lg font-medium text-black dark:text-white mb-2 group-hover:underline flex gap-2 items-center">
                   Browse Components

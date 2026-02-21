@@ -1,9 +1,6 @@
 import LightbulbIconPreviewWrapper from "./lightbulb-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import CopyButton from "@/components/ui/copy-button";
 import { constructMetadata } from "@/lib/utils";
 
 const filePath = path.join(
@@ -31,32 +28,8 @@ export default function LightbulbIconPage() {
       <LightbulbIconPreviewWrapper
         title="Lightbulb Icon"
         description="An animated lightbulb icon with pulsing rays."
-        code={
-          <div className="relative">
-            <div className="absolute top-4 right-4">
-              <CopyButton text={DemoSource} />
-            </div>
-            <SyntaxHighlighter
-              language="tsx"
-              style={oneDark}
-              wrapLongLines={true}
-              customStyle={{
-                margin: 0,
-                padding: "1rem",
-                fontSize: "14px",
-                lineHeight: "1.5",
-                width: "100%",
-                maxWidth: "100%",
-                boxSizing: "border-box",
-                overflow: "auto",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {DemoSource}
-            </SyntaxHighlighter>
-          </div>
-        }
+        code={DemoSource}
+        codeFilename="lightbulb-icon-demo.tsx"
         installationSource={ComponentSource}
         props={[
           {

@@ -1,9 +1,6 @@
 import CrownIconPreviewWrapper from "./crown-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import CopyButton from "@/components/ui/copy-button";
 import { constructMetadata } from "@/lib/utils";
 
 // file paths
@@ -32,32 +29,8 @@ export default function CrownIconPage() {
       <CrownIconPreviewWrapper
         title="Crown Icon"
         description="An animated crown icon with a regal wobble effect."
-        code={
-          <div className="relative">
-            <div className="absolute top-4 right-4">
-              <CopyButton text={DemoSource} />
-            </div>
-            <SyntaxHighlighter
-              language="tsx"
-              style={oneDark}
-              wrapLongLines={true}
-              customStyle={{
-                margin: 0,
-                padding: "1rem",
-                fontSize: "14px",
-                lineHeight: "1.5",
-                width: "100%",
-                maxWidth: "100%",
-                boxSizing: "border-box",
-                overflow: "auto",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {DemoSource}
-            </SyntaxHighlighter>
-          </div>
-        }
+        code={DemoSource}
+        codeFilename="crown-icon-demo.tsx"
         installationSource={ComponentSource}
         props={[
           {

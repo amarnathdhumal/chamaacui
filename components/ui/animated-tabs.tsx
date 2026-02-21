@@ -24,12 +24,7 @@ export default function AnimatedTabs({
   className,
 }: AnimatedTabsProps) {
   return (
-    <div
-      className={cn(
-        "flex flex-row gap-4 border-b border-gray-200 dark:border-neutral-800",
-        className
-      )}
-    >
+    <div className={cn("flex flex-row gap-4 ", className)}>
       {tabs.map((tab) => (
         <m.button
           key={tab.value}
@@ -37,8 +32,8 @@ export default function AnimatedTabs({
           className={cn(
             "relative text-base/10 font-medium px-4 transition-colors cursor-pointer",
             activeTab === tab.value
-              ? "text-neutral-700 dark:text-white"
-              : "text-neutral-600 dark:text-gray-300 hover:text-neutral-700 dark:hover:text-gray-300"
+              ? "text-white"
+              : "text-gray-400 hover:text-white"
           )}
           whileHover={{ scale: 1.05 }}
         >
@@ -46,7 +41,7 @@ export default function AnimatedTabs({
           {activeTab === tab.value && (
             <m.div
               layoutId={layoutId}
-              className="absolute bottom-0 left-0 right-0 h-[2px] bg-black dark:bg-white"
+              className="absolute bottom-0 left-0 right-0 h-[2px] bg-white"
               transition={{ duration: 0.2 }}
             />
           )}

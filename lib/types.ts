@@ -11,7 +11,8 @@ export interface ViewAreaTypes {
   title: string;
   description: string | React.ReactNode;
   preview: React.ReactNode;
-  code: React.ReactNode;
+  code: React.ReactNode | string;
+  codeFilename?: string;
   scrollContainerRef?: React.RefObject<HTMLDivElement | null>;
   className?: string;
   onRefresh?: () => void;

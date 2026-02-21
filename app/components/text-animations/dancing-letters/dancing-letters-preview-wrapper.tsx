@@ -9,7 +9,8 @@ import PropsTable from "@/components/ui/props-table";
 interface DancingLettersPreviewWrapperProps {
   title: string;
   description: string | React.ReactNode;
-  code: React.ReactNode;
+  code: React.ReactNode | string;
+  codeFilename?: string;
   installationSource: string;
   props: Array<{
     name: string;
@@ -24,6 +25,7 @@ export default function DancingLettersPreviewWrapper({
   title,
   description,
   code,
+  codeFilename,
   installationSource,
   props,
 }: DancingLettersPreviewWrapperProps) {
@@ -38,6 +40,7 @@ export default function DancingLettersPreviewWrapper({
           </div>
         }
         code={code}
+        codeFilename={codeFilename}
       />
 
       {/* Installation Section */}

@@ -6,9 +6,6 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 import WavesDemo from "./waves-demo";
 import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import CopyButton from "@/components/ui/copy-button";
 import { useState } from "react";
 
 interface WavesPreviewWrapperProps {
@@ -22,6 +19,7 @@ interface WavesPreviewWrapperProps {
     description: string;
     required: boolean;
   }>;
+  codeFilename?: string;
 }
 
 export default function WavesPreviewWrapper({
@@ -29,6 +27,7 @@ export default function WavesPreviewWrapper({
   description,
   installationSource,
   props,
+  codeFilename,
 }: WavesPreviewWrapperProps) {
   const [waveColor1, setWaveColor1] = useState("#071697");
   const [waveColor2, setWaveColor2] = useState("#00d4ff");
@@ -141,32 +140,8 @@ export function WavesDemo() {
             />
           </div>
         }
-        code={
-          <div className="relative">
-            <div className="absolute top-4 right-4">
-              <CopyButton text={codeString} />
-            </div>
-            <SyntaxHighlighter
-              language="tsx"
-              style={oneDark}
-              wrapLongLines={true}
-              customStyle={{
-                margin: 0,
-                padding: "1rem",
-                fontSize: "14px",
-                lineHeight: "1.5",
-                width: "100%",
-                maxWidth: "100%",
-                boxSizing: "border-box",
-                overflow: "auto",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {codeString}
-            </SyntaxHighlighter>
-          </div>
-        }
+        code={codeString}
+        codeFilename={codeFilename || "demo.tsx"}
       />
 
       <div className=" ">

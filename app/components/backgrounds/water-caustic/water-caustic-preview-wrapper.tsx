@@ -6,9 +6,6 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 import WaterCausticDemo from "./water-caustic-demo";
 import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import CopyButton from "@/components/ui/copy-button";
 
 interface WaterCausticPreviewWrapperProps {
   title: string;
@@ -21,6 +18,7 @@ interface WaterCausticPreviewWrapperProps {
     description: string;
     required: boolean;
   }>;
+  codeFilename?: string;
 }
 
 export default function WaterCausticPreviewWrapper({
@@ -28,6 +26,7 @@ export default function WaterCausticPreviewWrapper({
   description,
   installationSource,
   props,
+  codeFilename,
 }: WaterCausticPreviewWrapperProps) {
   const [color, setColor] = useState("#00d1ff");
   const deferredColor = useDeferredValue(color);
@@ -67,32 +66,8 @@ export function WaterCausticDemo() {
             <WaterCausticDemo color={color} />
           </div>
         }
-        code={
-          <div className="relative">
-            <div className="absolute top-4 right-4">
-              <CopyButton text={codeString} />
-            </div>
-            <SyntaxHighlighter
-              language="tsx"
-              style={oneDark}
-              wrapLongLines={true}
-              customStyle={{
-                margin: 0,
-                padding: "1rem",
-                fontSize: "14px",
-                lineHeight: "1.5",
-                width: "100%",
-                maxWidth: "100%",
-                boxSizing: "border-box",
-                overflow: "auto",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {codeString}
-            </SyntaxHighlighter>
-          </div>
-        }
+        code={codeString}
+        codeFilename={codeFilename || "demo.tsx"}
       />
 
       <div className=" ">

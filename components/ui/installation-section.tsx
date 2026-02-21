@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import CodeBlock from "@/components/ui/code-block";
 import CopyButton from "@/components/ui/copy-button";
 import AnimatedTabs from "@/components/ui/animated-tabs";
 import PackageManagerSelector, {
@@ -84,9 +83,9 @@ export default function InstallationSection({
         <div className="mt-4">
           {/* Tab Content */}
           {installMethod === "cli" ? (
-            <div className="border border-border rounded-[16px] overflow-hidden ">
+            <div className="border border-white/15 rounded-[16px] overflow-hidden ">
               {/* Package Manager Selector */}
-              <div className="bg-gray-50 dark:bg-neutral-900 p-2 border-b border-border ">
+              <div className="bg-[#171717] p-2 border-b border-white/10">
                 <PackageManagerSelector
                   activePm={activePm}
                   onPmChange={setActivePm}
@@ -95,12 +94,12 @@ export default function InstallationSection({
               </div>
 
               {/* CLI Command */}
-              <div className="relative bg-white dark:bg-neutral-950">
+              <div className="relative bg-[#0d0d0d]">
                 <div className="absolute top-4 right-4">
                   <CopyButton text={cliCommand} />
                 </div>
                 <div className="p-4">
-                  <code className="text-sm font-mono text-neutral-500 dark:text-neutral-200">
+                  <code className="text-sm font-mono text-neutral-200">
                     {cliCommand}
                   </code>
                 </div>
@@ -115,20 +114,20 @@ export default function InstallationSection({
                     Step 1: Install Dependencies
                   </h4>
 
-                  <div className="border border-border rounded-[16px] overflow-hidden ">
-                    <div className="bg-gray-50 dark:bg-neutral-900 p-2 ">
+                  <div className="border border-white/15 rounded-[16px] overflow-hidden">
+                    <div className="bg-[#171717] p-2">
                       <PackageManagerSelector
                         activePm={activePm}
                         onPmChange={setActivePm}
                         layoutId="manualPmBackground"
                       />
                     </div>
-                    <div className="relative bg-white dark:bg-neutral-950 border-b border-border">
+                    <div className="relative bg-[#0d0d0d] border-t border-white/10">
                       <div className="absolute top-4 right-4">
                         <CopyButton text={manualCommand} />
                       </div>
                       <div className="p-4">
-                        <code className="text-sm font-mono text-neutral-500 dark:text-neutral-200">
+                        <code className="text-sm font-mono text-neutral-200">
                           {manualCommand}
                         </code>
                       </div>
@@ -145,33 +144,11 @@ export default function InstallationSection({
                     component code into your project.
                   </h4>
                 </div>
-                <div className="bg-white dark:bg-neutral-950 max-h-[450px] overflow-auto hide-scrollbar border border-border rounded-[16px]">
-                  <div className="relative">
-                    <div className="absolute top-4 right-4">
-                      <CopyButton text={componentSource} />
-                    </div>
-                    <SyntaxHighlighter
-                      language="tsx"
-                      style={oneDark}
-                      wrapLongLines={true}
-                      customStyle={{
-                        margin: 0,
-                        padding: "1rem",
-                        fontSize: "14px",
-                        lineHeight: "1.5",
-                        width: "100%",
-                        maxWidth: "100%",
-                        boxSizing: "border-box",
-                        overflow: "auto",
-                        scrollbarWidth: "none",
-                        msOverflowStyle: "none",
-                        borderRadius: "0px",
-                      }}
-                    >
-                      {componentSource}
-                    </SyntaxHighlighter>
-                  </div>
-                </div>
+                <CodeBlock
+                  code={componentSource}
+                  language="tsx"
+                  filename={`${componentName}.tsx`}
+                />
               </div>
             </div>
           )}

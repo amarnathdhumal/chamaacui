@@ -23,6 +23,7 @@ export default function GridBloomPage() {
         title="Grid Bloom"
         description="A mesmerizing, shader-driven background with dual pulsing wave origins that create interference patterns across an animated rotating grid."
         installationSource={componentSource}
+        codeFilename="grid-bloom-demo.tsx"
         props={[
           {
             name: "className",

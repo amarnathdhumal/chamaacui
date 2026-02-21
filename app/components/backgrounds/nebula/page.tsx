@@ -23,6 +23,7 @@ export default function NebulaPage() {
         title="Nebula"
         description="A mesmerizing, shader-driven nebula animation using domain warping for a deep space effect."
         installationSource={componentSource}
+        codeFilename="nebula-demo.tsx"
         props={[
           {
             name: "className",

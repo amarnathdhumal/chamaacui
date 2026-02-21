@@ -9,7 +9,8 @@ import PropsTable from "@/components/ui/props-table";
 interface DockPreviewWrapperProps {
   title: string;
   description: string | React.ReactNode;
-  code: React.ReactNode;
+  code: React.ReactNode | string;
+  codeFilename?: string;
   installationSource: string;
   props: Array<{
     name: string;
@@ -35,6 +36,7 @@ export default function DockPreviewWrapper({
   title,
   description,
   code,
+  codeFilename,
   installationSource,
   props,
   subComponents,
@@ -53,6 +55,7 @@ export default function DockPreviewWrapper({
           </div>
         }
         code={code}
+        codeFilename={codeFilename}
       />
 
       {/* Installation Section */}

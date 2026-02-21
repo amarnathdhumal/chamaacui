@@ -22,6 +22,7 @@ export default function LiquidChromePage() {
         title="Liquid Chrome"
         description="A mesmerizing, shader-driven liquid chrome animation ideal for modern landing pages."
         installationSource={componentSource}
+        codeFilename="liquid-chrome-demo.tsx"
         props={[
           {
             name: "className",

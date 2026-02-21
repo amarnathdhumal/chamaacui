@@ -22,6 +22,7 @@ export default function WavesPage() {
         title="Waves"
         description="A mesmerizing, shader-driven wave animation ideal for modern landing pages."
         installationSource={componentSource}
+        codeFilename="waves-demo.tsx"
         props={[
           {
             name: "className",

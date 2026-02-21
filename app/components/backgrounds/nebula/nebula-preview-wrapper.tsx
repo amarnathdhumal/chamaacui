@@ -6,9 +6,6 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 import NebulaDemo from "./nebula-demo";
 import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import CopyButton from "@/components/ui/copy-button";
 
 interface NebulaPreviewWrapperProps {
   title: string;
@@ -21,6 +18,7 @@ interface NebulaPreviewWrapperProps {
     description: string;
     required: boolean;
   }>;
+  codeFilename?: string;
 }
 
 export default function NebulaPreviewWrapper({
@@ -28,6 +26,7 @@ export default function NebulaPreviewWrapper({
   description,
   installationSource,
   props,
+  codeFilename,
 }: NebulaPreviewWrapperProps) {
   const [speed, setSpeed] = useState(2.0);
   const [color1, setColor1] = useState("#5efff4"); // Highlight
@@ -104,32 +103,8 @@ export function NebulaDemo() {
             />
           </div>
         }
-        code={
-          <div className="relative">
-            <div className="absolute top-4 right-4">
-              <CopyButton text={codeString} />
-            </div>
-            <SyntaxHighlighter
-              language="tsx"
-              style={oneDark}
-              wrapLongLines={true}
-              customStyle={{
-                margin: 0,
-                padding: "1rem",
-                fontSize: "14px",
-                lineHeight: "1.5",
-                width: "100%",
-                maxWidth: "100%",
-                boxSizing: "border-box",
-                overflow: "auto",
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-              }}
-            >
-              {codeString}
-            </SyntaxHighlighter>
-          </div>
-        }
+        code={codeString}
+        codeFilename={codeFilename || "demo.tsx"}
       />
 
       <div className=" ">
