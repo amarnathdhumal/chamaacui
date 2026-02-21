@@ -351,7 +351,7 @@ export default function GetStartedPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               <Link
                 href="/components"
-                className="group p-4 rounded-[15px] border border-white/15 transition-colors bg-[#0d0d0d] shadow-sm hover:bg-[#171717]"
+                className="group p-4 rounded-[15px] border border-border transition-colors"
               >
                 <h3 className="text-lg font-medium text-black dark:text-white mb-2 group-hover:underline flex gap-2 items-center">
                   Browse Components
