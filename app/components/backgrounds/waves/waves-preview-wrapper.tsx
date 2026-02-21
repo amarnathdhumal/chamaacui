@@ -8,19 +8,7 @@ import WavesDemo from "./waves-demo";
 import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
 import { useState } from "react";
 
-interface WavesPreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-  codeFilename?: string;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function WavesPreviewWrapper({
   title,
@@ -28,7 +16,7 @@ export default function WavesPreviewWrapper({
   installationSource,
   props,
   codeFilename,
-}: WavesPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   const [waveColor1, setWaveColor1] = useState("#071697");
   const [waveColor2, setWaveColor2] = useState("#00d4ff");
   const [waveColor3, setWaveColor3] = useState("#000000");

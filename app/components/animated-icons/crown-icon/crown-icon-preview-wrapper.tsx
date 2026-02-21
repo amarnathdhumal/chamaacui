@@ -6,20 +6,7 @@ import ViewArea from "@/components/ui/view-area";
 import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 
-interface CrownIconPreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  code: React.ReactNode | string;
-  codeFilename?: string;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function CrownIconPreviewWrapper({
   title,
@@ -28,7 +15,7 @@ export default function CrownIconPreviewWrapper({
   codeFilename,
   installationSource,
   props,
-}: CrownIconPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   return (
     <>
       <ViewArea

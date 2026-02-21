@@ -29,3 +29,25 @@ export interface TabButtonTypes {
 export interface CopyProps {
   text: string;
 }
+
+export interface Prop {
+  name: string;
+  type: string;
+  default: string;
+  description: string;
+  required?: boolean;
+}
+
+export interface BasePreviewWrapperProps {
+  title: string;
+  description: string | React.ReactNode;
+  installationSource: string;
+  props: Prop[];
+  code?: React.ReactNode | string;
+  codeFilename?: string;
+  subComponents?: Array<{
+    name: string;
+    description: string;
+    props: Prop[];
+  }>;
+}

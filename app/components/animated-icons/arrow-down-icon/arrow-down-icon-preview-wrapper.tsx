@@ -6,20 +6,7 @@ import ViewArea from "@/components/ui/view-area";
 import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 
-interface ArrowDownIconPreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  code: React.ReactNode | string;
-  codeFilename?: string;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function ArrowDownIconPreviewWrapper({
   title,
@@ -28,7 +15,7 @@ export default function ArrowDownIconPreviewWrapper({
   codeFilename,
   installationSource,
   props,
-}: ArrowDownIconPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   return (
     <>
       <ViewArea

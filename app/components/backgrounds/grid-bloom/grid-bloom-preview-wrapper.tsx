@@ -7,19 +7,7 @@ import PropsTable from "@/components/ui/props-table";
 import GridBloomDemo from "./grid-bloom-demo";
 import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
 
-interface GridBloomPreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-  codeFilename?: string;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function GridBloomPreviewWrapper({
   title,
@@ -27,7 +15,7 @@ export default function GridBloomPreviewWrapper({
   installationSource,
   props,
   codeFilename,
-}: GridBloomPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   const [color, setColor] = useState("#e040fb");
   const [speed, setSpeed] = useState(1.0);
   const [gridScale, setGridScale] = useState(12.0);

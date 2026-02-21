@@ -5,32 +5,7 @@ import DockDemo from "./dock-demo";
 import ViewArea from "@/components/ui/view-area";
 import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
-
-interface DockPreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  code: React.ReactNode | string;
-  codeFilename?: string;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-  subComponents?: Array<{
-    name: string;
-    description: string;
-    props: Array<{
-      name: string;
-      type: string;
-      default: string;
-      description: string;
-      required: boolean;
-    }>;
-  }>;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function DockPreviewWrapper({
   title,
@@ -40,7 +15,7 @@ export default function DockPreviewWrapper({
   installationSource,
   props,
   subComponents,
-}: DockPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   return (
     <>
       <ViewArea

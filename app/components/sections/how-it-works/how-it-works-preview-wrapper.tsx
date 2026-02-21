@@ -7,20 +7,7 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 import HowItWorksDemo from "./how-it-works-demo";
 
-interface HowItWorksPreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  code: React.ReactNode | string;
-  codeFilename?: string;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function HowItWorksPreviewWrapper({
   title,
@@ -29,7 +16,7 @@ export default function HowItWorksPreviewWrapper({
   codeFilename,
   installationSource,
   props,
-}: HowItWorksPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   return (
     <>
       <ViewArea

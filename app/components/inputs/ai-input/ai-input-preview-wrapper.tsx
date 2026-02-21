@@ -7,31 +7,7 @@ import PropsTable from "@/components/ui/props-table";
 import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import { IconArrowUpRight } from "@tabler/icons-react";
 
-interface AIInputPreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  code: React.ReactNode | string;
-  codeFilename?: string;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-  subComponents?: Array<{
-    name: string;
-    description: string;
-    props: Array<{
-      name: string;
-      type: string;
-      default: string;
-      description: string;
-      required: boolean;
-    }>;
-  }>;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function AIInputPreviewWrapper({
   title,
@@ -41,7 +17,7 @@ export default function AIInputPreviewWrapper({
   installationSource,
   props,
   subComponents,
-}: AIInputPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   return (
     <>
       <ViewArea

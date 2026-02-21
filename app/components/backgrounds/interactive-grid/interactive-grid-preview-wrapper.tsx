@@ -7,20 +7,7 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 import { InteractiveGridBackground } from "@/registry/chamaac/backgrounds/interactive-grid-background";
 import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
-
-interface InteractiveGridPreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-  codeFilename?: string;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function InteractiveGridPreviewWrapper({
   title,
@@ -28,7 +15,7 @@ export default function InteractiveGridPreviewWrapper({
   installationSource,
   props,
   codeFilename,
-}: InteractiveGridPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   const [gridGap, setGridGap] = React.useState(40);
   const [dotSize, setDotSize] = React.useState(1.5);
   const [radius, setRadius] = React.useState(300);

@@ -7,19 +7,7 @@ import PropsTable from "@/components/ui/props-table";
 import WaterCausticDemo from "./water-caustic-demo";
 import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
 
-interface WaterCausticPreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-  codeFilename?: string;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function WaterCausticPreviewWrapper({
   title,
@@ -27,7 +15,7 @@ export default function WaterCausticPreviewWrapper({
   installationSource,
   props,
   codeFilename,
-}: WaterCausticPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   const [color, setColor] = useState("#00d1ff");
   const deferredColor = useDeferredValue(color);
 

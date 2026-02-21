@@ -7,19 +7,7 @@ import PropsTable from "@/components/ui/props-table";
 import NebulaDemo from "./nebula-demo";
 import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
 
-interface NebulaPreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-  codeFilename?: string;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function NebulaPreviewWrapper({
   title,
@@ -27,7 +15,7 @@ export default function NebulaPreviewWrapper({
   installationSource,
   props,
   codeFilename,
-}: NebulaPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   const [speed, setSpeed] = useState(2.0);
   const [color1, setColor1] = useState("#5efff4"); // Highlight
   const [color2, setColor2] = useState("#763b65"); // Nebula

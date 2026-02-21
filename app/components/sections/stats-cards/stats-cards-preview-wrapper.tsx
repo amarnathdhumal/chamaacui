@@ -7,20 +7,7 @@ import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 import { StatsCards } from "@/registry/chamaac/stats-cards/stats-cards";
 
-interface StatsCardsPreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  code: React.ReactNode | string;
-  codeFilename?: string;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function StatsCardsPreviewWrapper({
   title,
@@ -29,7 +16,7 @@ export default function StatsCardsPreviewWrapper({
   codeFilename,
   installationSource,
   props,
-}: StatsCardsPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   return (
     <>
       <ViewArea

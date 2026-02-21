@@ -7,19 +7,7 @@ import PropsTable from "@/components/ui/props-table";
 import LiquidChromeDemo from "./liquid-chrome-demo";
 import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
 
-interface LiquidChromePreviewWrapperProps {
-  title: string;
-  description: string | React.ReactNode;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-  codeFilename?: string;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function LiquidChromePreviewWrapper({
   title,
@@ -27,7 +15,7 @@ export default function LiquidChromePreviewWrapper({
   installationSource,
   props,
   codeFilename,
-}: LiquidChromePreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   const [speed, setSpeed] = useState(0.35);
   const [timeScale, setTimeScale] = useState(0.225);
   const [color, setColor] = useState("#C0C0C0");

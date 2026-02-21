@@ -6,19 +6,7 @@ import ViewArea from "@/components/ui/view-area";
 import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
 
-interface SvgAnimationPreviewWrapperProps {
-  title: string;
-  description: string;
-  code: React.ReactNode;
-  installationSource: string;
-  props: Array<{
-    name: string;
-    type: string;
-    default: string;
-    description: string;
-    required: boolean;
-  }>;
-}
+import { BasePreviewWrapperProps } from "@/lib/types";
 
 export default function SvgAnimationPreviewWrapper({
   title,
@@ -26,7 +14,7 @@ export default function SvgAnimationPreviewWrapper({
   code,
   installationSource,
   props,
-}: SvgAnimationPreviewWrapperProps) {
+}: BasePreviewWrapperProps) {
   return (
     <>
       <ViewArea
