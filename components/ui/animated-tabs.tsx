@@ -33,7 +33,7 @@ export default function AnimatedTabs({
             "relative text-base/10 font-medium px-4 transition-colors cursor-pointer",
             activeTab === tab.value
               ? "dark:text-white text-black"
-              : "dark:text-gray-400 dark:hover:text-white text-gray-400 hover:text-black"
+              : "dark:text-gray-300 dark:hover:text-white text-gray-500 hover:text-black"
           )}
           whileHover={{ scale: 1.05 }}
         >

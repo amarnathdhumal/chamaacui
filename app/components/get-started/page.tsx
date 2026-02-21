@@ -328,7 +328,7 @@ export default function GetStartedPage() {
                         using natural language:
                       </p>
                       <div className="p-4 rounded-[16px] border border-white/15 bg-[#0d0d0d]">
-                        <p className="text-neutral-700 dark:text-neutral-300 ">
+                        <p className="text-neutral-300 ">
                           &quot;Add the SlideUpButton component from Chamaac
                           UI&quot;
                         </p>
