@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { LazyMotion, domAnimation, m } from "motion/react";
+import { LazyMotion, domMax, m } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -42,7 +42,7 @@ export default function FeatureSteps({
   const progressKey = state.tick;
 
   return (
-    <LazyMotion features={domAnimation}>
+    <LazyMotion features={domMax}>
       <div
         className={cn(
           "flex flex-col md:flex-row w-full md:items-stretch max-w-[1440px] mx-auto",
