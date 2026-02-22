@@ -1,6 +1,6 @@
 "use client";
 
-import { m } from "motion/react";
+import { m, LazyMotion, domAnimation } from "motion/react";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -36,43 +36,45 @@ const RandomImageReveal = ({
   };
 
   return (
-    <m.div
-      onHoverStart={() => {
-        setIsHovered(true);
-        getRandomImage();
-      }}
-      onHoverEnd={() => setIsHovered(false)}
-      style={{ width, height }}
-      className={cn(
-        "relative bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-4xl  cursor-pointer",
-        className
-      )}
-    >
-      <div className="absolute top-30/100 bottom-0 left-0 right-0 backdrop-blur-sm rounded-4xl z-10 border border-neutral-200 dark:border-neutral-800" />
-
+    <LazyMotion features={domAnimation}>
       <m.div
-        animate={{
-          rotate: isHovered ? -15 : 15,
-          y: isHovered ? -200 : 0,
-          scale: isHovered ? 1.2 : 1,
+        onHoverStart={() => {
+          setIsHovered(true);
+          getRandomImage();
         }}
-        transition={{
-          duration: duration,
-          ease: "easeIn",
-        }}
-        style={{ width: innerWidth, height: innerHeight }}
-        className="absolute top-40/100 rounded-3xl left-1/2 -translate-x-1/2 overflow-hidden"
+        onHoverEnd={() => setIsHovered(false)}
+        style={{ width, height }}
+        className={cn(
+          "relative bg-white dark:bg-black border border-neutral-200 dark:border-neutral-800 rounded-4xl  cursor-pointer",
+          className
+        )}
       >
-        <Image
-          src={currentImage}
-          alt="Reveal card image"
-          fill
-          className="object-cover"
-          sizes="300px"
-          priority={true}
-        />
+        <div className="absolute top-30/100 bottom-0 left-0 right-0 backdrop-blur-sm rounded-4xl z-10 border border-neutral-200 dark:border-neutral-800" />
+
+        <m.div
+          animate={{
+            rotate: isHovered ? -15 : 15,
+            y: isHovered ? -200 : 0,
+            scale: isHovered ? 1.2 : 1,
+          }}
+          transition={{
+            duration: duration,
+            ease: "easeIn",
+          }}
+          style={{ width: innerWidth, height: innerHeight }}
+          className="absolute top-40/100 rounded-3xl left-1/2 -translate-x-1/2 overflow-hidden"
+        >
+          <Image
+            src={currentImage}
+            alt="Reveal card image"
+            fill
+            className="object-cover"
+            sizes="300px"
+            priority={true}
+          />
+        </m.div>
       </m.div>
-    </m.div>
+    </LazyMotion>
   );
 };
 

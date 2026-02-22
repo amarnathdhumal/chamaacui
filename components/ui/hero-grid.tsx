@@ -1,42 +1,44 @@
 "use client";
-import { m, SVGMotionProps } from "motion/react";
+import { m, SVGMotionProps, LazyMotion, domAnimation } from "motion/react";
 
 const HeroGrid = () => {
   return (
-    <div className="grid grid-cols-1  gap-2 w-full max-w-[1100px] mx-auto border border-gray-200 dark:border-neutral-800 rounded-[16px] p-2">
-      <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
-        <CopyIcon className="text-black dark:text-white size-6 sm:size-8" />
-        <h3 className="text-xl/10 md:text-xl/7 font-semibold text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
-          Copy components
-        </h3>
-        <p className="text-sm/5 text-neutral-600 dark:text-gray-300  ">
-          Simply copy the source code and paste it into your project. Complete
-          control, zero lock-in.
-        </p>
-      </div>
+    <LazyMotion features={domAnimation}>
+      <div className="grid grid-cols-1  gap-2 w-full max-w-[1100px] mx-auto border border-gray-200 dark:border-neutral-800 rounded-[16px] p-2">
+        <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
+          <CopyIcon className="text-black dark:text-white size-6 sm:size-8" />
+          <h3 className="text-xl/10 md:text-xl/7 font-semibold text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+            Copy components
+          </h3>
+          <p className="text-sm/5 text-neutral-600 dark:text-gray-300  ">
+            Simply copy the source code and paste it into your project. Complete
+            control, zero lock-in.
+          </p>
+        </div>
 
-      <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
-        <WavyIcon className="text-black dark:text-white size-6 sm:size-8" />
-        <h3 className="text-xl/10 md:text-xl/7 font-medium text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
-          Smooth animations
-        </h3>
-        <p className="text-sm/5 text-neutral-600 dark:text-gray-300  ">
-          Beautiful, smooth animations that enhance user experience and
-          engagement.
-        </p>
-      </div>
+        <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
+          <WavyIcon className="text-black dark:text-white size-6 sm:size-8" />
+          <h3 className="text-xl/10 md:text-xl/7 font-medium text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+            Smooth animations
+          </h3>
+          <p className="text-sm/5 text-neutral-600 dark:text-gray-300  ">
+            Beautiful, smooth animations that enhance user experience and
+            engagement.
+          </p>
+        </div>
 
-      <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
-        <AdjustmentsHorizontalIcon className="text-black dark:text-white size-6 sm:size-8" />
-        <h3 className="text-xl/10 md:text-xl/7 font-semibold text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
-          Fully customizable
-        </h3>
-        <p className="text-sm/5 text-neutral-600 dark:text-gray-300  ">
-          Battle-tested components ready to use in your projects. No
-          configuration needed.
-        </p>
+        <div className="border border-gray-200 dark:border-neutral-800 bg-gray-100 dark:bg-[#111111] p-4 rounded-[8px]">
+          <AdjustmentsHorizontalIcon className="text-black dark:text-white size-6 sm:size-8" />
+          <h3 className="text-xl/10 md:text-xl/7 font-semibold text-black dark:text-white mt-3 md:mt-4 mb-2 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+            Fully customizable
+          </h3>
+          <p className="text-sm/5 text-neutral-600 dark:text-gray-300  ">
+            Battle-tested components ready to use in your projects. No
+            configuration needed.
+          </p>
+        </div>
       </div>
-    </div>
+    </LazyMotion>
   );
 };
 

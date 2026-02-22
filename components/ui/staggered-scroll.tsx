@@ -1,6 +1,13 @@
 "use client";
 
-import { m, useScroll, useTransform, useMotionTemplate } from "motion/react";
+import {
+  m,
+  useScroll,
+  useTransform,
+  useMotionTemplate,
+  LazyMotion,
+  domAnimation,
+} from "motion/react";
 import { useRef } from "react";
 
 interface GridItemProps {
@@ -148,20 +155,22 @@ const GridItem = ({ src, isLeftSide, container }: GridItemProps) => {
 
 const StaggeredScroll = ({ container, images }: StaggeredScrollProps) => {
   return (
-    <main className="relative overflow-hidden w-full bg-black text-white min-h-[1200px]">
-      <section className="grid place-items-center w-full relative">
-        <div className="w-full max-w-[300px] grid grid-cols-2 relative gap-x-8">
-          {images.map((src, index) => (
-            <GridItem
-              key={src}
-              src={src}
-              isLeftSide={index % 2 === 0}
-              container={container}
-            />
-          ))}
-        </div>
-      </section>
-    </main>
+    <LazyMotion features={domAnimation}>
+      <main className="relative overflow-hidden w-full bg-black text-white min-h-[1200px]">
+        <section className="grid place-items-center w-full relative">
+          <div className="w-full max-w-[300px] grid grid-cols-2 relative gap-x-8">
+            {images.map((src, index) => (
+              <GridItem
+                key={src}
+                src={src}
+                isLeftSide={index % 2 === 0}
+                container={container}
+              />
+            ))}
+          </div>
+        </section>
+      </main>
+    </LazyMotion>
   );
 };
 

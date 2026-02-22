@@ -1,6 +1,6 @@
 "use client";
 
-import { m } from "motion/react";
+import { m, LazyMotion, domAnimation } from "motion/react";
 import { cn } from "@/lib/utils";
 
 const Button = ({ text }: { text: string }) => {
@@ -23,64 +23,66 @@ const Button = ({ text }: { text: string }) => {
 
 const AnimatedCard = () => {
   return (
-    <m.div className="flex w-full h-screen justify-center items-center ">
-      <div
-        className="flex flex-col items-center justify-center gap-5  w-[350px] h-[350px] rounded-2xl relative overflow-hidden bg-neutral-900
+    <LazyMotion features={domAnimation}>
+      <m.div className="flex w-full h-screen justify-center items-center ">
+        <div
+          className="flex flex-col items-center justify-center gap-5  w-[350px] h-[350px] rounded-2xl relative overflow-hidden bg-neutral-900
 shadow-[inset_0px_0px_100px_0px_#353934]
 
       "
-      >
-        {/* Generate Ideas */}
-        <m.div
-          initial={{ x: -200 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute left-5 top-5"
         >
-          <Button text="Generate Ideas" />
-        </m.div>
+          {/* Generate Ideas */}
+          <m.div
+            initial={{ x: -200 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute left-5 top-5"
+          >
+            <Button text="Generate Ideas" />
+          </m.div>
 
-        {/* Upload Dataset */}
-        <m.div
-          initial={{ x: 200 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute top-20 right-5"
-        >
-          <Button text="Upload Dataset" />
-        </m.div>
+          {/* Upload Dataset */}
+          <m.div
+            initial={{ x: 200 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-20 right-5"
+          >
+            <Button text="Upload Dataset" />
+          </m.div>
 
-        {/* Start Chat */}
-        <m.div
-          initial={{ x: -200 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute top-40 left-1/2 transform -translate-x-1/2"
-        >
-          <Button text="Start Chat" />
-        </m.div>
+          {/* Start Chat */}
+          <m.div
+            initial={{ x: -200 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-40 left-1/2 transform -translate-x-1/2"
+          >
+            <Button text="Start Chat" />
+          </m.div>
 
-        {/* View Analytics */}
-        <m.div
-          initial={{ x: -200 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute left-5 bottom-20"
-        >
-          <Button text="View Analytics" />
-        </m.div>
+          {/* View Analytics */}
+          <m.div
+            initial={{ x: -200 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute left-5 bottom-20"
+          >
+            <Button text="View Analytics" />
+          </m.div>
 
-        {/* Export Results */}
-        <m.div
-          initial={{ x: 200 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.3 }}
-          className="absolute right-5 bottom-5"
-        >
-          <Button text="Export Results" />
-        </m.div>
-      </div>
-    </m.div>
+          {/* Export Results */}
+          <m.div
+            initial={{ x: 200 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute right-5 bottom-5"
+          >
+            <Button text="Export Results" />
+          </m.div>
+        </div>
+      </m.div>
+    </LazyMotion>
   );
 };
 

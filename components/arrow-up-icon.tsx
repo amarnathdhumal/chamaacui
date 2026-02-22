@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { m, SVGMotionProps, Easing } from "motion/react";
+import {
+  m,
+  SVGMotionProps,
+  Easing,
+  LazyMotion,
+  domAnimation,
+} from "motion/react";
 
 interface IconProps extends SVGMotionProps<SVGSVGElement> {
   size?: number;
@@ -38,27 +44,29 @@ const ArrowUpIcon = (props: IconProps) => {
   };
 
   return (
-    <m.svg
-      {...restProps}
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      overflow="visible"
-      onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
-      onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <m.path d="M12 5l0 14" {...animation} />
-      <m.path d="M18 11l-6 -6" {...animation} />
-      <m.path d="M6 11l6 -6" {...animation} />
-    </m.svg>
+    <LazyMotion features={domAnimation}>
+      <m.svg
+        {...restProps}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+        overflow="visible"
+        onMouseEnter={() => isHovered && setIsHoveredInternal(true)}
+        onMouseLeave={() => isHovered && setIsHoveredInternal(false)}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <m.path d="M12 5l0 14" {...animation} />
+        <m.path d="M18 11l-6 -6" {...animation} />
+        <m.path d="M6 11l6 -6" {...animation} />
+      </m.svg>
+    </LazyMotion>
   );
 };
 

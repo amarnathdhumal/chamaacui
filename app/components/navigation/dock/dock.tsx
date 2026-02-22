@@ -8,7 +8,7 @@ import {
   m,
   AnimatePresence,
   LazyMotion,
-  domMax,
+  domAnimation,
 } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -96,7 +96,7 @@ export const Dock = ({
   }, [isMobileMenuOpen]);
 
   return (
-    <LazyMotion features={domMax}>
+    <LazyMotion features={domAnimation}>
       <DockContext.Provider
         value={{
           openDropdowns,
