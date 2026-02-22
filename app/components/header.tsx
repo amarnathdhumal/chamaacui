@@ -15,6 +15,8 @@ import {
   useMotionValueEvent,
   m,
   AnimatePresence,
+  LazyMotion,
+  domAnimation,
 } from "motion/react";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
@@ -245,94 +247,98 @@ export const Header = () => {
       </div>
 
       {/* Mobile Full Screen Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <m.div
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[9999] flex sm:hidden"
-          >
-            {/* Sidebar Menu */}
+      <LazyMotion features={domAnimation}>
+        <AnimatePresence>
+          {isMobileMenuOpen && (
             <m.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              className="w-full min-h-screen flex flex-col py-4 px-4 overflow-y-auto relative bg-white dark:bg-black"
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[9999] flex sm:hidden"
             >
-              {/* Header */}
-              <div className="flex items-center justify-between w-full">
-                <Link
-                  href="/"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex flex-row items-center gap-[8px]"
-                >
-                  <div className="bg-black dark:bg-white p-1 rounded-[8px]">
-                    <Logo />
-                  </div>
-                  <p className="font-bold text-[20px] leading-none tracking-tight text-black dark:text-white">
-                    Chamaac UI
-                  </p>
-                </Link>
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center gap-1 text-neutral-600 dark:text-gray-300 cursor-pointer"
-                >
-                  <span className="text-sm">Close</span>
-                  <IconX size={20} />
-                </button>
-              </div>
+              {/* Sidebar Menu */}
+              <m.div
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "tween", duration: 0.3 }}
+                className="w-full min-h-screen flex flex-col py-4 px-4 overflow-y-auto relative bg-white dark:bg-black"
+              >
+                {/* Header */}
+                <div className="flex items-center justify-between w-full">
+                  <Link
+                    href="/"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex flex-row items-center gap-[8px]"
+                  >
+                    <div className="bg-black dark:bg-white p-1 rounded-[8px]">
+                      <Logo />
+                    </div>
+                    <p className="font-bold text-[20px] leading-none tracking-tight text-black dark:text-white">
+                      Chamaac UI
+                    </p>
+                  </Link>
+                  <button
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="flex items-center gap-1 text-neutral-600 dark:text-gray-300 cursor-pointer"
+                  >
+                    <span className="text-sm">Close</span>
+                    <IconX size={20} />
+                  </button>
+                </div>
 
-              {/* Navigation Menu */}
-              <div className="flex flex-col flex-1 mt-12">
-                <ul>
-                  {navLinks.map((link) => (
-                    <li
-                      key={link.href}
-                      className="border-b border-gray-200 dark:border-neutral-800 -mx-4"
-                    >
-                      <Link
-                        href={link.href}
-                        target={link.external ? "_blank" : undefined}
-                        rel={link.external ? "noopener noreferrer" : undefined}
-                        className="block font-medium px-4 py-4 text-black dark:text-white text-[24px] leading-none tracking-tight transition-colors hover:bg-gray-50 dark:hover:bg-neutral-900"
-                        onClick={() => setIsMobileMenuOpen(false)}
+                {/* Navigation Menu */}
+                <div className="flex flex-col flex-1 mt-12">
+                  <ul>
+                    {navLinks.map((link) => (
+                      <li
+                        key={link.href}
+                        className="border-b border-gray-200 dark:border-neutral-800 -mx-4"
                       >
-                        {link.label}
-                      </Link>
+                        <Link
+                          href={link.href}
+                          target={link.external ? "_blank" : undefined}
+                          rel={
+                            link.external ? "noopener noreferrer" : undefined
+                          }
+                          className="block font-medium px-4 py-4 text-black dark:text-white text-[24px] leading-none tracking-tight transition-colors hover:bg-gray-50 dark:hover:bg-neutral-900"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                    <li className="border-b border-gray-200 dark:border-neutral-800 -mx-4">
+                      <button
+                        onClick={() => {
+                          window.open("https://x.com/AmarnathDhumal", "_blank");
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="block w-full text-left font-medium px-4 py-4 text-black dark:text-white text-[24px] leading-none tracking-tight transition-colors hover:bg-gray-50 dark:hover:bg-neutral-900"
+                      >
+                        Twitter / X
+                      </button>
                     </li>
-                  ))}
-                  <li className="border-b border-gray-200 dark:border-neutral-800 -mx-4">
-                    <button
-                      onClick={() => {
-                        window.open("https://x.com/AmarnathDhumal", "_blank");
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="block w-full text-left font-medium px-4 py-4 text-black dark:text-white text-[24px] leading-none tracking-tight transition-colors hover:bg-gray-50 dark:hover:bg-neutral-900"
-                    >
-                      Twitter / X
-                    </button>
-                  </li>
-                  <li className="border-b border-gray-200 dark:border-neutral-800 -mx-4">
-                    <button
-                      onClick={() => {
-                        toggleTheme();
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="flex items-center justify-between w-full font-medium px-4 py-4 text-black dark:text-white text-[24px] leading-none tracking-tight transition-colors hover:bg-gray-50 dark:hover:bg-neutral-900"
-                    >
-                      <span>Toggle Theme</span>
-                      <IconBrightness
-                        size={24}
-                        className="text-neutral-600 dark:text-gray-300"
-                      />
-                    </button>
-                  </li>
-                </ul>
-              </div>
+                    <li className="border-b border-gray-200 dark:border-neutral-800 -mx-4">
+                      <button
+                        onClick={() => {
+                          toggleTheme();
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="flex items-center justify-between w-full font-medium px-4 py-4 text-black dark:text-white text-[24px] leading-none tracking-tight transition-colors hover:bg-gray-50 dark:hover:bg-neutral-900"
+                      >
+                        <span>Toggle Theme</span>
+                        <IconBrightness
+                          size={24}
+                          className="text-neutral-600 dark:text-gray-300"
+                        />
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </m.div>
             </m.div>
-          </m.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
+      </LazyMotion>
 
       <CommandDialog
         open={open}

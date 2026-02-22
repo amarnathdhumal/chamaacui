@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { m } from "motion/react";
+import { m, LazyMotion, domAnimation } from "motion/react";
 import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import ShimmerButton from "@/registry/chamaac/shimmer-button/shimmer-button";
 import HoverArrowButton from "@/registry/chamaac/hover-arrow-button/hover-arrow-button";
@@ -88,41 +88,43 @@ const buttons: ButtonTypes[] = [
 
 export default function ButtonsGrid() {
   return (
-    <div className="w-full mx-auto mb-12">
-      <div className="mb-5 md:mb-10">
-        <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">
-          Buttons
-        </h1>
-        <p className=" text-base/5 md:text-lg/7 ttext-neutral-600 dark:text-gray-300 tracking-tight mt-2 md:mt-4   max-w-[750px]">
-          A collection of interactive and animated buttons for your
-          applications.
-        </p>
-      </div>
+    <LazyMotion features={domAnimation}>
+      <div className="w-full mx-auto mb-12">
+        <div className="mb-5 md:mb-10">
+          <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">
+            Buttons
+          </h1>
+          <p className=" text-base/5 md:text-lg/7 ttext-neutral-600 dark:text-gray-300 tracking-tight mt-2 md:mt-4   max-w-[750px]">
+            A collection of interactive and animated buttons for your
+            applications.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {buttons.map((button) => (
-          <m.div
-            key={button.name}
-            className={`relative flex flex-col items-center justify-center p-4 rounded-xl border border-border bg-white dark:bg-black   transition-colors h-[200px] `}
-          >
-            <div className="mb-4 scale-90 transition-transform duration-300">
-              <button.component {...button.props} />
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {buttons.map((button) => (
+            <m.div
+              key={button.name}
+              className={`relative flex flex-col items-center justify-center p-4 rounded-xl border border-border bg-white dark:bg-black   transition-colors h-[200px] `}
+            >
+              <div className="mb-4 scale-90 transition-transform duration-300">
+                <button.component {...button.props} />
+              </div>
 
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Link
-                  href={button.href}
-                  className="absolute bottom-4 right-4 p-2 rounded-full border border-border bg-gray-50 dark:bg-neutral-900 text-neutral-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent side="top">View Component</TooltipContent>
-            </Tooltip>
-          </m.div>
-        ))}
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={button.href}
+                    className="absolute bottom-4 right-4 p-2 rounded-full border border-border bg-gray-50 dark:bg-neutral-900 text-neutral-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors"
+                  >
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent side="top">View Component</TooltipContent>
+              </Tooltip>
+            </m.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </LazyMotion>
   );
 }

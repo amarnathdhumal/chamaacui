@@ -1,5 +1,5 @@
 "use client";
-import { m } from "motion/react";
+import { m, LazyMotion, domAnimation } from "motion/react";
 import Image from "next/image";
 
 interface IconProps {
@@ -90,60 +90,62 @@ const OrbitingIcons = ({
   }
 
   return (
-    <div className="bg-neutral-100 dark:bg-neutral-800 rounded-[32px] w-[300px] h-[300px] md:w-[375px] md:h-[350px] overflow-hidden relative flex flex-col items-center shadow-2xl">
-      {/* Rotating Icons Centered */}
-      <m.div
-        className="absolute"
-        style={{
-          width: radius * 2,
-          height: radius * 2,
-          top: "70px",
-          left: "50%",
-          marginLeft: -radius, // Center horizontally by offsetting half the width
-        }}
-        animate={{
-          rotate: 360,
-        }}
-        transition={{
-          ease: "linear",
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: duration,
-        }}
-      >
-        {repeatedIcons.map((item, index) => {
-          const angle = (index / repeatedIcons.length) * 2 * Math.PI;
-          const x = radius + Math.cos(angle) * radius - 40; // -40 to center the icon (80px/2)
-          const y = radius + Math.sin(angle) * radius - 40;
-          // Convert angle to degrees and add 90° to face the direction of travel (tangent)
-          const rotationDeg = (angle * 180) / Math.PI + 90;
+    <LazyMotion features={domAnimation}>
+      <div className="bg-neutral-100 dark:bg-neutral-800 rounded-[32px] w-[300px] h-[300px] md:w-[375px] md:h-[350px] overflow-hidden relative flex flex-col items-center shadow-2xl">
+        {/* Rotating Icons Centered */}
+        <m.div
+          className="absolute"
+          style={{
+            width: radius * 2,
+            height: radius * 2,
+            top: "70px",
+            left: "50%",
+            marginLeft: -radius, // Center horizontally by offsetting half the width
+          }}
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            ease: "linear",
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: duration,
+          }}
+        >
+          {repeatedIcons.map((item, index) => {
+            const angle = (index / repeatedIcons.length) * 2 * Math.PI;
+            const x = radius + Math.cos(angle) * radius - 40; // -40 to center the icon (80px/2)
+            const y = radius + Math.sin(angle) * radius - 40;
+            // Convert angle to degrees and add 90° to face the direction of travel (tangent)
+            const rotationDeg = (angle * 180) / Math.PI + 90;
 
-          return (
-            <div
-              key={angle.toFixed(6)}
-              style={{
-                position: "absolute",
-                left: `${x}px`,
-                top: `${y}px`,
-                transform: `rotate(${rotationDeg}deg)`,
-              }}
-            >
-              <IconCard img={item} index={index} />
-            </div>
-          );
-        })}
-      </m.div>
+            return (
+              <div
+                key={angle.toFixed(6)}
+                style={{
+                  position: "absolute",
+                  left: `${x}px`,
+                  top: `${y}px`,
+                  transform: `rotate(${rotationDeg}deg)`,
+                }}
+              >
+                <IconCard img={item} index={index} />
+              </div>
+            );
+          })}
+        </m.div>
 
-      {/* Text Content Aligned to Bottom */}
-      <div className="absolute bottom-6 md:bottom-12 z-20 flex flex-col items-center text-center gap-[5px] px-5">
-        <h2 className="text-neutral-900 dark:text-white text-[20px] md:text-[24px] font-medium leading-[1.1]">
-          {title}
-        </h2>
-        <p className="text-neutral-600 dark:text-neutral-400 text-[14px] leading-snug">
-          {description}
-        </p>
+        {/* Text Content Aligned to Bottom */}
+        <div className="absolute bottom-6 md:bottom-12 z-20 flex flex-col items-center text-center gap-[5px] px-5">
+          <h2 className="text-neutral-900 dark:text-white text-[20px] md:text-[24px] font-medium leading-[1.1]">
+            {title}
+          </h2>
+          <p className="text-neutral-600 dark:text-neutral-400 text-[14px] leading-snug">
+            {description}
+          </p>
+        </div>
       </div>
-    </div>
+    </LazyMotion>
   );
 };
 

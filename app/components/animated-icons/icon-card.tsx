@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { m, AnimatePresence } from "motion/react";
+import { m, AnimatePresence, LazyMotion, domAnimation } from "motion/react";
 import { IconCopy, IconCheck, IconTerminal2 } from "@tabler/icons-react";
 import { Loader2 } from "lucide-react";
 import {
@@ -53,72 +53,74 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
   };
 
   return (
-    <Link href={icon.href} className="group block">
-      <m.div
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="relative flex flex-col items-center justify-center  rounded-[16px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black transition-colors h-[180px]"
-      >
-        {/* Hover action buttons */}
-        <AnimatePresence>
-          {isHovered && (
-            <m.div
-              initial={{ opacity: 0, y: -4 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={{ duration: 0.15 }}
-              className="absolute top-3 right-3 flex gap-1.5"
-            >
-              {/* Copy Code Button */}
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button
-                    onClick={handleCopyCode}
-                    className="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
-                  >
-                    {codeCopied ? (
-                      <IconCheck className="size-4 dark:text-white text-black" />
-                    ) : isCopyingCode ? (
-                      <Loader2 className="size-4 animate-spin text-neutral-600 dark:text-neutral-400" />
-                    ) : (
-                      <IconCopy className="size-4 text-neutral-600 dark:text-neutral-400" />
-                    )}
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{codeCopied ? "Copied!" : "Copy Code"}</p>
-                </TooltipContent>
-              </Tooltip>
+    <LazyMotion features={domAnimation}>
+      <Link href={icon.href} className="group block">
+        <m.div
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className="relative flex flex-col items-center justify-center  rounded-[16px] border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black transition-colors h-[180px]"
+        >
+          {/* Hover action buttons */}
+          <AnimatePresence>
+            {isHovered && (
+              <m.div
+                initial={{ opacity: 0, y: -4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.15 }}
+                className="absolute top-3 right-3 flex gap-1.5"
+              >
+                {/* Copy Code Button */}
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      onClick={handleCopyCode}
+                      className="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
+                    >
+                      {codeCopied ? (
+                        <IconCheck className="size-4 dark:text-white text-black" />
+                      ) : isCopyingCode ? (
+                        <Loader2 className="size-4 animate-spin text-neutral-600 dark:text-neutral-400" />
+                      ) : (
+                        <IconCopy className="size-4 text-neutral-600 dark:text-neutral-400" />
+                      )}
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{codeCopied ? "Copied!" : "Copy Code"}</p>
+                  </TooltipContent>
+                </Tooltip>
 
-              {/* Copy CLI Command Button */}
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button
-                    onClick={handleCopyCli}
-                    className="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
-                  >
-                    {cliCopied ? (
-                      <IconCheck className="size-4 dark:text-white text-black" />
-                    ) : (
-                      <IconTerminal2 className="size-4 text-neutral-600 dark:text-neutral-400" />
-                    )}
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{cliCopied ? "Copied!" : "Copy CLI Command"}</p>
-                </TooltipContent>
-              </Tooltip>
-            </m.div>
-          )}
-        </AnimatePresence>
+                {/* Copy CLI Command Button */}
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      onClick={handleCopyCli}
+                      className="p-1.5 rounded-md bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
+                    >
+                      {cliCopied ? (
+                        <IconCheck className="size-4 dark:text-white text-black" />
+                      ) : (
+                        <IconTerminal2 className="size-4 text-neutral-600 dark:text-neutral-400" />
+                      )}
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{cliCopied ? "Copied!" : "Copy CLI Command"}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </m.div>
+            )}
+          </AnimatePresence>
 
-        <div className="mb-4 text-black dark:text-white  transition-transform duration-300">
-          <icon.component size={40} isHovered={isHoveredMode} />
-        </div>
-        <span className="text-sm font-medium text-neutral-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">
-          {icon.name}
-        </span>
-      </m.div>
-    </Link>
+          <div className="mb-4 text-black dark:text-white  transition-transform duration-300">
+            <icon.component size={40} isHovered={isHoveredMode} />
+          </div>
+          <span className="text-sm font-medium text-neutral-600 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">
+            {icon.name}
+          </span>
+        </m.div>
+      </Link>
+    </LazyMotion>
   );
 }
