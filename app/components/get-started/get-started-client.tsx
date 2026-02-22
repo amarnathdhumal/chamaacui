@@ -118,7 +118,7 @@ export default function GetStartedClient() {
                           />
                         </div>
                         <div className="relative bg-[#0d0d0d]">
-                          <div className="absolute top-4 right-4">
+                          <div className="absolute top-1/2 -translate-y-1/2 right-4">
                             <CopyButton text={cliCommand} />
                           </div>
                           <div className="p-4">
@@ -141,7 +141,7 @@ export default function GetStartedClient() {
                       </p>
                       <div className="border border-white/15 rounded-[16px] overflow-hidden">
                         <div className="relative bg-[#0d0d0d]">
-                          <div className="absolute top-4 right-4">
+                          <div className="absolute top-1/2 -translate-y-1/2 right-4">
                             <CopyButton
                               text={`${activePm === "npm" ? "npx" : activePm === "bun" ? "bunx" : activePm === "pnpm" ? "pnpm dlx" : "npx"} shadcn@latest add https://chamaac.com/r/<Component>.json`}
                             />
@@ -188,7 +188,7 @@ export default function GetStartedClient() {
                           />
                         </div>
                         <div className="relative bg-[#0d0d0d]">
-                          <div className="absolute top-4 right-4">
+                          <div className="absolute top-1/2 -translate-y-1/2 right-4">
                             <CopyButton text={manualCommand} />
                           </div>
                           <div className="p-4">
@@ -278,7 +278,7 @@ export default function GetStartedClient() {
                           />
                         </div>
                         <div className="relative bg-[#0d0d0d]">
-                          <div className="absolute top-4 right-4">
+                          <div className="absolute top-1/2 -translate-y-1/2 right-4">
                             <CopyButton
                               text={`${activePm === "npm" ? "npx" : activePm === "bun" ? "bunx" : activePm === "pnpm" ? "pnpm dlx" : "npx"} shadcn@latest mcp init`}
                             />

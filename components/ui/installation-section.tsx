@@ -85,7 +85,7 @@ export default function InstallationSection({
 
               {/* CLI Command */}
               <div className="relative bg-[#0d0d0d]">
-                <div className="absolute top-4 right-4">
+                <div className="absolute top-1/2 -translate-y-1/2 right-4">
                   <CopyButton text={cliCommand} />
                 </div>
                 <div className="p-4">
@@ -113,7 +113,7 @@ export default function InstallationSection({
                       />
                     </div>
                     <div className="relative bg-[#0d0d0d] border-t border-white/15">
-                      <div className="absolute top-4 right-4">
+                      <div className="absolute top-1/2 -translate-y-1/2 right-4">
                         <CopyButton text={manualCommand} />
                       </div>
                       <div className="p-4">
