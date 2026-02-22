@@ -10,6 +10,11 @@ import NeoBrutalistButton from "@/registry/chamaac/neo-brutalist-button/neo-brut
 import PremiumButton from "@/registry/chamaac/premium-button/premium-button";
 import GlowingBorderButton from "@/registry/chamaac/glowing-border-button/glowing-border-button";
 import { ArrowRight } from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface ButtonTypes {
   name: string;
@@ -98,18 +103,23 @@ export default function ButtonsGrid() {
         {buttons.map((button) => (
           <m.div
             key={button.name}
-            className={`relative flex flex-col items-center justify-center p-4 rounded-xl border border-border bg-white dark:bg-neutral-800   transition-colors h-[200px] `}
+            className={`relative flex flex-col items-center justify-center p-4 rounded-xl border border-border bg-white dark:bg-black   transition-colors h-[200px] `}
           >
             <div className="mb-4 scale-90 transition-transform duration-300">
               <button.component {...button.props} />
             </div>
 
-            <Link
-              href={button.href}
-              className="absolute bottom-4 right-4 p-2 rounded-full bg-neutral-100 dark:bg-neutral-700 text-neutral-600 dark:text-gray-300 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors"
-            >
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Link
+                  href={button.href}
+                  className="absolute bottom-4 right-4 p-2 rounded-full border border-border bg-gray-50 dark:bg-neutral-900 text-neutral-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent side="top">View Component</TooltipContent>
+            </Tooltip>
           </m.div>
         ))}
       </div>

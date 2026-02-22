@@ -22,7 +22,7 @@ export default function ShimmerButtonPreviewWrapper({
         title={title}
         description={description}
         preview={
-          <div className="w-full h-[300px] flex justify-center items-center bg-white">
+          <div className="w-full h-[300px] flex justify-center items-center">
             <ShimmerButtonDemo />
           </div>
         }
