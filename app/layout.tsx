@@ -6,7 +6,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { CSPostHogProvider } from "./providers/posthog-provider";
 import PostHogPageView from "./providers/posthog-pageview";
-import { MotionProvider } from "./providers/motion-provider";
 // import { Header } from "./components/header";
 
 const geistSans = Geist({
@@ -74,18 +73,16 @@ export default function RootLayout({
       >
         <CSPostHogProvider>
           <PostHogPageView />
-          <MotionProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              {children}
-              <Analytics />
-              <SpeedInsights />
-            </ThemeProvider>
-          </MotionProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Analytics />
+            <SpeedInsights />
+          </ThemeProvider>
         </CSPostHogProvider>
         <script
           type="application/ld+json"
