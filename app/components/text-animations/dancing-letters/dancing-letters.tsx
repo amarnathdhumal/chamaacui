@@ -167,14 +167,14 @@ const DancingLetters = ({
           },
         }}
       >
-        {letters.map((letter, idx) => {
-          const animIndex = idx % letterAnimations.length;
+        {letters.map((letter, id) => {
+          const animIndex = id % letterAnimations.length;
           const anim = letterAnimations[animIndex];
-          const isActive = activeIndices.has(idx);
+          const isActive = activeIndices.has(id);
 
           return (
             <m.span
-              key={`${letter}-${idx}`}
+              key={`${letter}-${id}`}
               variants={{
                 hidden: { opacity: 0, y: 20, scale: 0.8 },
                 visible: {
@@ -199,11 +199,11 @@ const DancingLetters = ({
               }}
               animate={isActive ? "active" : isLoaded ? "visible" : undefined}
               onHoverStart={() => {
-                if (!isActive) handleClick(idx);
+                if (!isActive) handleClick(id);
               }}
-              onClick={() => handleClick(idx)}
+              onClick={() => handleClick(id)}
               onAnimationComplete={(definition) => {
-                if (definition === "active") handleAnimationComplete(idx);
+                if (definition === "active") handleAnimationComplete(id);
               }}
               className={cn(
                 "relative inline-block text-5xl md:text-7xl lg:text-8xl font-bold text-neutral-900 dark:text-neutral-100 cursor-pointer",

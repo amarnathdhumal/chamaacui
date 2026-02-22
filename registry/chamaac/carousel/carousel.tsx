@@ -113,6 +113,7 @@ const Coursel = ({
               fill
               priority={true}
               className="object-cover rounded-[16px]"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </m.div>
         ))}
