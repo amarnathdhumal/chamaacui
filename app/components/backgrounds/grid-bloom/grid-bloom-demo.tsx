@@ -9,6 +9,13 @@ interface GridBloomDemoProps {
   speed?: number;
   gridScale?: number;
   rotationSpeed?: number;
+  fadeFalloff?: number;
+  distortionAmount?: number;
+  flowSpeedX?: number;
+  flowSpeedY?: number;
+  hoverLightRadius?: number;
+  hoverRepulsionRadius?: number;
+  hoverRepulsionStrength?: number;
 }
 
 export default function GridBloomDemo({
@@ -16,12 +23,19 @@ export default function GridBloomDemo({
   color = "#e040fb",
   speed = 1.0,
   gridScale = 12.0,
-  rotationSpeed = 0.08,
+  rotationSpeed = 0.0,
+  fadeFalloff = 10.0,
+  distortionAmount = 0.05,
+  flowSpeedX = -0.2,
+  flowSpeedY = -0.4,
+  hoverLightRadius = 0.5,
+  hoverRepulsionRadius = 1.0,
+  hoverRepulsionStrength = 0.6,
 }: GridBloomDemoProps) {
   return (
     <div
       className={cn(
-        "relative w-full h-full min-h-[400px] overflow-hidden bg-purple-100 rounded-xl",
+        "relative w-full h-full min-h-[600px] overflow-hidden",
         className
       )}
     >
@@ -30,6 +44,13 @@ export default function GridBloomDemo({
         speed={speed}
         gridScale={gridScale}
         rotationSpeed={rotationSpeed}
+        fadeFalloff={fadeFalloff}
+        distortionAmount={distortionAmount}
+        flowSpeedX={flowSpeedX}
+        flowSpeedY={flowSpeedY}
+        hoverLightRadius={hoverLightRadius}
+        hoverRepulsionRadius={hoverRepulsionRadius}
+        hoverRepulsionStrength={hoverRepulsionStrength}
       />
     </div>
   );

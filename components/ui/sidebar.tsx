@@ -95,8 +95,13 @@ const Sidebar = () => {
                         >
                           {item.componentName}
                           {item.isNew && (
-                            <span className="ml-2 text-[10px] bg-[#adfa1d] text-black px-1.5 py-1 rounded-[8px] leading-none">
+                            <span className="ml-2 text-[10px] bg-[#adfa1d] text-black px-1.5 py-1 rounded-[8px] leading-none font-medium">
                               New
+                            </span>
+                          )}
+                          {item.isUpdated && (
+                            <span className="ml-2 text-[10px] bg-[#adfa1d] text-black px-1.5 py-1 rounded-[8px] leading-none font-medium">
+                              Updated
                             </span>
                           )}
                         </Link>

@@ -5,6 +5,7 @@ export interface SidebarDataTypes {
   link: string;
   category?: string;
   isNew?: boolean;
+  isUpdated?: boolean;
 }
 
 export interface ViewAreaTypes {

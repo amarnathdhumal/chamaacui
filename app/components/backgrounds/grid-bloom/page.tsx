@@ -57,8 +57,61 @@ export default function GridBloomPage() {
           {
             name: "rotationSpeed",
             type: "number",
-            default: "0.08",
+            default: "0.0",
             description: "Speed of the slow continuous grid rotation",
+            required: false,
+          },
+          {
+            name: "fadeFalloff",
+            type: "number",
+            default: "10.0",
+            description:
+              "Controls how quickly the bloom fades out to the edges. Lower = sharper fade. Higher = softer/no fade.",
+            required: false,
+          },
+          {
+            name: "distortionAmount",
+            type: "number",
+            default: "0.05",
+            description:
+              "Amount of noise-based distortion applied to the grid lines. Setting to 0.0 gives rigid, straight lines.",
+            required: false,
+          },
+          {
+            name: "flowSpeedX",
+            type: "number",
+            default: "-0.2",
+            description: "Horizontal scrolling speed of the grid.",
+            required: false,
+          },
+          {
+            name: "flowSpeedY",
+            type: "number",
+            default: "-0.4",
+            description: "Vertical scrolling speed of the grid.",
+            required: false,
+          },
+          {
+            name: "hoverLightRadius",
+            type: "number",
+            default: "0.5",
+            description:
+              "Radius of the light illumination under the mouse. Higher = larger light aura.",
+            required: false,
+          },
+          {
+            name: "hoverRepulsionRadius",
+            type: "number",
+            default: "1.0",
+            description: "Radius of the structural push effect from the mouse.",
+            required: false,
+          },
+          {
+            name: "hoverRepulsionStrength",
+            type: "number",
+            default: "0.6",
+            description:
+              "Strength of the geometric push effect from the mouse. Setting to 0.0 disables the warp.",
             required: false,
           },
         ]}
