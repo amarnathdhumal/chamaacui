@@ -151,6 +151,7 @@ export default function GridBloomPreviewWrapper({
   ];
 
   const codeString = `import GridBloom from "@/registry/chamaac/grid-bloom/grid-bloom";
+import { GeistPixelSquare } from "geist/font/pixel";
 
 export function GridBloomDemo() {
   return (
@@ -168,6 +169,11 @@ export function GridBloomDemo() {
         hoverRepulsionRadius={${dHoverRepulsionRadius}}
         hoverRepulsionStrength={${dHoverRepulsionStrength}}
       />
+      <div className={\`absolute inset-0 flex items-center justify-center pointer-events-none z-10 p-4 \${GeistPixelSquare.className}\`}>
+             <h1 className="text-4xl md:text-8xl font-bold dark:text-white opacity-80 text-purple-500  mix-blend-overlay uppercase text-center drop-shadow-lg">
+          Grid Bloom
+        </h1>
+      </div>
     </div>
   );
 }`;

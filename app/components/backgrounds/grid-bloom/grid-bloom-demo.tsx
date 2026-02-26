@@ -2,6 +2,7 @@
 
 import GridBloom from "@/registry/chamaac/grid-bloom/grid-bloom";
 import { cn } from "@/lib/utils";
+import { GeistPixelSquare } from "geist/font/pixel";
 
 interface GridBloomDemoProps {
   className?: string;
@@ -52,6 +53,16 @@ export default function GridBloomDemo({
         hoverRepulsionRadius={hoverRepulsionRadius}
         hoverRepulsionStrength={hoverRepulsionStrength}
       />
+      <div
+        className={cn(
+          "absolute inset-0 flex items-center justify-center pointer-events-none z-10 p-4",
+          GeistPixelSquare.className
+        )}
+      >
+        <h1 className="text-4xl md:text-8xl font-bold dark:text-white opacity-80 text-purple-500  mix-blend-overlay uppercase text-center drop-shadow-lg">
+          Grid Bloom
+        </h1>
+      </div>
     </div>
   );
 }
