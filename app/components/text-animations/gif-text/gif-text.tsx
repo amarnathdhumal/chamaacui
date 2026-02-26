@@ -46,13 +46,13 @@ const GifText = ({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center p-4",
+        "flex flex-col items-center justify-center p-4 bg-white dark:bg-black",
         containerClassName
       )}
     >
       <h2
         className={cn(
-          "text-[clamp(80px,12vw,150px)] font-extrabold select-none text-center leading-tight uppercase transition-colors duration-300",
+          "text-[clamp(80px,12vw,150px)] font-extrabold select-none text-center leading-tight uppercase transition-colors duration-300 ",
           loading
             ? "text-neutral-400 animate-pulse duration-100"
             : "text-transparent bg-clip-text bg-cover bg-center bg-no-repeat",

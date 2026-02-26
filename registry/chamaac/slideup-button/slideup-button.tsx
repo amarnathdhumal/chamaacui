@@ -17,7 +17,7 @@ interface SlideUpButtonProps {
 
 const SlideUpButton = ({
   children,
-  className = "",
+  className = "bg-[#f73b20] text-white",
   textDuration = 0.25,
   cloneDuration = 0.5,
   cloneDelay = 0.12,

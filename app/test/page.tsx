@@ -1,12 +1,11 @@
 "use client";
 
-import GridBloom from "@/registry/chamaac/grid-bloom/grid-bloom";
+import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 
 export default function DockDemo() {
   return (
-    <div className="relative w-full h-screen overflow-hidden flex flex-col items-center justify-end pb-8">
-      <GridBloom />
-      <div className="relative z-10 w-full flex justify-center"></div>
+    <div className="w-full h-[300px] md:h-[500px] relative ">
+      <SlideUpButton>alsdfdsl</SlideUpButton>
     </div>
   );
 }
