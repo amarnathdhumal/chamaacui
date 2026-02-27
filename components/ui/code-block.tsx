@@ -49,7 +49,7 @@ export default function CodeBlock({
       <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/15 bg-white/[0.03] backdrop-blur-md">
         <div className="flex items-center">
           {filename && (
-            <span className="text-[12px] text-neutral-400 font-mono tracking-tight select-none">
+            <span className="text-[14px] text-neutral-400 font-mono tracking-tight select-none">
               {filename}
             </span>
           )}

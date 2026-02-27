@@ -35,42 +35,90 @@ export default function MyPage() {
   );
 }`;
 
+// ─── Helpers ────────────────────────────────────────────────────────────────
+
+function getPmPrefix(pm: PackageManager) {
+  switch (pm) {
+    case "npm":
+      return "npx";
+    case "bun":
+      return "bunx";
+    case "pnpm":
+      return "pnpm dlx";
+    case "yarn":
+      return "npx";
+  }
+}
+
+// ─── Reusable command block UI ───────────────────────────────────────────────
+
+interface CommandBlockProps {
+  command: string;
+  /** Shows a PackageManagerSelector on the left */
+  activePm?: PackageManager;
+  onPmChange?: (pm: PackageManager) => void;
+  layoutId?: string;
+  /** Plain text label shown on the left when no PM selector */
+  label?: string;
+}
+
+function CommandBlock({
+  command,
+  activePm,
+  onPmChange,
+  layoutId,
+  label,
+}: CommandBlockProps) {
+  return (
+    <div className="border border-white/15 rounded-[16px] overflow-hidden">
+      <div className="bg-[#171717] p-2 flex items-center justify-between">
+        {activePm && onPmChange && layoutId ? (
+          <PackageManagerSelector
+            activePm={activePm}
+            onPmChange={onPmChange}
+            layoutId={layoutId}
+          />
+        ) : label ? (
+          <span className="text-[14px] text-neutral-400 font-mono tracking-tight select-none px-2">
+            {label}
+          </span>
+        ) : (
+          <div />
+        )}
+        <CopyButton text={command} />
+      </div>
+      <div className="bg-[#0d0d0d] p-4">
+        <code className="text-sm font-mono text-neutral-200">{command}</code>
+      </div>
+    </div>
+  );
+}
+
+// ─── Main component ──────────────────────────────────────────────────────────
+
 export default function GetStartedClient() {
   const [installMethod, setInstallMethod] = useState<InstallMethod>("cli");
   const [activePm, setActivePm] = useState<PackageManager>("npm");
 
-  const getCliCommand = (pm: PackageManager) => {
-    switch (pm) {
-      case "npm":
-        return `npx shadcn@latest init`;
-      case "bun":
-        return `bunx shadcn@latest init`;
-      case "pnpm":
-        return `pnpm dlx shadcn@latest init`;
-      case "yarn":
-        return `npx shadcn@latest init`;
-    }
-  };
-
-  const getInstallCommand = (pm: PackageManager) => {
+  const cliCommand = `${getPmPrefix(activePm)} shadcn@latest init`;
+  const manualCommand = (() => {
     const deps = "motion clsx tailwind-merge";
-    switch (pm) {
+    switch (activePm) {
       case "npm":
-        return `npm install ${deps} `;
+        return `npm install ${deps}`;
       case "bun":
-        return `bun add ${deps} `;
+        return `bun add ${deps}`;
       case "pnpm":
-        return `pnpm add ${deps} `;
+        return `pnpm add ${deps}`;
       case "yarn":
-        return `yarn add ${deps} `;
+        return `yarn add ${deps}`;
     }
-  };
-
-  const cliCommand = getCliCommand(activePm);
-  const manualCommand = getInstallCommand(activePm);
+  })();
+  const addCommand = `${getPmPrefix(activePm)} shadcn@latest add https://chamaac.com/r/<Component>.json`;
+  const mcpCommand = `${getPmPrefix(activePm)} shadcn@latest mcp init`;
 
   return (
-    <div className="relative min-h-screen w-full dark:bg-black bg-white overflow-x-hidden flex flex-col ">
+    <div className="relative min-h-screen w-full dark:bg-black bg-white overflow-x-hidden flex flex-col">
       <main className="flex-1">
         <div className="max-w-3xl">
           {/* Hero */}
@@ -88,7 +136,6 @@ export default function GetStartedClient() {
               Installation
             </h2>
 
-            {/* CLI/Manual Tabs */}
             <div className="mb-5 md:mb-10 mt-6">
               <AnimatedTabs
                 layoutId="getStartedInstallMethod"
@@ -102,35 +149,21 @@ export default function GetStartedClient() {
               />
 
               <div className="mt-4">
+                {/* ── CLI ── */}
                 {installMethod === "cli" && (
                   <div className="flex flex-col gap-6">
-                    {/* Step 1: Init shadcn */}
                     <div>
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 1: Initialize shadcn/ui (if not already done)
                       </h4>
-                      <div className="border border-white/15 rounded-[16px] overflow-hidden">
-                        <div className="bg-[#171717] p-2 ">
-                          <PackageManagerSelector
-                            activePm={activePm}
-                            onPmChange={setActivePm}
-                            layoutId="getStartedCliPm"
-                          />
-                        </div>
-                        <div className="relative bg-[#0d0d0d]">
-                          <div className="absolute top-1/2 -translate-y-1/2 right-4">
-                            <CopyButton text={cliCommand} />
-                          </div>
-                          <div className="p-4">
-                            <code className="text-sm font-mono text-neutral-200">
-                              {cliCommand}
-                            </code>
-                          </div>
-                        </div>
-                      </div>
+                      <CommandBlock
+                        command={cliCommand}
+                        activePm={activePm}
+                        onPmChange={setActivePm}
+                        layoutId="getStartedCliPm"
+                      />
                     </div>
 
-                    {/* Step 2: Add components */}
                     <div>
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 2: Add components from Chamaac UI
@@ -139,35 +172,17 @@ export default function GetStartedClient() {
                         Browse our components and use the CLI command shown on
                         each component page to add it to your project.
                       </p>
-                      <div className="border border-white/15 rounded-[16px] overflow-hidden">
-                        <div className="relative bg-[#0d0d0d]">
-                          <div className="absolute top-1/2 -translate-y-1/2 right-4">
-                            <CopyButton
-                              text={`${activePm === "npm" ? "npx" : activePm === "bun" ? "bunx" : activePm === "pnpm" ? "pnpm dlx" : "npx"} shadcn@latest add https://chamaac.com/r/<Component>.json`}
-                            />
-                          </div>
-                          <div className="p-4">
-                            <code className="text-sm font-mono text-neutral-200">
-                              {activePm === "npm"
-                                ? "npx"
-                                : activePm === "bun"
-                                  ? "bunx"
-                                  : activePm === "pnpm"
-                                    ? "pnpm dlx"
-                                    : "npx"}{" "}
-                              shadcn@latest add https://chamaac.com/r/
-                              {"<Component>"}.json
-                            </code>
-                          </div>
-                        </div>
-                      </div>
+                      <CommandBlock
+                        command={addCommand}
+                        label="shadcn@latest add"
+                      />
                     </div>
                   </div>
                 )}
 
+                {/* ── Manual ── */}
                 {installMethod === "manual" && (
                   <div className="flex flex-col gap-6">
-                    {/* Step 1: Install Dependencies */}
                     <div>
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 1: Install Dependencies
@@ -179,28 +194,14 @@ export default function GetStartedClient() {
                         </code>{" "}
                         for animations.
                       </p>
-                      <div className="border border-white/15 rounded-[16px] overflow-hidden">
-                        <div className="bg-[#171717] p-2">
-                          <PackageManagerSelector
-                            activePm={activePm}
-                            onPmChange={setActivePm}
-                            layoutId="getStartedManualPm"
-                          />
-                        </div>
-                        <div className="relative bg-[#0d0d0d]">
-                          <div className="absolute top-1/2 -translate-y-1/2 right-4">
-                            <CopyButton text={manualCommand} />
-                          </div>
-                          <div className="p-4">
-                            <code className="text-sm font-mono text-neutral-200">
-                              {manualCommand}
-                            </code>
-                          </div>
-                        </div>
-                      </div>
+                      <CommandBlock
+                        command={manualCommand}
+                        activePm={activePm}
+                        onPmChange={setActivePm}
+                        layoutId="getStartedManualPm"
+                      />
                     </div>
 
-                    {/* Step 2: Add cn utility */}
                     <div>
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 2: Add the cn utility
@@ -219,7 +220,6 @@ export default function GetStartedClient() {
                       />
                     </div>
 
-                    {/* Step 3: Copy component */}
                     <div>
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 3: Copy the component
@@ -234,7 +234,6 @@ export default function GetStartedClient() {
                       </p>
                     </div>
 
-                    {/* Step 4: Import and use */}
                     <div>
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 4: Import and use
@@ -248,9 +247,9 @@ export default function GetStartedClient() {
                   </div>
                 )}
 
+                {/* ── MCP ── */}
                 {installMethod === "mcp" && (
                   <div className="flex flex-col gap-6">
-                    {/* What is MCP */}
                     <div>
                       <p className="text-base/6 text-neutral-600 dark:text-gray-300 mb-4">
                         MCP (Model Context Protocol) allows AI assistants to
@@ -260,46 +259,22 @@ export default function GetStartedClient() {
                       </p>
                     </div>
 
-                    {/* Step 1: Initialize MCP */}
                     <div>
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 1: Initialize MCP
                       </h4>
-                      <p className="text-base/5 ttext-neutral-600 dark:text-gray-300 mb-4">
+                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
                         Run this command to set up the shadcn MCP server for
                         your AI client (Cursor, Claude Code, etc.):
                       </p>
-                      <div className="border border-white/15 rounded-[16px] overflow-hidden">
-                        <div className="bg-[#171717] p-2">
-                          <PackageManagerSelector
-                            activePm={activePm}
-                            onPmChange={setActivePm}
-                            layoutId="getStartedMcpPm"
-                          />
-                        </div>
-                        <div className="relative bg-[#0d0d0d]">
-                          <div className="absolute top-1/2 -translate-y-1/2 right-4">
-                            <CopyButton
-                              text={`${activePm === "npm" ? "npx" : activePm === "bun" ? "bunx" : activePm === "pnpm" ? "pnpm dlx" : "npx"} shadcn@latest mcp init`}
-                            />
-                          </div>
-                          <div className="p-4">
-                            <code className="text-sm font-mono text-neutral-200">
-                              {activePm === "npm"
-                                ? "npx"
-                                : activePm === "bun"
-                                  ? "bunx"
-                                  : activePm === "pnpm"
-                                    ? "pnpm dlx"
-                                    : "npx"}{" "}
-                              shadcn@latest mcp init
-                            </code>
-                          </div>
-                        </div>
-                      </div>
+                      <CommandBlock
+                        command={mcpCommand}
+                        activePm={activePm}
+                        onPmChange={setActivePm}
+                        layoutId="getStartedMcpPm"
+                      />
                     </div>
 
-                    {/* Step 2: Add Chamaac UI Registry */}
                     <div>
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 2: Add Chamaac UI Registry
@@ -318,7 +293,6 @@ export default function GetStartedClient() {
                       />
                     </div>
 
-                    {/* Step 3: Use with AI */}
                     <div>
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 3: Use with your AI assistant
@@ -328,7 +302,7 @@ export default function GetStartedClient() {
                         using natural language:
                       </p>
                       <div className="p-4 rounded-[16px] border border-white/15 bg-[#0d0d0d]">
-                        <p className="text-neutral-300 ">
+                        <p className="text-neutral-300">
                           &quot;Add the SlideUpButton component from Chamaac
                           UI&quot;
                         </p>
@@ -345,7 +319,7 @@ export default function GetStartedClient() {
             <h2 className="text-[1.5rem]/8 md:text-[2rem]/10 font-semibold tracking-tight text-black dark:text-white">
               Next Steps
             </h2>
-            <p className="text-base/6 md:text-lg/7 text-neutral-600 dark:text-gray-300 tracking-tight mt-2  mb-4  max-w-[750px]">
+            <p className="text-base/6 md:text-lg/7 text-neutral-600 dark:text-gray-300 tracking-tight mt-2 mb-4 max-w-[750px]">
               You&apos;re all set! Here&apos;s what you can do next.
             </p>
             <div className="grid gap-4 sm:grid-cols-2">

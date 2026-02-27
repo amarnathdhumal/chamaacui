@@ -74,25 +74,21 @@ export default function InstallationSection({
           {/* Tab Content */}
           {installMethod === "cli" ? (
             <div className="border border-white/15 rounded-[16px] overflow-hidden ">
-              {/* Package Manager Selector */}
-              <div className="bg-[#171717] p-2 border-b border-white/15">
+              {/* Package Manager Selector + Copy */}
+              <div className="bg-[#171717] p-2 border-b border-white/15 flex items-center justify-between">
                 <PackageManagerSelector
                   activePm={activePm}
                   onPmChange={setActivePm}
                   layoutId="cliPmBackground"
                 />
+                <CopyButton text={cliCommand} />
               </div>
 
               {/* CLI Command */}
-              <div className="relative bg-[#0d0d0d]">
-                <div className="absolute top-1/2 -translate-y-1/2 right-4">
-                  <CopyButton text={cliCommand} />
-                </div>
-                <div className="p-4">
-                  <code className="text-sm font-mono text-neutral-200">
-                    {cliCommand}
-                  </code>
-                </div>
+              <div className="bg-[#0d0d0d] p-4">
+                <code className="text-sm font-mono text-neutral-200">
+                  {cliCommand}
+                </code>
               </div>
             </div>
           ) : (
@@ -105,22 +101,18 @@ export default function InstallationSection({
                   </h4>
 
                   <div className="border border-white/15 rounded-[16px] overflow-hidden">
-                    <div className="bg-[#171717] p-2">
+                    <div className="bg-[#171717] p-2 flex items-center justify-between">
                       <PackageManagerSelector
                         activePm={activePm}
                         onPmChange={setActivePm}
                         layoutId="manualPmBackground"
                       />
+                      <CopyButton text={manualCommand} />
                     </div>
-                    <div className="relative bg-[#0d0d0d] border-t border-white/15">
-                      <div className="absolute top-1/2 -translate-y-1/2 right-4">
-                        <CopyButton text={manualCommand} />
-                      </div>
-                      <div className="p-4">
-                        <code className="text-sm font-mono text-neutral-200">
-                          {manualCommand}
-                        </code>
-                      </div>
+                    <div className="bg-[#0d0d0d] border-t border-white/15 p-4">
+                      <code className="text-sm font-mono text-neutral-200">
+                        {manualCommand}
+                      </code>
                     </div>
                   </div>
                 </div>
