@@ -1,11 +1,11 @@
-"use client";
+import DeformTunnel from "@/registry/chamaac/deform-tunnel/deform-tunnel";
 
-import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
-
-export default function DockDemo() {
+function DeformTunnelDemo() {
   return (
-    <div className="w-full h-[300px] md:h-[500px] relative ">
-      <SlideUpButton>alsdfdsl</SlideUpButton>
+    <div className="">
+      <DeformTunnel />
     </div>
   );
 }
+
+export default DeformTunnelDemo;

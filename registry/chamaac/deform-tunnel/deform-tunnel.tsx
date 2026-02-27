@@ -215,11 +215,7 @@ export interface DeformTunnelProps {
 
 export default function DeformTunnel({
   className,
-
-  //imageSrc = "https://images.unsplash.com/photo-1508349937151-22b68b72d5b1",
-
-  imageSrc = "https://assets.amarn.me/nature-img.png",
-
+  imageSrc = "https://images.unsplash.com/photo-1508349937151-22b68b72d5b1",
   speed = 1.0,
   wobble = [2.5, 1.2],
   depth = 5.0,

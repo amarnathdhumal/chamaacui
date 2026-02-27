@@ -276,7 +276,7 @@ export const componentCards: ComponentCardType[] = [
     title: "Gif Text",
     description: "A stunning text effect that uses a GIF as the fill color.",
     imagePath: "/components/text-animations/gif-text.png",
-    videoSrc: "https://assets.amarn.me/gif-text.mp4",
+    videoSrc: "https://assets.amarn.me/gif-text-v2.mp4",
     link: "/components/text-animations/gif-text",
     category: "Text Animations",
     bgColor: "bg-black dark:bg-black",

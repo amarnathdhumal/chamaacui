@@ -24,7 +24,9 @@ export default function DeformTunnelPreviewWrapper({
   const [exposure, setExposure] = useState(8.5);
   //const [imageSrc, setImageSrc] = useState("https://assets.amarn.me/nature.png");
   //const [imageSrc, setImageSrc] = useState("https://images.unsplash.com/photo-1550100136-e092101726f4");
-  const [imageSrc] = useState("https://assets.amarn.me/nature-img.png");
+  const [imageSrc] = useState(
+    "https://images.unsplash.com/photo-1508349937151-22b68b72d5b1"
+  );
 
   const controls: ControlItem[] = [
     {
