@@ -27,6 +27,7 @@ export default function GridBloomPreviewWrapper({
   const [hoverLightRadius, setHoverLightRadius] = useState(0.5);
   const [hoverRepulsionRadius, setHoverRepulsionRadius] = useState(1.0);
   const [hoverRepulsionStrength, setHoverRepulsionStrength] = useState(0.6);
+  const [enableMouseInteraction, setEnableMouseInteraction] = useState(true);
 
   const dColor = useDeferredValue(color);
   const dSpeed = useDeferredValue(speed);
@@ -39,6 +40,7 @@ export default function GridBloomPreviewWrapper({
   const dHoverLightRadius = useDeferredValue(hoverLightRadius);
   const dHoverRepulsionRadius = useDeferredValue(hoverRepulsionRadius);
   const dHoverRepulsionStrength = useDeferredValue(hoverRepulsionStrength);
+  const dEnableMouseInteraction = useDeferredValue(enableMouseInteraction);
 
   const controls: ControlItem[] = [
     {
@@ -47,6 +49,13 @@ export default function GridBloomPreviewWrapper({
       type: "color",
       value: color,
       onChange: (v) => setColor(v as string),
+    },
+    {
+      id: "enableMouseInteraction",
+      label: "Mouse Interaction",
+      type: "boolean",
+      value: enableMouseInteraction,
+      onChange: (v) => setEnableMouseInteraction(v as boolean),
     },
     {
       id: "speed",
@@ -168,6 +177,7 @@ export function GridBloomDemo() {
         hoverLightRadius={${dHoverLightRadius}}
         hoverRepulsionRadius={${dHoverRepulsionRadius}}
         hoverRepulsionStrength={${dHoverRepulsionStrength}}
+        enableMouseInteraction={${dEnableMouseInteraction}}
       />
       <div className={\`absolute inset-0 flex items-center justify-center pointer-events-none z-10 p-4 \${GeistPixelSquare.className}\`}>
              <h1 className="text-4xl md:text-8xl font-bold dark:text-white opacity-80 text-purple-500  mix-blend-overlay uppercase text-center drop-shadow-lg">
@@ -197,6 +207,7 @@ export function GridBloomDemo() {
               hoverLightRadius={hoverLightRadius}
               hoverRepulsionRadius={hoverRepulsionRadius}
               hoverRepulsionStrength={hoverRepulsionStrength}
+              enableMouseInteraction={enableMouseInteraction}
             />
           </div>
         }

@@ -153,6 +153,7 @@ interface ShaderPlaneProps {
   hoverLightRadius: number;
   hoverRepulsionRadius: number;
   hoverRepulsionStrength: number;
+  enableMouseInteraction: boolean;
 }
 
 const ShaderPlane = ({
@@ -167,6 +168,7 @@ const ShaderPlane = ({
   hoverLightRadius,
   hoverRepulsionRadius,
   hoverRepulsionStrength,
+  enableMouseInteraction,
 }: ShaderPlaneProps) => {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
   const gl = useThree((s) => s.gl);
@@ -237,6 +239,12 @@ const ShaderPlane = ({
   }, [hoverRepulsionStrength, uniforms]);
 
   useEffect(() => {
+    if (!enableMouseInteraction) {
+      mouseRef.current.targetActive = 0;
+      mouseRef.current.active = 0;
+      return;
+    }
+
     const handlePointerMove = (e: PointerEvent) => {
       const rect = gl.domElement.getBoundingClientRect();
       const inside =
@@ -264,7 +272,7 @@ const ShaderPlane = ({
       window.removeEventListener("pointermove", handlePointerMove);
       document.removeEventListener("pointerleave", handlePointerLeave);
     };
-  }, [gl.domElement]);
+  }, [gl.domElement, enableMouseInteraction]);
 
   useFrame((state) => {
     if (materialRef.current) {
@@ -334,6 +342,8 @@ export interface GridBloomProps {
   hoverRepulsionRadius?: number;
   /** Strength of the geometric push effect from the mouse. Default: 0.3. Setting to 0.0 disables the warp. */
   hoverRepulsionStrength?: number;
+  /** Whether mouse hover interaction (light aura + repulsion) is enabled. Default: true. */
+  enableMouseInteraction?: boolean;
 }
 
 export default function GridBloom({
@@ -349,6 +359,7 @@ export default function GridBloom({
   hoverLightRadius = 0.5,
   hoverRepulsionRadius = 1.0,
   hoverRepulsionStrength = 0.6,
+  enableMouseInteraction = true,
 }: GridBloomProps) {
   return (
     <div
@@ -374,6 +385,7 @@ export default function GridBloom({
           hoverLightRadius={hoverLightRadius}
           hoverRepulsionRadius={hoverRepulsionRadius}
           hoverRepulsionStrength={hoverRepulsionStrength}
+          enableMouseInteraction={enableMouseInteraction}
         />
       </Canvas>
     </div>

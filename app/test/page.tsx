@@ -1,11 +1,11 @@
-import DeformTunnel from "@/registry/chamaac/deform-tunnel/deform-tunnel";
+import LiquidMorph from "@/registry/chamaac/liquid-morph/liquid-morph";
 
-function DeformTunnelDemo() {
+function ModernShaderDemo() {
   return (
-    <div className="">
-      <DeformTunnel />
+    <div className="relative w-full h-screen">
+      <LiquidMorph />
     </div>
   );
 }
 
-export default DeformTunnelDemo;
+export default ModernShaderDemo;

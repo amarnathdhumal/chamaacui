@@ -17,6 +17,7 @@ interface GridBloomDemoProps {
   hoverLightRadius?: number;
   hoverRepulsionRadius?: number;
   hoverRepulsionStrength?: number;
+  enableMouseInteraction?: boolean;
 }
 
 export default function GridBloomDemo({
@@ -32,6 +33,7 @@ export default function GridBloomDemo({
   hoverLightRadius = 0.5,
   hoverRepulsionRadius = 1.0,
   hoverRepulsionStrength = 0.6,
+  enableMouseInteraction = true,
 }: GridBloomDemoProps) {
   return (
     <div
@@ -52,6 +54,7 @@ export default function GridBloomDemo({
         hoverLightRadius={hoverLightRadius}
         hoverRepulsionRadius={hoverRepulsionRadius}
         hoverRepulsionStrength={hoverRepulsionStrength}
+        enableMouseInteraction={enableMouseInteraction}
       />
       <div
         className={cn(
