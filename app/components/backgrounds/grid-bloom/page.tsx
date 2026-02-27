@@ -114,6 +114,14 @@ export default function GridBloomPage() {
               "Strength of the geometric push effect from the mouse. Setting to 0.0 disables the warp.",
             required: false,
           },
+          {
+            name: "enableMouseInteraction",
+            type: "boolean",
+            default: "true",
+            description:
+              "Enables or disables mouse hover interaction (light aura and grid repulsion effect). Set to false to disable all mouse-driven effects.",
+            required: false,
+          },
         ]}
       />
     </div>
