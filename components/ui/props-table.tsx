@@ -1,5 +1,13 @@
 import { PropsTableProps } from "@/lib/types";
 
+const fixedColTh =
+  "text-left min-w-[100px] max-w-[250px] px-[30px] py-4 text-base/7 text-black dark:text-white leading-none font-medium";
+const fixedColTd =
+  "min-w-[100px] max-w-[250px] px-[30px] py-4 text-base/7 text-neutral-600 dark:text-gray-300 leading-none";
+const descTh =
+  "text-left px-[30px] py-4 text-base/7 text-black dark:text-white leading-none font-medium";
+const descTd = "px-[30px] py-4 text-base/7 text-neutral-600 dark:text-gray-300";
+
 export default function PropsTable({
   props,
   title = "Props",
@@ -9,23 +17,15 @@ export default function PropsTable({
       <h2 className="text-2xl/7 md:text-3xl/7 tracking-tight text-black dark:text-white mb-4 font-semibold">
         {title}
       </h2>
-      <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden ">
+      <div className="border border-gray-200 dark:border-neutral-800 rounded-[16px] overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full border-collapse md:table-fixed min-w-[900px]">
+          <table className="w-full border-collapse min-w-[900px]">
             <thead>
-              <tr className="bg-gray-50 dark:bg-neutral-900 border-b border-gray-200 dark:border-neutral-800 text-base/7 ">
-                <th className="text-left p-4 text-base/7 text-black dark:text-white leading-none font-medium">
-                  Prop
-                </th>
-                <th className="text-left p-4 text-base/7 text-black dark:text-white leading-none font-medium">
-                  Type
-                </th>
-                <th className="text-left p-4 text-base/7 text-black dark:text-white leading-none font-medium">
-                  Default
-                </th>
-                <th className="text-left p-4 text-base/7 text-black dark:text-white leading-none font-medium">
-                  Description
-                </th>
+              <tr className="bg-gray-50 dark:bg-neutral-900 border-b border-gray-200 dark:border-neutral-800">
+                <th className={fixedColTh}>Prop</th>
+                <th className={fixedColTh}>Type</th>
+                <th className={fixedColTh}>Default</th>
+                <th className={descTh}>Description</th>
               </tr>
             </thead>
             <tbody>
@@ -38,21 +38,15 @@ export default function PropsTable({
                       : ""
                   }
                 >
-                  <td className="p-4 text-base/7 text-neutral-600 dark:text-gray-300  leading-none">
+                  <td className={fixedColTd}>
                     {prop.name}
                     {prop.required && (
                       <span className="text-red-500 ml-1">*</span>
                     )}
                   </td>
-                  <td className="p-4 text-base/10 text-neutral-600 dark:text-gray-300  leading-none">
-                    {prop.type}
-                  </td>
-                  <td className="p-4 min-w-[300px] md:text-base/7 text-neutral-600 dark:text-gray-300  leading-none">
-                    {prop.default}
-                  </td>
-                  <td className="p-4 text-base/7 text-neutral-600 dark:text-gray-300">
-                    {prop.description}
-                  </td>
+                  <td className={fixedColTd}>{prop.type}</td>
+                  <td className={fixedColTd}>{prop.default}</td>
+                  <td className={descTd}>{prop.description}</td>
                 </tr>
               ))}
             </tbody>
