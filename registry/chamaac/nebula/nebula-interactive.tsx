@@ -113,6 +113,7 @@ const NebulaInteractiveMaterial = ({
   const mouseRef = useRef(new THREE.Vector2(0, 0));
   const hoverRef = useRef(0);
   const targetHoverRef = useRef(0);
+  const lastTimeRef = useRef(0);
 
   const uniforms = useMemo(
     () => ({
@@ -137,24 +138,27 @@ const NebulaInteractiveMaterial = ({
   }, [speed, color1, color2, color3, uniforms]);
 
   useFrame((state) => {
-    if (materialRef.current) {
-      materialRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
+    if (!materialRef.current) return;
+    // Cap render to ~30 fps
+    const elapsed = state.clock.getElapsedTime();
+    if (elapsed - lastTimeRef.current < 1 / 30) return;
+    lastTimeRef.current = elapsed;
+    materialRef.current.uniforms.uTime.value = elapsed;
 
-      // Smooth hover transition
-      hoverRef.current += (targetHoverRef.current - hoverRef.current) * 0.1;
-      materialRef.current.uniforms.uHover.value = hoverRef.current;
+    // Smooth hover transition
+    hoverRef.current += (targetHoverRef.current - hoverRef.current) * 0.1;
+    materialRef.current.uniforms.uHover.value = hoverRef.current;
 
-      // Smooth mouse movement
-      const targetX = (state.pointer.x + 1) * 0.5;
-      const targetY = (state.pointer.y + 1) * 0.5;
-      mouseRef.current.x += (targetX - mouseRef.current.x) * 0.1;
-      mouseRef.current.y += (targetY - mouseRef.current.y) * 0.1;
+    // Smooth mouse movement
+    const targetX = (state.pointer.x + 1) * 0.5;
+    const targetY = (state.pointer.y + 1) * 0.5;
+    mouseRef.current.x += (targetX - mouseRef.current.x) * 0.1;
+    mouseRef.current.y += (targetY - mouseRef.current.y) * 0.1;
 
-      materialRef.current.uniforms.uMouse.value.set(
-        mouseRef.current.x,
-        mouseRef.current.y
-      );
-    }
+    materialRef.current.uniforms.uMouse.value.set(
+      mouseRef.current.x,
+      mouseRef.current.y
+    );
   });
 
   const { viewport } = useThree();
@@ -192,7 +196,11 @@ export default function NebulaInteractive({
 }: NebulaInteractiveProps) {
   return (
     <div className={cn("relative w-full h-full min-h-[400px]", className)}>
-      <Canvas camera={{ position: [0, 0, 1] }}>
+      <Canvas
+        camera={{ position: [0, 0, 1] }}
+        dpr={[1, 2]}
+        gl={{ antialias: false, powerPreference: "high-performance" }}
+      >
         <NebulaInteractiveMaterial
           speed={speed}
           color3={color3}

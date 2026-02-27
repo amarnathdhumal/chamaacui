@@ -24,7 +24,15 @@ const eslintConfig = [
     rules: {
       "@next/next/no-img-element": "off",
       "react/no-unknown-property": ["warn", {
-        ignore: ["args", "attach", "object", "rotation", "transparent", "jsx", "global"],
+        ignore: [
+          // React Three Fiber geometry / mesh props
+          "args", "attach", "object", "rotation", "transparent", "jsx", "global",
+          // Shader material props — valid R3F JSX, not actual unknown DOM props
+          "vertexShader", "fragmentShader", "uniforms",
+          // Common R3F material / light / shadow props
+          "intensity", "position", "castShadow", "receiveShadow",
+          "depthWrite", "depthTest", "blending", "side",
+        ],
       }],
     },
   },

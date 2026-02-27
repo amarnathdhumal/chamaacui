@@ -108,6 +108,7 @@ const NebulaMaterial = ({
   color3: string;
 }) => {
   const materialRef = useRef<THREE.ShaderMaterial>(null);
+  const lastTimeRef = useRef(0);
 
   const uniforms = useMemo(
     () => ({
@@ -130,9 +131,12 @@ const NebulaMaterial = ({
   }, [speed, color1, color2, color3, uniforms]);
 
   useFrame((state) => {
-    if (materialRef.current) {
-      materialRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
-    }
+    if (!materialRef.current) return;
+    // Cap render to ~30 fps — nebula moves slowly so this is imperceptible
+    const elapsed = state.clock.getElapsedTime();
+    if (elapsed - lastTimeRef.current < 1 / 30) return;
+    lastTimeRef.current = elapsed;
+    materialRef.current.uniforms.uTime.value = elapsed;
   });
 
   const { viewport } = useThree();
@@ -167,7 +171,11 @@ export default function Nebula({
 }: NebulaProps) {
   return (
     <div className={cn("relative w-full h-full min-h-[400px]", className)}>
-      <Canvas camera={{ position: [0, 0, 1] }}>
+      <Canvas
+        camera={{ position: [0, 0, 1] }}
+        dpr={[1, 2]}
+        gl={{ antialias: false, powerPreference: "high-performance" }}
+      >
         <NebulaMaterial
           speed={speed}
           color3={color3}
