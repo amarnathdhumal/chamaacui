@@ -20,12 +20,12 @@ export default function NebulaDemo({
   color3 = "#1a0b2e",
 }: NebulaDemoProps) {
   return (
-    <div className={cn("relative w-full h-full min-h-[400px]", className)}>
+    <div className={cn("relative w-full h-full min-h-[400px] ", className)}>
       <Nebula speed={speed} color1={color1} color2={color2} color3={color3} />
       <div
-        className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 ${GeistPixelSquare.className}`}
+        className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 px-4 ${GeistPixelSquare.className}`}
       >
-        <h1 className="text-4xl md:text-8xl font-bold text-white opacity-80 uppercase text-center drop-shadow-lg">
+        <h1 className="text-7xl md:text-8xl font-bold text-white opacity-80 uppercase text-center drop-shadow-lg ">
           Deep Space Nebula
         </h1>
       </div>

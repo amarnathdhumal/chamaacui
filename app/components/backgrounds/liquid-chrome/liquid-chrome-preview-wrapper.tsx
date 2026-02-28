@@ -70,8 +70,8 @@ export function LiquidChromeDemo() {
         speed={${speed}}
         timeScale={${timeScale}}
       />
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 \${GeistPixelSquare.className}">
-        <h1 className="text-4xl md:text-8xl font-bold text-white opacity-80 mix-blend-overlay uppercase text-center drop-shadow-lg">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 px-4 \${GeistPixelSquare.className}">
+        <h1 className="text-7xl md:text-8xl font-bold text-white opacity-80 mix-blend-overlay uppercase text-center drop-shadow-lg">
           Liquid Chrome
         </h1>
       </div>

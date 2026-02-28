@@ -23,10 +23,8 @@ export default function HowItWorksPreviewWrapper({
         title={title}
         description={description}
         preview={
-          <div className="w-full h-[700px] overflow-hidden  bg-background relative">
-            <div className="absolute inset-0 overflow-y-auto hide-scrollbar">
-              <HowItWorksDemo />
-            </div>
+          <div className="w-full relative py-12">
+            <HowItWorksDemo />
           </div>
         }
         code={code}

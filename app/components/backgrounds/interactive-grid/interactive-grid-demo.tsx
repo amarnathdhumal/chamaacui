@@ -17,7 +17,7 @@ export default function InteractiveGridDemo() {
             <div className="bg-white/10 backdrop-blur-lg border border-white/20 px-4 py-1.5 rounded-full text-sm text-white font-medium mb-8">
               New Release
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tighter text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
               Interactive Grid.
             </h1>
             <p className="mt-6 text-sm md:text-lg text-white/70 max-w-xl text-center leading-relaxed">

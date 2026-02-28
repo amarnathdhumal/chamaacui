@@ -94,7 +94,7 @@ export default function FeatureSteps({
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="relative w-full h-full"
+            className="absolute inset-4 md:inset-5"
           >
             <Image
               src={features[currentFeature].image}

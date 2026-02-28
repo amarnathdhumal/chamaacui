@@ -24,10 +24,10 @@ export default function LiquidChromeDemo({
       />
 
       <div
-        className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 ${GeistPixelSquare.className}`}
+        className={`absolute inset-0 flex items-center justify-center pointer-events-none z-10 px-4 ${GeistPixelSquare.className}`}
       >
-        <div className="text-center">
-          <h1 className="text-4xl md:text-8xl font-bold text-white opacity-80 mix-blend-overlay uppercase drop-shadow-lg">
+        <div className="text-center max-w-full">
+          <h1 className="text-7xl md:text-8xl font-bold text-white opacity-80 mix-blend-overlay uppercase drop-shadow-lg break-words text-center">
             Liquid Chrome
           </h1>
         </div>

@@ -176,7 +176,7 @@ export default function HowItWorks({
   return (
     <LazyMotion features={domAnimation}>
       <div
-        className={`min-h-screen bg-white dark:bg-black py-20 px-6 relative overflow-hidden ${className}`}
+        className={`bg-white dark:bg-black max-md:pt-10 max-md:pb-25 md:py-20 px-8 relative ${className}`}
       >
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.08] dark:opacity-[0.15]"
@@ -199,8 +199,8 @@ export default function HowItWorks({
 
         <div className="max-w-6xl mx-auto relative z-10">
           <div
-            className="relative w-full max-w-[1000px] mx-auto flex flex-col md:block"
-            style={{ height: `${height}px` }}
+            className="relative w-full max-w-[1000px] mx-auto flex flex-col space-y-8 md:space-y-0 md:block h-auto md:h-[var(--md-height)]"
+            style={{ "--md-height": `${height}px` } as React.CSSProperties}
           >
             {data.length > 1 && (
               <svg

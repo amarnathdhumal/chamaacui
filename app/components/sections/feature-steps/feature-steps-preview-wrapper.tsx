@@ -22,7 +22,7 @@ export default function FeatureStepsPreviewWrapper({
         title={title}
         description={description}
         preview={
-          <div className="w-full flex justify-center items-center  overflow-hidden h-full md:h-[550px] px-4 md:px-12 py-4">
+          <div className="w-full flex justify-center items-center overflow-hidden min-h-[450px] md:min-h-[550px] px-4 md:px-12 py-4">
             <FeatureStepsDemo />
           </div>
         }

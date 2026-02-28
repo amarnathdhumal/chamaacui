@@ -36,12 +36,7 @@ export default function GridBloomDemo({
   enableMouseInteraction = true,
 }: GridBloomDemoProps) {
   return (
-    <div
-      className={cn(
-        "relative w-full h-full min-h-[600px] overflow-hidden",
-        className
-      )}
-    >
+    <div className={cn("relative w-full h-[600px] overflow-hidden", className)}>
       <GridBloom
         color={color}
         speed={speed}
@@ -62,7 +57,7 @@ export default function GridBloomDemo({
           GeistPixelSquare.className
         )}
       >
-        <h1 className="text-4xl md:text-8xl font-bold dark:text-white opacity-80 text-purple-500  mix-blend-overlay uppercase text-center drop-shadow-lg">
+        <h1 className="text-8xl font-bold dark:text-white opacity-80 text-purple-500  mix-blend-overlay uppercase text-center drop-shadow-lg">
           Grid Bloom
         </h1>
       </div>

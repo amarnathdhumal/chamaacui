@@ -180,7 +180,7 @@ export function GridBloomDemo() {
         enableMouseInteraction={${dEnableMouseInteraction}}
       />
       <div className={\`absolute inset-0 flex items-center justify-center pointer-events-none z-10 p-4 \${GeistPixelSquare.className}\`}>
-             <h1 className="text-4xl md:text-8xl font-bold dark:text-white opacity-80 text-purple-500  mix-blend-overlay uppercase text-center drop-shadow-lg">
+             <h1 className="text-8xl font-bold dark:text-white opacity-80 text-purple-500  mix-blend-overlay uppercase text-center drop-shadow-lg">
           Grid Bloom
         </h1>
       </div>
@@ -194,7 +194,7 @@ export function GridBloomDemo() {
         title={title}
         description={description}
         preview={
-          <div className="w-full h-[600px] flex justify-center items-center bg-transparent">
+          <div className="w-full flex justify-center items-center bg-transparent">
             <GridBloomDemo
               color={color}
               speed={speed}
