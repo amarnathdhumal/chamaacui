@@ -24,7 +24,7 @@ const TabButton = ({
         {isActive && (
           <m.div
             layoutId={layoutId}
-            className="absolute inset-0 dark:bg-neutral-800 bg-gray-200 rounded-[8px]"
+            className="absolute inset-0 bg-bg-tertiary rounded-[8px]"
             transition={{ duration: 0.3 }}
           />
         )}

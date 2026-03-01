@@ -80,9 +80,9 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
                       {codeCopied ? (
                         <IconCheck className="size-4 dark:text-white text-black" />
                       ) : isCopyingCode ? (
-                        <Loader2 className="size-4 animate-spin text-neutral-600 dark:text-neutral-400" />
+                        <Loader2 className="size-4 animate-spin text-text-secondary" />
                       ) : (
-                        <IconCopy className="size-4 text-neutral-600 dark:text-neutral-400" />
+                        <IconCopy className="size-4 text-text-secondary" />
                       )}
                     </button>
                   </TooltipTrigger>
@@ -101,7 +101,7 @@ export default function IconCard({ icon, isHoveredMode }: IconCardProps) {
                       {cliCopied ? (
                         <IconCheck className="size-4 dark:text-white text-black" />
                       ) : (
-                        <IconTerminal2 className="size-4 text-neutral-600 dark:text-neutral-400" />
+                        <IconTerminal2 className="size-4 text-text-secondary" />
                       )}
                     </button>
                   </TooltipTrigger>

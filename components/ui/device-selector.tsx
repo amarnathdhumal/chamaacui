@@ -11,6 +11,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { m, LazyMotion, domMax } from "motion/react";
 
 export type DeviceType = "desktop" | "tablet" | "mobile";
 
@@ -30,28 +31,38 @@ export default function DeviceSelector({
   ];
 
   return (
-    <div className="hidden md:flex border border-border rounded-[8px] overflow-hidden  dark:bg-neutral-900 bg-gray-50  items-center">
-      {devices.map((config) => (
-        <Tooltip key={config.id}>
-          <TooltipTrigger asChild>
-            <button
-              onClick={() => setDevice(config.id)}
-              className={cn(
-                "size-8 flex items-center justify-center transition border-border",
-                config.id !== "mobile" && "border-r",
-                device === config.id
-                  ? "bg-gray-100 dark:bg-neutral-800 text-black dark:text-white"
-                  : "dark:text-neutral-400 text-neutral-500 hover:text-black hover:bg-gray-100 dark:hover:text-white dark:hover:bg-neutral-800/50"
-              )}
-            >
-              <config.icon className="size-[18px]" />
-            </button>
-          </TooltipTrigger>
-          <TooltipContent side="top">
-            <p className="text-xs capitalize">{config.id}</p>
-          </TooltipContent>
-        </Tooltip>
-      ))}
-    </div>
+    <LazyMotion features={domMax}>
+      <div className="hidden md:flex border border-border rounded-[8px] overflow-hidden bg-bg-secondary items-center">
+        {devices.map((config) => (
+          <Tooltip key={config.id}>
+            <TooltipTrigger asChild>
+              <button
+                onClick={() => setDevice(config.id)}
+                className={cn(
+                  "size-8 flex items-center justify-center transition relative cursor-pointer",
+                  device === config.id
+                    ? "text-text-primary"
+                    : "text-text-tertiary hover:text-text-primary hover:bg-bg-tertiary"
+                )}
+              >
+                {device === config.id && (
+                  <m.div
+                    layoutId="activeDevice"
+                    className="absolute inset-0 bg-bg-tertiary"
+                    transition={{ duration: 0.2 }}
+                  />
+                )}
+                <span className="relative z-10">
+                  <config.icon className="size-[16px]" />
+                </span>
+              </button>
+            </TooltipTrigger>
+            <TooltipContent side="top">
+              <p className="text-xs capitalize">{config.id}</p>
+            </TooltipContent>
+          </Tooltip>
+        ))}
+      </div>
+    </LazyMotion>
   );
 }

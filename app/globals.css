@@ -44,12 +44,38 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* ─── Semantic Text Color Tokens */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  /* ─── Semantic Background Color Tokens */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
 }
 
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+
+  /* Text color tiers (light mode) */
+  --text-primary: #000000;
+  /* black */
+  --text-secondary: #525252;
+  /* neutral-600 */
+  --text-tertiary: #737373;
+  /* neutral-500 */
+
+  /* Background color tiers (light mode) */
+  --bg-primary: #ffffff;
+  /* white */
+  --bg-secondary: #f9fafb;
+  /* gray-50 */
+  --bg-tertiary: #e5e7eb;
+  /* gray-200 */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -84,6 +110,22 @@
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
+
+  /* Text color tiers (dark mode) */
+  --text-primary: #ffffff;
+  /* white */
+  --text-secondary: #d1d5db;
+  /* gray-300 */
+  --text-tertiary: #a3a3a3;
+  /* neutral-400 */
+
+  /* Background color tiers (dark mode) */
+  --bg-primary: #000000;
+  /* black */
+  --bg-secondary: #171717;
+  /* neutral-900 */
+  --bg-tertiary: #262626;
+  /* neutral-800 */
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
@@ -165,6 +207,7 @@ nextjs-portal {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

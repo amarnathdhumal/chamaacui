@@ -94,7 +94,7 @@ export default function ButtonsGrid() {
           <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">
             Buttons
           </h1>
-          <p className=" text-base/5 md:text-lg/7 ttext-neutral-600 dark:text-gray-300 tracking-tight mt-2 md:mt-4   max-w-[750px]">
+          <p className=" text-base/5 md:text-lg/7 text-text-secondary tracking-tight mt-2 md:mt-4   max-w-[750px]">
             A collection of interactive and animated buttons for your
             applications.
           </p>

@@ -6,15 +6,27 @@ import { m, LazyMotion, domAnimation } from "motion/react";
 import { cn } from "@/lib/utils";
 import { useState, useRef, useCallback } from "react";
 import Image from "next/image";
+import { IconStar, IconStarFilled, IconTrash } from "@tabler/icons-react";
+import { useFavourites } from "@/hooks/use-favourites";
+import { IconButton } from "@/components/ui/icon-button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-const ComponentCard = ({
+export const ComponentCard = ({
   component,
+  isFavouritesPage = false,
 }: {
   component: (typeof componentCards)[0];
+  isFavouritesPage?: boolean;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { favourites, toggleFavourite, isMounted } = useFavourites();
+  const isFavorite = favourites.includes(component.link);
 
   const handleMouseEnter = useCallback(() => {
     setIsHovered(true);
@@ -40,7 +52,7 @@ const ComponentCard = ({
           <m.div
             className={cn(
               "group relative h-full rounded-[16px] border border-border p-2",
-              "bg-gray-50 dark:bg-neutral-900",
+              "bg-bg-secondary",
               "overflow-hidden cursor-pointer",
               "transition-all duration-300"
             )}
@@ -80,6 +92,41 @@ const ComponentCard = ({
                   )}
                 />
               )}
+
+              {/* Favourite target overlay - only visible on hover */}
+              {isMounted && (
+                <div className="absolute top-[5px] right-[5px] z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <Tooltip delayDuration={300}>
+                    <TooltipTrigger asChild>
+                      <IconButton
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          toggleFavourite(component.link);
+                        }}
+                        className="absolute top-2 right-2 z-10 size-7"
+                      >
+                        {isFavouritesPage ? (
+                          <IconTrash className="size-[16px] text-red-500 hover:text-red-600" />
+                        ) : isFavorite ? (
+                          <IconStarFilled className="size-[16px] text-[#FFA41C]" />
+                        ) : (
+                          <IconStar className="size-[16px]" />
+                        )}
+                      </IconButton>
+                    </TooltipTrigger>
+                    <TooltipContent side="top">
+                      <p className="text-xs">
+                        {isFavouritesPage
+                          ? "Remove from Favourites"
+                          : isFavorite
+                            ? "Remove from Favourites"
+                            : "Save to Favourites"}
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
+              )}
             </div>
 
             {/* Content */}
@@ -87,7 +134,7 @@ const ComponentCard = ({
               <h3 className="text-xl leading-none font-medium text-black dark:text-white mb-2 md:mb-4 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors tracking-[-0.01em]">
                 {component.title}
               </h3>
-              <p className="text-sm/5 text-neutral-600 dark:text-gray-300 tracking-wide">
+              <p className="text-sm/5 text-text-secondary tracking-wide">
                 {component.description}
               </p>
             </div>
@@ -101,6 +148,14 @@ const ComponentCard = ({
 const ComponentsGrid = () => {
   return (
     <div className="flex flex-col w-full pb-12 ">
+      <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white mb-3">
+        Components
+      </h1>
+      <p className="text-base/5 md:text-lg/7 text-text-secondary tracking-tight mb-5 md:mb-10 max-w-[750px]">
+        A collection of interactive and animated components for your
+        applications.
+      </p>
+
       {/* Component Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
         {componentCards.map((component) => (

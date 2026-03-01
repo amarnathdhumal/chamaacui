@@ -1,9 +1,9 @@
-import LiquidMorph from "@/registry/chamaac/liquid-morph/liquid-morph";
+import NebulaDemo from "../components/backgrounds/nebula/nebula-demo";
 
 function ModernShaderDemo() {
   return (
     <div className="relative w-full h-screen">
-      <LiquidMorph />
+      <NebulaDemo className="h-screen" />
     </div>
   );
 }

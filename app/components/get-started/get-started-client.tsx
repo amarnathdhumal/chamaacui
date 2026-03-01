@@ -79,7 +79,7 @@ function CommandBlock({
             layoutId={layoutId}
           />
         ) : label ? (
-          <span className="text-[14px] text-neutral-400 font-mono tracking-tight select-none px-2">
+          <span className="text-[14px] text-text-tertiary font-mono tracking-tight select-none px-2">
             {label}
           </span>
         ) : (
@@ -118,14 +118,14 @@ export default function GetStartedClient() {
   const mcpCommand = `${getPmPrefix(activePm)} shadcn@latest mcp init`;
 
   return (
-    <div className="relative min-h-screen w-full dark:bg-black bg-white overflow-x-hidden flex flex-col">
+    <div className="relative min-h-screen w-full bg-bg-primary overflow-x-hidden flex flex-col">
       <main className="flex-1">
         <div className="max-w-3xl">
           {/* Hero */}
           <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white">
             Get Started
           </h1>
-          <p className="text-base/5 md:text-lg/7 text-neutral-600 dark:text-gray-300 tracking-tight mt-2 md:mt-4 mb-10 max-w-[750px]">
+          <p className="text-base/5 md:text-lg/7 text-text-secondary tracking-tight mt-2 md:mt-4 mb-10 max-w-[750px]">
             Welcome to Chamaac UI! This guide will help you set up and start
             using our beautiful, animated components in your project.
           </p>
@@ -168,7 +168,7 @@ export default function GetStartedClient() {
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 2: Add components from Chamaac UI
                       </h4>
-                      <p className="text-base/6 text-neutral-600 dark:text-gray-300 mb-4">
+                      <p className="text-base/6 text-text-secondary mb-4">
                         Browse our components and use the CLI command shown on
                         each component page to add it to your project.
                       </p>
@@ -187,9 +187,9 @@ export default function GetStartedClient() {
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 1: Install Dependencies
                       </h4>
-                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
+                      <p className="text-base/5 text-text-secondary mb-4">
                         Most Chamaac UI components use{" "}
-                        <code className="px-1.5 py-0.5 rounded-md bg-neutral-200 dark:bg-neutral-800 text-sm font-mono">
+                        <code className="px-1.5 py-0.5 rounded-md bg-bg-tertiary text-sm font-mono">
                           motion/react
                         </code>{" "}
                         for animations.
@@ -206,9 +206,9 @@ export default function GetStartedClient() {
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 2: Add the cn utility
                       </h4>
-                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
+                      <p className="text-base/5 text-text-secondary mb-4">
                         Create a{" "}
-                        <code className="px-1.5 py-0.5 rounded-md bg-neutral-200 dark:bg-neutral-800 text-sm font-mono">
+                        <code className="px-1.5 py-0.5 rounded-md bg-bg-tertiary text-sm font-mono">
                           lib/utils.ts
                         </code>{" "}
                         file with the following helper function:
@@ -224,10 +224,10 @@ export default function GetStartedClient() {
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 3: Copy the component
                       </h4>
-                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
+                      <p className="text-base/5 text-text-secondary mb-4">
                         Browse our components, find one you like, and copy the
                         source code into{" "}
-                        <code className="px-1.5 py-0.5 rounded-md bg-neutral-200 dark:bg-neutral-800 text-sm font-mono">
+                        <code className="px-1.5 py-0.5 rounded-md bg-bg-tertiary text-sm font-mono">
                           components/ui
                         </code>
                         .
@@ -251,7 +251,7 @@ export default function GetStartedClient() {
                 {installMethod === "mcp" && (
                   <div className="flex flex-col gap-6">
                     <div>
-                      <p className="text-base/6 text-neutral-600 dark:text-gray-300 mb-4">
+                      <p className="text-base/6 text-text-secondary mb-4">
                         MCP (Model Context Protocol) allows AI assistants to
                         understand and work with Chamaac UI components directly
                         in your IDE. Set it up once and use natural language to
@@ -263,7 +263,7 @@ export default function GetStartedClient() {
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 1: Initialize MCP
                       </h4>
-                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
+                      <p className="text-base/5 text-text-secondary mb-4">
                         Run this command to set up the shadcn MCP server for
                         your AI client (Cursor, Claude Code, etc.):
                       </p>
@@ -279,9 +279,9 @@ export default function GetStartedClient() {
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 2: Add Chamaac UI Registry
                       </h4>
-                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
+                      <p className="text-base/5 text-text-secondary mb-4">
                         Add the Chamaac UI registry to your{" "}
-                        <code className="px-1.5 py-0.5 rounded-md bg-neutral-200 dark:bg-neutral-800 text-sm font-mono">
+                        <code className="px-1.5 py-0.5 rounded-md bg-bg-tertiary text-sm font-mono">
                           components.json
                         </code>{" "}
                         file so the AI can access all components:
@@ -297,7 +297,7 @@ export default function GetStartedClient() {
                       <h4 className="text-lg font-medium text-black dark:text-white mb-4">
                         Step 3: Use with your AI assistant
                       </h4>
-                      <p className="text-base/5 text-neutral-600 dark:text-gray-300 mb-4">
+                      <p className="text-base/5 text-text-secondary mb-4">
                         Now you can ask your AI assistant to add components
                         using natural language:
                       </p>
@@ -319,7 +319,7 @@ export default function GetStartedClient() {
             <h2 className="text-[1.5rem]/8 md:text-[2rem]/10 font-semibold tracking-tight text-black dark:text-white">
               Next Steps
             </h2>
-            <p className="text-base/6 md:text-lg/7 text-neutral-600 dark:text-gray-300 tracking-tight mt-2 mb-4 max-w-[750px]">
+            <p className="text-base/6 md:text-lg/7 text-text-secondary tracking-tight mt-2 mb-4 max-w-[750px]">
               You&apos;re all set! Here&apos;s what you can do next.
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -331,7 +331,7 @@ export default function GetStartedClient() {
                   Browse Components
                   <IconArrowRight className="size-5" />
                 </h3>
-                <p className="text-neutral-600 dark:text-gray-300 text-sm">
+                <p className="text-text-secondary text-sm">
                   Explore our collection of animated UI components.
                 </p>
               </Link>
@@ -346,7 +346,7 @@ export default function GetStartedClient() {
                   GitHub Repository
                   <IconArrowRight className="size-5" />
                 </h3>
-                <p className="text-neutral-600 dark:text-gray-300 text-sm">
+                <p className="text-text-secondary text-sm">
                   Star the repo, report issues, or contribute.
                 </p>
               </a>

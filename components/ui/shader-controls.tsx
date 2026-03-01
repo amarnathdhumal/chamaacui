@@ -41,7 +41,7 @@ export function ShaderControls({ controls, className }: ShaderControlsProps) {
               <div className="flex justify-between items-center">
                 <label
                   htmlFor={control.id}
-                  className="text-base/5 text-neutral-600 dark:text-gray-300 tracking-tight leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  className="text-base/5 text-text-secondary tracking-tight leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
                   {control.label}
                 </label>
@@ -56,7 +56,7 @@ export function ShaderControls({ controls, className }: ShaderControlsProps) {
 
               {control.type === "color" && (
                 <div className="flex gap-3 items-center mt-3">
-                  <div className="relative w-10 h-10 rounded-[16px] overflow-hidden border shadow-sm shrink-0">
+                  <div className="relative w-10 h-10 rounded-[8px]  overflow-hidden border shadow-sm shrink-0">
                     <input
                       type="color"
                       id={control.id}
@@ -69,7 +69,7 @@ export function ShaderControls({ controls, className }: ShaderControlsProps) {
                     type="text"
                     value={control.value as string}
                     onChange={(e) => control.onChange(e.target.value)}
-                    className="flex justify-between items-center gap-2 px-2 md:px-5 py-2 text-sm rounded-[16px] border border-border transition-colors bg-white dark:bg-black cursor-pointer text-neutral-600 dark:text-gray-300 w-full size-10"
+                    className="flex justify-between items-center gap-2 px-2 md:px-5 py-2 text-sm rounded-[8px] border border-border transition-colors bg-bg-secondary cursor-pointer text-text-secondary w-full size-10"
                     spellCheck={false}
                   />
                 </div>
@@ -144,7 +144,7 @@ export function ShaderControls({ controls, className }: ShaderControlsProps) {
                     id={control.id}
                     value={control.value as string}
                     onChange={(e) => control.onChange(e.target.value)}
-                    className="w-full h-full px-4 rounded-[12px] border border-border bg-white dark:bg-black text-sm text-neutral-600 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none cursor-pointer"
+                    className="w-full h-full px-4 rounded-[12px] border border-border bg-white dark:bg-black text-sm text-text-secondary focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none cursor-pointer"
                   >
                     {control.options?.map((option) => (
                       <option key={option.value} value={option.value}>
@@ -162,7 +162,7 @@ export function ShaderControls({ controls, className }: ShaderControlsProps) {
                     id={control.id}
                     value={control.value as string}
                     onChange={(e) => control.onChange(e.target.value)}
-                    className="w-full h-full px-4 rounded-[12px] border border-border bg-white dark:bg-black text-sm text-neutral-600 dark:text-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/20"
+                    className="w-full h-full px-4 rounded-[12px] border border-border bg-white dark:bg-black text-sm text-text-secondary focus:outline-none focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
               )}
