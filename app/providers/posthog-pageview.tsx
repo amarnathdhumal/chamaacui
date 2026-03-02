@@ -11,7 +11,7 @@ function PostHogPageViewContent() {
 
   useEffect(() => {
     // Track pageviews
-    if (pathname && posthog) {
+    if (process.env.NODE_ENV === "production" && pathname && posthog) {
       let url = window.origin + pathname;
       if (searchParams.toString()) {
         url = url + `?${searchParams.toString()}`;
