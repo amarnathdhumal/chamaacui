@@ -59,6 +59,24 @@
       ]
     },
     {
+      "name": "astral-flow",
+      "type": "registry:component",
+      "title": "Astral Flow",
+      "description": "A majestic, constantly breathing radial shader with deep cosmic wisps.",
+      "dependencies": [
+        "three",
+        "@react-three/fiber",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/astral-flow/astral-flow.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "stats-cards",
       "type": "registry:component",
       "title": "Stats Cards",

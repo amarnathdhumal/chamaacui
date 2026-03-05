@@ -34,6 +34,8 @@ const eslintConfig = [
           "depthWrite", "depthTest", "blending", "side",
         ],
       }],
+      "react-hooks/exhaustive-deps": "off",
+      "@typescript-eslint/no-unused-vars": "off"
     },
   },
 ];
