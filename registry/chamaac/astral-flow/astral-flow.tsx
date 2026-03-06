@@ -64,7 +64,7 @@ const fragmentShader = `
       vec2 shift = vec2(100.0);
       // Rotate to add spiral variation
       mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.50));
-      for (int i = 0; i < 5; ++i) { // 5 layers of octaves for elegant density
+      for (int i = 0; i < 5; ++i) { // Restored to 5 layers for maximum elegance and detail
           v += a * snoise(x);
           x = rot * x * 2.0 + shift;
           a *= 0.5;
@@ -85,8 +85,9 @@ const fragmentShader = `
       // Oscillate structure time to prevent radial stretching (starts at uFlowMin)
       float flowTime = (midpoint + amplitude * sin(uTime * 0.5 - 1.5708)) * 0.25;
       
-      // Add a continuous slow drift so the smoke always has fresh detail without stopping
-      float continuousTime = uTime * 0.15;
+      // Endlessly rotating drift to keep smoke fresh without math precision breakdown
+      // By using a trig function rather than linear addition, coordinates never exceed float16 bounds!
+      vec2 drift = vec2(sin(uTime * 0.15), cos(uTime * 0.15));
 
       // Soft radial flow outward from center (averts sharp pinch singularity)
       float radius = length(p);
@@ -99,8 +100,8 @@ const fragmentShader = `
 
       // Secondary Flow (whispy detail pushing through the smoke continuously)
       vec2 r = vec2(0.);
-      r.x = fbm( p + 1.0 * q + vec2(1.7, 9.2) - dir * flowTime * 0.8 + continuousTime );
-      r.y = fbm( p + 1.0 * q + vec2(8.3, 2.8) - dir * flowTime * 0.6 + continuousTime );
+      r.x = fbm( p + 1.0 * q + vec2(1.7, 9.2) - dir * flowTime * 0.8 + drift );
+      r.y = fbm( p + 1.0 * q + vec2(8.3, 2.8) - dir * flowTime * 0.6 + drift );
 
       // Final Shape Density Map
       float f = fbm(p + r);
@@ -178,9 +179,8 @@ const Effect = ({
 
   useFrame((state) => {
     if (material.current) {
-      // Provide raw elapsed time; the shader now handles bounded looping
       material.current.uniforms.uTime.value =
-        state.clock.getElapsedTime() * speed;
+        (state.clock.getElapsedTime() * speed) % (40 * Math.PI);
       material.current.uniforms.uResolution.value.set(
         state.size.width * state.viewport.dpr,
         state.size.height * state.viewport.dpr
@@ -191,7 +191,6 @@ const Effect = ({
   return (
     <mesh>
       <planeGeometry args={[2, 2]} />
-      {/* Enable true transparency so it blends gorgeously onto your backgrounds */}
       <shaderMaterial
         ref={material}
         vertexShader={vertexShader}
@@ -206,7 +205,6 @@ const Effect = ({
 export default function AstralFlow({
   className,
   speed = 1.5,
-  // High fashion deep luxury smoke palette
   color1 = "#05070a", // Deep void blue-black
   color2 = "#2e1a38", // Moody dark plum/purple
   color3 = "#a0769a", // Glowing ethereal mauve/silver
@@ -216,11 +214,11 @@ export default function AstralFlow({
   return (
     <div
       className={cn(
-        "relative w-full h-full min-h-[600px] overflow-hidden bg-[#05070a]",
+        "relative w-full h-full min-h-[400px] overflow-hidden bg-[#05070a]",
         className
       )}
     >
-      <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 2]}>
+      <Canvas camera={{ position: [0, 0, 1] }} dpr={1}>
         <Effect
           speed={speed}
           color1={color1}
