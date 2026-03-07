@@ -166,7 +166,7 @@ const Effect = ({
     [] // Initialize only once to prevent shader recreation
   );
 
-  // Smoothly update uniform values when React props change without resetting the shader
+  // Smoothly update uniform values
   useEffect(() => {
     if (material.current) {
       material.current.uniforms.uColor1.value.set(color1);
@@ -228,7 +228,6 @@ export default function AstralFlow({
           flowMax={flowMax}
         />
       </Canvas>
-      {/* Ultra soft luxury grain over top to keep it feeling grounded instead of overly CGI */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.4] mix-blend-overlay"
         style={{
