@@ -67,7 +67,7 @@ export function NebulaDemo() {
         color3="${color3}"
         speed={${speed}}
       />
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 px-4 \${GeistPixelSquare.className}">
+      <div className={\`absolute inset-0 flex items-center justify-center pointer-events-none z-10 px-4 \${GeistPixelSquare.className}\`}>
         <h1 className="text-7xl md:text-8xl font-bold text-white opacity-80 uppercase text-center drop-shadow-lg">
           Deep Space Nebula
         </h1>

@@ -116,7 +116,7 @@ export function DeformTunnelDemo() {
         exposure={${exposure}}
         imageSrc="${imageSrc}"
       />
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 \${GeistPixelSquare.className}">
+      <div className={\`absolute inset-0 flex items-center justify-center pointer-events-none z-10 \${GeistPixelSquare.className}\`}>
         <h1 className="text-4xl md:text-8xl font-bold text-white opacity-80 uppercase text-center drop-shadow-lg">
           Warp Drive
         </h1>

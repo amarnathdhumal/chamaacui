@@ -30,12 +30,13 @@ export default function WaterCausticPreviewWrapper({
   ];
 
   const codeString = `import WaterCaustic from "@/registry/chamaac/water-caustic/water-caustic";
+import { GeistPixelSquare } from "geist/font/pixel";
 
 export function WaterCausticDemo() {
   return (
     <div className="relative w-full h-[600px] overflow-hidden bg-neutral-900">
       <WaterCaustic color="${deferredColor}" />
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+      <div className={\`absolute inset-0 flex items-center justify-center pointer-events-none z-10 \${GeistPixelSquare.className}\`}>
         <h1 className="text-4xl md:text-8xl font-bold text-white opacity-80 uppercase text-center drop-shadow-lg">
           Water Caustics
         </h1>
