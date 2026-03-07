@@ -19,17 +19,17 @@ export const sidebarData: SidebarDataTypes[] = [
   },
   // backgrounds
   {
-    componentName: "Nebula",
-    link: "/backgrounds/nebula",
-    category: "Backgrounds",
-    isNew: true,
-  },
-  {
     componentName: "Astral Flow",
     link: "/backgrounds/astral-flow",
     category: "Backgrounds",
     isNew: true,
   },
+  {
+    componentName: "Nebula",
+    link: "/backgrounds/nebula",
+    category: "Backgrounds",
+  },
+
   // {
   //   componentName: "Deform Tunnel",
   //   link: "/backgrounds/deform-tunnel",
@@ -175,21 +175,21 @@ interface ComponentCardType {
 
 export const componentCards: ComponentCardType[] = [
   {
-    title: "Nebula",
-    description: "A deep space nebula effect with fractional distortion.",
-    videoSrc: "https://assets.amarn.me/nebula.mp4",
-    imagePath: "/components/backgrounds/nebula.png",
-    link: "/components/backgrounds/nebula",
-    category: "Backgrounds",
-    bgColor: "bg-black dark:bg-black",
-  },
-  {
     title: "Astral Flow",
     description:
       "A majestic, constantly breathing radial shader with deep cosmic wisps.",
     imagePath: "/components/backgrounds/astral-flow.png",
     videoSrc: "https://assets.amarn.me/astral-flow.mp4",
     link: "/components/backgrounds/astral-flow",
+    category: "Backgrounds",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "Nebula",
+    description: "A deep space nebula effect with fractional distortion.",
+    videoSrc: "https://assets.amarn.me/nebula.mp4",
+    imagePath: "/components/backgrounds/nebula.png",
+    link: "/components/backgrounds/nebula",
     category: "Backgrounds",
     bgColor: "bg-black dark:bg-black",
   },
