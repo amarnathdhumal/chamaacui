@@ -4,7 +4,7 @@ import React from "react";
 import ViewArea from "@/components/ui/view-area";
 import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
-import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
+import { PrimaryButton } from "@/components/ui/primary-button";
 import { IconArrowUpRight } from "@tabler/icons-react";
 
 import { BasePreviewWrapperProps } from "@/lib/types";
@@ -35,15 +35,14 @@ export default function AIInputPreviewWrapper({
                 This component is designed to take up the full viewport height.
                 Click below to see the live preview.
               </p>
-              <SlideUpButton
+              <PrimaryButton
                 onClick={() => window.open("/previews/ai-input", "_blank")}
-                className="px-4 py-2  bg-black dark:bg-white text-white dark:text-black text-sm md:text-base"
               >
                 <span className="flex items-center gap-2">
                   Open Preview
-                  <IconArrowUpRight className="w-4 h-4" />
+                  <IconArrowUpRight size={20} />
                 </span>
-              </SlideUpButton>
+              </PrimaryButton>
             </div>
           </div>
         }

@@ -145,7 +145,7 @@ export const Header = () => {
             </Link>
 
             {/* Desktop Nav Links */}
-            <div className="hidden sm:flex items-center gap-4 md:gap-6">
+            <div className="hidden lg:flex items-center gap-4 md:gap-6">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -161,7 +161,7 @@ export const Header = () => {
           </div>
 
           {/* Desktop Right Icons */}
-          <div className="hidden sm:flex items-center gap-6 flex-row relative z-10">
+          <div className="hidden lg:flex items-center gap-6 flex-row relative z-10">
             {/* search input */}
             <button
               onClick={() => setOpen(true)}
@@ -221,7 +221,7 @@ export const Header = () => {
           </div>
 
           {/* Mobile Navigation - Only search, GitHub, and menu */}
-          <div className="flex sm:hidden items-center gap-2 flex-row relative z-10">
+          <div className="flex lg:hidden items-center gap-2 flex-row relative z-10">
             {/* Search button */}
             <IconButton
               onClick={() => setOpen(true)}
@@ -260,7 +260,7 @@ export const Header = () => {
           {isMobileMenuOpen && (
             <m.div
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 z-[9999] flex sm:hidden"
+              className="fixed inset-0 z-[9999] flex lg:hidden"
             >
               {/* Sidebar Menu */}
               <m.div

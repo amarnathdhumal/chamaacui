@@ -1,10 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { useInView } from "motion/react";
+import { PrimaryButton } from "./primary-button";
 
 interface BentoItem {
   title: string;
@@ -15,22 +15,21 @@ interface BentoItem {
 
 const bentoItems: BentoItem[] = [
   {
-    title: "Interactive Grid",
-    videoSrc: "https://assets.amarn.me/interactive-grid.mp4",
-    href: "/components/backgrounds/interactive-grid",
+    title: "Astral Flow",
+    videoSrc: "https://assets.amarn.me/astral-flow.mp4",
+    href: "/components/backgrounds/astral-flow",
     className: "md:col-span-5 md:row-span-2",
   },
-
   {
-    title: "Premium Button",
-    videoSrc: "https://assets.amarn.me/premium_button.mp4",
-    href: "/components/buttons/premium-button",
+    title: "Gif Text",
+    videoSrc: "https://assets.amarn.me/gif-text-v2.mp4",
+    href: "/components/text-animations/gif-text",
     className: "md:col-span-3 md:row-span-1",
   },
   {
-    title: "Liquid Chrome",
-    videoSrc: " https://assets.amarn.me/liquid-chrome.mp4",
-    href: "/components/backgrounds/liquid-chrome",
+    title: "Grid Bloom",
+    videoSrc: " https://assets.amarn.me/grid-bloom-v3.mp4",
+    href: "/components/backgrounds/grid-bloom",
     className: "md:col-span-4 ",
   },
   {
@@ -39,19 +38,11 @@ const bentoItems: BentoItem[] = [
     href: "/components/carousels/carousel",
     className: "md:col-span-4 md:row-span-1",
   },
-  // {
-  //   title: "How It Works",
-
-  //   videoSrc: "https://assets.amarn.me/how-it-works.mp4",
-  //   href: "/components/sections/how-it-works",
-
-  //   className: "md:col-span-3",
-  // },
   {
-    title: "Glowing Border Button",
-    videoSrc: "https://assets.amarn.me/glowing-border-button.mp4",
-    href: "/components/buttons/glowing-border-button",
-    className: "md:col-span-3",
+    title: "Waves",
+    videoSrc: "https://assets.amarn.me/waves.mp4",
+    href: "/components/backgrounds/waves",
+    className: "md:col-span-3 md:row-span-1",
   },
 
   {
@@ -156,7 +147,7 @@ function BentoCard({ item }: { item: BentoItem }) {
 
 export default function VideoBentoGrid() {
   return (
-    <section className="w-full py-0 md:py-10 ">
+    <section className="w-full py-0 md:py-[50px] ">
       <div className="max-w-[1440px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 h-full auto-rows-[180px] md:auto-rows-[200px] gap-4">
           {bentoItems.map((item) => (
@@ -167,13 +158,7 @@ export default function VideoBentoGrid() {
           href="/components"
           className="flex justify-center mt-5 md:mt-10 mb-10 md:mb-0 w-fit items-center mx-auto"
         >
-          <SlideUpButton
-            className="
-                  px-4 py-2 md:px-6 md:py-3
-                bg-black dark:bg-white text-white dark:text-black text-sm md:text-base font-medium tracking-tight"
-          >
-            View All Components
-          </SlideUpButton>
+          <PrimaryButton>View All Components</PrimaryButton>
         </Link>
       </div>
     </section>

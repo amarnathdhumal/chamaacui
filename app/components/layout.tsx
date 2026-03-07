@@ -1,6 +1,7 @@
 import Sidebar from "@/components/ui/sidebar";
 import React from "react";
 import { Header } from "./header";
+import Link from "next/link";
 
 const ComponentLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -10,7 +11,21 @@ const ComponentLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="hidden lg:block sticky top-28 self-start">
           <Sidebar />
         </div>
-        <div className="flex-1 min-w-0 px-4 md:px-8 lg:px-12">{children}</div>
+        <div className="flex-1 min-w-0 px-4 md:px-8 lg:px-12">
+          {children}
+          <div className=" flex justify-center mb-15">
+            <p className="text-base/5 tracking-[-0.01em]">
+              Build with ❤️ by{" "}
+              <Link
+                href={"https://x.com/amarnathdhumal"}
+                target="_blank"
+                className="underline"
+              >
+                Amarnath Dhumal
+              </Link>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -10,6 +10,8 @@ import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import Link from "next/link";
 import TextLoop from "./components/text-animations/text-loop/text-loop";
 import VideoBentoGrid from "../components/ui/video-bento-grid";
+import { IconBrandGithub } from "@tabler/icons-react";
+import { PrimaryButton } from "@/components/ui/primary-button";
 
 export default function Home() {
   return (
@@ -32,22 +34,31 @@ export default function Home() {
             cursorClassName="sm:h-[3.8rem] md:h-[4.5rem]  xl:h-[5.7rem] bg-black dark:bg-white"
             backgroundClassName="bg-gradient-to-r from-transparent via-neutral-300/50 to-neutral-400/80 dark:from-transparent dark:via-neutral-700/50 dark:to-neutral-600/80"
             staticText="Make your UI"
-            rotatingTexts={["Shine.", "Pop.", "Mesmerize."]}
+            rotatingTexts={["Shine.", "Pop.", "Glow."]}
           />
 
-          <p className="text-base/5 md:text-lg/6 text-left sm:text-center text-neutral-600 dark:text-gray-300 my-5 max-w-[550px]">
+          <p className="text-base/5 md:text-lg/6 text-left sm:text-center text-neutral-600 dark:text-gray-300 my-5 md:my-[30px] max-w-[550px]">
             A premium collection of interactable, motion-rich components
             designed to make your web presence unforgettable.
           </p>
-          <div className="flex justify-center">
+          <div className="flex justify-center gap-3">
             <Link href="/components" className="w-fit">
-              <SlideUpButton
+              <PrimaryButton>Explore Components</PrimaryButton>
+            </Link>
+            <Link
+              href="https://github.com/amarnathdhumal/chamaacui"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-fit"
+            >
+              <button
                 className="
-                px-4 py-2 md:px-6 md:py-3
-                bg-black dark:bg-white text-white dark:text-black text-sm md:text-base font-medium tracking-tight"
+                px-3 py-1.5 md:px-5 md:py-2.5
+                 text-black dark:text-white text-sm md:text-base rounded-[8px] tracking-tight border border-border flex items-center gap-[5px] cursor-pointer bg-bg-secondary hover:bg-bg-tertiary"
               >
-                Explore Components
-              </SlideUpButton>
+                <IconBrandGithub size={20} />
+                Star us on GitHub
+              </button>
             </Link>
           </div>
         </div>
@@ -55,19 +66,6 @@ export default function Home() {
 
       {/* Video Bento Grid */}
       <VideoBentoGrid />
-
-      <div className=" flex justify-center mb-10">
-        <p className="text-sm/5 tracking-[-0.01em]">
-          Build with ❤️ by{" "}
-          <Link
-            href={"https://x.com/amarnathdhumal"}
-            target="_blank"
-            className="underline"
-          >
-            Amarnath Dhumal
-          </Link>
-        </p>
-      </div>
     </div>
   );
 }

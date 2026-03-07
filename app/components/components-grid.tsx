@@ -147,7 +147,7 @@ export const ComponentCard = ({
 
 const ComponentsGrid = () => {
   return (
-    <div className="flex flex-col w-full pb-12 ">
+    <div className="flex flex-col w-full pb-20 ">
       <h1 className="text-[2rem]/10 md:text-[2.5rem]/10 font-semibold tracking-tight text-black dark:text-white mb-3">
         Components
       </h1>
@@ -157,7 +157,7 @@ const ComponentsGrid = () => {
       </p>
 
       {/* Component Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-4 md:gap-6">
         {componentCards.map((component) => (
           <ComponentCard key={component.link} component={component} />
         ))}
