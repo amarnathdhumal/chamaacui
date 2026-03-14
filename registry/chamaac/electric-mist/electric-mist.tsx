@@ -133,8 +133,8 @@ const Effect = ({
       material.current.uniforms.uTime.value =
         state.clock.getElapsedTime() * speed;
       material.current.uniforms.uResolution.value.set(
-        state.size.width * state.viewport.dpr,
-        state.size.height * state.viewport.dpr
+        state.size.width,
+        state.size.height
       );
     }
   });
@@ -169,7 +169,7 @@ export default function ElectricMist({
     >
       <Canvas
         camera={{ position: [0, 0, 1] }}
-        dpr={0.7}
+        dpr={1}
         gl={{ antialias: false, powerPreference: "high-performance" }}
       >
         <Effect
