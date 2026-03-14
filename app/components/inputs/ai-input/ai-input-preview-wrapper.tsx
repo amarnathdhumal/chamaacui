@@ -25,7 +25,7 @@ export default function AIInputPreviewWrapper({
         description={description}
         preview={
           <div className="w-full h-[300px] flex flex-col justify-center items-center relative overflow-hidden rounded-xl gap-6">
-            <div className="text-center">
+            <div className="text-center flex flex-col items-center">
               <div className="flex flex-row items-center justify-center gap-2">
                 <h3 className="text-3xl font-semibold text-black dark:text-white text-center">
                   Full Page Component
@@ -36,6 +36,7 @@ export default function AIInputPreviewWrapper({
                 Click below to see the live preview.
               </p>
               <PrimaryButton
+                variant="secondary"
                 onClick={() => window.open("/previews/ai-input", "_blank")}
               >
                 <span className="flex items-center gap-2">

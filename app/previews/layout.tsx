@@ -12,7 +12,10 @@ export default function PreviewsLayout({
     <div className="relative min-h-screen w-full bg-white dark:bg-black">
       <div className="absolute top-4 left-4 z-50">
         <Link href="/components/inputs/ai-input">
-          <PrimaryButton className="flex items-center gap-2">
+          <PrimaryButton
+            variant="secondary"
+            className="flex items-center gap-2"
+          >
             <IconArrowLeft size={20} />
             Back to component
           </PrimaryButton>
