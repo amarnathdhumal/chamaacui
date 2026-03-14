@@ -19,6 +19,12 @@ export const sidebarData: SidebarDataTypes[] = [
   },
   // backgrounds
   {
+    componentName: "Electric Mist",
+    link: "/backgrounds/electric-mist",
+    category: "Backgrounds",
+    isNew: true,
+  },
+  {
     componentName: "Astral Flow",
     link: "/backgrounds/astral-flow",
     category: "Backgrounds",
@@ -40,7 +46,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Grid Bloom",
     link: "/backgrounds/grid-bloom",
     category: "Backgrounds",
-    isUpdated: true,
   },
   {
     componentName: "Liquid Chrome",
@@ -174,6 +179,16 @@ interface ComponentCardType {
 }
 
 export const componentCards: ComponentCardType[] = [
+  {
+    title: "Electric Mist",
+    description:
+      "A high-energy glowing lightning shader with waves and smoke effects.",
+    imagePath: "/components/backgrounds/electric-mist.png",
+    videoSrc: " https://assets.amarn.me/electric-mist-v2.mp4",
+    link: "/components/backgrounds/electric-mist",
+    category: "Backgrounds",
+    bgColor: "bg-black dark:bg-black",
+  },
   {
     title: "Astral Flow",
     description:

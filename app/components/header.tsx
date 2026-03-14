@@ -191,7 +191,7 @@ export const Header = () => {
                   className="text-text-secondary hover:text-black dark:hover:text-white transition-colors cursor-pointer"
                 />
               </TooltipTrigger>
-              <TooltipContent sideOffset={8}>GitHub</TooltipContent>
+              <TooltipContent sideOffset={8}>Star us on GitHub</TooltipContent>
             </Tooltip>
 
             <Tooltip>

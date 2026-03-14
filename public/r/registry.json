@@ -4,6 +4,24 @@
   "homepage": "https://chamaac.com",
   "items": [
     {
+      "name": "electric-mist",
+      "type": "registry:component",
+      "title": "Electric Mist",
+      "description": "A high-energy glowing lightning shader with waves and smoke effects.",
+      "dependencies": [
+        "three",
+        "@react-three/fiber",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/electric-mist/electric-mist.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "waves",
       "type": "registry:component",
       "title": "Waves",

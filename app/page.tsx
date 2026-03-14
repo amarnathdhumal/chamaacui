@@ -51,14 +51,10 @@ export default function Home() {
               rel="noopener noreferrer"
               className="w-fit"
             >
-              <button
-                className="
-                px-3 py-1.5 md:px-5 md:py-2.5
-                 text-black dark:text-white text-sm md:text-base rounded-[8px] tracking-tight border border-border flex items-center gap-[5px] cursor-pointer bg-bg-secondary hover:bg-bg-tertiary"
-              >
+              <PrimaryButton variant="secondary">
                 <IconBrandGithub size={20} />
                 Star us on GitHub
-              </button>
+              </PrimaryButton>
             </Link>
           </div>
         </div>

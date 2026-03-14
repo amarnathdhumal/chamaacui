@@ -131,7 +131,7 @@ export const ComponentCard = ({
 
             {/* Content */}
             <div className="pb-2 pt-4 px-2 md:px-2">
-              <h3 className="text-xl leading-none font-medium text-black dark:text-white mb-2 md:mb-4 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors tracking-[-0.01em]">
+              <h3 className="text-2xl leading-none font-semibold text-black dark:text-white mb-2 md:mb-4 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors tracking-[-0.01em]">
                 {component.title}
               </h3>
               <p className="text-sm/5 text-text-secondary tracking-wide">
@@ -157,7 +157,7 @@ const ComponentsGrid = () => {
       </p>
 
       {/* Component Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2  xl:grid-cols-3 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-7">
         {componentCards.map((component) => (
           <ComponentCard key={component.link} component={component} />
         ))}
