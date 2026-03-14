@@ -207,7 +207,12 @@ export function Waves({
   waveAmpX = 32,
 }: WavesProps) {
   return (
-    <div className={cn("w-full h-full absolute top-0 left-0 z-0", className)}>
+    <div
+      className={cn(
+        "absolute inset-0 w-full h-full pointer-events-none z-0",
+        className
+      )}
+    >
       <Canvas camera={{ position: [0, 0, 4] }}>
         <color attach="background" args={[backgroundColor]} />
         <Scene

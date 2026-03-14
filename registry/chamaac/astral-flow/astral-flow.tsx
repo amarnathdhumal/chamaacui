@@ -214,7 +214,7 @@ export default function AstralFlow({
   return (
     <div
       className={cn(
-        "relative w-full h-full min-h-[400px] overflow-hidden bg-[#05070a]",
+        "absolute inset-0 w-full h-full pointer-events-none overflow-hidden bg-[#05070a]",
         className
       )}
     >

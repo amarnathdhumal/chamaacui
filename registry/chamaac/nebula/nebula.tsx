@@ -118,7 +118,7 @@ const NebulaMaterial = ({
       uColor2: { value: new THREE.Color(color2) },
       uColor3: { value: new THREE.Color(color3) },
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     [] // Initialize once
   );
 
@@ -170,7 +170,12 @@ export default function Nebula({
   color3 = "#1a0b2e", // Deep purple (Deep Space)
 }: NebulaProps) {
   return (
-    <div className={cn("relative w-full h-full min-h-[400px]", className)}>
+    <div
+      className={cn(
+        "absolute inset-0 w-full h-full pointer-events-none",
+        className
+      )}
+    >
       <Canvas
         camera={{ position: [0, 0, 1] }}
         dpr={[1, 2]}

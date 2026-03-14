@@ -126,7 +126,7 @@ const LiquidEffect = ({
       uColor: { value: new THREE.Color(color) },
       uColor2: { value: new THREE.Color(color2) },
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     []
   );
 
@@ -169,7 +169,12 @@ export default function LiquidChrome({
   color2 = "#4A4A4A",
 }: LiquidChromeProps) {
   return (
-    <div className={cn("relative w-full h-full min-h-[600px]", className)}>
+    <div
+      className={cn(
+        "absolute inset-0 w-full h-full pointer-events-none",
+        className
+      )}
+    >
       <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 2]}>
         <LiquidEffect
           speed={speed}

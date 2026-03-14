@@ -197,7 +197,7 @@ const ShaderPlane = ({ speed, color1, color2, color3 }: ShaderPlaneProps) => {
   return (
     <mesh>
       <planeGeometry args={[2, 2]} />
-      {/* eslint-disable react/no-unknown-property */}
+      {}
       <shaderMaterial
         ref={materialRef}
         vertexShader={vertexShader}
@@ -206,7 +206,7 @@ const ShaderPlane = ({ speed, color1, color2, color3 }: ShaderPlaneProps) => {
         depthWrite={false}
         depthTest={false}
       />
-      {/* eslint-enable react/no-unknown-property */}
+      {}
     </mesh>
   );
 };
@@ -229,7 +229,7 @@ export default function LiquidMorph({
   return (
     <div
       className={cn(
-        "w-full h-full absolute inset-0 bg-black cursor-crosshair overflow-hidden",
+        "w-full h-full absolute inset-0 bg-black cursor-crosshair overflow-hidden pointer-events-none",
         className
       )}
     >

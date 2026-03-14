@@ -125,7 +125,7 @@ const NebulaInteractiveMaterial = ({
       uMouse: { value: new THREE.Vector2(0, 0) },
       uHover: { value: 0 },
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     []
   );
 
@@ -195,7 +195,12 @@ export default function NebulaInteractive({
   color3 = "#1a0b2e", // Deep purple (Deep Space)
 }: NebulaInteractiveProps) {
   return (
-    <div className={cn("relative w-full h-full min-h-[400px]", className)}>
+    <div
+      className={cn(
+        "absolute inset-0 w-full h-full pointer-events-none",
+        className
+      )}
+    >
       <Canvas
         camera={{ position: [0, 0, 1] }}
         dpr={[1, 2]}

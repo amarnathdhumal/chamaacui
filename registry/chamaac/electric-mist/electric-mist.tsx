@@ -163,7 +163,7 @@ export default function ElectricMist({
   return (
     <div
       className={cn(
-        "relative w-full h-full min-h-[400px] bg-[#05050f] overflow-hidden",
+        "absolute inset-0 w-full h-full pointer-events-none bg-[#05050f] overflow-hidden",
         className
       )}
     >
