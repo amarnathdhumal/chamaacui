@@ -36,7 +36,7 @@ export default function ElectricMistDemo({
           GeistPixelSquare.className
         )}
       >
-        <h1 className="text-7xl md:text-8xl font-bold dark:text-white opacity-80 text-blue-200 uppercase text-center drop-shadow-lg leading-tight">
+        <h1 className="text-7xl md:text-8xl font-bold text-white opacity-80 uppercase text-center drop-shadow-lg leading-tight">
           Electric Mist
         </h1>
       </div>

@@ -19,6 +19,12 @@ export const sidebarData: SidebarDataTypes[] = [
   },
   // backgrounds
   {
+    componentName: "Synthesis",
+    link: "/backgrounds/synthesis",
+    category: "Backgrounds",
+    isNew: true,
+  },
+  {
     componentName: "Electric Mist",
     link: "/backgrounds/electric-mist",
     category: "Backgrounds",
@@ -62,6 +68,13 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Interactive Grid",
     link: "/backgrounds/interactive-grid",
     category: "Backgrounds",
+  },
+
+  // inputs
+  {
+    componentName: "AI Input",
+    link: "/inputs/ai-input",
+    category: "Inputs",
   },
 
   // sections
@@ -147,13 +160,6 @@ export const sidebarData: SidebarDataTypes[] = [
     category: "Text Animations",
   },
 
-  // inputs
-  {
-    componentName: "AI Input",
-    link: "/inputs/ai-input",
-    category: "Inputs",
-  },
-
   // navigation
   {
     componentName: "Dock",
@@ -179,6 +185,16 @@ interface ComponentCardType {
 }
 
 export const componentCards: ComponentCardType[] = [
+  {
+    title: "Synthesis",
+    description:
+      "A professional, multi-layered cosmic flow background with extensive warping customization.",
+    imagePath: "/components/backgrounds/synthesis.png",
+    videoSrc: "https://assets.amarn.me/synthesis.mp4",
+    link: "/components/backgrounds/synthesis",
+    category: "Backgrounds",
+    bgColor: "bg-black dark:bg-black",
+  },
   {
     title: "Electric Mist",
     description:
@@ -252,6 +268,16 @@ export const componentCards: ComponentCardType[] = [
     videoSrc: "https://assets.amarn.me/animated-icons2.mp4",
     link: "/components/animated-icons",
     category: "Animated Icons",
+    bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "AI Input",
+    description:
+      "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
+    imagePath: "/components/inputs/ai-input.png",
+    videoSrc: "https://assets.amarn.me/ai-input.mp4",
+    link: "/components/inputs/ai-input",
+    category: "Inputs",
     bgColor: "bg-black dark:bg-black",
   },
   {
@@ -349,16 +375,6 @@ export const componentCards: ComponentCardType[] = [
     videoSrc: "https://assets.amarn.me/shimmer-button.mp4",
     link: "/components/buttons/shimmer-button",
     category: "Buttons",
-    bgColor: "bg-black dark:bg-black",
-  },
-  {
-    title: "AI Input",
-    description:
-      "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
-    imagePath: "/components/inputs/ai-input.png",
-    videoSrc: "https://assets.amarn.me/ai-input.mp4",
-    link: "/components/inputs/ai-input",
-    category: "Inputs",
     bgColor: "bg-black dark:bg-black",
   },
   {

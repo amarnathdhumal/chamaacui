@@ -99,7 +99,7 @@ export function AstralFlowDemo() {
         flowMax={${dFlowMax}}
       />
       <div className={\`absolute inset-0 flex items-center justify-center pointer-events-none z-10 p-4 \${GeistPixelSquare.className}\`}>
-         <h1 className="text-7xl md:text-8xl font-bold dark:text-white opacity-80 text-purple-200 uppercase text-center drop-shadow-lg">
+         <h1 className="text-7xl md:text-8xl font-bold text-white opacity-80 uppercase text-center drop-shadow-lg">
           Astral Flow
         </h1>
       </div>

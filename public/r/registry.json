@@ -95,6 +95,24 @@
       ]
     },
     {
+      "name": "synthesis",
+      "type": "registry:component",
+      "title": "Synthesis",
+      "description": "A professional, multi-layered cosmic flow background with extensive warping customization.",
+      "dependencies": [
+        "three",
+        "@react-three/fiber",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/backgrounds/synthesis.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
       "name": "stats-cards",
       "type": "registry:component",
       "title": "Stats Cards",
