@@ -8,6 +8,12 @@ export const metadata = constructMetadata({
   description:
     "A majestic, constantly breathing radial shader with deep cosmic wisps and a beautiful flowing continuous animation.",
   image: "/components/backgrounds/astral-flow.png",
+  keywords: [
+    "Astral Flow background",
+    "Cosmic shader animation",
+    "Radial flow effect",
+    "React Three Fiber radial shader",
+  ],
 });
 
 export default function AstralFlowPage() {

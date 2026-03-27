@@ -8,6 +8,12 @@ export const metadata = constructMetadata({
   description:
     "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
   image: "/components/carousel.png",
+  keywords: [
+    "3D Carousel React",
+    "Framer Motion carousel",
+    "Auto-playing slider",
+    "Feature carousel component",
+  ],
 });
 
 // file paths

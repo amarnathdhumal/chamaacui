@@ -4,7 +4,7 @@ import ComponentsGrid from "./components-grid";
 export const metadata = constructMetadata({
   title: "Components",
   description:
-    "A collection of interactive and animated components for your applications.",
+    "A collection of high-performance shader components and interactive animated elements.",
   image: "/images/og-image.png",
 });
 

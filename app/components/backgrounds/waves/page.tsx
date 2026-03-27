@@ -7,6 +7,7 @@ export const metadata = constructMetadata({
   title: "Waves",
   description: "A smooth, shader-based wave animation component.",
   image: "/components/backgrounds/waves.png",
+  keywords: ["Animated Waves", "SVG Wave background", "Fluid Wave effect"],
 });
 
 export default function WavesPage() {

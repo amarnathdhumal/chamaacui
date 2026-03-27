@@ -7,6 +7,12 @@ export const metadata = constructMetadata({
   title: "How It Works",
   description: "A 5-step process flow with cards and connecting lines.",
   image: "/components/sections/how-it-works.png",
+  keywords: [
+    "Process flow component",
+    "Step-by-step UI",
+    "Connected cards animation",
+    "Visual flow React",
+  ],
 });
 
 // file paths

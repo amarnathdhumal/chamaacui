@@ -8,6 +8,12 @@ export const metadata = constructMetadata({
   description:
     "A professional, multi-layered cosmic flow background with extensive warping customization.",
   image: "/components/backgrounds/synthesis.png",
+  keywords: [
+    "Synthesis background",
+    "Cosmic flow shader",
+    "WebGL background",
+    "Domain warping animation",
+  ],
 });
 
 export default function SynthesisPage() {

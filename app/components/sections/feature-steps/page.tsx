@@ -8,6 +8,12 @@ export const metadata = constructMetadata({
   description:
     "A dynamic feature showcase component with auto-playing steps and synchronized image transitions.",
   image: "/components/features-step.png",
+  keywords: [
+    "Feature showcase component",
+    "Animated steps UI",
+    "Sync image transitions",
+    "React feature section",
+  ],
 });
 
 // file paths

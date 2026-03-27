@@ -8,6 +8,12 @@ export const metadata = constructMetadata({
   description:
     "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
   image: "/components/gauge.png",
+  keywords: [
+    "Gauge component React",
+    "Animated radial gauge",
+    "Performance score UI",
+    "Metric visualization",
+  ],
 });
 
 // file paths

@@ -8,6 +8,12 @@ export const metadata = constructMetadata({
   description:
     "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
   image: "/components/ai-input.svg",
+  keywords: [
+    "AI Input component",
+    "Prompt UI React",
+    "Chat input with uploads",
+    "Framer Motion input",
+  ],
 });
 
 // file paths

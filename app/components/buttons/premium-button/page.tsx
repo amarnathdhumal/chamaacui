@@ -7,6 +7,12 @@ export const metadata = constructMetadata({
   title: "Premium Button",
   description: "A high-quality button with a dynamic arrow animation.",
   image: "/components/buttons/premium-button.png",
+  keywords: [
+    "Premium React buttons",
+    "Animated button components",
+    "Interactive UI buttons",
+    "Tailwind CSS buttons",
+  ],
 });
 
 export default function PremiumButtonPage() {

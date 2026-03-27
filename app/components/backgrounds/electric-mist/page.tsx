@@ -8,6 +8,12 @@ export const metadata = constructMetadata({
   description:
     "A high-energy glowing lightning shader with waves and smoke effects.",
   image: "/components/backgrounds/electric-mist.png",
+  keywords: [
+    "Electric Mist shader",
+    "Lightning background",
+    "Glow effect React",
+    "Interactive fog background",
+  ],
 });
 
 export default function ElectricMistPage() {

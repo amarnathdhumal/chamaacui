@@ -7,6 +7,12 @@ export const metadata = constructMetadata({
   title: "Dancing Letters",
   description: "Physics-based interactive text animations.",
   image: "/components/text-animations/dancing-letters.png",
+  keywords: [
+    "Dancing letters animation",
+    "Physics text effect",
+    "Interactive typography",
+    "Letter animation React",
+  ],
 });
 
 // file paths

@@ -8,6 +8,12 @@ export const metadata = constructMetadata({
   description:
     "A dock navigation component with animated dropdown menus, hover effects, and image previews.",
   image: "/components/navigation/dock.png",
+  keywords: [
+    "MacOS Dock component",
+    "Animated navigation React",
+    "Sticky dock menu",
+    "Framer Motion dock",
+  ],
 });
 
 // file paths

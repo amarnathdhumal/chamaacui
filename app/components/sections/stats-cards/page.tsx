@@ -7,6 +7,12 @@ export const metadata = constructMetadata({
   title: "Stats Cards",
   description: "A set of animated statistic cards with hover effects.",
   image: "/components/sections/stats-cards.png",
+  keywords: [
+    "Stats cards React",
+    "Animated statistics",
+    "Dashboard cards",
+    "Hover effect cards",
+  ],
 });
 
 // file paths

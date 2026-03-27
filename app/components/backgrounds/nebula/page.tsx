@@ -8,6 +8,12 @@ export const metadata = constructMetadata({
   description:
     "A mesmerizing, shader-driven nebula animation using domain warping for a deep space effect.",
   image: "/components/backgrounds/nebula.png",
+  keywords: [
+    "Nebula shader",
+    "Space background",
+    "Domain warping animation",
+    "GLSL nebula",
+  ],
 });
 
 export default function NebulaPage() {

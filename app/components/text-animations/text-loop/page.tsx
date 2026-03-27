@@ -7,6 +7,12 @@ export const metadata = constructMetadata({
   title: "Text Loop",
   description: "An animated text loop with typewriter and gradient effect.",
   image: "/components/text-animations/text-loop.png",
+  keywords: [
+    "Text loop animation",
+    "Typewriter effect React",
+    "Rotating text component",
+    "Framer Motion text loop",
+  ],
 });
 
 // file paths

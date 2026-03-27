@@ -7,6 +7,12 @@ export const metadata = constructMetadata({
   title: "Interactive Grid Background",
   description: "A highly interactive, mouse-sensitive grid background.",
   image: "/components/backgrounds/interactive-grid.png",
+  keywords: [
+    "Interactive grid",
+    "Mouse-sensitive grid",
+    "Canvas grid animation",
+    "Interactive background",
+  ],
 });
 
 export default function InteractiveGridPage() {

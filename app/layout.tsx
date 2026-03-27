@@ -28,21 +28,21 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Chamaac UI | Premium UI Components",
+  title: "Chamaac UI | High-Performance Shaders & UI Components",
   description:
-    "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
+    "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
   openGraph: {
-    title: "Chamaac UI | Premium UI Components",
+    title: "Chamaac UI | High-Performance Shaders & UI Components",
     description:
-      "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
-    url: "https://www.chamaac.com",
+      "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
+    url: "https://chamaac.com",
     siteName: "Chamaac UI",
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Chamaac UI Components",
+        alt: "Chamaac UI Shaders & UI Components",
       },
     ],
     locale: "en_US",
@@ -50,15 +50,18 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Chamaac UI | Premium UI Components",
+    title: "Chamaac UI | High-Performance Shaders & UI Components",
     description:
-      "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
+      "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
     images: ["/images/og-image.png"],
   },
   icons: {
     icon: "/favicon.png",
   },
-  metadataBase: new URL("https://www.chamaac.com"),
+  metadataBase: new URL("https://chamaac.com"),
+  alternates: {
+    canonical: "https://chamaac.com",
+  },
 };
 
 export default function RootLayout({
@@ -91,15 +94,15 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Chamaac UI",
-              url: "https://www.chamaac.com",
+              url: "https://chamaac.com",
               description:
-                "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
+                "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
               publisher: {
                 "@type": "Organization",
                 name: "Chamaac UI",
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://www.chamaac.com/favicon.png",
+                  url: "https://chamaac.com/favicon.png",
                 },
               },
             }),

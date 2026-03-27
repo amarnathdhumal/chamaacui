@@ -7,6 +7,12 @@ export const metadata = constructMetadata({
   title: "Liquid Chrome",
   description: "A smooth, liquid metal shader effect.",
   image: "/components/backgrounds/liquid-chrome.png",
+  keywords: [
+    "Liquid Chrome shader",
+    "Liquid metal animation",
+    "Metallic background",
+    "React Three Fiber liquid chrome",
+  ],
 });
 
 export default function LiquidChromePage() {

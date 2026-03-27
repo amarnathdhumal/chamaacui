@@ -8,6 +8,12 @@ export const metadata = constructMetadata({
   description:
     "A mesmerizing, shader-driven background with dual pulsing wave origins that create interference patterns across an animated rotating grid.",
   image: "/components/backgrounds/grid-bloom.png",
+  keywords: [
+    "Grid bloom shader",
+    "Wave pulse grid",
+    "Abstract grid animation",
+    "Geometric background",
+  ],
 });
 
 export default function GridBloomPage() {

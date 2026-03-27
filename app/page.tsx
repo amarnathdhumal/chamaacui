@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import { Header } from "./components/header";
 
 export const metadata: Metadata = {
-  title: "Chamaac UI | Premium UI Components",
+  title: "Chamaac UI | High-Performance Shaders & UI Components",
   description:
-    "A premium collection of motion-rich, interactive UI components for React.",
+    "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
 };
-import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import Link from "next/link";
 import TextLoop from "./components/text-animations/text-loop/text-loop";
 import VideoBentoGrid from "../components/ui/video-bento-grid";
@@ -37,9 +36,10 @@ export default function Home() {
             rotatingTexts={["Shine.", "Pop.", "Glow."]}
           />
 
-          <p className="text-base/5 md:text-lg/6 text-left sm:text-center text-neutral-600 dark:text-gray-300 my-5 md:my-[30px] max-w-[550px]">
-            A premium collection of interactable, motion-rich components
-            designed to make your web presence unforgettable.
+          <p className="text-base/5 md:text-lg/6 text-left sm:text-center text-neutral-600 dark:text-gray-300 my-5 md:my-[30px] max-w-[650px]">
+            A premium collection of high-performance shader backgrounds and
+            interactive UI components designed to make your web presence
+            unforgettable.
           </p>
           <div className="flex justify-center gap-3">
             <Link href="/components" className="w-fit">

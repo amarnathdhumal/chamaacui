@@ -12,28 +12,45 @@ export function constructMetadata({
   image = "/images/og-image.png",
   icons = "/favicon.png",
   noIndex = false,
+  keywords = [],
 }: {
   title?: string;
   description?: string;
   image?: string;
   icons?: string;
   noIndex?: boolean;
+  keywords?: string[];
 } = {}): Metadata {
+  const defaultKeywords = [
+    "Chamaac UI",
+    "Shaders & UI Components",
+    "React Shader Components",
+    "GLSL Components",
+    "WebGL UI",
+    "High-performance shaders",
+    "React Three Fiber backgrounds",
+    "Interactive UI components",
+    "Modern web design",
+    "Framer Motion components",
+    "Next.js components",
+  ];
+
   return {
     title: title
       ? `${title} | Chamaac UI`
-      : "Chamaac UI | Premium UI Components",
+      : "Chamaac UI | High-Performance Shaders & UI Components",
     description:
       description ||
-      "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
+      "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
+    keywords: [...defaultKeywords, ...keywords],
     openGraph: {
       title: title
         ? `${title} | Chamaac UI`
-        : "Chamaac UI | Premium UI Components",
+        : "Chamaac UI | High-Performance Shaders & UI Components",
       description:
         description ||
-        "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
-      url: "https://www.chamaac.com",
+        "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
+      url: "https://chamaac.com",
       siteName: "Chamaac UI",
       images: [
         {
@@ -52,15 +69,18 @@ export function constructMetadata({
       card: "summary_large_image",
       title: title
         ? `${title} | Chamaac UI`
-        : "Chamaac UI | Premium UI Components",
+        : "Chamaac UI | High-Performance Shaders & UI Components",
       description:
         description ||
-        "Explore a collection of stunning and interactive UI components crafted with React and Motion.",
+        "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
       images: [image],
       creator: "@amarnath",
     },
     icons,
-    metadataBase: new URL("https://www.chamaac.com"),
+    metadataBase: new URL("https://chamaac.com"),
+    alternates: {
+      canonical: "/",
+    },
     ...(noIndex && {
       robots: {
         index: false,
