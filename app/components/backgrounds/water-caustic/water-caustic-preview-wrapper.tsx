@@ -29,7 +29,7 @@ export default function WaterCausticPreviewWrapper({
     },
   ];
 
-  const codeString = `import WaterCaustic from "@/registry/chamaac/water-caustic/water-caustic";
+  const codeString = `import WaterCaustic from "@/components/water-caustic";
 import { GeistPixelSquare } from "geist/font/pixel";
 
 export function WaterCausticDemo() {

@@ -121,7 +121,7 @@ export default function SynthesisDemoWrapper({
     },
   ];
 
-  const codeString = `import Synthesis from "@/registry/chamaac/backgrounds/synthesis";
+  const codeString = `import Synthesis from "@/components/synthesis";
 import { GeistPixelSquare } from "geist/font/pixel";
 
 export function SynthesisDemo() {

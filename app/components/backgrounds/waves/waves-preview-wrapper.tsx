@@ -86,7 +86,7 @@ export default function WavesPreviewWrapper({
     },
   ];
 
-  const codeString = `import { Waves } from "@/components/ui/waves";
+  const codeString = `import { Waves } from "@/components/waves";
 import { GeistPixelSquare } from "geist/font/pixel";
 
 export function WavesDemo() {

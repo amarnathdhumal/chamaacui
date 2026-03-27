@@ -101,7 +101,7 @@ export default function DeformTunnelPreviewWrapper({
     },
   ];
 
-  const codeString = `import DeformTunnel from "@/registry/chamaac/deform-tunnel/deform-tunnel";
+  const codeString = `import DeformTunnel from "@/components/deform-tunnel";
 import { GeistPixelSquare } from "geist/font/pixel";
 
 export function DeformTunnelDemo() {

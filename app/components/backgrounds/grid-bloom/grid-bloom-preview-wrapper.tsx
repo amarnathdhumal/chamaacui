@@ -159,7 +159,7 @@ export default function GridBloomPreviewWrapper({
     },
   ];
 
-  const codeString = `import GridBloom from "@/registry/chamaac/grid-bloom/grid-bloom";
+  const codeString = `import GridBloom from "@/components/grid-bloom";
 import { GeistPixelSquare } from "geist/font/pixel";
 
 export function GridBloomDemo() {

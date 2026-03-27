@@ -84,7 +84,7 @@ export default function AstralFlowPreviewWrapper({
     },
   ];
 
-  const codeString = `import AstralFlow from "@/registry/chamaac/astral-flow/astral-flow";
+  const codeString = `import AstralFlow from "@/components/astral-flow";
 import { GeistPixelSquare } from "geist/font/pixel";
 
 export function AstralFlowDemo() {

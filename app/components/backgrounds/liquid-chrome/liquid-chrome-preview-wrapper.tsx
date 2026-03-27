@@ -58,7 +58,7 @@ export default function LiquidChromePreviewWrapper({
     },
   ];
 
-  const codeString = `import LiquidChrome from "@/registry/chamaac/liquid-chrome/liquid-chrome";
+  const codeString = `import LiquidChrome from "@/components/liquid-chrome";
 import { GeistPixelSquare } from "geist/font/pixel";
 
 export function LiquidChromeDemo() {

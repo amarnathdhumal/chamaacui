@@ -78,7 +78,7 @@ export default function ElectricMistDemoWrapper({
     },
   ];
 
-  const codeString = `import ElectricMist from "@/registry/chamaac/electric-mist/electric-mist";
+  const codeString = `import ElectricMist from "@/components/electric-mist";
 import { GeistPixelSquare } from "geist/font/pixel";
 
 export function ElectricMistDemo() {
