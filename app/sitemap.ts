@@ -3,7 +3,7 @@ import { sidebarData } from "@/lib/data";
 import { iconSlugs } from "@/lib/icon-slugs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.chamaac.com";
+  const baseUrl = "https://chamaac.com";
 
   // Base pages
   const routes: MetadataRoute.Sitemap = [
