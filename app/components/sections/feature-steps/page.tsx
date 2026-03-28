@@ -1,13 +1,19 @@
 import FeatureStepsPreviewWrapper from "./feature-steps-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Feature Steps",
   description:
     "A dynamic feature showcase component with auto-playing steps and synchronized image transitions.",
   image: "/components/features-step.png",
+  pathname: "/components/sections/feature-steps",
+  category: "Sections",
   keywords: [
     "Feature showcase component",
     "Animated steps UI",
@@ -31,8 +37,28 @@ const DemoSource = fs
   .replace("./feature-steps", "@/components/feature-steps");
 
 export default function FeatureStepsPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Feature Steps",
+      description:
+        "A dynamic feature showcase component with auto-playing steps and synchronized image transitions.",
+      pathname: "/components/sections/feature-steps",
+      image: "/components/features-step.png",
+      category: "Feature section",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Sections", path: "/components" },
+      { name: "Feature Steps", path: "/components/sections/feature-steps" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <FeatureStepsPreviewWrapper
         title="Feature Steps"
         description={

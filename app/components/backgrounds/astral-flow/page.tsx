@@ -1,15 +1,20 @@
 import AstralFlowPreviewWrapper from "./astral-flow-preview-wrapper";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 import fs from "fs";
 import path from "path";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Astral Flow",
   description:
     "A majestic, constantly breathing radial shader with deep cosmic wisps and a beautiful flowing continuous animation.",
   image: "/components/backgrounds/astral-flow.png",
+  pathname: "/components/backgrounds/astral-flow",
+  category: "Backgrounds",
   keywords: [
-    "Astral Flow background",
     "Cosmic shader animation",
     "Radial flow effect",
     "React Three Fiber radial shader",
@@ -17,6 +22,23 @@ export const metadata = constructMetadata({
 });
 
 export default function AstralFlowPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Astral Flow",
+      description:
+        "A majestic, constantly breathing radial shader with deep cosmic wisps and a beautiful flowing continuous animation.",
+      pathname: "/components/backgrounds/astral-flow",
+      image: "/components/backgrounds/astral-flow.png",
+      category: "Background shader",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Backgrounds", path: "/components" },
+      { name: "Astral Flow", path: "/components/backgrounds/astral-flow" },
+    ]),
+  ];
+
   const componentPath = path.join(
     process.cwd(),
     "registry/chamaac/astral-flow/astral-flow.tsx"
@@ -25,6 +47,10 @@ export default function AstralFlowPage() {
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <AstralFlowPreviewWrapper
         title="Astral Flow"
         description="A majestic, constantly breathing radial shader with deep cosmic wisps and a beautiful flowing continuous animation."

@@ -1,7 +1,11 @@
 import AdjustmentsHorizontalIconPreviewWrapper from "./adjustments-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,37 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Adjustments Icon",
-  description: "An animated adjustments icon that simulates sliding controls.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Adjustments Icon",
+  "/components/animated-icons/adjustments-icon"
+);
 
 export default function AdjustmentsHorizontalIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Adjustments Icon",
+      description:
+        "An animated adjustments icon that simulates sliding controls.",
+      pathname: "/components/animated-icons/adjustments-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      {
+        name: "Adjustments Icon",
+        path: "/components/animated-icons/adjustments-icon",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <AdjustmentsHorizontalIconPreviewWrapper
         title="Adjustments Icon"
         description="An animated adjustments icon that simulates sliding controls."

@@ -1,7 +1,11 @@
 import MoonIconPreviewWrapper from "./moon-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Moon Icon",
-  description: "An animated moon icon with a gentle wobble effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Moon Icon",
+  "/components/animated-icons/moon-icon"
+);
 
 export default function MoonIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Moon Icon",
+      description: "An animated moon icon with a gentle wobble effect.",
+      pathname: "/components/animated-icons/moon-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Moon Icon", path: "/components/animated-icons/moon-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <MoonIconPreviewWrapper
         title="Moon Icon"
         description="An animated moon icon with a gentle wobble effect."

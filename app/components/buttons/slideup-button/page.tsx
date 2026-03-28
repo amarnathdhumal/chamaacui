@@ -1,6 +1,11 @@
 import SlideUpButtonPreviewWrapper from "./slide-up-button-preview-wrapper";
 import fs from "fs";
 import path from "path";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -19,17 +24,36 @@ const SlideUpButtonDemoSource = fs
     "@/components/slideup-button"
   );
 
-import { constructMetadata } from "@/lib/utils";
-
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Slide Up Button",
   description: "An animated button with a slide-up text effect on hover.",
   image: "/components/slide-up-button.png",
+  pathname: "/components/buttons/slideup-button",
+  category: "Buttons",
 });
 
 export default function SlideUpButtonPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Slide Up Button",
+      description: "An animated button with a slide-up text effect on hover.",
+      pathname: "/components/buttons/slideup-button",
+      image: "/components/slide-up-button.png",
+      category: "Button UI component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Buttons", path: "/components" },
+      { name: "Slide Up Button", path: "/components/buttons/slideup-button" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SlideUpButtonPreviewWrapper
         title="Slide Up Button"
         description={

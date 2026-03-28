@@ -1,7 +1,11 @@
 import ShieldIconPreviewWrapper from "./shield-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Shield Icon",
-  description: "An animated shield icon with a checkmark that draws in.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Shield Icon",
+  "/components/animated-icons/shield-icon"
+);
 
 export default function ShieldIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Shield Icon",
+      description: "An animated shield icon with a checkmark that draws in.",
+      pathname: "/components/animated-icons/shield-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Shield Icon", path: "/components/animated-icons/shield-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ShieldIconPreviewWrapper
         title="Shield Icon"
         description="An animated shield icon with a checkmark that draws in."

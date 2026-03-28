@@ -1,15 +1,20 @@
 import GridBloomPreviewWrapper from "./grid-bloom-preview-wrapper";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 import fs from "fs";
 import path from "path";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Grid Bloom",
   description:
     "A mesmerizing, shader-driven background with dual pulsing wave origins that create interference patterns across an animated rotating grid.",
   image: "/components/backgrounds/grid-bloom.png",
+  pathname: "/components/backgrounds/grid-bloom",
+  category: "Backgrounds",
   keywords: [
-    "Grid bloom shader",
     "Wave pulse grid",
     "Abstract grid animation",
     "Geometric background",
@@ -17,6 +22,22 @@ export const metadata = constructMetadata({
 });
 
 export default function GridBloomPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Grid Bloom",
+      description:
+        "A mesmerizing, shader-driven background with dual pulsing wave origins that create interference patterns across an animated rotating grid.",
+      pathname: "/components/backgrounds/grid-bloom",
+      image: "/components/backgrounds/grid-bloom.png",
+      category: "Background shader",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Backgrounds", path: "/components" },
+      { name: "Grid Bloom", path: "/components/backgrounds/grid-bloom" },
+    ]),
+  ];
   const componentPath = path.join(
     process.cwd(),
     "registry/chamaac/grid-bloom/grid-bloom.tsx"
@@ -25,6 +46,10 @@ export default function GridBloomPage() {
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <GridBloomPreviewWrapper
         title="Grid Bloom"
         description="A mesmerizing, shader-driven background with dual pulsing wave origins that create interference patterns across an animated rotating grid."

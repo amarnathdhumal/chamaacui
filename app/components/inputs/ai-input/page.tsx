@@ -1,18 +1,23 @@
 import AIInputPreviewWrapper from "./ai-input-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "AI Input",
   description:
     "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
   image: "/components/ai-input.svg",
+  pathname: "/components/inputs/ai-input",
+  category: "Inputs",
   keywords: [
     "AI Input component",
     "Prompt UI React",
     "Chat input with uploads",
-    "Framer Motion input",
   ],
 });
 
@@ -31,8 +36,28 @@ const AIInputDemoSource = fs
   .replace("@/registry/chamaac/ai-input/ai-input", "@/components/ai-input");
 
 export default function AIInputPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "AI Input",
+      description:
+        "A polished AI input component with model selection, tools, file uploads, and smooth animations.",
+      pathname: "/components/inputs/ai-input",
+      image: "/components/ai-input.svg",
+      category: "Form input component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Inputs", path: "/components" },
+      { name: "AI Input", path: "/components/inputs/ai-input" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <AIInputPreviewWrapper
         title="AI Input"
         description={

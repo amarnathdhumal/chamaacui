@@ -1,14 +1,19 @@
 import TextLoopPreviewWrapper from "./text-loop-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Text Loop",
   description: "An animated text loop with typewriter and gradient effect.",
   image: "/components/text-animations/text-loop.png",
+  pathname: "/components/text-animations/text-loop",
+  category: "Text Animations",
   keywords: [
-    "Text loop animation",
     "Typewriter effect React",
     "Rotating text component",
     "Framer Motion text loop",
@@ -30,8 +35,27 @@ const DemoSource = fs
   .replace("./text-loop", "@/components/text-loop");
 
 export default function TextLoopPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Text Loop",
+      description: "An animated text loop with typewriter and gradient effect.",
+      pathname: "/components/text-animations/text-loop",
+      image: "/components/text-animations/text-loop.png",
+      category: "Text animation component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Text Animations", path: "/components" },
+      { name: "Text Loop", path: "/components/text-animations/text-loop" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <TextLoopPreviewWrapper
         title="Text Loop"
         description="An animated text loop that cycles through a list of words with a typewriter and gradient effect."

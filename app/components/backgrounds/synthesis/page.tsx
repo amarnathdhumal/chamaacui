@@ -1,15 +1,20 @@
 import SynthesisDemoWrapper from "./synthesis-preview-wrapper";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 import fs from "fs";
 import path from "path";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Synthesis",
   description:
     "A professional, multi-layered cosmic flow background with extensive warping customization.",
   image: "/components/backgrounds/synthesis.png",
+  pathname: "/components/backgrounds/synthesis",
+  category: "Backgrounds",
   keywords: [
-    "Synthesis background",
     "Cosmic flow shader",
     "WebGL background",
     "Domain warping animation",
@@ -17,6 +22,22 @@ export const metadata = constructMetadata({
 });
 
 export default function SynthesisPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Synthesis",
+      description:
+        "A professional, multi-layered cosmic flow background with extensive warping customization.",
+      pathname: "/components/backgrounds/synthesis",
+      image: "/components/backgrounds/synthesis.png",
+      category: "Background shader",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Backgrounds", path: "/components" },
+      { name: "Synthesis", path: "/components/backgrounds/synthesis" },
+    ]),
+  ];
   const componentPath = path.join(
     process.cwd(),
     "registry/chamaac/backgrounds/synthesis.tsx"
@@ -25,6 +46,10 @@ export default function SynthesisPage() {
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SynthesisDemoWrapper
         title="Synthesis"
         description="A professional, multi-layered cosmic flow background with extensive warping customization."

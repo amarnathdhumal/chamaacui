@@ -1,7 +1,11 @@
 import BellIconPreviewWrapper from "./bell-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Bell Icon",
-  description: "An animated bell icon that rings.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Bell Icon",
+  "/components/animated-icons/bell-icon"
+);
 
 export default function BellIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Bell Icon",
+      description: "An animated bell icon that rings.",
+      pathname: "/components/animated-icons/bell-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Bell Icon", path: "/components/animated-icons/bell-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <BellIconPreviewWrapper
         title="Bell Icon"
         description="An animated bell icon that rings."

@@ -1,7 +1,11 @@
 import WifiIconPreviewWrapper from "./wifi-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Wifi Icon",
-  description: "An animated wifi icon with pulsing signal bars.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Wifi Icon",
+  "/components/animated-icons/wifi-icon"
+);
 
 export default function WifiIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Wifi Icon",
+      description: "An animated wifi icon with pulsing signal bars.",
+      pathname: "/components/animated-icons/wifi-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Wifi Icon", path: "/components/animated-icons/wifi-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <WifiIconPreviewWrapper
         title="Wifi Icon"
         description="An animated wifi icon with pulsing signal bars."

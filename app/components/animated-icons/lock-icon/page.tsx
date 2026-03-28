@@ -1,7 +1,11 @@
 import LockIconPreviewWrapper from "./lock-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Lock Icon",
-  description: "An animated lock icon that locks and unlocks.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Lock Icon",
+  "/components/animated-icons/lock-icon"
+);
 
 export default function LockIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Lock Icon",
+      description: "An animated lock icon that locks and unlocks.",
+      pathname: "/components/animated-icons/lock-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Lock Icon", path: "/components/animated-icons/lock-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <LockIconPreviewWrapper
         title="Lock Icon"
         description="An animated lock icon that locks and unlocks."

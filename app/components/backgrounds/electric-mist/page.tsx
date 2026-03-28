@@ -1,15 +1,20 @@
 import ElectricMistDemoWrapper from "./electric-mist-preview-wrapper";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 import fs from "fs";
 import path from "path";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Electric Mist",
   description:
     "A high-energy glowing lightning shader with waves and smoke effects.",
   image: "/components/backgrounds/electric-mist.png",
+  pathname: "/components/backgrounds/electric-mist",
+  category: "Backgrounds",
   keywords: [
-    "Electric Mist shader",
     "Lightning background",
     "Glow effect React",
     "Interactive fog background",
@@ -17,6 +22,22 @@ export const metadata = constructMetadata({
 });
 
 export default function ElectricMistPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Electric Mist",
+      description:
+        "A high-energy glowing lightning shader with waves and smoke effects.",
+      pathname: "/components/backgrounds/electric-mist",
+      image: "/components/backgrounds/electric-mist.png",
+      category: "Background shader",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Backgrounds", path: "/components" },
+      { name: "Electric Mist", path: "/components/backgrounds/electric-mist" },
+    ]),
+  ];
   const componentPath = path.join(
     process.cwd(),
     "registry/chamaac/electric-mist/electric-mist.tsx"
@@ -25,6 +46,10 @@ export default function ElectricMistPage() {
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ElectricMistDemoWrapper
         title="Electric Mist"
         description="A high-energy glowing lightning shader with waves and smoke effects."

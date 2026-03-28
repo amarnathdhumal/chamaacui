@@ -1,13 +1,19 @@
 import FocusButtonPreviewWrapper from "./focus-button-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Focus Button",
   description:
     "A minimal button with corner dash accents that expand on hover.",
   image: "/components/buttons/focus-button.png",
+  pathname: "/components/buttons/focus-button",
+  category: "Buttons",
 });
 
 // file paths
@@ -25,8 +31,28 @@ const DemoSource = fs
   .replace("./focus-button", "@/components/focus-button");
 
 export default function FocusButtonPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Focus Button",
+      description:
+        "A minimal button with corner dash accents that expand on hover.",
+      pathname: "/components/buttons/focus-button",
+      image: "/components/buttons/focus-button.png",
+      category: "Button UI component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Buttons", path: "/components" },
+      { name: "Focus Button", path: "/components/buttons/focus-button" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <FocusButtonPreviewWrapper
         title="Focus Button"
         description="A minimal button with corner dash accents that expand on hover. Perfect for technical or brutalist designs."

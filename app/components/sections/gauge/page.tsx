@@ -1,15 +1,20 @@
 import GaugePreviewWrapper from "./gauge-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Gauge",
   description:
     "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
   image: "/components/gauge.png",
+  pathname: "/components/sections/gauge",
+  category: "Sections",
   keywords: [
-    "Gauge component React",
     "Animated radial gauge",
     "Performance score UI",
     "Metric visualization",
@@ -31,8 +36,28 @@ const DemoSource = fs
   .replace("./gauge", "@/components/gauge");
 
 export default function GaugePage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Gauge",
+      description:
+        "A customizable semi-circular gauge component for visualizing metrics and performance scores.",
+      pathname: "/components/sections/gauge",
+      image: "/components/gauge.png",
+      category: "Graphic UI component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Sections", path: "/components" },
+      { name: "Gauge", path: "/components/sections/gauge" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <GaugePreviewWrapper
         title="Gauge"
         description="A customizable semi-circular gauge component for visualizing metrics and performance scores."

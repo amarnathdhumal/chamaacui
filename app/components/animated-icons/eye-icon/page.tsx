@@ -1,7 +1,11 @@
 import EyeIconPreviewWrapper from "./eye-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Eye Icon",
-  description: "An animated eye icon with blinking and looking animation.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Eye Icon",
+  "/components/animated-icons/eye-icon"
+);
 
 export default function EyeIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Eye Icon",
+      description: "An animated eye icon with blinking and looking animation.",
+      pathname: "/components/animated-icons/eye-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Eye Icon", path: "/components/animated-icons/eye-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <EyeIconPreviewWrapper
         title="Eye Icon"
         description="An animated eye icon with blinking and looking animation."

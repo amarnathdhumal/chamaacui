@@ -1,7 +1,11 @@
 import MenuIconPreviewWrapper from "./menu-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Menu Icon",
-  description: "An animated menu (hamburger) icon transforming to X.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Menu Icon",
+  "/components/animated-icons/menu-icon"
+);
 
 export default function MenuIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Menu Icon",
+      description: "An animated menu (hamburger) icon transforming to X.",
+      pathname: "/components/animated-icons/menu-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Menu Icon", path: "/components/animated-icons/menu-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <MenuIconPreviewWrapper
         title="Menu Icon"
         description="An animated menu (hamburger) icon transforming to X."

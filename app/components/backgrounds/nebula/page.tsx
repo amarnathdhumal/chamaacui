@@ -1,22 +1,39 @@
 import NebulaPreviewWrapper from "./nebula-preview-wrapper";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 import fs from "fs";
 import path from "path";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Nebula",
   description:
     "A mesmerizing, shader-driven nebula animation using domain warping for a deep space effect.",
   image: "/components/backgrounds/nebula.png",
-  keywords: [
-    "Nebula shader",
-    "Space background",
-    "Domain warping animation",
-    "GLSL nebula",
-  ],
+  pathname: "/components/backgrounds/nebula",
+  category: "Backgrounds",
+  keywords: ["Space background", "Domain warping animation", "GLSL nebula"],
 });
 
 export default function NebulaPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Nebula",
+      description:
+        "A mesmerizing, shader-driven nebula animation using domain warping for a deep space effect.",
+      pathname: "/components/backgrounds/nebula",
+      image: "/components/backgrounds/nebula.png",
+      category: "Background shader",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Backgrounds", path: "/components" },
+      { name: "Nebula", path: "/components/backgrounds/nebula" },
+    ]),
+  ];
   const componentPath = path.join(
     process.cwd(),
     "registry/chamaac/nebula/nebula.tsx"
@@ -25,6 +42,10 @@ export default function NebulaPage() {
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <NebulaPreviewWrapper
         title="Nebula"
         description="A mesmerizing, shader-driven nebula animation using domain warping for a deep space effect."

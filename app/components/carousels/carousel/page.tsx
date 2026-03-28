@@ -1,19 +1,20 @@
 import CourselPreviewWrapper from "./coursel-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Carousel",
   description:
     "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
   image: "/components/carousel.png",
-  keywords: [
-    "3D Carousel React",
-    "Framer Motion carousel",
-    "Auto-playing slider",
-    "Feature carousel component",
-  ],
+  pathname: "/components/carousels/carousel",
+  category: "Carousels",
+  keywords: ["3D Carousel React", "Auto-playing slider"],
 });
 
 // file paths
@@ -31,8 +32,28 @@ const CourselDemoSource = fs
   .replace("./coursel", "@/components/carousel");
 
 export default function CourselPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Carousel",
+      description:
+        "A smooth, auto-playing 3D carousel component with layout animations using Framer Motion.",
+      pathname: "/components/carousels/carousel",
+      image: "/components/carousel.png",
+      category: "Carousel UI component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Carousels", path: "/components" },
+      { name: "Carousel", path: "/components/carousels/carousel" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <CourselPreviewWrapper
         title="Carousel"
         description="A smooth, auto-playing 3D carousel component with layout animations using Framer Motion."

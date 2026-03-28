@@ -1,7 +1,11 @@
 import GlobeIconPreviewWrapper from "./globe-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Globe Icon",
-  description: "An animated globe icon that rotates continuously.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Globe Icon",
+  "/components/animated-icons/globe-icon"
+);
 
 export default function GlobeIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Globe Icon",
+      description: "An animated globe icon that rotates continuously.",
+      pathname: "/components/animated-icons/globe-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Globe Icon", path: "/components/animated-icons/globe-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <GlobeIconPreviewWrapper
         title="Globe Icon"
         description="An animated globe icon that rotates continuously."

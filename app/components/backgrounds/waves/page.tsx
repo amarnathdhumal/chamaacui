@@ -1,16 +1,38 @@
 import fs from "fs";
 import path from "path";
 import WavesPreviewWrapper from "./waves-preview-wrapper";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Waves",
   description: "A smooth, shader-based wave animation component.",
   image: "/components/backgrounds/waves.png",
+  pathname: "/components/backgrounds/waves",
+  category: "Backgrounds",
   keywords: ["Animated Waves", "SVG Wave background", "Fluid Wave effect"],
 });
 
 export default function WavesPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Waves",
+      description: "A smooth, shader-based wave animation component.",
+      pathname: "/components/backgrounds/waves",
+      image: "/components/backgrounds/waves.png",
+      category: "Background shader",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Backgrounds", path: "/components" },
+      { name: "Waves", path: "/components/backgrounds/waves" },
+    ]),
+  ];
+
   const componentPath = path.join(
     process.cwd(),
     "registry/chamaac/waves/waves.tsx"
@@ -19,6 +41,10 @@ export default function WavesPage() {
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <WavesPreviewWrapper
         title="Waves"
         description="A mesmerizing, shader-driven wave animation ideal for modern landing pages."

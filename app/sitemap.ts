@@ -1,20 +1,19 @@
 import { MetadataRoute } from "next";
 import { sidebarData } from "@/lib/data";
 import { iconSlugs } from "@/lib/icon-slugs";
+import { SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://chamaac.com";
-
   // Base pages
   const routes: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/components`,
+      url: `${SITE_URL}/components`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
@@ -27,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Sidebar items specifically related to components
     if (item.componentName !== "Components") {
       routes.push({
-        url: `${baseUrl}${path}`,
+        url: `${SITE_URL}${path}`,
         lastModified: new Date(),
         changeFrequency: "weekly",
         priority: 0.7,
@@ -38,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Add all individual icons
   iconSlugs.forEach((slug) => {
     routes.push({
-      url: `${baseUrl}/components/animated-icons/${slug}`,
+      url: `${SITE_URL}/components/animated-icons/${slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.6,

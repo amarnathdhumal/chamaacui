@@ -1,7 +1,11 @@
 import LocationIconPreviewWrapper from "./location-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,36 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Location Icon",
-  description: "An animated location pin icon with a bounce drop effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Location Icon",
+  "/components/animated-icons/location-icon"
+);
 
 export default function LocationIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Location Icon",
+      description: "An animated location pin icon with a bounce drop effect.",
+      pathname: "/components/animated-icons/location-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      {
+        name: "Location Icon",
+        path: "/components/animated-icons/location-icon",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <LocationIconPreviewWrapper
         title="Location Icon"
         description="An animated location pin icon with a bounce drop effect."

@@ -1,7 +1,11 @@
 import VolumeIconPreviewWrapper from "./volume-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Volume Icon",
-  description: "An animated volume icon with pulsing sound waves.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Volume Icon",
+  "/components/animated-icons/volume-icon"
+);
 
 export default function VolumeIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Volume Icon",
+      description: "An animated volume icon with pulsing sound waves.",
+      pathname: "/components/animated-icons/volume-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Volume Icon", path: "/components/animated-icons/volume-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <VolumeIconPreviewWrapper
         title="Volume Icon"
         description="An animated volume icon with pulsing sound waves."

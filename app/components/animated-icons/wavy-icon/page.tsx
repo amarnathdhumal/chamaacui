@@ -1,13 +1,16 @@
 import WavyIconPreviewWrapper from "./wavy-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
-  title: "Wavy Icon",
-  description: "An animated wavy icon that simulates a wave effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Wavy Icon",
+  "/components/animated-icons/wavy-icon"
+);
 
 // file paths
 const filePath = path.join(
@@ -24,8 +27,27 @@ const DemoSource = fs
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
 export default function WavyIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Wavy Icon",
+      description: "An animated wavy icon that simulates a wave effect.",
+      pathname: "/components/animated-icons/wavy-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Wavy Icon", path: "/components/animated-icons/wavy-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <WavyIconPreviewWrapper
         title="Wavy Icon"
         description="An animated wavy icon that simulates a wave effect."

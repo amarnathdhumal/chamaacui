@@ -1,7 +1,11 @@
 import HeartIconPreviewWrapper from "./heart-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Heart Icon",
-  description: "An animated heart icon that beats.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Heart Icon",
+  "/components/animated-icons/heart-icon"
+);
 
 export default function HeartIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Heart Icon",
+      description: "An animated heart icon that beats.",
+      pathname: "/components/animated-icons/heart-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Heart Icon", path: "/components/animated-icons/heart-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HeartIconPreviewWrapper
         title="Heart Icon"
         description="An animated heart icon that beats."

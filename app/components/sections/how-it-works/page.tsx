@@ -1,15 +1,20 @@
 import HowItWorksPreviewWrapper from "./how-it-works-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "How It Works",
   description: "A 5-step process flow with cards and connecting lines.",
   image: "/components/sections/how-it-works.png",
+  pathname: "/components/sections/how-it-works",
+  category: "Sections",
   keywords: [
     "Process flow component",
-    "Step-by-step UI",
     "Connected cards animation",
     "Visual flow React",
   ],
@@ -33,8 +38,27 @@ const DemoSource = fs
   );
 
 export default function HowItWorksPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "How It Works",
+      description: "A 5-step process flow with cards and connecting lines.",
+      pathname: "/components/sections/how-it-works",
+      image: "/components/sections/how-it-works.png",
+      category: "Process flow component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Sections", path: "/components" },
+      { name: "How It Works", path: "/components/sections/how-it-works" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HowItWorksPreviewWrapper
         title="How It Works"
         description={

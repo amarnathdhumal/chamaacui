@@ -1,16 +1,41 @@
 import fs from "fs";
 import path from "path";
 import GlowingBorderButtonPreviewWrapper from "./glowing-border-button-preview-wrapper";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Glowing Border Button",
   description:
     "A stylish glowing border button with a gradient border and glowing effects.",
   image: "/components/buttons/glowing-border.png",
+  pathname: "/components/buttons/glowing-border-button",
+  category: "Buttons",
 });
 
 export default function GlowingBorderButtonPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Glowing Border Button",
+      description:
+        "A stylish glowing border button with a gradient border and glowing effects.",
+      pathname: "/components/buttons/glowing-border-button",
+      image: "/components/buttons/glowing-border.png",
+      category: "Button UI component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Buttons", path: "/components" },
+      {
+        name: "Glowing Border Button",
+        path: "/components/buttons/glowing-border-button",
+      },
+    ]),
+  ];
   const componentPath = path.join(
     process.cwd(),
     "registry/chamaac/glowing-border-button/glowing-border-button.tsx"
@@ -30,6 +55,10 @@ export default function GlowingBorderButtonPage() {
 
   return (
     <div className="">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <GlowingBorderButtonPreviewWrapper
         title="Glowing Border Button"
         description="A stylish glowing border button with a gradient border and glowing effects."

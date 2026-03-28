@@ -1,7 +1,11 @@
 import LightbulbIconPreviewWrapper from "./lightbulb-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,36 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Lightbulb Icon",
-  description: "An animated lightbulb icon with pulsing rays.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Lightbulb Icon",
+  "/components/animated-icons/lightbulb-icon"
+);
 
 export default function LightbulbIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Lightbulb Icon",
+      description: "An animated lightbulb icon with pulsing rays.",
+      pathname: "/components/animated-icons/lightbulb-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      {
+        name: "Lightbulb Icon",
+        path: "/components/animated-icons/lightbulb-icon",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <LightbulbIconPreviewWrapper
         title="Lightbulb Icon"
         description="An animated lightbulb icon with pulsing rays."

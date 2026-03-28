@@ -1,7 +1,11 @@
 import ZapIconPreviewWrapper from "./zap-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Zap Icon",
-  description: "An animated zap icon with electric flash effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Zap Icon",
+  "/components/animated-icons/zap-icon"
+);
 
 export default function ZapIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Zap Icon",
+      description: "An animated zap icon with electric flash effect.",
+      pathname: "/components/animated-icons/zap-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Zap Icon", path: "/components/animated-icons/zap-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ZapIconPreviewWrapper
         title="Zap Icon"
         description="An animated zap icon with electric flash effect."

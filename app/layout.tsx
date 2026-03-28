@@ -6,6 +6,12 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { CSPostHogProvider } from "./providers/posthog-provider";
 import PostHogPageView from "./providers/posthog-pageview";
+import {
+  DEFAULT_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  buildPageMetadata,
+} from "@/lib/seo";
 // import { Header } from "./components/header";
 
 const geistSans = Geist({
@@ -27,42 +33,11 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Chamaac UI | High-Performance Shaders & UI Components",
-  description:
-    "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
-  openGraph: {
-    title: "Chamaac UI | High-Performance Shaders & UI Components",
-    description:
-      "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
-    url: "https://chamaac.com",
-    siteName: "Chamaac UI",
-    images: [
-      {
-        url: "/images/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Chamaac UI Shaders & UI Components",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Chamaac UI | High-Performance Shaders & UI Components",
-    description:
-      "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
-    images: ["/images/og-image.png"],
-  },
-  icons: {
-    icon: "/favicon.png",
-  },
-  metadataBase: new URL("https://chamaac.com"),
-  alternates: {
-    canonical: "https://chamaac.com",
-  },
-};
+export const metadata: Metadata = buildPageMetadata({
+  title: undefined,
+  description: DEFAULT_DESCRIPTION,
+  pathname: "/",
+});
 
 export default function RootLayout({
   children,
@@ -93,16 +68,20 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "Chamaac UI",
-              url: "https://chamaac.com",
-              description:
-                "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
+              name: SITE_NAME,
+              url: SITE_URL,
+              description: DEFAULT_DESCRIPTION,
+              potentialAction: {
+                "@type": "SearchAction",
+                target: `${SITE_URL}/components?query={search_term_string}`,
+                "query-input": "required name=search_term_string",
+              },
               publisher: {
                 "@type": "Organization",
-                name: "Chamaac UI",
+                name: SITE_NAME,
                 logo: {
                   "@type": "ImageObject",
-                  url: "https://chamaac.com/favicon.png",
+                  url: `${SITE_URL}/favicon.png`,
                 },
               },
             }),

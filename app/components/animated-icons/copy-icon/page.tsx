@@ -1,7 +1,11 @@
 import CopyIconPreviewWrapper from "./copy-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,34 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Copy Icon",
-  description: "An animated copy icon that simulates the action of copying.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Copy Icon",
+  "/components/animated-icons/copy-icon"
+);
 
 export default function CopyIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Copy Icon",
+      description:
+        "An animated copy icon that simulates the action of copying.",
+      pathname: "/components/animated-icons/copy-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Copy Icon", path: "/components/animated-icons/copy-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <CopyIconPreviewWrapper
         title="Copy Icon"
         description="An animated copy icon that simulates the action of copying."

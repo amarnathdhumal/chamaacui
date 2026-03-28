@@ -1,7 +1,11 @@
 import GiftIconPreviewWrapper from "./gift-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Gift Icon",
-  description: "An animated gift icon with a shake and bounce effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Gift Icon",
+  "/components/animated-icons/gift-icon"
+);
 
 export default function GiftIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Gift Icon",
+      description: "An animated gift icon with a shake and bounce effect.",
+      pathname: "/components/animated-icons/gift-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Gift Icon", path: "/components/animated-icons/gift-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <GiftIconPreviewWrapper
         title="Gift Icon"
         description="An animated gift icon with a shake and bounce effect."

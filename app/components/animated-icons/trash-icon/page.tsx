@@ -1,7 +1,11 @@
 import TrashIconPreviewWrapper from "./trash-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Trash Icon",
-  description: "An animated trash icon with a lid wiggle effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Trash Icon",
+  "/components/animated-icons/trash-icon"
+);
 
 export default function TrashIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Trash Icon",
+      description: "An animated trash icon with a lid wiggle effect.",
+      pathname: "/components/animated-icons/trash-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Trash Icon", path: "/components/animated-icons/trash-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <TrashIconPreviewWrapper
         title="Trash Icon"
         description="An animated trash icon with a lid wiggle effect."

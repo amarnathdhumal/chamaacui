@@ -1,7 +1,11 @@
 import ChevronsUpIconPreviewWrapper from "./chevrons-up-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,36 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Chevrons Up Icon",
-  description: "Animated double chevrons pointing up.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Chevrons Up Icon",
+  "/components/animated-icons/chevrons-up-icon"
+);
 
 export default function ChevronsUpIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Chevrons Up Icon",
+      description: "Animated double chevrons pointing up.",
+      pathname: "/components/animated-icons/chevrons-up-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      {
+        name: "Chevrons Up Icon",
+        path: "/components/animated-icons/chevrons-up-icon",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ChevronsUpIconPreviewWrapper
         title="Chevrons Up Icon"
         description="Animated double chevrons pointing up."

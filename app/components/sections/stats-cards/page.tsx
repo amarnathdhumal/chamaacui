@@ -1,18 +1,19 @@
 import StatsCardsPreviewWrapper from "./stats-cards-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Stats Cards",
   description: "A set of animated statistic cards with hover effects.",
   image: "/components/sections/stats-cards.png",
-  keywords: [
-    "Stats cards React",
-    "Animated statistics",
-    "Dashboard cards",
-    "Hover effect cards",
-  ],
+  pathname: "/components/sections/stats-cards",
+  category: "Sections",
+  keywords: ["Animated statistics", "Dashboard cards", "Hover effect cards"],
 });
 
 // file paths
@@ -33,8 +34,27 @@ const DemoSource = fs
   );
 
 export default function StatsCardsPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Stats Cards",
+      description: "A set of animated statistic cards with hover effects.",
+      pathname: "/components/sections/stats-cards",
+      image: "/components/sections/stats-cards.png",
+      category: "Dashboard UI component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Sections", path: "/components" },
+      { name: "Stats Cards", path: "/components/sections/stats-cards" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <StatsCardsPreviewWrapper
         title="Stats Cards"
         description={

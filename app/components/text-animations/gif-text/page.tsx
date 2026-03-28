@@ -1,12 +1,18 @@
 import GifTextPreviewWrapper from "./gif-text-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Gif Text",
   description: "A stunning text effect that uses a GIF as the fill color.",
   image: "/components/text-animations/gif-text.png",
+  pathname: "/components/text-animations/gif-text",
+  category: "Text Animations",
 });
 
 // file paths
@@ -24,8 +30,27 @@ const DemoSource = fs
   .replace("./gif-text", "@/components/gif-text");
 
 export default function GifTextPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Gif Text",
+      description: "A stunning text effect that uses a GIF as the fill color.",
+      pathname: "/components/text-animations/gif-text",
+      image: "/components/text-animations/gif-text.png",
+      category: "Text animation effect",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Text Animations", path: "/components" },
+      { name: "Gif Text", path: "/components/text-animations/gif-text" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <GifTextPreviewWrapper
         title="Gif Text"
         description="A stunning text effect that uses a GIF as the fill color."

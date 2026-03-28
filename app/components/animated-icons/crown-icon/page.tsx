@@ -1,7 +1,11 @@
 import CrownIconPreviewWrapper from "./crown-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Crown Icon",
-  description: "An animated crown icon with a regal wobble effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Crown Icon",
+  "/components/animated-icons/crown-icon"
+);
 
 export default function CrownIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Crown Icon",
+      description: "An animated crown icon with a regal wobble effect.",
+      pathname: "/components/animated-icons/crown-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Crown Icon", path: "/components/animated-icons/crown-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <CrownIconPreviewWrapper
         title="Crown Icon"
         description="An animated crown icon with a regal wobble effect."

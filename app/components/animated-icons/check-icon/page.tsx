@@ -1,7 +1,11 @@
 import CheckIconPreviewWrapper from "./check-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Check Icon",
-  description: "An animated check icon with drawing circle and checkmark.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Check Icon",
+  "/components/animated-icons/check-icon"
+);
 
 export default function CheckIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Check Icon",
+      description: "An animated check icon with drawing circle and checkmark.",
+      pathname: "/components/animated-icons/check-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Check Icon", path: "/components/animated-icons/check-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <CheckIconPreviewWrapper
         title="Check Icon"
         description="An animated check icon with drawing circle and checkmark."

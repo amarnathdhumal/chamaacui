@@ -1,7 +1,11 @@
 import RocketIconPreviewWrapper from "./rocket-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Rocket Icon",
-  description: "An animated rocket icon with launch thrust animation.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Rocket Icon",
+  "/components/animated-icons/rocket-icon"
+);
 
 export default function RocketIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Rocket Icon",
+      description: "An animated rocket icon with launch thrust animation.",
+      pathname: "/components/animated-icons/rocket-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Rocket Icon", path: "/components/animated-icons/rocket-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <RocketIconPreviewWrapper
         title="Rocket Icon"
         description="An animated rocket icon with launch thrust animation."

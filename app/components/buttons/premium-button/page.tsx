@@ -1,12 +1,18 @@
 import fs from "fs";
 import path from "path";
 import PremiumButtonPreviewWrapper from "./premium-button-preview-wrapper";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Premium Button",
   description: "A high-quality button with a dynamic arrow animation.",
   image: "/components/buttons/premium-button.png",
+  pathname: "/components/buttons/premium-button",
+  category: "Buttons",
   keywords: [
     "Premium React buttons",
     "Animated button components",
@@ -16,6 +22,22 @@ export const metadata = constructMetadata({
 });
 
 export default function PremiumButtonPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Premium Button",
+      description: "A high-quality button with a dynamic arrow animation.",
+      pathname: "/components/buttons/premium-button",
+      image: "/components/buttons/premium-button.png",
+      category: "Button component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Buttons", path: "/components/buttons" },
+      { name: "Premium Button", path: "/components/buttons/premium-button" },
+    ]),
+  ];
+
   const componentPath = path.join(
     process.cwd(),
     "registry/chamaac/premium-button/premium-button.tsx"
@@ -35,6 +57,10 @@ export default function PremiumButtonPage() {
 
   return (
     <div className="">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <PremiumButtonPreviewWrapper
         title="Premium Button"
         description={

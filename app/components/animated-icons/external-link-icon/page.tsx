@@ -1,7 +1,11 @@
 import ExternalLinkIconPreviewWrapper from "./external-link-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,36 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "External Link Icon",
-  description: "An animated external link icon.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "External Link Icon",
+  "/components/animated-icons/external-link-icon"
+);
 
 export default function ExternalLinkIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "External Link Icon",
+      description: "An animated external link icon.",
+      pathname: "/components/animated-icons/external-link-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      {
+        name: "External Link Icon",
+        path: "/components/animated-icons/external-link-icon",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ExternalLinkIconPreviewWrapper
         title="External Link Icon"
         description="An animated external link icon."

@@ -1,7 +1,11 @@
 import LayersIconPreviewWrapper from "./layers-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Layers Icon",
-  description: "An animated layers icon with a staggered floating effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Layers Icon",
+  "/components/animated-icons/layers-icon"
+);
 
 export default function LayersIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Layers Icon",
+      description: "An animated layers icon with a staggered floating effect.",
+      pathname: "/components/animated-icons/layers-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Layers Icon", path: "/components/animated-icons/layers-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <LayersIconPreviewWrapper
         title="Layers Icon"
         description="An animated layers icon with a staggered floating effect."

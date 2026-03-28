@@ -1,7 +1,11 @@
 import SendIconPreviewWrapper from "./send-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,16 +20,34 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Send Icon",
-  description:
-    "An animated send icon with a launch-ready rotation and scale effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Send Icon",
+  "/components/animated-icons/send-icon"
+);
 
 export default function SendIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Send Icon",
+      description:
+        "An animated send icon with a launch-ready rotation and scale effect.",
+      pathname: "/components/animated-icons/send-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Send Icon", path: "/components/animated-icons/send-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SendIconPreviewWrapper
         title="Send Icon"
         description="An animated send icon with a launch-ready rotation and scale effect."

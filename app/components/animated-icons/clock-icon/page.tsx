@@ -1,7 +1,11 @@
 import ClockIconPreviewWrapper from "./clock-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Clock Icon",
-  description: "An animated alarm clock icon with a ringing shake effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Clock Icon",
+  "/components/animated-icons/clock-icon"
+);
 
 export default function ClockIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Clock Icon",
+      description: "An animated alarm clock icon with a ringing shake effect.",
+      pathname: "/components/animated-icons/clock-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Clock Icon", path: "/components/animated-icons/clock-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ClockIconPreviewWrapper
         title="Clock Icon"
         description="An animated alarm clock icon with a ringing shake effect."

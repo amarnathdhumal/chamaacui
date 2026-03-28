@@ -1,7 +1,11 @@
 import ArrowLeftIconPreviewWrapper from "./arrow-left-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,36 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Arrow Left Icon",
-  description: "An animated arrow pointing left.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Arrow Left Icon",
+  "/components/animated-icons/arrow-left-icon"
+);
 
 export default function ArrowLeftIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Arrow Left Icon",
+      description: "An animated arrow pointing left.",
+      pathname: "/components/animated-icons/arrow-left-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      {
+        name: "Arrow Left Icon",
+        path: "/components/animated-icons/arrow-left-icon",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ArrowLeftIconPreviewWrapper
         title="Arrow Left Icon"
         description="An animated arrow pointing left."

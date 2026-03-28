@@ -1,7 +1,11 @@
 import CalendarIconPreviewWrapper from "./calendar-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,36 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Calendar Icon",
-  description: "An animated calendar icon with a pulsing date indicator.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Calendar Icon",
+  "/components/animated-icons/calendar-icon"
+);
 
 export default function CalendarIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Calendar Icon",
+      description: "An animated calendar icon with a pulsing date indicator.",
+      pathname: "/components/animated-icons/calendar-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      {
+        name: "Calendar Icon",
+        path: "/components/animated-icons/calendar-icon",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <CalendarIconPreviewWrapper
         title="Calendar Icon"
         description="An animated calendar icon with a pulsing date indicator."

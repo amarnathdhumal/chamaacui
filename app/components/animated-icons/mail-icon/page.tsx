@@ -1,7 +1,11 @@
 import MailIconPreviewWrapper from "./mail-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Mail Icon",
-  description: "An animated mail icon with a moving envelope flap.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Mail Icon",
+  "/components/animated-icons/mail-icon"
+);
 
 export default function MailIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Mail Icon",
+      description: "An animated mail icon with a moving envelope flap.",
+      pathname: "/components/animated-icons/mail-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Mail Icon", path: "/components/animated-icons/mail-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <MailIconPreviewWrapper
         title="Mail Icon"
         description="An animated mail icon with a moving envelope flap."

@@ -1,7 +1,11 @@
 import HoverArrowButtonPreviewWrapper from "./hover-arrow-button-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -20,15 +24,39 @@ const HoverArrowButtonDemoSource = fs
     "@/components/hover-arrow-button"
   );
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Hover Arrow Button",
   description: "A button with a smooth hover arrow swap animation.",
   image: "/components/buttons/hover-arrow-button.png",
+  pathname: "/components/buttons/hover-arrow-button",
+  category: "Buttons",
 });
 
 export default function HoverArrowButtonPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Hover Arrow Button",
+      description: "A button with a smooth hover arrow swap animation.",
+      pathname: "/components/buttons/hover-arrow-button",
+      image: "/components/buttons/hover-arrow-button.png",
+      category: "Button UI component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Buttons", path: "/components" },
+      {
+        name: "Hover Arrow Button",
+        path: "/components/buttons/hover-arrow-button",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <HoverArrowButtonPreviewWrapper
         title="Hover Arrow Button"
         description="A button that swaps arrows on hover with a smooth sliding animation. The text stays centered while arrows appear and disappear seamlessly."

@@ -1,7 +1,11 @@
 import SunIconPreviewWrapper from "./sun-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Sun Icon",
-  description: "An animated sun icon with a continuous rotation effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Sun Icon",
+  "/components/animated-icons/sun-icon"
+);
 
 export default function SunIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Sun Icon",
+      description: "An animated sun icon with a continuous rotation effect.",
+      pathname: "/components/animated-icons/sun-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Sun Icon", path: "/components/animated-icons/sun-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <SunIconPreviewWrapper
         title="Sun Icon"
         description="An animated sun icon with a continuous rotation effect."

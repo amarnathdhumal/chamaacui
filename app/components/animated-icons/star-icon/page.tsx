@@ -1,7 +1,11 @@
 import StarIconPreviewWrapper from "./star-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Star Icon",
-  description: "An animated star icon that twinkles and rotates.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Star Icon",
+  "/components/animated-icons/star-icon"
+);
 
 export default function StarIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Star Icon",
+      description: "An animated star icon that twinkles and rotates.",
+      pathname: "/components/animated-icons/star-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Star Icon", path: "/components/animated-icons/star-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <StarIconPreviewWrapper
         title="Star Icon"
         description="An animated star icon that twinkles and rotates."

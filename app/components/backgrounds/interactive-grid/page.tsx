@@ -1,14 +1,19 @@
+import InteractiveGridPreviewWrapper from "./interactive-grid-preview-wrapper";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 import fs from "fs";
 import path from "path";
-import InteractiveGridPreviewWrapper from "./interactive-grid-preview-wrapper";
-import { constructMetadata } from "@/lib/utils";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Interactive Grid Background",
   description: "A highly interactive, mouse-sensitive grid background.",
   image: "/components/backgrounds/interactive-grid.png",
+  pathname: "/components/backgrounds/interactive-grid",
+  category: "Backgrounds",
   keywords: [
-    "Interactive grid",
     "Mouse-sensitive grid",
     "Canvas grid animation",
     "Interactive background",
@@ -16,6 +21,24 @@ export const metadata = constructMetadata({
 });
 
 export default function InteractiveGridPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Interactive Grid Background",
+      description: "A highly interactive, mouse-sensitive grid background.",
+      pathname: "/components/backgrounds/interactive-grid",
+      image: "/components/backgrounds/interactive-grid.png",
+      category: "Interactive background",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Backgrounds", path: "/components" },
+      {
+        name: "Interactive Grid",
+        path: "/components/backgrounds/interactive-grid",
+      },
+    ]),
+  ];
   const componentPath = path.join(
     process.cwd(),
     "registry/chamaac/backgrounds/interactive-grid-background.tsx"
@@ -24,6 +47,10 @@ export default function InteractiveGridPage() {
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <InteractiveGridPreviewWrapper
         title="Interactive Grid Background"
         description="A highly interactive, mouse-sensitive grid background."

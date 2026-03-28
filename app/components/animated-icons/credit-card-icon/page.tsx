@@ -1,7 +1,11 @@
 import CreditCardIconPreviewWrapper from "./credit-card-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,36 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Credit Card Icon",
-  description: "An animated credit card icon.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Credit Card Icon",
+  "/components/animated-icons/credit-card-icon"
+);
 
 export default function CreditCardIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Credit Card Icon",
+      description: "An animated credit card icon.",
+      pathname: "/components/animated-icons/credit-card-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      {
+        name: "Credit Card Icon",
+        path: "/components/animated-icons/credit-card-icon",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <CreditCardIconPreviewWrapper
         title="Credit Card Icon"
         description="An animated credit card icon."

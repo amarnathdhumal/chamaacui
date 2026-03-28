@@ -1,7 +1,11 @@
 import AlertCircleIconPreviewWrapper from "./alert-circle-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,36 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Alert Circle Icon",
-  description: "An animated alert circle icon.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Alert Circle Icon",
+  "/components/animated-icons/alert-circle-icon"
+);
 
 export default function AlertCircleIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Alert Circle Icon",
+      description: "An animated alert circle icon.",
+      pathname: "/components/animated-icons/alert-circle-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      {
+        name: "Alert Circle Icon",
+        path: "/components/animated-icons/alert-circle-icon",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <AlertCircleIconPreviewWrapper
         title="Alert Circle Icon"
         description="An animated alert circle icon."

@@ -1,7 +1,11 @@
 import ChevronsDownIconPreviewWrapper from "./chevrons-down-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 const filePath = path.join(
   process.cwd(),
@@ -16,15 +20,36 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Chevrons Down Icon",
-  description: "Animated double chevrons pointing down.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Chevrons Down Icon",
+  "/components/animated-icons/chevrons-down-icon"
+);
 
 export default function ChevronsDownIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Chevrons Down Icon",
+      description: "Animated double chevrons pointing down.",
+      pathname: "/components/animated-icons/chevrons-down-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      {
+        name: "Chevrons Down Icon",
+        path: "/components/animated-icons/chevrons-down-icon",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ChevronsDownIconPreviewWrapper
         title="Chevrons Down Icon"
         description="Animated double chevrons pointing down."

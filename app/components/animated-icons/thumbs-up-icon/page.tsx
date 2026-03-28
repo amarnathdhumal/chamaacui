@@ -1,7 +1,11 @@
 import ThumbsUpIconPreviewWrapper from "./thumbs-up-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,36 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Thumbs Up Icon",
-  description: "An animated thumbs up icon with a fun bounce effect.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Thumbs Up Icon",
+  "/components/animated-icons/thumbs-up-icon"
+);
 
 export default function ThumbsUpIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Thumbs Up Icon",
+      description: "An animated thumbs up icon with a fun bounce effect.",
+      pathname: "/components/animated-icons/thumbs-up-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      {
+        name: "Thumbs Up Icon",
+        path: "/components/animated-icons/thumbs-up-icon",
+      },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ThumbsUpIconPreviewWrapper
         title="Thumbs Up Icon"
         description="An animated thumbs up icon with a fun bounce effect."

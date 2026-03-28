@@ -1,18 +1,23 @@
 import DockPreviewWrapper from "./dock-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildComponentMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
-export const metadata = constructMetadata({
+export const metadata = buildComponentMetadata({
   title: "Dock",
   description:
     "A dock navigation component with animated dropdown menus, hover effects, and image previews.",
   image: "/components/navigation/dock.png",
+  pathname: "/components/navigation/dock",
+  category: "Navigation",
   keywords: [
     "MacOS Dock component",
     "Animated navigation React",
     "Sticky dock menu",
-    "Framer Motion dock",
   ],
 });
 
@@ -31,8 +36,28 @@ const DockDemoSource = fs
   .replace("./dock", "@/components/dock");
 
 export default function DockPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Dock",
+      description:
+        "A dock navigation component with animated dropdown menus, hover effects, and image previews.",
+      pathname: "/components/navigation/dock",
+      image: "/components/navigation/dock.png",
+      category: "Navigation component",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Navigation", path: "/components" },
+      { name: "Dock", path: "/components/navigation/dock" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <DockPreviewWrapper
         title="Dock"
         description={

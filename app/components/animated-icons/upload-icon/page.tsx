@@ -1,7 +1,11 @@
 import UploadIconPreviewWrapper from "./upload-icon-preview-wrapper";
 import fs from "fs";
 import path from "path";
-import { constructMetadata } from "@/lib/utils";
+import {
+  buildAnimatedIconMetadata,
+  createBreadcrumbJsonLd,
+  createComponentJsonLd,
+} from "@/lib/seo";
 
 // file paths
 const filePath = path.join(
@@ -17,15 +21,33 @@ const DemoSource = fs
   .readFileSync(demoFilePath, "utf-8")
   .replace("@/registry/chamaac/animated-icons/", "@/components/");
 
-export const metadata = constructMetadata({
-  title: "Upload Icon",
-  description: "An animated upload icon with an upward arrow motion.",
-  image: "/components/animated-icons.png",
-});
+export const metadata = buildAnimatedIconMetadata(
+  "Upload Icon",
+  "/components/animated-icons/upload-icon"
+);
 
 export default function UploadIconPage() {
+  const jsonLd = [
+    createComponentJsonLd({
+      name: "Upload Icon",
+      description: "An animated upload icon with an upward arrow motion.",
+      pathname: "/components/animated-icons/upload-icon",
+      image: "/components/animated-icons.png",
+      category: "Animated Icon",
+    }),
+    createBreadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Components", path: "/components" },
+      { name: "Animated Icons", path: "/components" },
+      { name: "Upload Icon", path: "/components/animated-icons/upload-icon" },
+    ]),
+  ];
   return (
     <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <UploadIconPreviewWrapper
         title="Upload Icon"
         description="An animated upload icon with an upward arrow motion."

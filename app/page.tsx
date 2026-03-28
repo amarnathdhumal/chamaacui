@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Header } from "./components/header";
+import { constructMetadata } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Chamaac UI | High-Performance Shaders & UI Components",
+export const metadata: Metadata = constructMetadata({
+  title: undefined,
   description:
     "Explore a premium collection of high-performance shader components, interactive backgrounds, and modern UI elements crafted with React and GLSL.",
-};
+  pathname: "/",
+});
 import Link from "next/link";
 import TextLoop from "./components/text-animations/text-loop/text-loop";
 import VideoBentoGrid from "../components/ui/video-bento-grid";
