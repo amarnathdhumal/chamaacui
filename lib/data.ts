@@ -19,6 +19,12 @@ export const sidebarData: SidebarDataTypes[] = [
   },
   // backgrounds
   {
+    componentName: "Light Speed",
+    link: "/backgrounds/light-speed",
+    category: "Backgrounds",
+    isNew: true,
+  },
+  {
     componentName: "Synthesis",
     link: "/backgrounds/synthesis",
     category: "Backgrounds",
@@ -34,20 +40,12 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Astral Flow",
     link: "/backgrounds/astral-flow",
     category: "Backgrounds",
-    isNew: true,
   },
   {
     componentName: "Nebula",
     link: "/backgrounds/nebula",
     category: "Backgrounds",
   },
-
-  // {
-  //   componentName: "Deform Tunnel",
-  //   link: "/backgrounds/deform-tunnel",
-  //   category: "Backgrounds",
-  //   isNew: true,
-  // },
   {
     componentName: "Grid Bloom",
     link: "/backgrounds/grid-bloom",
@@ -82,7 +80,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "How It Works",
     link: "/sections/how-it-works",
     category: "Sections",
-    isNew: true,
   },
   {
     componentName: "Stats Cards",
@@ -115,7 +112,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Glowing Border",
     link: "/buttons/glowing-border-button",
     category: "Buttons",
-    isNew: true,
   },
   {
     componentName: "Shimmer Button",
@@ -147,7 +143,6 @@ export const sidebarData: SidebarDataTypes[] = [
     componentName: "Text Loop",
     link: "/text-animations/text-loop",
     category: "Text Animations",
-    isNew: true,
   },
   {
     componentName: "Dancing Letters",
@@ -185,6 +180,16 @@ interface ComponentCardType {
 }
 
 export const componentCards: ComponentCardType[] = [
+  {
+    title: "Light Speed",
+    description:
+      "A Warp/Light-Speed hyperspace animation inspired by the Ducky3D Blender tutorial.",
+    imagePath: "/components/backgrounds/light-speed.png",
+    videoSrc: "https://assets.amarn.me/light-speed.mp4",
+    link: "/components/backgrounds/light-speed",
+    category: "Backgrounds",
+    bgColor: "bg-black dark:bg-black",
+  },
   {
     title: "Synthesis",
     description:
@@ -308,6 +313,15 @@ export const componentCards: ComponentCardType[] = [
     link: "/components/backgrounds/interactive-grid",
     category: "Backgrounds",
     bgColor: "bg-black dark:bg-black",
+  },
+  {
+    title: "Emissive Dot Grid",
+    description:
+      "A stunning emissive dot grid background with noise-driven scaling and customizable hex colors.",
+    imagePath: "/components/backgrounds/emissive-dot-grid.png",
+    link: "/components/backgrounds/emissive-dot-grid",
+    category: "Backgrounds",
+    bgColor: "bg-[#120200] dark:bg-[#120200]",
   },
 
   {

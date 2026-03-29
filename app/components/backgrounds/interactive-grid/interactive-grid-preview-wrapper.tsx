@@ -5,7 +5,7 @@ import { m, LazyMotion, domAnimation } from "motion/react";
 import ViewArea from "@/components/ui/view-area";
 import InstallationSection from "@/components/ui/installation-section";
 import PropsTable from "@/components/ui/props-table";
-import { InteractiveGridBackground } from "@/registry/chamaac/backgrounds/interactive-grid-background";
+import { InteractiveGridBackground } from "@/registry/chamaac/interactive-grid/interactive-grid-background";
 import { ShaderControls, ControlItem } from "@/components/ui/shader-controls";
 import { BasePreviewWrapperProps } from "@/lib/types";
 

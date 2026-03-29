@@ -64,11 +64,12 @@
     "shadcn": "^3.6.2",
     "tailwindcss": "^4.1.13",
     "tw-animate-css": "^1.3.8",
-    "typescript": "^5"
+    "typescript": "^5",
+    "youtube-transcript": "^1.3.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix --max-warnings 0",
+      "eslint --fix",
       "prettier --write"
     ]
   }

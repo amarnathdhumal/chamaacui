@@ -1,6 +1,6 @@
 "use client";
 
-import Synthesis from "@/registry/chamaac/backgrounds/synthesis";
+import Synthesis from "@/registry/chamaac/synthesis/synthesis";
 import { cn } from "@/lib/utils";
 import { GeistPixelSquare } from "geist/font/pixel";
 

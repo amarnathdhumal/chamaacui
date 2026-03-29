@@ -107,7 +107,26 @@
       ],
       "files": [
         {
-          "path": "registry/chamaac/backgrounds/synthesis.tsx",
+          "path": "registry/chamaac/synthesis/synthesis.tsx",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "light-speed",
+      "type": "registry:component",
+      "title": "Light Speed",
+      "description": "A Warp/Light-Speed hyperspace animation inspired by the Ducky3D Blender tutorial.",
+      "dependencies": [
+        "three",
+        "@react-three/fiber",
+        "@react-three/postprocessing",
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "registry/chamaac/light-speed/light-speed.tsx",
           "type": "registry:component"
         }
       ]
@@ -141,7 +160,7 @@
       ],
       "files": [
         {
-          "path": "registry/chamaac/backgrounds/interactive-grid-background.tsx",
+          "path": "registry/chamaac/interactive-grid/interactive-grid-background.tsx",
           "type": "registry:component"
         }
       ]

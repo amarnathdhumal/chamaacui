@@ -1,6 +1,6 @@
 "use client";
 
-import { InteractiveGridBackground } from "@/registry/chamaac/backgrounds/interactive-grid-background";
+import { InteractiveGridBackground } from "@/registry/chamaac/interactive-grid/interactive-grid-background";
 import SlideUpButton from "@/registry/chamaac/slideup-button/slideup-button";
 import { IconArrowUpRight } from "@tabler/icons-react";
 

@@ -41,7 +41,7 @@ export default function InteractiveGridPage() {
   ];
   const componentPath = path.join(
     process.cwd(),
-    "registry/chamaac/backgrounds/interactive-grid-background.tsx"
+    "registry/chamaac/interactive-grid/interactive-grid-background.tsx"
   );
   const componentSource = fs.readFileSync(componentPath, "utf8");
 

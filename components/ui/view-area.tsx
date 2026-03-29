@@ -19,7 +19,7 @@ import { useFavourites } from "@/hooks/use-favourites";
 import { IconButton } from "@/components/ui/icon-button";
 import RefreshButton from "./refresh-button";
 import CodeBlock from "./code-block";
-import DeviceSelector, { DeviceType } from "./device-selector";
+// import DeviceSelector, { DeviceType } from "./device-selector";
 import IframePreview from "./iframe-preview";
 import { ViewAreaTypes } from "@/lib/types";
 
@@ -34,7 +34,7 @@ const ViewArea = ({
   onRefresh,
 }: ViewAreaTypes) => {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
-  const [device, setDevice] = useState<DeviceType>("desktop");
+  const device: string = "desktop";
   const pathname = usePathname();
   const { favourites, toggleFavourite, isMounted } = useFavourites();
   const isFavorite = favourites.includes(pathname);
@@ -66,9 +66,9 @@ const ViewArea = ({
         </div>
 
         <div className="flex items-center gap-2">
-          {activeTab === "preview" && (
+          {/* {activeTab === "preview" && (
             <DeviceSelector device={device} setDevice={setDevice} />
-          )}
+          )} */}
           {isMounted && (
             <Tooltip>
               <TooltipTrigger asChild>

@@ -40,7 +40,7 @@ export default function SynthesisPage() {
   ];
   const componentPath = path.join(
     process.cwd(),
-    "registry/chamaac/backgrounds/synthesis.tsx"
+    "registry/chamaac/synthesis/synthesis.tsx"
   );
   const componentSource = fs.readFileSync(componentPath, "utf8");
 
