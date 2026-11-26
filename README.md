@@ -33,6 +33,16 @@ bun install
 bun run dev
 ```
 
+### Cloudflare Pages
+
+Set the Pages build command to `bun run build:cloudflare` and the output
+directory to `out`. The build exports the site and generates responsive WebP
+thumbnails. Use the Node version in `.nvmrc` and the dependencies in `bun.lock`.
+
+Set `NEXT_PUBLIC_POSTHOG_KEY` in the Cloudflare build environment if you want to
+keep PostHog visitor analytics. Cloudflare's Security Analytics tracks requests
+at the edge independently.
+
 ## Contributing
 
 We welcome contributions from the community. Please read our [Contribution Guidelines](CONTRIBUTING.md) to get started.

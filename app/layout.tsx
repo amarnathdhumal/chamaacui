@@ -58,8 +58,12 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
-            <Analytics />
-            <SpeedInsights />
+            {process.env.CF_PAGES !== "1" && (
+              <>
+                <Analytics />
+                <SpeedInsights />
+              </>
+            )}
           </ThemeProvider>
         </CSPostHogProvider>
         <script

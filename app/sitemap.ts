@@ -3,6 +3,8 @@ import { sidebarData } from "@/lib/data";
 import { iconSlugs } from "@/lib/icon-slugs";
 import { SITE_URL } from "@/lib/seo";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   // Base pages
   const routes: MetadataRoute.Sitemap = [

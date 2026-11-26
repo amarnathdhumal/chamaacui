@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
+    "build:cloudflare": "CF_PAGES=1 next build --turbopack && node scripts/build-cloudflare-images.mjs",
     "start": "next start",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
